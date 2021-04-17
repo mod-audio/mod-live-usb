@@ -1,13 +1,25 @@
 
 # list of known good projects
 PROJECTS += abgate
+PROJECTS += amsynth
+PROJECTS += artyfx
+PROJECTS += bolliedelay
+# PROJECTS += calf
 PROJECTS += caps-lv2
 PROJECTS += carla-plugins
+# PROJECTS += die-plugins
+PROJECTS += dpf-plugins
 
 # list of known good bundles
 BUNDLES += abGate.lv2
+BUNDLES += amsynth.lv2
+BUNDLES += artyfx.lv2
+BUNDLES += bolliedelay.lv2
+BUNDLES += calf.lv2
 BUNDLES += mod-caps-AmpVTS.lv2 mod-caps-AutoFilter.lv2 mod-caps-CabinetIV.lv2 mod-caps-CEO.lv2 mod-caps-Click.lv2 mod-caps-PhaserII.lv2 mod-caps-Plate.lv2 mod-caps-PlateX2.lv2 mod-caps-Scape.lv2 mod-caps-Spice.lv2 mod-caps-SpiceX2.lv2 mod-caps-White.lv2 mod-caps-Wider.lv2
 BUNDLES += carla-files.lv2
+BUNDLES += distrho-a-fluidsynth.lv2
+BUNDLES += Kars.lv2 MVerb.lv2 Nekobi.lv2 PingPongPan.lv2
 
 # include plugin projects for version and bundle list
 # TODO only import known-good projects
@@ -39,6 +51,5 @@ endef
 	touch $@
 
 docker/.stamp_built: docker/Dockerfile
-	-$(shell mkdir -p .stamps)
 	./docker/build.sh
 	touch $@
