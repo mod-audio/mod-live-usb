@@ -1,0 +1,156 @@
+diff --git a/Makefile.am b/Makefile.am
+index 8a74d04..3ae39be 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -11,6 +11,8 @@ bin_PROGRAMS = bin/sndfile-generate-chirp bin/sndfile-spectrogram \
+ 	bin/sndfile-mix-to-mono bin/sndfile-jackplay bin/sndfile-resample \
+ 	bin/sndfile-waveform
+ 
++lib_LTLIBRARIES = bin/sndfile-jackplay.la
++
+ # Test programs or programs not yet working.
+ noinst_PROGRAMS = tests/kaiser_window_test tests/common_tests
+ 
+@@ -44,6 +46,10 @@ bin_sndfile_jackplay_LDADD = $(SNDFILE_LIBS) $(JACK_LIBS)
+ bin_sndfile_resample_SOURCES = src/resample.c src/common.c src/common.h
+ bin_sndfile_resample_LDADD = $(SNDFILE_LIBS) $(SAMPLERATE_LIBS)
+ 
++bin_sndfile_jackplay_la_SOURCES = src/jackplay-int.c
++bin_sndfile_jackplay_la_LIBADD = $(SNDFILE_LIBS) $(JACK_LIBS)
++bin_sndfile_jackplay_la_LDFLAGS = -module -avoid-version -shared
++
+ #=========================================================================================
+ # The make check targets.
+ 
+@@ -60,3 +66,6 @@ check : $(noinst_PROGRAMS) $(bin_PROGRAMS)
+ # The 'dist-clean' target on Mac OSX fails without this.
+ clean-local:
+ 	rm -rf bin/*.dSYM
++
++install-exec-hook:
++	$(RM) $(DESTDIR)$(libdir)/sndfile-jackplay.la
+diff --git a/src/jackplay-int.c b/src/jackplay-int.c
+new file mode 100644
+index 0000000..a71e054
+--- /dev/null
++++ b/src/jackplay-int.c
+@@ -0,0 +1,119 @@
++/*
++** Copyright (C) 2016 Filipe Coelho <falktx@falktx.com>
++**
++** This program is free software ; you can redistribute it and/or modify
++** it under the terms of the GNU General Public License as published by
++** the Free Software Foundation ; either version 2 of the License, or
++** (at your option) any later version.
++**
++** This program is distributed in the hope that it will be useful,
++** but WITHOUT ANY WARRANTY ; without even the implied warranty of
++** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++** GNU General Public License for more details.
++**
++** You should have received a copy of the GNU General Public License
++** along with this program ; if not, write to the Free Software
++** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++*/
++
++#include "jackplay.c"
++
++static pthread_t int_thread_id;
++
++__attribute__ ((visibility("default")))
++int jack_initialize(jack_client_t* client, const char* load_init);
++
++int jack_initialize(jack_client_t* client, const char* load_init)
++{
++    SF_INFO sfinfo ;
++    SNDFILE *sndfile ;
++    const char * auto_connect_str = getenv("SNDFILE_JACKPLAY_AUTOCONNECT") ; // "system:playback_%d"
++    int i;
++
++    if (auto_connect_str == NULL)
++        auto_connect_str = "system:playback_%d";
++
++    thread_info_t *info = malloc(sizeof(thread_info_t));
++
++    if (info == NULL)
++        return 1;
++
++    /* Open the soundfile. */
++    memset (&sfinfo, 0, sizeof (sfinfo)) ;
++    sndfile = sf_open (load_init, SFM_READ, &sfinfo) ;
++    if (sndfile == NULL)
++        return 1;
++
++    /* Init the thread info struct. */
++    memset (info, 0, sizeof (thread_info_t)) ;
++    info->can_process = 0 ;
++    info->read_done = 0 ;
++    info->sndfile = sndfile ;
++    info->channels = sfinfo.channels ;
++    info->samplerate = jack_get_sample_rate (client) ;
++    info->client = client ;
++    info->pos = 0 ;
++    info->current_loop = 0 ;
++    info->loop_count = 1 ;
++
++    /* Allocate output ports. */
++    info->output_port = calloc (sfinfo.channels, sizeof (jack_port_t *)) ;
++    info->outs = calloc (sfinfo.channels, sizeof (jack_default_audio_sample_t *)) ;
++    for (i = 0 ; i < sfinfo.channels ; i++)
++    {
++        char name [16] ;
++
++        snprintf (name, sizeof (name), "out_%d", i + 1) ;
++        info->output_port [i] = jack_port_register (client, name, JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0) ;
++    } ;
++
++    /* Allocate and clear ringbuffer. */
++    info->ringbuf = jack_ringbuffer_create (sizeof (jack_default_audio_sample_t) * RB_SIZE) ;
++    memset (info->ringbuf->buf, 0, info->ringbuf->size) ;
++
++    /* Set up callbacks. */
++    jack_set_process_callback (client, process_callback, info) ;
++
++    /* Activate client. */
++    if (jack_activate (client))
++        return 1;
++
++    if (auto_connect_str != NULL)
++    {
++        /* Auto-connect all channels. */
++        for (i = 0 ; i < sfinfo.channels ; i++)
++        {
++            char name [64] ;
++
++            snprintf (name, sizeof (name), auto_connect_str, i + 1) ;
++
++            if (jack_connect (client, jack_port_name (info->output_port [i]), name))
++                fprintf (stderr, "Cannot connect output port %d (%s).\n", i, name) ;
++        } ;
++    }
++
++    /* Start the disk thread. */
++    pthread_create (&int_thread_id, NULL, disk_thread, info) ;
++
++    return 0;
++}
++
++__attribute__ ((visibility("default")))
++void jack_finish(void* arg);
++
++void jack_finish(void* arg)
++{
++    thread_info_t *info = (thread_info_t *) arg ;
++
++    jack_deactivate (info->client) ;
++
++    pthread_cond_signal (&data_ready) ;
++    pthread_join (int_thread_id, NULL) ;
++
++    jack_ringbuffer_free (info->ringbuf) ;
++
++    free (info->output_port) ;
++    free (info->outs) ;
++
++    sf_close (info->sndfile) ;
++}

@@ -1,0 +1,12 @@
+--- jack-capture-0.9.71.orig/Makefile
++++ jack-capture-0.9.71/Makefile
+@@ -3,7 +3,7 @@ bindir = $(PREFIX)/bin
+ 
+ VERSION=0.9.71
+ 
+-CC=gcc
++CC?=gcc
+ CPP=g++
+ 
+ OPTIMIZE=-O3
+

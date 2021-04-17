@@ -1,0 +1,18 @@
+[Unit]
+Description=MOD Web Server
+After=jack2.service
+
+[Service]
+Type=simple
+EnvironmentFile=/mnt/config/environment.sh
+ExecStart=/usr/bin/python3 /usr/bin/mod-ui
+Restart=always
+User=root
+Group=root
+Nice=-17
+# Environment=MOD_LOG=1
+# StandardOutput=tty
+# StandardError=tty
+
+[Install]
+WantedBy=multi-user.target

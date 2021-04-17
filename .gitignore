@@ -1,0 +1,3 @@
+mod-os/config/soundcard.sh
+mod-os/rootfs.tar
+toolchain/.stamp_built

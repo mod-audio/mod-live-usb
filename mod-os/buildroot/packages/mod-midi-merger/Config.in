@@ -1,0 +1,3 @@
+config BR2_PACKAGE_MOD_MIDI_MERGER
+	bool "mod-midi-merger"
+	select BR2_PACKAGE_JACK2MOD

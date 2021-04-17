@@ -1,0 +1,124 @@
+diff --git a/browsepy/transform/glob.py b/browsepy/transform/glob.py
+index 64783af..b034368 100644
+--- a/browsepy/transform/glob.py
++++ b/browsepy/transform/glob.py
+@@ -2,8 +2,6 @@
+ import os
+ import warnings
+ 
+-from unicategories import categories as unicat, RangeGroup as ranges
+-
+ from ..compat import re_escape, chr
+ from . import StateMachine
+ 
+@@ -65,64 +63,6 @@ class GlobTransform(StateMachine):
+             '': 'text',
+             },
+         }
+-    character_classes = {
+-        'alnum': (
+-            # [\p{L}\p{Nl}\p{Nd}]
+-            unicat['L'] + unicat['Nl'] + unicat['Nd']
+-            ),
+-        'alpha': (
+-            # \p{L}\p{Nl}
+-            unicat['L'] + unicat['Nl']
+-            ),
+-        'ascii': (
+-            # [\x00-\x7F]
+-            ranges(((0, 0x80),))
+-            ),
+-        'blank': (
+-            # [\p{Zs}\t]
+-            unicat['Zs'] + ranges(((9, 10),))
+-            ),
+-        'cntrl': (
+-            # \p{Cc}
+-            unicat['Cc']
+-            ),
+-        'digit': (
+-            # \p{Nd}
+-            unicat['Nd']
+-            ),
+-        'graph': (
+-            # [^\p{Z}\p{C}]
+-            unicat['M'] + unicat['L'] + unicat['N'] + unicat['P'] + unicat['S']
+-            ),
+-        'lower': (
+-            # \p{Ll}
+-            unicat['Ll']
+-            ),
+-        'print': (
+-            # \P{C}
+-            unicat['C']
+-            ),
+-        'punct': (
+-            # \p{P}
+-            unicat['P']
+-            ),
+-        'space': (
+-            # [\p{Z}\t\n\v\f\r]
+-            unicat['Z'] + ranges(((9, 14),))
+-            ),
+-        'upper': (
+-            # \p{Lu}
+-            unicat['Lu']
+-            ),
+-        'word': (
+-            # [\p{L}\p{Nl}\p{Nd}\p{Pc}]
+-            unicat['L'] + unicat['Nl'] + unicat['Nd'] + unicat['Pc']
+-            ),
+-        'xdigit': (
+-            # [0-9A-Fa-f]
+-            ranges(((48, 58), (65, 71), (97, 103)))
+-            ),
+-        }
+     current = 'start'
+     deferred = False
+ 
+@@ -150,18 +90,10 @@ class GlobTransform(StateMachine):
+         return None
+ 
+     def transform_posix_character_class(self, data, mark, next):
+-        name = data[len(self.start):]
+-        if name not in self.character_classes:
+-            warnings.warn(
+-                'Posix character class %s is not supported.'
+-                % name)
+-            return None
+-        return ''.join(
+-            chr(start)
+-            if 1 == end - start else
+-            '%s-%s' % (chr(start), chr(end - 1))
+-            for start, end in self.character_classes[name]
+-            )
++        warnings.warn(
++            'Posix character class %s is not supported.'
++            % name)
++        return None
+ 
+     def transform_posix_equivalence_class(self, data, mark, next):
+         warnings.warn(
+diff --git a/requirements.txt b/requirements.txt
+index bbb34a0..62170b9 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,5 +1,4 @@
+ flask
+-unicategories
+ 
+ # for python < 3.6
+ scandir
+diff --git a/setup.py b/setup.py
+index 868e28c..3799237 100644
+--- a/setup.py
++++ b/setup.py
+@@ -100,7 +100,7 @@ setup(
+             'templates/*',
+             'static/*/*',
+         ]},
+-    install_requires=['flask', 'unicategories'] + extra_requires,
++    install_requires=['flask'] + extra_requires,
+     test_suite='browsepy.tests',
+     test_runner='browsepy.tests.runner:DebuggerTextTestRunner',
+     zip_safe=False,

@@ -1,0 +1,25 @@
+[Unit]
+Description=browsepy
+After=jack2.service
+
+[Service]
+Type=simple
+EnvironmentFile=/mnt/config/environment.sh
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Audio Loops"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Audio Recordings"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Audio Samples"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Audio Tracks"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/MIDI Clips"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/MIDI Songs"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Reverb IRs"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Speaker Cabinets IRs"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/Hydrogen Drumkits"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/SF2 Instruments"
+ExecStartPre=/usr/bin/mkdir -p "/data/user-files/SFZ Instruments"
+ExecStart=/usr/bin/browsepy --directory /data/user-files --upload /data/user-files --removable /data/user-files 0.0.0.0 ${MOD_FILE_MANAGER_PORT}
+Restart=always
+# StandardOutput=tty
+# StandardError=tty
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_BROWSEPY
+        bool "browsepy"
+        select BR2_PACKAGE_PYTHON_FLASK
+        select BR2_PACKAGE_PYTHON_SCANDIR

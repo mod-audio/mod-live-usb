@@ -1,0 +1,4 @@
+config BR2_PACKAGE_JACK_CAPTURE
+	bool "jack-capture"
+	select BR2_PACKAGE_LIBSNDFILE
+	select BR2_PACKAGE_JACK2MOD

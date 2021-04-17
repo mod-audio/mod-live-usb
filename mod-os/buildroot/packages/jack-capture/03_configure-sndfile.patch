@@ -1,0 +1,19 @@
+diff --git a/jack_capture.c b/jack_capture.c
+index 0109622..bc78f9e 100644
+--- a/jack_capture.c
++++ b/jack_capture.c
+@@ -1214,6 +1214,14 @@ static int open_soundfile(void){
+     return 0;
+   }
+ 
++  // Turn on clipping and normalization of floats (-1.0 - 1.0)
++  sf_command (soundfile, SFC_SET_CLIPPING, NULL, SF_TRUE);
++  sf_command (soundfile, SFC_SET_NORM_FLOAT, NULL, SF_TRUE);
++
++  // Specify vbr quality (default is 0.4)
++  double q = 0.5;
++  sf_command (soundfile, SFC_SET_VBR_ENCODING_QUALITY, &q, sizeof (double));
++
+   hook_file_opened(filename);
+ 
+   return 1;
