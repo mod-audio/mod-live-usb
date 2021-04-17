@@ -1,0 +1,9 @@
+[Project]
+Manager=KDevGenericManager
+Name=mod-live-usb-welcome
+
+[Filters]
+Excludes=*/.*,*/*~
+
+[Project]
+VersionControlSupport=kdevgit

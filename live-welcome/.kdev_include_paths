@@ -1,0 +1,10 @@
+/usr/include/KF5
+/usr/include/KF5/KCoreAddons
+/usr/include/KF5/KParts
+/usr/include/KF5/KService
+/usr/include/KF5/KXmlGui
+/usr/include/x86_64-linux-gnu/qt5
+/usr/include/x86_64-linux-gnu/qt5/QtCore
+/usr/include/x86_64-linux-gnu/qt5/QtGui
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/
