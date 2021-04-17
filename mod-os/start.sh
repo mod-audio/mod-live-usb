@@ -23,23 +23,23 @@ if [ ! -e /proc/asound/card${SOUNDCARD} ]; then
     exit 1
 fi
 
-if [ ! -e /proc/asound/card${SOUNDCARD}/stream0 ]; then
-    echo "error: soundcard ${SOUNDCARD} has no streams"
-    exit 1
-fi
+# if [ ! -e /proc/asound/card${SOUNDCARD}/stream0 ]; then
+#     echo "error: soundcard ${SOUNDCARD} has no streams"
+#     exit 1
+# fi
 
 # find some info for soundcard
-SAMPLERATES=",$(cat /proc/asound/card${SOUNDCARD}/stream0 | awk 'sub("Rates:","")' | head -n 1 | tr -d "[:space:]"),"
+# SAMPLERATES=",$(cat /proc/asound/card${SOUNDCARD}/stream0 | awk 'sub("Rates:","")' | head -n 1 | tr -d "[:space:]"),"
 
-if echo ${SAMPLERATES} | grep -e ",48000,"; then
+# if echo ${SAMPLERATES} | grep -e ",48000,"; then
     SAMPLERATE=48000
-elif echo ${SAMPLERATES} | grep -e ",44100,"; then
-    SAMPLERATE=44100
-elif echo ${SAMPLERATES} | grep -e ",96000,"; then
-    SAMPLERATE=96000
-else
-    SAMPLERATE=$(echo ${SAMPLERATES} | sed 's|,|\n|g' | head -n 2 | tail -n 1)
-fi
+# elif echo ${SAMPLERATES} | grep -e ",44100,"; then
+#     SAMPLERATE=44100
+# elif echo ${SAMPLERATES} | grep -e ",96000,"; then
+#     SAMPLERATE=96000
+# else
+#     SAMPLERATE=$(echo ${SAMPLERATES} | sed 's|,|\n|g' | head -n 2 | tail -n 1)
+# fi
 
 if [ -e /proc/asound/card${SOUNDCARD}/usbid ]; then
     NPERIODS=3

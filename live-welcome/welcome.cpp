@@ -18,8 +18,8 @@ KioskTabs::KioskTabs(QWidget* const parent)
     fileBrowser(nullptr)
 {
     webBrowser.setHtml("<html><body bgcolor='black'></body></html>");
+    webBrowser.setUrl(QUrl("http://localhost:8000/"));
     addTab(&webBrowser, "Pedalboard");
-    // webBrowser.setUrl(QUrl("http://192.168.51.1/"));
 
     if (const KService::Ptr service = KService::serviceByDesktopName("okular_part"))
     {
