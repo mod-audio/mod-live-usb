@@ -1,3 +1,6 @@
 mod-os/config/soundcard.sh
 mod-os/rootfs.tar
+plugins/.stamps/
+plugins/bundles/
+plugins/docker/.stamp_built
 toolchain/.stamp_built

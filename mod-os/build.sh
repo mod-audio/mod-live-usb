@@ -2,7 +2,7 @@
 
 set -e
 
-cd $(dirname $0)
+cd $(dirname ${0})
 
 docker build -t mod-live-usb_mod-os .
 docker run -v ${PWD}:/opt/mount --rm --entrypoint \
