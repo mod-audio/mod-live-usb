@@ -8,6 +8,7 @@ PROJECTS += bolliedelay
 PROJECTS += caps-lv2
 PROJECTS += carla-plugins
 # PROJECTS += die-plugins
+# PROJECTS += distrho-ports
 PROJECTS += dpf-plugins
 PROJECTS += fluidplug
 PROJECTS += fomp
@@ -76,9 +77,9 @@ PROJECTS += x42-tinygain
 PROJECTS += x42-xfade
 PROJECTS += zam-plugins
 # not in stable/prod, but still useful for many reasons
-BUNDLES += modmeter-labs
-BUNDLES += modspectre-labs
-BUNDLES += x42-tuna-lv2-labs
+PROJECTS += modmeter
+PROJECTS += modspectre-labs
+PROJECTS += x42-tuna-lv2-labs
 
 
 # list of known good bundles
@@ -90,6 +91,7 @@ BUNDLES += bolliedelay.lv2
 BUNDLES += mod-caps-AmpVTS.lv2 mod-caps-AutoFilter.lv2 mod-caps-CabinetIV.lv2 mod-caps-CEO.lv2 mod-caps-Click.lv2 mod-caps-PhaserII.lv2 mod-caps-Plate.lv2 mod-caps-PlateX2.lv2 mod-caps-Scape.lv2 mod-caps-Spice.lv2 mod-caps-SpiceX2.lv2 mod-caps-White.lv2 mod-caps-Wider.lv2
 BUNDLES += carla-files.lv2
 # BUNDLES += distrho-a-fluidsynth.lv2
+# BUNDLES += Vex.lv2
 BUNDLES += Kars.lv2 MVerb.lv2 Nekobi.lv2 PingPongPan.lv2
 BUNDLES += Black_Pearl_4A.lv2 Black_Pearl_4B.lv2 Black_Pearl_5.lv2 FluidBass.lv2 FluidBrass.lv2 FluidChromPerc.lv2 FluidDrums.lv2 FluidEnsemble.lv2 FluidEthnic.lv2 FluidGuitars.lv2 FluidOrgans.lv2 FluidPercussion.lv2 FluidPianos.lv2 FluidPipes.lv2 FluidReeds.lv2 FluidSoundFX.lv2 FluidStrings.lv2 FluidSynthFX.lv2 FluidSynthLeads.lv2 FluidSynthPads.lv2 Red_Zeppelin_4.lv2 Red_Zeppelin_5.lv2", "stable": true }
 BUNDLES += fomp.lv2
