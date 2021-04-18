@@ -14,14 +14,28 @@ if [ -z "${SOUNDCARD}" ]; then
     exit 1
 fi
 
-# allow soundcard id instead of index
-if [ -e /proc/asound/${SOUNDCARD} ]; then
-    SOUNDCARD=$(readlink /proc/asound/${SOUNDCARD} | awk 'sub("card","")')
+# using default
+if [ ${SOUNDCARD} = "default" ]; then
+    SOUNDCARD_ID=0
+    SOUNDCARD_HW="default"
+# using hw: prefix
+elif echo ${SOUNDCARD} | grep -q "hw:"; then
+    SOUNDCARD_ID=${SOUNDCARD##*hw:}
+    SOUNDCARD_ID=${SOUNDCARD_ID%%,*}
+    SOUNDCARD_HW=${SOUNDCARD}
+# using card id/name
+elif [ -e /proc/asound/${SOUNDCARD} ]; then
+    SOUNDCARD_ID=$(readlink /proc/asound/${SOUNDCARD} | awk 'sub("card","")')
+    SOUNDCARD_HW="hw:${SOUNDCARD_ID}"
+# fallback, assuming to be index
+else
+    SOUNDCARD_ID="${SOUNDCARD_ID}"
+    SOUNDCARD_HW="hw:${SOUNDCARD_ID}"
 fi
 
 # verify soundcard is valid
-if [ ! -e /proc/asound/card${SOUNDCARD} ]; then
-    echo "error: can't find soundcard ${SOUNDCARD}"
+if [ "${SOUNDCARD_HW}" != "default" ] && [ ! -e /proc/asound/card${SOUNDCARD_ID} ]; then
+    echo "error: can't find soundcard ${SOUNDCARD} (id: ${SOUNDCARD_ID}, hw: ${SOUNDCARD_HW}"
     exit 1
 fi
 
@@ -33,7 +47,7 @@ if [ -z "${BUFFERSIZE}" ]; then
     BUFFERSIZE=128
 fi
 
-if [ -e /proc/asound/card${SOUNDCARD}/usbid ]; then
+if [ -e /proc/asound/card${SOUNDCARD_ID}/usbid ]; then
     NPERIODS=3
 else
     NPERIODS=2
@@ -41,7 +55,8 @@ fi
 
 # pass soundcard setup into container
 echo "# mod-live-usb soundcard setup
-SOUNDCARD=${SOUNDCARD}
+SOUNDCARD_ID=${SOUNDCARD_ID}
+SOUNDCARD_HW=${SOUNDCARD_HW}
 SAMPLERATE=${SAMPLERATE}
 BUFFERSIZE=${BUFFERSIZE}
 NPERIODS=${NPERIODS}
@@ -55,11 +70,11 @@ export SYSTEMD_SECCOMP=0
 
 # optional nspawn options (everything must be valid)
 NSPAWN_OPTS=""
-if [ -e /dev/snd/pcmC${SOUNDCARD}D0c ]; then
-NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD}D0c"
+if [ -e /dev/snd/pcmC${SOUNDCARD_ID}D0c ]; then
+NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD_ID}D0c"
 fi
-if [ -e /dev/snd/pcmC${SOUNDCARD}D0p ]; then
-NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD}D0p"
+if [ -e /dev/snd/pcmC${SOUNDCARD_ID}D0p ]; then
+NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD_ID}D0p"
 fi
 if [ -e /mnt/pedalboards ]; then
 NSPAWN_OPTS+=" --bind-ro=/mnt/pedalboards"
@@ -70,6 +85,8 @@ elif [ -e ../plugins/bundles/abGate.lv2 ]; then
 NSPAWN_OPTS+=" --bind-ro=$(pwd)/../plugins/bundles:/mnt/plugins"
 fi
 
+echo "starting up, pwd is $(pwd)"
+
 # ready!
 sudo systemd-nspawn \
 --boot \
@@ -79,7 +96,7 @@ sudo systemd-nspawn \
 --resolv-conf=bind-host \
 --machine="mod-live-usb" \
 --image=$(pwd)/rootfs.ext2 \
---bind=/dev/snd/controlC${SOUNDCARD} \
+--bind=/dev/snd/controlC${SOUNDCARD_ID} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \
 --bind=$(pwd)/../rwdata/root:/root \

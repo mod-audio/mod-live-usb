@@ -1,167 +1,9 @@
 /*
  */
 
-#include "welcome.hpp"
-
-#include <QtGui/QKeyEvent>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QTabBar>
 
-#include <KParts/BrowserExtension>
-#include <KParts/ReadWritePart>
-#include <KService/KService>
-
-class KioskAbout : public QWidget
-{
-public:
-    explicit KioskAbout(QWidget* const parent)
-      : QWidget(parent) {}
-
-protected:
-    void paintEvent(QPaintEvent* const event)
-    {
-        QWidget::paintEvent(event);
-
-        QPainter painter(this);
-        painter.drawText(0, 0, 400, 500, 0x0, "Hello There");
-    }
-};
-
-KioskTabs::KioskTabs(QWidget* const parent)
-  : QTabWidget(parent),
-    webBrowser(this),
-    fileBrowser(nullptr),
-    clockFont(font()),
-    clockRect(),
-    clockTimer(-1)
-{
-    webBrowser.setHtml("<html><body bgcolor='black'></body></html>");
-    addTab(&webBrowser, "Pedalboard");
-
-#if 0
-    if (const KService::Ptr service = KService::serviceByDesktopName("okular_part"))
-    {
-        if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
-        {
-            p->openUrl(QUrl("file:///home/falktx/Documents/LU_04-15_DigiSub.pdf"));
-            addTab(p->widget(), "Documentation");
-        }
-    }
-#endif
-
-    if (const KService::Ptr service = KService::serviceByDesktopName("katepart"))
-    {
-        if (KParts::ReadWritePart* const p = service->createInstance<KParts::ReadWritePart>(nullptr, {}))
-        {
-            // p->openUrl(QUrl("file:///tmp/notes.txt"));
-            addTab(p->widget(), "Notes");
-        }
-    }
-
-    addTab(new KioskAbout(this), "About");
-
-#if 0
-    if (const KService::Ptr service = KService::serviceByDesktopName("dolphinpart"))
-    {
-        if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
-        {
-            addTab(p->widget(), "Dolphin");
-            p->openUrl(QUrl("file:///home/falktx/"));
-
-        }
-    }
-#endif
-
-    clockFont.setFamily("Monospace");
-    clockFont.setPixelSize(20);
-
-    QFontMetrics metrics(clockFont);
-    const int height = tabBar()->height();
-    const int fontheight = metrics.height();
-
-    clockRect = QRect(0, height/2 - fontheight/2, metrics.horizontalAdvance("00:00:00"), fontheight);
-    clockTimer = startTimer(1000);
-}
-
-void KioskTabs::openKonsole()
-{
-    if (const KService::Ptr service = KService::serviceByDesktopName("konsolepart"))
-        if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
-            setCurrentIndex(addTab(p->widget(), "Konsole"));
-}
-
-void KioskTabs::paintEvent(QPaintEvent* const event)
-{
-    QTabWidget::paintEvent(event);
-
-    if (clockRect.x() == 0)
-        return;
-
-    QPainter painter(this);
-    painter.setFont(clockFont);
-    painter.drawText(clockRect, QTime::currentTime().toString("hh:mm:ss"));
-}
-
-void KioskTabs::resizeEvent(QResizeEvent* const event)
-{
-    QTabWidget::resizeEvent(event);
-
-    clockRect.moveTo(width() - clockRect.width(), clockRect.y());
-    update(clockRect);
-}
-
-void KioskTabs::timerEvent(QTimerEvent* const event)
-{
-    QTabWidget::timerEvent(event);
-
-    if (event->timerId() != clockTimer)
-        return;
-    if (clockRect.x() == 0)
-        return;
-
-    update(clockRect);
-}
-
-class KioskWindow : public QMainWindow
-{
-    KioskTabs tabWidget;
-
-public:
-    KioskWindow()
-      : QMainWindow(),
-        tabWidget(this)
-    {
-        setCentralWidget(&tabWidget);
-        setWindowTitle("MOD Live USB");
-
-        // TODO full screen mode
-        resize(1200, 800);
-    }
-
-    ~KioskWindow()
-    {
-    }
-
-protected:
-    void keyPressEvent(QKeyEvent * event) override
-    {
-        QMainWindow::keyPressEvent(event);
-
-        const Qt::KeyboardModifiers modifiers = event->modifiers();
-
-        if ((modifiers & Qt::Modifier::ALT) == 0x0)
-            return;
-        if ((modifiers & Qt::Modifier::CTRL) == 0x0)
-            return;
-
-        if (event->key() == Qt::Key::Key_R)
-            tabWidget.reloadPage();
-        if (event->key() == Qt::Key::Key_T)
-            tabWidget.openKonsole();
-    }
-};
+#include "src/KioskWindow.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -236,7 +78,10 @@ int main(int argc, char* argv[])
 #endif
 
     KioskWindow win;
+    win.resize(1200, 800);
     win.show();
+
+    win.openSettings();
 
     return app.exec();
 }
