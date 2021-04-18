@@ -71,6 +71,7 @@ fi
 # ready!
 sudo systemd-nspawn \
 --boot \
+--read-only \
 --capability=all \
 --private-users=false \
 --resolv-conf=bind-host \
@@ -79,6 +80,8 @@ sudo systemd-nspawn \
 --bind=/dev/snd/controlC${SOUNDCARD} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \
+--bind=$(pwd)/../rwdata/data:/root/data \
+--bind=$(pwd)/../rwdata/user-files:/data/user-files \
 --bind-ro=/etc/hostname \
 --bind-ro=/etc/hosts \
 --bind-ro=$(pwd)/config:/mnt/config \
@@ -86,6 +89,7 @@ sudo systemd-nspawn \
 --bind-ro=$(pwd)/overlay-files/etc/passwd:/etc/passwd \
 --bind-ro=$(pwd)/overlay-files/etc/shadow:/etc/shadow \
 --bind-ro=$(pwd)/overlay-files/system:/etc/systemd/system \
---tmpfs=/run \
 --tmpfs=/tmp \
 --tmpfs=/var ${NSPAWN_OPTS}
+
+# --tmpfs=/run \

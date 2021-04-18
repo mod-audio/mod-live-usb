@@ -49,7 +49,8 @@ RUN mkdir $HOME/mod-workdir/x86_64/target/data && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt/config && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt/lv2 && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt/pedalboards && \
-    mkdir $HOME/mod-workdir/x86_64/target/mnt/plugins
+    mkdir $HOME/mod-workdir/x86_64/target/mnt/plugins && \
+    mkdir $HOME/mod-workdir/x86_64/target/root/data
 
 # generate mod-os content
 RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64

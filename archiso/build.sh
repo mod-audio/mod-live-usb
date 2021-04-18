@@ -14,9 +14,11 @@ fi
 CHROOT_DIR=liveusb/airootfs
 MOD_LIVE_DIR=${CHROOT_DIR}/root/.mod-live
 
-mkdir -p output workdir
+mkdir -p cache output workdir
 mkdir -p ${CHROOT_DIR}/mnt/pedalboards
 mkdir -p ${CHROOT_DIR}/mnt/plugins
+mkdir -p ${CHROOT_DIR}/root/rwdata/data
+mkdir -p ${CHROOT_DIR}/root/rwdata/user-files
 mkdir -p ${MOD_LIVE_DIR}
 
 # mount plugin dir (so we dont have to copy the whole thing)

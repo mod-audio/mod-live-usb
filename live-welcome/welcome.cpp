@@ -13,6 +13,22 @@
 #include <KParts/ReadWritePart>
 #include <KService/KService>
 
+class KioskAbout : public QWidget
+{
+public:
+    explicit KioskAbout(QWidget* const parent)
+      : QWidget(parent) {}
+
+protected:
+    void paintEvent(QPaintEvent* const event)
+    {
+        QWidget::paintEvent(event);
+
+        QPainter painter(this);
+        painter.drawText(0, 0, 400, 500, 0x0, "Hello There");
+    }
+};
+
 KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
     webBrowser(this),
@@ -43,6 +59,8 @@ KioskTabs::KioskTabs(QWidget* const parent)
             addTab(p->widget(), "Notes");
         }
     }
+
+    addTab(new KioskAbout(this), "About");
 
 #if 0
     if (const KService::Ptr service = KService::serviceByDesktopName("dolphinpart"))
