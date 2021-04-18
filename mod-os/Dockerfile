@@ -5,7 +5,7 @@ ENV USER builder
 ENV HOME /home/$USER
 
 # NOTE you can edit this as needed
-ENV MPB_COMMIT_HASH_FOR_MOD_OS 8048f2dcf416a774e64a98ffead8f75cb7bc861f
+ENV MPB_COMMIT_HASH_FOR_MOD_OS f3b8e58f71f241298e79e1d22daae5db6f44c34a
 
 # checkout mod-plugin-builder
 WORKDIR $HOME/mod-plugin-builder

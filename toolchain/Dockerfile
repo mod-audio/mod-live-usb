@@ -36,7 +36,7 @@ USER $USER
 WORKDIR $HOME
 RUN git clone $MPB_GIT_URL
 WORKDIR mod-plugin-builder
-RUN git pull && git checkout 8048f2dcf416a774e64a98ffead8f75cb7bc861f
+RUN git pull && git checkout f3b8e58f71f241298e79e1d22daae5db6f44c34a
 
 # build toolchain
 RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
