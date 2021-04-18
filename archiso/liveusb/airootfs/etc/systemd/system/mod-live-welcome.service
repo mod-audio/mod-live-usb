@@ -1,0 +1,15 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Unit]
+Description=MOD Live Welcome
+After=livecd-alsa-unmuter.service
+
+[Service]
+Type=simple
+ExecStart=/root/.mod-live/mod-live-usb-welcome -platform linuxfb -style fusion --no-sandbox
+Restart=always
+WorkingDirectory=/root/.mod-live
+
+[Install]
+WantedBy=sound.target

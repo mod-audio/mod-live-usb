@@ -20,8 +20,12 @@ QT5_LIBS   = $(shell pkg-config --libs Qt5Widgets Qt5WebEngineWidgets)
 
 CC  ?= gcc
 CXX ?= g++
+
+ifneq ($(wildcard /usr/lib/qt5/bin/moc),)
+MOC ?= /usr/lib/qt5/bin/moc
+else
 MOC ?= moc
-# /usr/lib/qt5/bin/moc
+endif
 
 all: $(TARGETS)
 

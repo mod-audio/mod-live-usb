@@ -50,5 +50,3 @@ docker run --privileged \
   -v ${PWD}/workdir:/opt/mount/workdir \
   --rm mod-live-usb_iso:latest \
   /usr/bin/mkarchiso -L "Live-USB" -o /opt/mount/output -w /opt/mount/workdir -v /opt/mount/liveusb
-
-# ... -platform linuxfb -style fusion --no-sandbox

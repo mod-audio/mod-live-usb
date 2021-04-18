@@ -21,6 +21,7 @@ KioskTabs::KioskTabs(QWidget* const parent)
     webBrowser.setUrl(QUrl("http://localhost:8000/"));
     addTab(&webBrowser, "Pedalboard");
 
+#if 0
     if (const KService::Ptr service = KService::serviceByDesktopName("okular_part"))
     {
         if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
@@ -29,6 +30,7 @@ KioskTabs::KioskTabs(QWidget* const parent)
             addTab(p->widget(), "Documentation");
         }
     }
+#endif
 
     if (const KService::Ptr service = KService::serviceByDesktopName("katepart"))
     {
@@ -103,9 +105,7 @@ int main(int argc, char* argv[])
     app.setApplicationName("MOD Live USB Welcome");
 
     KioskWindow win;
-//     win.showMinimized();
-//     app.processEvents();
+    win.show();
 
-    win.showNormal();
     return app.exec();
 }

@@ -10,7 +10,7 @@ BUFFERSIZE=${3}
 
 # verify CLI arguments
 if [ -z "${SOUNDCARD}" ]; then
-    echo "usage: ${0} <soundcard> [samplerate]"
+    echo "usage: ${0} <soundcard> [samplerate] [buffersize]"
     exit 1
 fi
 
