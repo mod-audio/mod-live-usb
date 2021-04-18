@@ -4,6 +4,7 @@ archiso/cache/
 archiso/output/
 archiso/workdir/
 live-welcome/mod-live-usb-welcome
+live-welcome/resources/watermark.txt
 mod-os/config/soundcard.sh
 mod-os/rootfs.ext2
 plugins/.stamps/
