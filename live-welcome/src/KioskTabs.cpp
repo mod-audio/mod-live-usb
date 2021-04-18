@@ -3,18 +3,23 @@
 
 #include "KioskTabs.hpp"
 
+// #include <QtWebEngineWidgets/QWebEngineSettings>
+
 #include <KParts/BrowserExtension>
 #include <KParts/ReadWritePart>
 #include <KService/KService>
 
 #include "KioskAbout.hpp"
+static const char* const initial_html = "<html><body><style>body { background: black url(data:image/png;base64,"
+#include "../resources/watermark.txt"
+") no-repeat scroll calc(100vw - 506px) calc(100vh - 145px) }</style></body></html>";
 
 KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
     fileBrowser(nullptr),
     webBrowser(new QWebEngineView(this))
 {
-    webBrowser->setHtml("<html><body bgcolor='black'></body></html>");
+    webBrowser->setHtml(initial_html);
     addTab(webBrowser, "Pedalboard");
 
 #if 0

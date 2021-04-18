@@ -51,7 +51,7 @@ welcome.cpp.o: welcome.cpp src/KioskWindow.hpp src/KioskTabs.hpp src/KioskSettin
 src/AudioDiscovery.cpp.o: src/AudioDiscovery.cpp src/AudioDiscovery.hpp
 	$(CXX) $< -c $(ALSA_CFLAGS) $(CXXFLAGS) -o $@
 
-src/KioskTabs.cpp.o: src/KioskTabs.cpp src/KioskTabs.hpp src/KioskAbout.hpp
+src/KioskTabs.cpp.o: src/KioskTabs.cpp src/KioskTabs.hpp src/KioskAbout.hpp resources/watermark.txt
 	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(CXXFLAGS) -o $@
 
 src/moc_%.cpp.o: src/moc_%.cpp
@@ -59,6 +59,9 @@ src/moc_%.cpp.o: src/moc_%.cpp
 
 src/moc_%.cpp: src/%.hpp
 	$(MOC) $< > $@
+
+resources/watermark.txt: resources/watermark.png
+	$(shell cat $< | base64 | tr -d '\n' | sed 's/\(.*\)/"\1"/' > $@)
 
 # theme/moc_%.cpp: %.hpp
 # 	$(MOC) $< > $@
