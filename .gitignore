@@ -4,7 +4,7 @@ archiso/output/
 archiso/workdir/
 live-welcome/mod-live-usb-welcome
 mod-os/config/soundcard.sh
-mod-os/rootfs.tar
+mod-os/rootfs.ext2
 plugins/.stamps/
 plugins/bundles/
 plugins/docker/.stamp_built
