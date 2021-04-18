@@ -17,6 +17,7 @@ KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
     webBrowser(this),
     fileBrowser(nullptr),
+    clockFont(font()),
     clockRect(),
     clockTimer(-1)
 {
@@ -55,9 +56,10 @@ KioskTabs::KioskTabs(QWidget* const parent)
     }
 #endif
 
-    QFont monofont(font());
-    monofont.setFamily("Monospace");
-    QFontMetrics metrics(monofont);
+    clockFont.setFamily("Monospace");
+    clockFont.setPixelSize(20);
+
+    QFontMetrics metrics(clockFont);
     const int height = tabBar()->height();
     const int fontheight = metrics.height();
 
@@ -80,6 +82,7 @@ void KioskTabs::paintEvent(QPaintEvent* const event)
         return;
 
     QPainter painter(this);
+    painter.setFont(clockFont);
     painter.drawText(clockRect, QTime::currentTime().toString("hh:mm:ss"));
 }
 

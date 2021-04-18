@@ -13,6 +13,7 @@ Q_OBJECT
     QWebEngineView webBrowser;
     KParts::BrowserExtension* fileBrowser;
 
+    QFont clockFont;
     QRect clockRect;
     int clockTimer;
 
