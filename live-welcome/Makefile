@@ -1,12 +1,18 @@
 
-SOURCES = welcome.cpp
-OBJECTS = welcome.cpp.o moc_welcome.cpp.o
-TARGETS = mod-live-usb-welcome
+OBJECTS  = welcome.cpp.o
+OBJECTS += moc_welcome.cpp.o
+# OBJECTS += theme/CarlaStyle.cpp.o
+# OBJECTS += theme/moc_CarlaStyle.cpp.o
+# OBJECTS += theme/moc_CarlaStyleAnimations.cpp.o
+# OBJECTS += theme/moc_CarlaStylePrivate.cpp.o
+
+TARGETS  = mod-live-usb-welcome
 
 # CXXFLAGS  = -fvisibility=hidden
 CXXFLAGS := -O0 -g
 
-KF5_CFLAGS  = -I/usr/include/KF5
+KF5_CFLAGS  = -I.
+KF5_CFLAGS += -I/usr/include/KF5
 KF5_CFLAGS += -I/usr/include/KF5/KCoreAddons
 KF5_CFLAGS += -I/usr/include/KF5/KParts
 KF5_CFLAGS += -I/usr/include/KF5/KService
@@ -41,3 +47,5 @@ mod-live-usb-welcome: $(OBJECTS)
 moc_%.cpp: %.hpp
 	$(MOC) $< > $@
 
+theme/moc_%.cpp: %.hpp
+	$(MOC) $< > $@
