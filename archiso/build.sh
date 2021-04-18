@@ -4,7 +4,12 @@ set -e
 
 cd $(dirname ${0})
 
-docker build -t mod-live-usb_iso .
+if [ ! -e workdir/.stamp_built ]; then
+    sudo rm -rf workdir
+    mkdir workdir
+    docker build -t mod-live-usb_iso .
+    touch workdir/.stamp_built
+fi
 
 mkdir -p output workdir
 mkdir -p liveusb/airootfs/mnt/mod-os
@@ -16,14 +21,13 @@ if [ ! -e liveusb/airootfs/mnt/plugins/abGate.lv2 ]; then
     sudo mount --bind ../plugins/bundles liveusb/airootfs/mnt/plugins
 fi
 
-# extract container rootfs (FIXME non-exec binaries because of this?)
-if [ ! -e liveusb/airootfs/mnt/mod-os/bin ]; then
-    tar xf ../mod-os/rootfs.tar -C liveusb/airootfs/mnt/mod-os
-fi
-
-# copy small files needed for container
+# copy files needed for container
 cp -r ../mod-os/config ../mod-os/overlay-files liveusb/airootfs/root/
 cp ../mod-os/start.sh liveusb/airootfs/root/start.sh
+
+if [ ! -e liveusb/airootfs/root/rootfs.ext2 ]; then
+    cp ../mod-os/rootfs.ext2 liveusb/airootfs/root/rootfs.ext2
+fi
 
 # generate live-welcome binary
 if [ ! -e liveusb/airootfs/root/mod-live-usb-welcome ]; then

@@ -34,7 +34,7 @@ sudo systemd-nspawn \
 --private-users=false \
 --resolv-conf=bind-host \
 --machine="mod-live-usb" \
---directory=$(pwd)/rootfs.mount \
+--image=$(pwd)/rootfs.ext2 \
 --bind=/dev/snd/controlC${SOUNDCARD} \
 --bind=/dev/snd/pcmC${SOUNDCARD}D0c \
 --bind=/dev/snd/pcmC${SOUNDCARD}D0p \

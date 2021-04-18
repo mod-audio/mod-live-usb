@@ -7,8 +7,8 @@ RUN curl -LO https://repo.archlinuxcn.org/x86_64/$patched_glibc && bsdtar -C / -
 
 # install packages for archiso and live-welcome
 RUN pacman -Syu --noconfirm arch-install-scripts dosfstools e2fsprogs libisoburn mtools squashfs-tools && \
-    gcc git kparts make pkg-config qt5-webengine && \
-    pacman -Scc
+    pacman -Syu --noconfirm gcc git kparts make pkg-config qt5-webengine && \
+    pacman -Sycc
 
 # misc setup
 RUN locale-gen en_US.UTF-8
