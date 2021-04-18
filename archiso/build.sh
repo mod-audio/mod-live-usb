@@ -11,32 +11,33 @@ if [ ! -e workdir/.stamp_built ]; then
     touch workdir/.stamp_built
 fi
 
-mkdir -p output workdir
-mkdir -p liveusb/airootfs/mnt/mod-os
-mkdir -p liveusb/airootfs/mnt/plugins
-mkdir -p liveusb/airootfs/root
+CHROOT_DIR=liveusb/airootfs
+MOD_LIVE_DIR=${CHROOT_DIR}/root/.mod-live
 
-# mount plugin dir (so we dont have to copy stuff)
+mkdir -p output workdir
+mkdir -p ${CHROOT_DIR}/mnt/pedalboards
+mkdir -p ${CHROOT_DIR}/mnt/plugins
+mkdir -p ${MOD_LIVE_DIR}
+
+# mount plugin dir (so we dont have to copy the whole thing)
 if [ ! -e liveusb/airootfs/mnt/plugins/abGate.lv2 ]; then
     sudo mount --bind ../plugins/bundles liveusb/airootfs/mnt/plugins
 fi
 
 # copy files needed for container
-cp -r ../mod-os/config ../mod-os/overlay-files liveusb/airootfs/root/
-cp ../mod-os/start.sh liveusb/airootfs/root/start.sh
-
-if [ ! -e liveusb/airootfs/root/rootfs.ext2 ]; then
-    cp ../mod-os/rootfs.ext2 liveusb/airootfs/root/rootfs.ext2
-fi
+cp -r ../mod-os/config ../mod-os/overlay-files ${MOD_LIVE_DIR}/
+cp ../mod-os/start.sh ${MOD_LIVE_DIR}/start.sh
+cp ../mod-os/rootfs.ext2 ${MOD_LIVE_DIR}/rootfs.ext2
 
 # generate live-welcome binary
-if [ ! -e liveusb/airootfs/root/mod-live-usb-welcome ]; then
-    docker run \
-        -v ${PWD}/../live-welcome:/opt/mount/live-welcome \
-        --rm mod-live-usb_iso:latest \
-        /usr/bin/make -C /opt/mount/live-welcome
-    cp ${PWD}/../live-welcome/mod-live-usb-welcome liveusb/airootfs/root/mod-live-usb-welcome
-fi
+docker run \
+  -v ${PWD}/../live-welcome:/opt/mount/live-welcome \
+  --rm mod-live-usb_iso:latest \
+  /usr/bin/make -C /opt/mount/live-welcome
+cp ${PWD}/../live-welcome/mod-live-usb-welcome ${MOD_LIVE_DIR}/mod-live-usb-welcome
+
+# delete pre-generated script
+rm -f ${MOD_LIVE_DIR}/config/soundcard.sh
 
 # make sure to regen things
 rm -f output/*.iso
