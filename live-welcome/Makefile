@@ -49,3 +49,6 @@ moc_%.cpp: %.hpp
 
 theme/moc_%.cpp: %.hpp
 	$(MOC) $< > $@
+
+clean:
+	rm -f $(TARGETS) *.o theme/*.o
