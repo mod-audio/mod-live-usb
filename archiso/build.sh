@@ -45,6 +45,7 @@ rm -f workdir/build._*
 
 # let's go!
 docker run --privileged \
+  -v ${PWD}/cache:/var/cache/pacman/pkg \
   -v ${PWD}/liveusb:/opt/mount/liveusb \
   -v ${PWD}/output:/opt/mount/output \
   -v ${PWD}/workdir:/opt/mount/workdir \

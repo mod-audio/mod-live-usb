@@ -7,9 +7,9 @@ After=livecd-alsa-unmuter.service
 
 [Service]
 Type=simple
-ExecStart=/root/.mod-live/mod-live-usb-welcome -platform linuxfb -style fusion --no-sandbox
+ExecStart=/root/.mod-live/mod-live-usb-welcome -platform linuxfb -style Breeze --no-sandbox
 Restart=always
-WorkingDirectory=/root/.mod-live
+WorkingDirectory=/root/
 
 [Install]
 WantedBy=sound.target

@@ -3,6 +3,7 @@
 alsa-utils
 amd-ucode
 base
+breeze
 cloud-init
 edk2-shell
 efibootmgr

@@ -7,6 +7,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QTabBar>
 
 #include <KParts/BrowserExtension>
 #include <KParts/ReadWritePart>
@@ -15,10 +16,11 @@
 KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
     webBrowser(this),
-    fileBrowser(nullptr)
+    fileBrowser(nullptr),
+    clockRect(),
+    clockTimer(-1)
 {
     webBrowser.setHtml("<html><body bgcolor='black'></body></html>");
-    webBrowser.setUrl(QUrl("http://localhost:8000/"));
     addTab(&webBrowser, "Pedalboard");
 
 #if 0
@@ -52,6 +54,15 @@ KioskTabs::KioskTabs(QWidget* const parent)
         }
     }
 #endif
+
+    QFont monofont(font());
+    monofont.setFamily("Monospace");
+    QFontMetrics metrics(monofont);
+    const int height = tabBar()->height();
+    const int fontheight = metrics.height();
+
+    clockRect = QRect(0, height/2 - fontheight/2, metrics.horizontalAdvance("00:00:00"), fontheight);
+    clockTimer = startTimer(1000);
 }
 
 void KioskTabs::openKonsole()
@@ -59,6 +70,37 @@ void KioskTabs::openKonsole()
     if (const KService::Ptr service = KService::serviceByDesktopName("konsolepart"))
         if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
             setCurrentIndex(addTab(p->widget(), "Konsole"));
+}
+
+void KioskTabs::paintEvent(QPaintEvent* const event)
+{
+    QTabWidget::paintEvent(event);
+
+    if (clockRect.x() == 0)
+        return;
+
+    QPainter painter(this);
+    painter.drawText(clockRect, QTime::currentTime().toString("hh:mm:ss"));
+}
+
+void KioskTabs::resizeEvent(QResizeEvent* const event)
+{
+    QTabWidget::resizeEvent(event);
+
+    clockRect.moveTo(width() - clockRect.width(), clockRect.y());
+    update(clockRect);
+}
+
+void KioskTabs::timerEvent(QTimerEvent* const event)
+{
+    QTabWidget::timerEvent(event);
+
+    if (event->timerId() != clockTimer)
+        return;
+    if (clockRect.x() == 0)
+        return;
+
+    update(clockRect);
 }
 
 class KioskWindow : public QMainWindow
@@ -93,6 +135,8 @@ protected:
         if ((modifiers & Qt::Modifier::CTRL) == 0x0)
             return;
 
+        if (event->key() == Qt::Key::Key_R)
+            tabWidget.reloadPage();
         if (event->key() == Qt::Key::Key_T)
             tabWidget.openKonsole();
     }
@@ -104,6 +148,11 @@ int main(int argc, char* argv[])
     // app.setApplicationDisplayName("MOD Live USB Welcome");
     app.setApplicationName("MOD Live USB Welcome");
 
+    QFont font(app.font());
+    font.setPixelSize(16);
+    app.setFont(font);
+
+#if 1
     QPalette palette;
     palette.setColor(QPalette::Disabled, QPalette::Window, QColor(14, 14, 14));
     palette.setColor(QPalette::Active,   QPalette::Window, QColor(17, 17, 17));
@@ -163,6 +212,7 @@ int main(int argc, char* argv[])
     palette.setColor(QPalette::Active,   QPalette::LinkVisited, QColor(230, 100, 230));
     palette.setColor(QPalette::Inactive, QPalette::LinkVisited, QColor(230, 100, 230));
     app.setPalette(palette);
+#endif
 
     KioskWindow win;
     win.show();
