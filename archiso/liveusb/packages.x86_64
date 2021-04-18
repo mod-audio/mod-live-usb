@@ -1,0 +1,20 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+alsa-utils
+amd-ucode
+base
+cloud-init
+edk2-shell
+efibootmgr
+intel-ucode
+kate
+konsole
+linux
+linux-firmware
+memtest86+
+mkinitcpio
+mkinitcpio-archiso
+nano
+okular
+openssh
+syslinux
