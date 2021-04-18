@@ -66,6 +66,8 @@ NSPAWN_OPTS+=" --bind-ro=/mnt/pedalboards"
 fi
 if [ -e /mnt/plugins ]; then
 NSPAWN_OPTS+=" --bind-ro=/mnt/plugins"
+elif [ -e ../plugins/bundles/abGate.lv2 ]; then
+NSPAWN_OPTS+=" --bind-ro=$(pwd)/../plugins/bundles:/mnt/plugins"
 fi
 
 # ready!
@@ -80,7 +82,7 @@ sudo systemd-nspawn \
 --bind=/dev/snd/controlC${SOUNDCARD} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \
---bind=$(pwd)/../rwdata/data:/root/data \
+--bind=$(pwd)/../rwdata/root:/root \
 --bind=$(pwd)/../rwdata/user-files:/data/user-files \
 --bind-ro=/etc/hostname \
 --bind-ro=/etc/hosts \

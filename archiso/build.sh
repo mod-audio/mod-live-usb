@@ -17,7 +17,7 @@ MOD_LIVE_DIR=${CHROOT_DIR}/root/.mod-live
 mkdir -p cache output workdir
 mkdir -p ${CHROOT_DIR}/mnt/pedalboards
 mkdir -p ${CHROOT_DIR}/mnt/plugins
-mkdir -p ${CHROOT_DIR}/root/rwdata/data
+mkdir -p ${CHROOT_DIR}/root/rwdata/root
 mkdir -p ${CHROOT_DIR}/root/rwdata/user-files
 mkdir -p ${MOD_LIVE_DIR}
 

@@ -6,9 +6,10 @@ cd $(dirname ${0})
 
 # verify soundcard is valid
 if [ ! -e /proc/asound/Dummy ]; then
-    echo "error: can't find Loopback soundcard"
+    echo "error: can't find Dummy soundcard"
     exit 1
 fi
+# sudo modprobe snd-dummy hrtimer=1 pcm_devs=1 pcm_substreams=8
 
 # get soundcard index
 SOUNDCARD=$(readlink /proc/asound/Dummy | awk 'sub("card","")')
@@ -40,6 +41,8 @@ NSPAWN_OPTS+=" --bind-ro=/mnt/pedalboards"
 fi
 if [ -e /mnt/plugins ]; then
 NSPAWN_OPTS+=" --bind-ro=/mnt/plugins"
+elif [ -e ../plugins/bundles/abGate.lv2 ]; then
+NSPAWN_OPTS+=" --bind-ro=$(pwd)/../plugins/bundles:/mnt/plugins"
 fi
 
 # ready!
@@ -54,7 +57,7 @@ sudo systemd-nspawn \
 --bind=/dev/snd/controlC${SOUNDCARD} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \
---bind=$(pwd)/../rwdata/data:/root/data \
+--bind=$(pwd)/../rwdata/root:/root \
 --bind=$(pwd)/../rwdata/user-files:/data/user-files \
 --bind-ro=/etc/hostname \
 --bind-ro=/etc/hosts \
