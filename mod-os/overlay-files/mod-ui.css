@@ -1,0 +1,39 @@
+/* custom css for live-mod */
+
+/* global */
+#mod-bank,
+#mod-buffersize,
+#mod-devices,
+#mod-settings {
+    display: none !important;
+}
+
+/* plugin info */
+.screenshot .beta,
+.online-button-href {
+    display: none !important;
+}
+
+/* addressing dialog */
+.mod-pedal-settings-address .main-form-container .js-type[data-value="/hmi"],
+.mod-pedal-settings-address .main-form-container .js-type[data-value="/cc"] {
+    display: none !important;
+}
+.mod-pedal-settings-address .main-form-container {
+    padding-bottom: 10px;
+}
+.mod-pedal-settings-address .main-form-container .js-type {
+    min-width: 80px;
+}
+
+/* pedalboards */
+#pedalboards-library a {
+    display: none !important;
+}
+#pedalboards-library header .form-group .form-control {
+    width: 400px !important;
+}
+
+#mod-transport-window {
+    right: '325px' !important;
+}

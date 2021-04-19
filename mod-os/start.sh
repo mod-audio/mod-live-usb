@@ -110,6 +110,8 @@ sudo systemd-nspawn \
 --bind-ro=$(pwd)/overlay-files/etc/passwd:/etc/passwd \
 --bind-ro=$(pwd)/overlay-files/etc/shadow:/etc/shadow \
 --bind-ro=$(pwd)/overlay-files/system:/etc/systemd/system \
+--bind-ro=$(pwd)/overlay-files/mod-ui.css:/usr/share/mod/html/mod-ui.css \
+--bind-ro=$(pwd)/overlay-files/mod-ui.js:/usr/share/mod/html/mod-ui.js \
 --tmpfs=/tmp \
 --tmpfs=/var ${NSPAWN_OPTS}
 

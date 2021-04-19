@@ -50,7 +50,10 @@ RUN mkdir $HOME/mod-workdir/x86_64/target/data && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt/lv2 && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt/pedalboards && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt/plugins && \
-    mkdir $HOME/mod-workdir/x86_64/target/root/data
+    mkdir $HOME/mod-workdir/x86_64/target/root/data && \
+    mkdir -p $HOME/mod-workdir/x86_64/target/usr/share/mod/html && \
+    touch $HOME/mod-workdir/x86_64/target/usr/share/mod/html/mod-ui.css && \
+    touch $HOME/mod-workdir/x86_64/target/usr/share/mod/html/mod-ui.js
 
 # generate mod-os content
 RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64

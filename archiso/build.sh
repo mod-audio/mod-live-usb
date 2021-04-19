@@ -32,11 +32,12 @@ if [ ! -e liveusb/airootfs/mnt/plugins/abGate.lv2 ]; then
 fi
 
 # copy files needed for container
-cp -r ../mod-os/config ../mod-os/overlay-files ${MOD_LIVE_DIR}/
+cp -r ../documentation ../mod-os/config ../mod-os/overlay-files ${MOD_LIVE_DIR}/
 cp ../mod-os/start.sh ${MOD_LIVE_DIR}/start.sh
 cp ../mod-os/rootfs.ext2 ${MOD_LIVE_DIR}/rootfs.ext2
 
 # generate live-welcome binary
+make clean -C ${PWD}/../live-welcome
 docker run \
   -v ${PWD}/../live-welcome:/opt/mount/live-welcome \
   --rm mod-live-usb_iso:latest \
@@ -49,6 +50,7 @@ rm -f ${MOD_LIVE_DIR}/config/soundcard.sh
 # make sure to regen things
 rm -f output/*.iso
 rm -f workdir/build._*
+# sudo rm -rf workdir
 
 # let's go!
 docker run --privileged \
