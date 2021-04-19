@@ -1,0 +1,205 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Mix",
+            "steps": 33,
+            "page": 0,
+            "port": "xfade",
+            "dividers": null,
+            "group": null,
+            "minimum": -1.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/hip2b",
+            "tempo": false,
+            "maximum": 0.0,
+            "label": "Octave",
+            "steps": 2,
+            "page": 0,
+            "port": "OCTAVE",
+            "dividers": null,
+            "group": null,
+            "minimum": -2.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/hip2b",
+            "tempo": false,
+            "maximum": 0.5,
+            "label": "Down",
+            "steps": 33,
+            "page": 0,
+            "port": "DOWN",
+            "dividers": null,
+            "group": null,
+            "minimum": -0.5
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/hip2b",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "In gain",
+            "steps": 33,
+            "page": 0,
+            "port": "IN_GAIN",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/paranoia",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Filter",
+            "steps": 33,
+            "page": 0,
+            "port": "filter",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/hip2b",
+            "tempo": false,
+            "maximum": 0.5,
+            "label": "Up",
+            "steps": 33,
+            "page": 0,
+            "port": "UP",
+            "dividers": null,
+            "group": null,
+            "minimum": -0.5
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/paranoia",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Crush",
+            "steps": 33,
+            "page": 0,
+            "port": "crush",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/paranoia",
+            "tempo": false,
+            "maximum": 16.0,
+            "label": "Mangle",
+            "steps": 33,
+            "page": 0,
+            "port": "nuclear",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/paranoia",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Level",
+            "steps": 33,
+            "page": 0,
+            "port": "wet",
+            "dividers": null,
+            "group": null,
+            "minimum": -24.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "FX Chain",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/hip2b",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "hip2b",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/paranoia",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "paranoia",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/xfade_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/hip2b",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "Out gain",
+            "steps": 33,
+            "page": 0,
+            "port": "OUT_GAIN",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group2": []
+}

@@ -1,0 +1,192 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/floaty",
+            "tempo": true,
+            "maximum": 48,
+            "label": "Floaty Subdiv",
+            "steps": 33,
+            "page": 0,
+            "port": "delay",
+            "dividers": 8,
+            "group": null,
+            "minimum": 1.333
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Warp",
+            "steps": 33,
+            "page": 0,
+            "port": "warp",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Filter",
+            "steps": 33,
+            "page": 0,
+            "port": "filter",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/Prefreak",
+            "tempo": false,
+            "maximum": 15.0,
+            "label": "Blur",
+            "steps": 33,
+            "page": 0,
+            "port": "Blur",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0010000000474974513
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/stereo",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "mst vol",
+            "steps": 33,
+            "page": 0,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "Playbck",
+            "steps": 33,
+            "page": 0,
+            "port": "rate",
+            "dividers": null,
+            "group": null,
+            "minimum": -2.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/FluidPlug_FluidEnsemble_1",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "ohh lvl",
+            "steps": 33,
+            "page": 0,
+            "port": "level",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/FluidPlug_FluidEnsemble_2",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "syn lvl",
+            "steps": 33,
+            "page": 0,
+            "port": "level",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/FluidPlug_FluidEnsemble",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "Ahh lvl",
+            "steps": 33,
+            "page": 0,
+            "port": "level",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/pedalboard",
+            "tempo": false,
+            "maximum": 280.0,
+            "label": "TAP",
+            "steps": 260,
+            "page": 0,
+            "port": ":bpm",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/xfade_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Floaty",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Blur",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/stereo_2",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "blr vol",
+            "steps": 33,
+            "page": 0,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        }
+    ],
+    "/hmi/group2": []
+}

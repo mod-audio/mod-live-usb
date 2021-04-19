@@ -1,0 +1,397 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Plate Lowpass",
+            "steps": 65,
+            "page": 0,
+            "port": "bandwidth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 180.0,
+            "label": "CR L/R Phase Shift",
+            "steps": 65,
+            "page": 1,
+            "port": "LRPhaseShift",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 10.0,
+            "label": "FL Min Delay",
+            "steps": 65,
+            "page": 0,
+            "port": "min_delay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.10000000149011612
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 12.0,
+            "label": "PH Num Stages",
+            "steps": 11,
+            "page": 2,
+            "port": "stages",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 10.0,
+            "label": "FL DEPT",
+            "steps": 33,
+            "page": 0,
+            "port": "mod_depth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.10000000149011612
+        },
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 360.0,
+            "label": "FL Phas",
+            "steps": 33,
+            "page": 1,
+            "port": "stereo",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 360.0,
+            "label": "PH Phas",
+            "steps": 33,
+            "page": 2,
+            "port": "stereo",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "PH Rate",
+            "steps": 33,
+            "page": 0,
+            "port": "mod_rate",
+            "dividers": 0.33300000000000002,
+            "group": null,
+            "minimum": 0.0099999997764825821
+        },
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "FL WET",
+            "steps": 33,
+            "page": 1,
+            "port": "amount",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "PH Wet",
+            "steps": 33,
+            "page": 2,
+            "port": "amount",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "PL Mix",
+            "steps": 33,
+            "page": 0,
+            "port": "blend",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "CR DRY",
+            "steps": 33,
+            "page": 1,
+            "port": "DryLevel",
+            "dividers": null,
+            "group": null,
+            "minimum": -90.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "FL Rate",
+            "steps": 33,
+            "page": 0,
+            "port": "mod_rate",
+            "dividers": 0.33300000000000002,
+            "group": null,
+            "minimum": 0.0099999997764825821
+        },
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 0.99000000953674316,
+            "label": "FL FBCK",
+            "steps": 33,
+            "page": 1,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": -0.99000000953674316
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 0.99000000953674316,
+            "label": "PH FBCK",
+            "steps": 33,
+            "page": 2,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": -0.99000000953674316
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "CR DEPT",
+            "steps": 33,
+            "page": 0,
+            "port": "Depth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 20000.0,
+            "label": "CR CNTR",
+            "steps": 33,
+            "page": 1,
+            "port": "Contour",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "PL DCY",
+            "steps": 33,
+            "page": 0,
+            "port": "tail",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "CR WET",
+            "steps": 33,
+            "page": 1,
+            "port": "WetLevel",
+            "dividers": null,
+            "group": null,
+            "minimum": -90.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 20000.0,
+            "label": "PH CFRQ",
+            "steps": 33,
+            "page": 2,
+            "port": "base_freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "CR FREQ",
+            "steps": 33,
+            "page": 0,
+            "port": "Frequency",
+            "dividers": 0.33300000000000002,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "CR DLY",
+            "steps": 33,
+            "page": 1,
+            "port": "Delay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/chorusflanger",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Chorus",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Flanger",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Plate",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Phaser",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 10800.0,
+            "label": "PH DEPT",
+            "steps": 33,
+            "page": 0,
+            "port": "mod_depth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Flanger",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "FL DRY",
+            "steps": 33,
+            "page": 1,
+            "port": "dry",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "PH DRY",
+            "steps": 33,
+            "page": 2,
+            "port": "dry",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group2": []
+}

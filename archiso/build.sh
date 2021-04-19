@@ -21,6 +21,11 @@ mkdir -p ${CHROOT_DIR}/root/rwdata/root
 mkdir -p ${CHROOT_DIR}/root/rwdata/user-files
 mkdir -p ${MOD_LIVE_DIR}
 
+# mount pedalboards dir (so we dont have to copy the whole thing)
+if [ ! -e liveusb/airootfs/mnt/pedalboards/INST_FM_Synth.pedalboard ]; then
+    sudo mount --bind ../pedalboards liveusb/airootfs/mnt/pedalboards
+fi
+
 # mount plugin dir (so we dont have to copy the whole thing)
 if [ ! -e liveusb/airootfs/mnt/plugins/abGate.lv2 ]; then
     sudo mount --bind ../plugins/bundles liveusb/airootfs/mnt/plugins

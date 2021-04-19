@@ -1,0 +1,505 @@
+{
+    "/cv/graph/cv_exp_pedal": [],
+    "/cv/graph/cv_capture_1": [],
+    "/cv/graph/cv_capture_2": [],
+    "/hmi/potentiometer8": [
+        {
+            "dividers": null,
+            "label": "KCK LVL",
+            "group": null,
+            "port": "gain",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/stereo_1",
+            "minimum": -20.0,
+            "tempo": false,
+            "maximum": 20.0
+        },
+        {
+            "dividers": null,
+            "label": "SNR LVL",
+            "group": null,
+            "port": "gain",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/stereo_2",
+            "minimum": -20.0,
+            "tempo": false,
+            "maximum": 20.0
+        },
+        {
+            "dividers": null,
+            "label": "Hat Lvl",
+            "group": null,
+            "port": "gain",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/stereo_3",
+            "minimum": -20.0,
+            "tempo": false,
+            "maximum": 20.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "dividers": null,
+            "label": "Tempo",
+            "group": null,
+            "port": ":bpm",
+            "page": 0,
+            "steps": 260,
+            "instance": "/pedalboard",
+            "minimum": 20.0,
+            "tempo": false,
+            "maximum": 280.0
+        },
+        {
+            "dividers": null,
+            "label": "Oscillator",
+            "group": null,
+            "port": ":bypass",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/vco3",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/bpm": [],
+    "/hmi/footswitch3": [
+        {
+            "dividers": null,
+            "label": "Big Muff",
+            "group": null,
+            "port": ":bypass",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/BigMuffPi",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Delay",
+            "group": null,
+            "port": ":bypass",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/_duck_delay_",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Phaser",
+            "group": null,
+            "port": ":bypass",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/Phaser",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "dividers": null,
+            "label": "Kick Wave",
+            "group": null,
+            "port": "waveForm",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/vco3_1",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 6.0
+        },
+        {
+            "dividers": null,
+            "label": "VCF Type",
+            "group": null,
+            "port": "vcfType",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/vcf",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 7.0
+        },
+        {
+            "dividers": null,
+            "label": "VCF Type",
+            "group": null,
+            "port": "vcfType",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/vcf_1",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 7.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "dividers": null,
+            "label": "Restart",
+            "group": null,
+            "port": ":rolling",
+            "page": 0,
+            "steps": 1,
+            "instance": "/pedalboard",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Noise",
+            "group": null,
+            "port": ":bypass",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/White_1",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "dividers": null,
+            "label": "Pitch",
+            "group": null,
+            "port": "Multiplier",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/mod_cv_attenuverter",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 2.0
+        },
+        {
+            "dividers": null,
+            "label": "Pitch",
+            "group": null,
+            "port": "tune",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/vco3",
+            "minimum": -1.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/potentiometer1": [
+        {
+            "dividers": null,
+            "label": "Hold",
+            "group": null,
+            "port": "hold",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/env_2",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Hold",
+            "group": null,
+            "port": "hold",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/env_1",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Hold",
+            "group": null,
+            "port": "hold",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/env",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 0.29999999999999999
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "dividers": null,
+            "label": "Decay",
+            "group": null,
+            "port": "decay",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/env_2",
+            "minimum": 0.01,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Decay",
+            "group": null,
+            "port": "decay",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/env_1",
+            "minimum": 0.050000000000000003,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Decay",
+            "group": null,
+            "port": "decay",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/env",
+            "minimum": 0.050000000000000003,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "dividers": null,
+            "label": "Sustain",
+            "group": null,
+            "port": "sustain",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/env_2",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 10.0
+        },
+        {
+            "dividers": null,
+            "label": "Cutoff",
+            "group": null,
+            "port": "freq",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/vcf",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 10.0
+        },
+        {
+            "dividers": null,
+            "label": "Cutoff",
+            "group": null,
+            "port": "freq",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/vcf_1",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 10.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "dividers": null,
+            "label": "Release",
+            "group": null,
+            "port": "release",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/env_2",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Reso",
+            "group": null,
+            "port": "resonance",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/vcf",
+            "minimum": 0.0099999997764825821,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Reso",
+            "group": null,
+            "port": "resonance",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/vcf_1",
+            "minimum": 0.0099999997764825821,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/group2": [],
+    "/hmi/group1": [],
+    "/hmi/potentiometer5": [
+        {
+            "dividers": null,
+            "label": "Tone",
+            "group": null,
+            "port": "Tone",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/BigMuffPi",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": 0.5,
+            "label": "TIME",
+            "group": null,
+            "port": "TIME",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/_duck_delay_",
+            "minimum": 1.0,
+            "tempo": false,
+            "maximum": 500.0
+        },
+        {
+            "dividers": null,
+            "label": "Mod depth",
+            "group": null,
+            "port": "mod_depth",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/Phaser",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 10800.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "dividers": null,
+            "label": "Mute Kick",
+            "group": null,
+            "port": "mute",
+            "page": 0,
+            "steps": 1,
+            "instance": "/graph/stereo_1",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Mute Snare",
+            "group": null,
+            "port": "mute",
+            "page": 1,
+            "steps": 1,
+            "instance": "/graph/stereo_2",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "Mute Hats",
+            "group": null,
+            "port": "mute",
+            "page": 2,
+            "steps": 1,
+            "instance": "/graph/stereo_3",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/knob1": [
+        {
+            "dividers": null,
+            "label": "Kick Rate",
+            "group": null,
+            "port": "Divisions",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/mod_cv_clock_2",
+            "minimum": 0.05000000074505806,
+            "tempo": false,
+            "maximum": 16.0
+        },
+        {
+            "dividers": null,
+            "label": "SNARE RATE",
+            "group": null,
+            "port": "Divisions",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/mod_cv_clock_1",
+            "minimum": 0.05000000074505806,
+            "tempo": false,
+            "maximum": 16.0
+        },
+        {
+            "dividers": null,
+            "label": "Hat Rate",
+            "group": null,
+            "port": "Divisions",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/mod_cv_clock",
+            "minimum": 0.05000000074505806,
+            "tempo": false,
+            "maximum": 16.0
+        }
+    ],
+    "/hmi/potentiometer6": [
+        {
+            "dividers": null,
+            "label": "Sustain",
+            "group": null,
+            "port": "Sustain",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/BigMuffPi",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        },
+        {
+            "dividers": null,
+            "label": "FEEDBACK",
+            "group": null,
+            "port": "FEEDBACK",
+            "page": 1,
+            "steps": 33,
+            "instance": "/graph/_duck_delay_",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 0.98999999999999999
+        },
+        {
+            "dividers": 0.33300000000000002,
+            "label": "Mod rate",
+            "group": null,
+            "port": "mod_rate",
+            "page": 2,
+            "steps": 33,
+            "instance": "/graph/Phaser",
+            "minimum": 0.0099999997764825821,
+            "tempo": false,
+            "maximum": 20.0
+        }
+    ]
+}

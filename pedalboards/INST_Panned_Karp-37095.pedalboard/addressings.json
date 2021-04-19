@@ -1,0 +1,457 @@
+{
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/footswitch2": [
+        {
+            "maximum": 1.0,
+            "port": "sustain",
+            "dividers": null,
+            "label": "Sustain 2",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 1,
+            "instance": "/graph/Kars_1"
+        },
+        {
+            "maximum": 280.0,
+            "port": ":bpm",
+            "dividers": null,
+            "label": "Tap",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 20.0,
+            "steps": 260,
+            "instance": "/pedalboard"
+        }
+    ],
+    "/hmi/potentiometer6": [
+        {
+            "maximum": 12.0,
+            "port": "transpose",
+            "dividers": null,
+            "label": "Transp",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": -12.0,
+            "steps": 127,
+            "instance": "/graph/miditranspose_1"
+        },
+        {
+            "maximum": 10.0,
+            "port": "sustain",
+            "dividers": null,
+            "label": "VCF Sus",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/env"
+        },
+        {
+            "maximum": 8.0,
+            "port": "low_q",
+            "dividers": null,
+            "label": "Low Q",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.125,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/bpm": [],
+    "/cv/graph/cv_capture_1": [],
+    "/hmi/knob1": [
+        {
+            "maximum": 100.0,
+            "port": "freq",
+            "dividers": null,
+            "label": "Master Pan Frq",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 65,
+            "instance": "/graph/PingPongPan_2"
+        },
+        {
+            "maximum": 5.0,
+            "port": "div_l",
+            "dividers": null,
+            "label": "Div. L",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 5,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/knob2": [
+        {
+            "maximum": 100.0,
+            "port": "width",
+            "dividers": null,
+            "label": "Master Pan Width",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/PingPongPan_2"
+        },
+        {
+            "maximum": 5.0,
+            "port": "div_r",
+            "dividers": null,
+            "label": "Div. R",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 5,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer8": [
+        {
+            "maximum": 12.0,
+            "port": "transpose",
+            "dividers": null,
+            "label": "Transp",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": -12.0,
+            "steps": 127,
+            "instance": "/graph/miditranspose_2"
+        },
+        {
+            "maximum": 1.0,
+            "port": "release",
+            "dividers": null,
+            "label": "VCF Rel",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/env"
+        },
+        {
+            "maximum": 8.0,
+            "port": "high_q",
+            "dividers": null,
+            "label": "High Q",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.125,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/group2": [],
+    "/cv/graph/cv_capture_2": [],
+    "/hmi/footswitch3": [
+        {
+            "maximum": 1.0,
+            "port": "sustain",
+            "dividers": null,
+            "label": "Sustain 3",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 1,
+            "instance": "/graph/Kars_2"
+        },
+        {
+            "maximum": 1.0,
+            "port": "low_on",
+            "dividers": null,
+            "label": "Lowcut",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 1,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "maximum": 1.0,
+            "port": "sustain",
+            "dividers": null,
+            "label": "Sustain 4",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 1,
+            "instance": "/graph/Kars_3"
+        },
+        {
+            "maximum": 1.0,
+            "port": "high_on",
+            "dividers": null,
+            "label": "highcut",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 1,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "maximum": 10.0,
+            "port": "gain",
+            "dividers": null,
+            "label": "Gain",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": -20.0,
+            "steps": 33,
+            "instance": "/graph/stereo"
+        },
+        {
+            "maximum": 1.0,
+            "port": "attack",
+            "dividers": null,
+            "label": "VCF Atk",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/env"
+        },
+        {
+            "maximum": 100.0,
+            "port": "mix",
+            "dividers": null,
+            "label": "Blend",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "maximum": 100.0,
+            "port": "width",
+            "dividers": null,
+            "label": "pan wid",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/PingPongPan_1"
+        },
+        {
+            "maximum": 10.0,
+            "port": "Control",
+            "dividers": null,
+            "label": "VCF Res",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/mod_cv_control"
+        },
+        {
+            "maximum": 100.0,
+            "port": "crossf",
+            "dividers": null,
+            "label": "Crossfeed",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/potentiometer1": [
+        {
+            "maximum": 100.0,
+            "port": "freq",
+            "dividers": null,
+            "label": "Pan frq",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/PingPongPan_1"
+        },
+        {
+            "maximum": 100.0,
+            "port": "ParameterValue",
+            "dividers": null,
+            "label": "VCF Frq",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/mod_cv_parameter_modulation"
+        },
+        {
+            "maximum": 100.0,
+            "port": "feedback",
+            "dividers": null,
+            "label": "Feedback",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "maximum": 1.0,
+            "port": "sustain",
+            "dividers": null,
+            "label": "Sustain 1",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 1,
+            "instance": "/graph/Kars"
+        },
+        {
+            "maximum": 1.0,
+            "port": ":bypass",
+            "dividers": null,
+            "label": "Bollie Delay",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "maximum": 100.0,
+            "port": "width",
+            "dividers": null,
+            "label": "Pan Wid",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/PingPongPan"
+        },
+        {
+            "maximum": 10.0,
+            "port": "timeScale",
+            "dividers": null,
+            "label": "Env Scl",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 1.0,
+            "steps": 33,
+            "instance": "/graph/env"
+        },
+        {
+            "maximum": 22000.0,
+            "port": "high_f",
+            "dividers": null,
+            "label": "Hi Frq",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 200.0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "maximum": 12.0,
+            "port": "transpose",
+            "dividers": null,
+            "label": "Transp",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": -12.0,
+            "steps": 127,
+            "instance": "/graph/miditranspose"
+        },
+        {
+            "maximum": 1.0,
+            "port": "decay",
+            "dividers": null,
+            "label": "VCF Dec",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/env"
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "maximum": 100.0,
+            "port": "freq",
+            "dividers": null,
+            "label": "Pan Frq",
+            "group": null,
+            "tempo": false,
+            "page": 0,
+            "minimum": 0.0,
+            "steps": 33,
+            "instance": "/graph/PingPongPan"
+        },
+        {
+            "maximum": 200.0,
+            "port": "ModulationDepth",
+            "dividers": null,
+            "label": "VCF Env",
+            "group": null,
+            "tempo": false,
+            "page": 1,
+            "minimum": -200.0,
+            "steps": 33,
+            "instance": "/graph/mod_cv_parameter_modulation"
+        },
+        {
+            "maximum": 2000.0,
+            "port": "low_f",
+            "dividers": null,
+            "label": "Lo frq",
+            "group": null,
+            "tempo": false,
+            "page": 2,
+            "minimum": 20.0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay"
+        }
+    ]
+}

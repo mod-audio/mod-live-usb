@@ -1,0 +1,354 @@
+{
+    "/hmi/knob1": [],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/Gain2x2",
+            "tempo": null,
+            "maximum": 12.0,
+            "label": "Output Volume",
+            "steps": 33,
+            "page": 0,
+            "port": "Gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [
+        {
+            "operational_mode": "+",
+            "instance": "/graph/DubDelay",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "steps": 33,
+            "port": "fx_mix",
+            "label": "Mix"
+        }
+    ],
+    "/cv/graph/cv_capture_1": [
+        {
+            "operational_mode": "+",
+            "instance": "/graph/_room_simulator_",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "steps": 33,
+            "port": "EFFECT",
+            "label": "EFFECT"
+        }
+    ],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [
+        {
+            "operational_mode": "+",
+            "instance": "/graph/DubDelay",
+            "maximum": 100.0,
+            "minimum": -100.0,
+            "steps": 33,
+            "port": "fb_tone",
+            "label": "Tone"
+        }
+    ],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/DubDelay",
+            "tempo": false,
+            "maximum": 110.0,
+            "label": "DUB FB",
+            "steps": 33,
+            "page": 0,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": -110.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 653.06121826171875,
+            "label": "Delay",
+            "steps": 33,
+            "page": 1,
+            "port": "delay",
+            "dividers": 1.5,
+            "group": null,
+            "minimum": 10.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Mix",
+            "steps": 33,
+            "page": 0,
+            "port": "blend",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Warp",
+            "steps": 33,
+            "page": 1,
+            "port": "warp",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/RingMod",
+            "tempo": false,
+            "maximum": 16000.0,
+            "label": "Freq",
+            "steps": 33,
+            "page": 0,
+            "port": "freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.10000000000000001
+        },
+        {
+            "instance": "/graph/_room_simulator_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "DRYWET",
+            "steps": 33,
+            "page": 1,
+            "port": "DRYWET",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/DubDelay",
+            "tempo": false,
+            "maximum": 7341.0,
+            "label": "DubTime",
+            "steps": 33,
+            "page": 0,
+            "port": "delay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Filter",
+            "steps": 33,
+            "page": 1,
+            "port": "filter",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/RingMod",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Feedback",
+            "steps": 33,
+            "page": 0,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/_room_simulator_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Decay",
+            "steps": 33,
+            "page": 1,
+            "port": "RT",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/RingMod",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Fine",
+            "steps": 33,
+            "page": 0,
+            "port": "fine",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/_room_simulator_",
+            "tempo": false,
+            "maximum": 200.0,
+            "label": "PREDELAYMS",
+            "steps": 33,
+            "page": 1,
+            "port": "PREDELAYMS",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/_room_simulator_",
+            "tempo": false,
+            "maximum": 3.0,
+            "label": "ROOMSIZE",
+            "steps": 33,
+            "page": 1,
+            "port": "ROOMSIZE",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/_hotbox_",
+            "tempo": false,
+            "maximum": 0.5,
+            "label": "GAIN",
+            "steps": 33,
+            "page": 0,
+            "port": "GAIN",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.25
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/_room_simulator_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Gxroom_simulator",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/_hotbox_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Boost",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/DubDelay",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "DubDelay",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "floaty",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/RingMod",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "RingMod",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Post Verb",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/PlateX2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Decay",
+            "steps": 33,
+            "page": 0,
+            "port": "tail",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 60.0,
+            "label": "Feedback",
+            "steps": 33,
+            "page": 1,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group2": []
+}

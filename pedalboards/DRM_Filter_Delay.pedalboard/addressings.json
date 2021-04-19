@@ -1,0 +1,361 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "DLY Left",
+            "steps": 5,
+            "page": 0,
+            "port": "div_l",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 36.0,
+            "label": "Makeup Gain",
+            "steps": 65,
+            "page": 1,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -6.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "DLY Right",
+            "steps": 5,
+            "page": 0,
+            "port": "div_r",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 36.0,
+            "label": "Makeup Gain",
+            "steps": 65,
+            "page": 1,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -6.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/mod_volume_2x2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "DLY SND",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "Ratio",
+            "steps": 33,
+            "page": 1,
+            "port": "ratio",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 22000.0,
+            "label": "LPF FRQ",
+            "steps": 33,
+            "page": 0,
+            "port": "high_f",
+            "dividers": null,
+            "group": null,
+            "minimum": 200.0
+        },
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 0.75,
+            "label": "Attack",
+            "steps": 33,
+            "page": 1,
+            "port": "attack",
+            "dividers": null,
+            "group": null,
+            "minimum": 9.9999997473787516e-06
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/mod_volume_2x2_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "VRB SND",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "Release",
+            "steps": 33,
+            "page": 1,
+            "port": "release",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0010000000474974513
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "DLY FBK",
+            "steps": 33,
+            "page": 0,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 0.0,
+            "label": "Threshold",
+            "steps": 33,
+            "page": 1,
+            "port": "threshold",
+            "dividers": null,
+            "group": null,
+            "minimum": -36.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/filta",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "LPF/HPF",
+            "steps": 33,
+            "page": 0,
+            "port": "frequency_control",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "Ratio",
+            "steps": 33,
+            "page": 1,
+            "port": "ratio",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/reverb",
+            "tempo": false,
+            "maximum": 10000.0,
+            "label": "VRB DCY",
+            "steps": 33,
+            "page": 0,
+            "port": "decay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 0.75,
+            "label": "Attack",
+            "steps": 33,
+            "page": 1,
+            "port": "attack",
+            "dividers": null,
+            "group": null,
+            "minimum": 9.9999997473787516e-06
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/stereo_4",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "In Gain",
+            "steps": 33,
+            "page": 0,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 0.0,
+            "label": "Threshold",
+            "steps": 33,
+            "page": 1,
+            "port": "threshold",
+            "dividers": null,
+            "group": null,
+            "minimum": -36.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/filta",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Filta",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Input Comp",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/stereo_2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Delay SND",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Output Comp",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/stereo_3",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Reverb SND",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/pedalboard",
+            "tempo": false,
+            "maximum": 280.0,
+            "label": "TAP",
+            "steps": 260,
+            "page": 0,
+            "port": ":bpm",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 8.0,
+            "label": "LPF Q",
+            "steps": 33,
+            "page": 0,
+            "port": "high_q",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.125
+        },
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "Release",
+            "steps": 33,
+            "page": 1,
+            "port": "release",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0010000000474974513
+        }
+    ],
+    "/hmi/group2": []
+}

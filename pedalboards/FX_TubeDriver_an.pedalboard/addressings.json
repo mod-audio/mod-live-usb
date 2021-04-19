@@ -1,0 +1,192 @@
+{
+    "/hmi/knob1": [],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/_timray_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "TRIM",
+            "steps": 65,
+            "page": 0,
+            "port": "TRIM",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/_timray_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "VOLUME",
+            "steps": 33,
+            "page": 0,
+            "port": "VOLUME",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/_timray_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "TREBLE",
+            "steps": 33,
+            "page": 0,
+            "port": "TREBLE",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/_bajatubedriver_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "VOLUME",
+            "steps": 33,
+            "page": 0,
+            "port": "VOLUME",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/_timray_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "GAIN",
+            "steps": 33,
+            "page": 0,
+            "port": "GAIN",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Mix",
+            "steps": 33,
+            "page": 0,
+            "port": "xfade",
+            "dividers": null,
+            "group": null,
+            "minimum": -1.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/_bajatubedriver_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "DRIVE",
+            "steps": 33,
+            "page": 0,
+            "port": "DRIVE",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/_bajatubedriver_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "TONE",
+            "steps": 33,
+            "page": 0,
+            "port": "TONE",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "FX Chain",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/_timray_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Timray",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/_bajatubedriver_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Baja TD",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/xfade_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/_timray_",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "BASS",
+            "steps": 33,
+            "page": 0,
+            "port": "BASS",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group2": []
+}

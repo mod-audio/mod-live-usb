@@ -1,0 +1,217 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/ts9sim",
+            "tempo": false,
+            "maximum": 1000.0,
+            "label": "TS Tone",
+            "steps": 65,
+            "page": 0,
+            "port": "fslider1_",
+            "dividers": null,
+            "group": null,
+            "minimum": 100.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/DS1",
+            "tempo": false,
+            "maximum": 0.99000000953674316,
+            "label": "DS1 Tone",
+            "steps": 65,
+            "page": 0,
+            "port": "Tone",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0099999997764825821
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/ts9sim",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "TS Lvl",
+            "steps": 33,
+            "page": 0,
+            "port": "fslider0_",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/DS1",
+            "tempo": false,
+            "maximum": 0.99000000953674316,
+            "label": "ds1 dst",
+            "steps": 33,
+            "page": 0,
+            "port": "Dist",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0099999997764825821
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/BigMuffPi",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "BM Lvl",
+            "steps": 33,
+            "page": 0,
+            "port": "Level",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/ts9sim",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "TS DRV",
+            "steps": 33,
+            "page": 0,
+            "port": "fslider2_",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Mix",
+            "steps": 33,
+            "page": 0,
+            "port": "xfade",
+            "dividers": null,
+            "group": null,
+            "minimum": -1.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/BigMuffPi",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "BM Sus",
+            "steps": 33,
+            "page": 0,
+            "port": "Sustain",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/BigMuffPi",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "BM Ton",
+            "steps": 33,
+            "page": 0,
+            "port": "Tone",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "FX Chain",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/xfade_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/ts9sim",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "GX-TS",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/BigMuffPi",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "B-Muff",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/DS1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "DS1",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/DS1",
+            "tempo": false,
+            "maximum": 0.99000000953674316,
+            "label": "DS1 LVL",
+            "steps": 33,
+            "page": 0,
+            "port": "Level",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0099999997764825821
+        }
+    ],
+    "/hmi/group2": []
+}

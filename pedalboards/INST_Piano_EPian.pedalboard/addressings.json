@@ -1,0 +1,243 @@
+{
+    "/hmi/potentiometer1": [
+        {
+            "port": "env_release",
+            "maximum": 100.0,
+            "label": "EP REL",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/EPiano",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "Roomy",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/xfade_1",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "port": "env_release",
+            "maximum": 100.0,
+            "label": "P REL",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/Piano",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "Chorus/Flanger",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/chorusflanger",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch3": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "Duck Delay",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/_duck_delay_st_",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "port": "damping",
+            "maximum": 1.0,
+            "label": "Damping",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/roomy",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "EP blend P",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/xfade",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "port": "time",
+            "maximum": 1.0,
+            "label": "Decay",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/roomy",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/cv/graph/cv_capture_1": [],
+    "/hmi/potentiometer6": [
+        {
+            "port": "TIME",
+            "maximum": 2000.0,
+            "label": "TIME",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/_duck_delay_st_",
+            "minimum": 1.0,
+            "page": 0
+        }
+    ],
+    "/hmi/group2": [],
+    "/hmi/potentiometer3": [
+        {
+            "port": "Depth",
+            "maximum": 100.0,
+            "label": "Depth",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/chorusflanger",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/group3": [],
+    "/bpm": [],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/knob2": [
+        {
+            "port": "COLORATION",
+            "maximum": 0.5,
+            "label": "COLORATION",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/_duck_delay_st_",
+            "minimum": -0.5,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "port": "FEEDBACK",
+            "maximum": 1.0,
+            "label": "FEEDBACK",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/_duck_delay_st_",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/knob1": [
+        {
+            "port": "xfade",
+            "maximum": 1.0,
+            "label": "ePiano / Piano",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/xfade",
+            "minimum": -1.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "port": "Frequency",
+            "maximum": 5.0,
+            "label": "Frequency",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/chorusflanger",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ]
+}

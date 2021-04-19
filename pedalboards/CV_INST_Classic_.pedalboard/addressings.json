@@ -1,0 +1,289 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Voice X-Fade",
+            "steps": 65,
+            "page": 1,
+            "port": "xfade",
+            "dividers": null,
+            "group": null,
+            "minimum": -1.0
+        },
+        {
+            "instance": "/graph/mod_cv_attenuverter",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "LFO DEPTH",
+            "steps": 65,
+            "page": 0,
+            "port": "Multiplier",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/Gain2x2",
+            "tempo": null,
+            "maximum": 12.0,
+            "label": "Output Volume",
+            "steps": 33,
+            "page": 0,
+            "port": "Gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/vcf_2",
+            "tempo": false,
+            "maximum": 10.0,
+            "label": "Cutoff",
+            "steps": 33,
+            "page": 0,
+            "port": "freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/vco3_3",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Octave",
+            "steps": 6,
+            "page": 0,
+            "port": "octave",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/vcf_1",
+            "tempo": false,
+            "maximum": 10.0,
+            "label": "Cutoff",
+            "steps": 33,
+            "page": 0,
+            "port": "freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Mix",
+            "steps": 33,
+            "page": 1,
+            "port": "mix",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/vco3_2",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Octave",
+            "steps": 6,
+            "page": 0,
+            "port": "octave",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/vcf",
+            "tempo": false,
+            "maximum": 10.0,
+            "label": "Cutoff",
+            "steps": 33,
+            "page": 0,
+            "port": "freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/sum",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "Time 2",
+            "steps": 33,
+            "page": 1,
+            "port": "delay2",
+            "dividers": 0.5,
+            "group": null,
+            "minimum": 0.019999999552965164
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/vco3_1",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Octave",
+            "steps": 6,
+            "page": 0,
+            "port": "octave",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "Decay",
+            "steps": 33,
+            "page": 1,
+            "port": "decay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/vco3",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Octave",
+            "steps": 6,
+            "page": 0,
+            "port": "octave",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/sum",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "Time 1",
+            "steps": 33,
+            "page": 1,
+            "port": "delay1",
+            "dividers": 0.5,
+            "group": null,
+            "minimum": 0.019999999552965164
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/vco3",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Wave 1",
+            "steps": 33,
+            "page": 0,
+            "port": "waveForm",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/sum",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Delay Munge ST",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/vco3_2",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Wave 3",
+            "steps": 33,
+            "page": 0,
+            "port": "waveForm",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/vco3_1",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Wave 2",
+            "steps": 33,
+            "page": 0,
+            "port": "waveForm",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "MVerb",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/vco3_3",
+            "tempo": false,
+            "maximum": 6.0,
+            "label": "Wave 4",
+            "steps": 33,
+            "page": 0,
+            "port": "waveForm",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/vcf_3",
+            "tempo": false,
+            "maximum": 10.0,
+            "label": "Cutoff",
+            "steps": 33,
+            "page": 0,
+            "port": "freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group2": []
+}

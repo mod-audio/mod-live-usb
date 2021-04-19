@@ -1,0 +1,337 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "Delay L.",
+            "steps": 5,
+            "page": 0,
+            "port": "div_l",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "VRB Predelay",
+            "steps": 65,
+            "page": 1,
+            "port": "predelay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "Delay R.",
+            "steps": 5,
+            "page": 0,
+            "port": "div_r",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 12.0,
+            "label": "PH Num Stages",
+            "steps": 11,
+            "page": 1,
+            "port": "stages",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 22000.0,
+            "label": "DLY LPF",
+            "steps": 33,
+            "page": 0,
+            "port": "high_f",
+            "dividers": null,
+            "group": null,
+            "minimum": 200.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "PH Dry",
+            "steps": 33,
+            "page": 1,
+            "port": "dry",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 10800.0,
+            "label": "PH Dpth",
+            "steps": 33,
+            "page": 1,
+            "port": "mod_depth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "PH Rate",
+            "steps": 33,
+            "page": 0,
+            "port": "mod_rate",
+            "dividers": 0.33300000000000002,
+            "group": null,
+            "minimum": 0.01
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/mod_volume_2x2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "DLY SND",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "vrb bw",
+            "steps": 33,
+            "page": 1,
+            "port": "bandwidth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "DLY XFD",
+            "steps": 33,
+            "page": 0,
+            "port": "crossf",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 4.0,
+            "label": "PH Wet",
+            "steps": 33,
+            "page": 1,
+            "port": "amount",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/mod_volume_2x2_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "VRB SND",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "vrb dmp",
+            "steps": 33,
+            "page": 1,
+            "port": "damping",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/bolliedelay",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "DLY FBK",
+            "steps": 33,
+            "page": 0,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "vrb rfl",
+            "steps": 33,
+            "page": 1,
+            "port": "earlymix",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "VRB DCY",
+            "steps": 33,
+            "page": 0,
+            "port": "decay",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/MVerb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "vrb sze",
+            "steps": 33,
+            "page": 1,
+            "port": "size",
+            "dividers": null,
+            "group": null,
+            "minimum": 5.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/stereo_4",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Verb Send",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/pedalboard",
+            "tempo": false,
+            "maximum": 280.0,
+            "label": "Tap",
+            "steps": 260,
+            "page": 0,
+            "port": ":bpm",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/stereo_3",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Delay Send",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Phaser",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 20000.0,
+            "label": "PH CFrq",
+            "steps": 33,
+            "page": 1,
+            "port": "base_freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        },
+        {
+            "instance": "/graph/Phaser",
+            "tempo": false,
+            "maximum": 0.98999999999999999,
+            "label": "PH Fbck",
+            "steps": 33,
+            "page": 0,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": -0.98999999999999999
+        }
+    ],
+    "/hmi/group2": []
+}

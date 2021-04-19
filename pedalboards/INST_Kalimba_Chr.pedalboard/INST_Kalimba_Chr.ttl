@@ -1,0 +1,674 @@
+@prefix atom:  <http://lv2plug.in/ns/ext/atom#> .
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix ingen: <http://drobilla.net/ns/ingen#> .
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix midi:  <http://lv2plug.in/ns/ext/midi#> .
+@prefix mod:   <http://moddevices.com/ns/mod#> .
+@prefix pedal: <http://moddevices.com/ns/modpedal#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+_:b1
+    ingen:tail <stereo/outL> ;
+    ingen:head <RePsycho/left_in> .
+
+_:b2
+    ingen:tail <stereo_1/outR> ;
+    ingen:head <playback_2> .
+
+_:b3
+    ingen:tail <stereo/outR> ;
+    ingen:head <RePsycho/right_in> .
+
+_:b4
+    ingen:tail <FluidPlug_FluidChromPerc/audio_out_l> ;
+    ingen:head <stereo/inL> .
+
+_:b5
+    ingen:tail <midi_merger_out> ;
+    ingen:head <FluidPlug_FluidEthnic/events> .
+
+_:b6
+    ingen:tail <FluidPlug_FluidEthnic/audio_out_l> ;
+    ingen:head <stereo/inL> .
+
+_:b7
+    ingen:tail <FluidPlug_FluidEthnic/audio_out_r> ;
+    ingen:head <stereo/inR> .
+
+_:b8
+    ingen:tail <FluidPlug_FluidChromPerc/audio_out_r> ;
+    ingen:head <stereo/inR> .
+
+_:b9
+    ingen:tail <RePsycho/right_out> ;
+    ingen:head <bolliedelay/in_r> .
+
+_:b10
+    ingen:tail <midi_merger_out> ;
+    ingen:head <FluidPlug_FluidChromPerc/events> .
+
+_:b11
+    ingen:tail <stereo_1/outL> ;
+    ingen:head <playback_1> .
+
+_:b12
+    ingen:tail <RePsycho/left_out> ;
+    ingen:head <bolliedelay/in_l> .
+
+_:b13
+    ingen:tail <bolliedelay/out_l> ;
+    ingen:head <stereo_1/inL> .
+
+_:b14
+    ingen:tail <bolliedelay/out_r> ;
+    ingen:head <stereo_1/inR> .
+
+<FluidPlug_FluidChromPerc>
+    ingen:canvasX 882.0 ;
+    ingen:canvasY 245.0 ;
+    ingen:enabled true ;
+    ingen:polyphonic false ;
+    lv2:microVersion 0 ;
+    lv2:minorVersion 2 ;
+    mod:builderVersion 1 ;
+    mod:releaseNumber 11 ;
+    lv2:port <FluidPlug_FluidChromPerc/audio_out_l> ,
+             <FluidPlug_FluidChromPerc/audio_out_r> ,
+             <FluidPlug_FluidChromPerc/level> ,
+             <FluidPlug_FluidChromPerc/program> ,
+             <FluidPlug_FluidChromPerc/events> ,
+             <FluidPlug_FluidChromPerc/:bypass> ;
+    lv2:prototype <http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidChromPerc> ;
+    pedal:preset <> ;
+    a ingen:Block .
+
+<FluidPlug_FluidChromPerc/events>
+    atom:bufferType atom:Sequence ;
+    atom:supports midi:MidiEvent ;
+    a atom:AtomPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidChromPerc/program>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidChromPerc/level>
+    ingen:value 0.317061 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidChromPerc/:bypass>
+    ingen:value 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidEthnic>
+    ingen:canvasX 657.0 ;
+    ingen:canvasY 547.0 ;
+    ingen:enabled true ;
+    ingen:polyphonic false ;
+    lv2:microVersion 0 ;
+    lv2:minorVersion 2 ;
+    mod:builderVersion 1 ;
+    mod:releaseNumber 11 ;
+    lv2:port <FluidPlug_FluidEthnic/audio_out_l> ,
+             <FluidPlug_FluidEthnic/audio_out_r> ,
+             <FluidPlug_FluidEthnic/level> ,
+             <FluidPlug_FluidEthnic/program> ,
+             <FluidPlug_FluidEthnic/events> ,
+             <FluidPlug_FluidEthnic/:bypass> ;
+    lv2:prototype <http://kxstudio.linuxaudio.org/plugins/FluidPlug_FluidEthnic> ;
+    pedal:preset <> ;
+    a ingen:Block .
+
+<FluidPlug_FluidEthnic/events>
+    atom:bufferType atom:Sequence ;
+    atom:supports midi:MidiEvent ;
+    a atom:AtomPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidEthnic/program>
+    ingen:value 4.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidEthnic/level>
+    ingen:value 1.118644 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<FluidPlug_FluidEthnic/:bypass>
+    ingen:value 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho>
+    ingen:canvasX 1771.3 ;
+    ingen:canvasY 393.3 ;
+    ingen:enabled true ;
+    ingen:polyphonic false ;
+    lv2:microVersion 1 ;
+    lv2:minorVersion 0 ;
+    mod:builderVersion 1 ;
+    mod:releaseNumber 9 ;
+    lv2:port <RePsycho/left_in> ,
+             <RePsycho/right_in> ,
+             <RePsycho/left_out> ,
+             <RePsycho/right_out> ,
+             <RePsycho/tune> ,
+             <RePsycho/fine> ,
+             <RePsycho/decay> ,
+             <RePsycho/thresh> ,
+             <RePsycho/hold> ,
+             <RePsycho/mix> ,
+             <RePsycho/quality> ,
+             <RePsycho/:bypass> ;
+    lv2:prototype <http://moddevices.com/plugins/mda/RePsycho> ;
+    pedal:preset <> ;
+    a ingen:Block .
+
+<RePsycho/left_in>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<RePsycho/right_in>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<RePsycho/left_in>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<RePsycho/right_in>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<RePsycho/hold>
+    ingen:value 80.033485 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/thresh>
+    ingen:value -15.602679 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/decay>
+    ingen:value 9.709821 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/mix>
+    ingen:value 34.933036 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/fine>
+    ingen:value -13.932770 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/tune>
+    ingen:value -17.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/quality>
+    ingen:value 1.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<RePsycho/:bypass>
+    ingen:value 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay>
+    ingen:canvasX 2373.0 ;
+    ingen:canvasY 461.0 ;
+    ingen:enabled true ;
+    ingen:polyphonic false ;
+    lv2:microVersion 6 ;
+    lv2:minorVersion 2 ;
+    mod:builderVersion 1 ;
+    mod:releaseNumber 5 ;
+    lv2:port <bolliedelay/in_l> ,
+             <bolliedelay/in_r> ,
+             <bolliedelay/out_l> ,
+             <bolliedelay/out_r> ,
+             <bolliedelay/tempo_host> ,
+             <bolliedelay/tempo_user> ,
+             <bolliedelay/tempo_mode> ,
+             <bolliedelay/tap> ,
+             <bolliedelay/mix> ,
+             <bolliedelay/feedback> ,
+             <bolliedelay/crossf> ,
+             <bolliedelay/low_on> ,
+             <bolliedelay/low_f> ,
+             <bolliedelay/low_q> ,
+             <bolliedelay/high_on> ,
+             <bolliedelay/high_f> ,
+             <bolliedelay/high_q> ,
+             <bolliedelay/div_l> ,
+             <bolliedelay/div_r> ,
+             <bolliedelay/tempo_out> ,
+             <bolliedelay/:bypass> ;
+    lv2:prototype <https://ca9.eu/lv2/bolliedelay> ;
+    pedal:preset <> ;
+    a ingen:Block .
+
+<bolliedelay/in_l>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<bolliedelay/in_r>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<bolliedelay/in_l>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<bolliedelay/in_r>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<bolliedelay/tempo_host>
+    ingen:value 120.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/div_l>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/tempo_user>
+    ingen:value 120.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/low_f>
+    ingen:value 109.264687 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/feedback>
+    ingen:value 71.072510 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/low_on>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/high_q>
+    ingen:value 4.589678 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/div_r>
+    ingen:value 2.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/low_q>
+    ingen:value 5.053733 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/crossf>
+    ingen:value 57.272270 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/tempo_mode>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/mix>
+    ingen:value 42.187500 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/high_f>
+    ingen:value 2502.355713 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/tap>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/high_on>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<bolliedelay/tempo_out>
+    a lv2:ControlPort ,
+        lv2:OutputPort .
+
+<bolliedelay/:bypass>
+    ingen:value 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo>
+    ingen:canvasX 1311.0 ;
+    ingen:canvasY 617.0 ;
+    ingen:enabled true ;
+    ingen:polyphonic false ;
+    lv2:microVersion 0 ;
+    lv2:minorVersion 770 ;
+    mod:builderVersion 1 ;
+    mod:releaseNumber 6 ;
+    lv2:port <stereo/inL> ,
+             <stereo/inR> ,
+             <stereo/outL> ,
+             <stereo/outR> ,
+             <stereo/gain> ,
+             <stereo/enable> ,
+             <stereo/mute> ,
+             <stereo/level> ,
+             <stereo/:bypass> ;
+    lv2:prototype <http://gareus.org/oss/lv2/tinygain#stereo> ;
+    pedal:preset <> ;
+    a ingen:Block .
+
+<stereo/inL>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<stereo/inR>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<stereo/inL>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<stereo/inR>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<stereo/gain>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo/enable>
+    ingen:value 1.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo/mute>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo/level>
+    a lv2:ControlPort ,
+        lv2:OutputPort .
+
+<stereo/:bypass>
+    ingen:value 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo_1>
+    ingen:canvasX 3368.3 ;
+    ingen:canvasY 359.0 ;
+    ingen:enabled true ;
+    ingen:polyphonic false ;
+    lv2:microVersion 0 ;
+    lv2:minorVersion 770 ;
+    mod:builderVersion 1 ;
+    mod:releaseNumber 6 ;
+    lv2:port <stereo_1/inL> ,
+             <stereo_1/inR> ,
+             <stereo_1/outL> ,
+             <stereo_1/outR> ,
+             <stereo_1/gain> ,
+             <stereo_1/enable> ,
+             <stereo_1/mute> ,
+             <stereo_1/level> ,
+             <stereo_1/:bypass> ;
+    lv2:prototype <http://gareus.org/oss/lv2/tinygain#stereo> ;
+    pedal:preset <> ;
+    a ingen:Block .
+
+<stereo_1/inL>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<stereo_1/inR>
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<stereo_1/inL>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<stereo_1/inR>
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<stereo_1/gain>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo_1/enable>
+    ingen:value 1.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo_1/mute>
+    ingen:value 0.000000 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<stereo_1/level>
+    a lv2:ControlPort ,
+        lv2:OutputPort .
+
+<stereo_1/:bypass>
+    ingen:value 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<:bpb>
+    ingen:value 4.000000 ;
+    lv2:index 0 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<:bpm>
+    ingen:value 120.000000 ;
+    lv2:index 1 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<:rolling>
+    ingen:value 0 ;
+    lv2:index 2 ;
+    a lv2:ControlPort ,
+        lv2:InputPort .
+
+<control_in>
+    atom:bufferType atom:Sequence ;
+    lv2:index 3 ;
+    lv2:name "Control In" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "control_in" ;
+    <http://lv2plug.in/ns/ext/resize-port#minimumSize> 4096 ;
+    a atom:AtomPort ,
+        lv2:InputPort .
+
+<control_out>
+    atom:bufferType atom:Sequence ;
+    lv2:index 4 ;
+    lv2:name "Control Out" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "control_out" ;
+    <http://lv2plug.in/ns/ext/resize-port#minimumSize> 4096 ;
+    a atom:AtomPort ,
+        lv2:OutputPort .
+
+<capture_1>
+    lv2:index 5 ;
+    lv2:name "Capture 1" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "capture_1" ;
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<capture_2>
+    lv2:index 6 ;
+    lv2:name "Capture 2" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "capture_2" ;
+    a lv2:AudioPort ,
+        lv2:InputPort .
+
+<cv_capture_1>
+    lv2:index 7 ;
+    lv2:name "Cv Capture 1" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "cv_capture_1" ;
+    a lv2:CVPort ,
+        lv2:InputPort .
+
+<cv_capture_2>
+    lv2:index 8 ;
+    lv2:name "Cv Capture 2" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "cv_capture_2" ;
+    a lv2:CVPort ,
+        lv2:InputPort .
+
+<cv_exp_pedal>
+    lv2:index 9 ;
+    lv2:name "Cv Exp Pedal" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "cv_exp_pedal" ;
+    a lv2:CVPort ,
+        lv2:InputPort .
+
+<playback_1>
+    lv2:index 10 ;
+    lv2:name "Playback 1" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "playback_1" ;
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<playback_2>
+    lv2:index 11 ;
+    lv2:name "Playback 2" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "playback_2" ;
+    a lv2:AudioPort ,
+        lv2:OutputPort .
+
+<cv_playback_1>
+    lv2:index 12 ;
+    lv2:name "Cv Playback 1" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "cv_playback_1" ;
+    a lv2:CVPort ,
+        lv2:OutputPort .
+
+<cv_playback_2>
+    lv2:index 13 ;
+    lv2:name "Cv Playback 2" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "cv_playback_2" ;
+    a lv2:CVPort ,
+        lv2:OutputPort .
+
+<serial_midi_in>
+    atom:bufferType atom:Sequence ;
+    atom:supports midi:MidiEvent ;
+    lv2:index 14 ;
+    lv2:name "DIN MIDI In" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "serial_midi_in" ;
+    <http://lv2plug.in/ns/ext/resize-port#minimumSize> 4096 ;
+    a atom:AtomPort ,
+        lv2:InputPort .
+
+<serial_midi_out>
+    atom:bufferType atom:Sequence ;
+    atom:supports midi:MidiEvent ;
+    lv2:index 15 ;
+    lv2:name "DIN MIDI In" ;
+    lv2:portProperty lv2:connectionOptional ;
+    lv2:symbol "serial_midi_out" ;
+    <http://lv2plug.in/ns/ext/resize-port#minimumSize> 4096 ;
+    a atom:AtomPort ,
+        lv2:OutputPort .
+
+<midi_separated_mode>
+    ingen:value 0 ;
+    lv2:index 16 ;
+    a atom:AtomPort ,
+        lv2:InputPort .
+
+<>
+    doap:name "INST - Kalimba / ChromPerc" ;
+    pedal:unitName "MOD Duo X" ;
+    pedal:unitModel "Unknown" ;
+    pedal:width 3884 ;
+    pedal:height 1758 ;
+    pedal:addressings <addressings.json> ;
+    pedal:screenshot <screenshot.png> ;
+    pedal:thumbnail <thumbnail.png> ;
+    pedal:version 7 ;
+    ingen:polyphony 1 ;
+    ingen:arc _:b1 ,
+              _:b2 ,
+              _:b3 ,
+              _:b4 ,
+              _:b5 ,
+              _:b6 ,
+              _:b7 ,
+              _:b8 ,
+              _:b9 ,
+              _:b10 ,
+              _:b11 ,
+              _:b12 ,
+              _:b13 ,
+              _:b14 ;
+    ingen:block <FluidPlug_FluidChromPerc> ,
+                <FluidPlug_FluidEthnic> ,
+                <RePsycho> ,
+                <bolliedelay> ,
+                <stereo> ,
+                <stereo_1> ;
+    lv2:port <:bpb> ,
+             <:bpm> ,
+             <:rolling> ,
+             <midi_separated_mode> ,
+             <control_in> ,
+             <control_out> ,
+             <serial_midi_in> ,
+             <serial_midi_out> ,
+             <capture_1> ,
+             <capture_2> ,
+             <cv_capture_1> ,
+             <cv_capture_2> ,
+             <cv_exp_pedal> ,
+             <playback_1> ,
+             <playback_2> ,
+             <cv_playback_1> ,
+             <cv_playback_2> ;
+    lv2:extensionData <http://lv2plug.in/ns/ext/state#interface> ;
+    a lv2:Plugin ,
+        ingen:Graph ,
+        pedal:Pedalboard .

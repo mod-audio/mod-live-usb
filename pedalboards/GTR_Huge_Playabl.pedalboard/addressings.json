@@ -1,0 +1,205 @@
+{
+    "/hmi/potentiometer5": [
+        {
+            "dividers": null,
+            "label": "bol fbk",
+            "group": null,
+            "port": "feedback",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 100.0
+        }
+    ],
+    "/cv/graph/cv_capture_1": [],
+    "/cv/graph/cv_capture_2": [],
+    "/hmi/potentiometer8": [
+        {
+            "dividers": null,
+            "label": "BOL XFD",
+            "group": null,
+            "port": "crossf",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 100.0
+        }
+    ],
+    "/bpm": [],
+    "/hmi/potentiometer4": [
+        {
+            "dividers": null,
+            "label": "ph dept",
+            "group": null,
+            "port": "mod_depth",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/Phaser",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 10800.0
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "dividers": null,
+            "label": "Bollie R.",
+            "group": null,
+            "port": "div_r",
+            "page": 0,
+            "steps": 5,
+            "instance": "/graph/bolliedelay",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 5.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "dividers": null,
+            "label": "FX Chain",
+            "group": null,
+            "port": ":bypass",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/xfade",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "dividers": null,
+            "label": "LPF/HPF",
+            "group": null,
+            "port": "frequency_control",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/filta",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer1": [
+        {
+            "dividers": null,
+            "label": "Octave",
+            "group": null,
+            "port": "OCTAVE",
+            "page": 0,
+            "steps": 2,
+            "instance": "/graph/hip2b",
+            "minimum": -2.0,
+            "tempo": false,
+            "maximum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "dividers": null,
+            "label": "Detune",
+            "group": null,
+            "port": "detune",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/Detune",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 150.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "dividers": 0.33300000000000002,
+            "label": "Ph rate",
+            "group": null,
+            "port": "mod_rate",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/Phaser",
+            "minimum": 0.0099999997764825821,
+            "tempo": false,
+            "maximum": 20.0
+        }
+    ],
+    "/hmi/footswitch3": [
+        {
+            "dividers": null,
+            "label": "Bollie Delay",
+            "group": null,
+            "port": ":bypass",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/group2": [],
+    "/hmi/group1": [],
+    "/hmi/footswitch2": [
+        {
+            "dividers": null,
+            "label": "Phaser",
+            "group": null,
+            "port": ":bypass",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/Phaser",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 1.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "dividers": null,
+            "label": "Tap",
+            "group": null,
+            "port": ":bpm",
+            "page": 0,
+            "steps": 260,
+            "instance": "/pedalboard",
+            "minimum": 20.0,
+            "tempo": false,
+            "maximum": 280.0
+        }
+    ],
+    "/hmi/knob1": [
+        {
+            "dividers": null,
+            "label": "Bollie L.",
+            "group": null,
+            "port": "div_l",
+            "page": 0,
+            "steps": 5,
+            "instance": "/graph/bolliedelay",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 5.0
+        }
+    ],
+    "/hmi/potentiometer6": [
+        {
+            "dividers": null,
+            "label": "bol mix",
+            "group": null,
+            "port": "mix",
+            "page": 0,
+            "steps": 33,
+            "instance": "/graph/bolliedelay",
+            "minimum": 0.0,
+            "tempo": false,
+            "maximum": 100.0
+        }
+    ]
+}

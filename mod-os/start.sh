@@ -78,6 +78,8 @@ NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD_ID}D0p"
 fi
 if [ -e /mnt/pedalboards ]; then
 NSPAWN_OPTS+=" --bind-ro=/mnt/pedalboards"
+elif [ -e ../pedalboards/INST_FM_Synth.pedalboard ]; then
+NSPAWN_OPTS+=" --bind=$(pwd)/../pedalboards:/mnt/pedalboards"
 fi
 if [ -e /mnt/plugins ]; then
 NSPAWN_OPTS+=" --bind-ro=/mnt/plugins"

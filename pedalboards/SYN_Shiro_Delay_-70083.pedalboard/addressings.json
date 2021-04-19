@@ -1,0 +1,337 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 300.0,
+            "label": "VRB Roomsize",
+            "steps": 65,
+            "page": 1,
+            "port": "roomsize",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        },
+        {
+            "instance": "/graph/modulay",
+            "tempo": true,
+            "maximum": 48,
+            "label": "Delay Div.",
+            "steps": 33,
+            "page": 0,
+            "port": "time",
+            "dividers": 4,
+            "group": null,
+            "minimum": 1
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/harmless",
+            "tempo": true,
+            "maximum": 48,
+            "label": "Trem Rate",
+            "steps": 33,
+            "page": 0,
+            "port": "rate",
+            "dividers": 12,
+            "group": null,
+            "minimum": 0.33300000000000002
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "vrb bandwidth",
+            "steps": 65,
+            "page": 1,
+            "port": "bandwidth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/harmless",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "T Depth",
+            "steps": 33,
+            "page": 0,
+            "port": "depth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "VRB SHM",
+            "steps": 33,
+            "page": 1,
+            "port": "shimmer",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/harmless",
+            "tempo": false,
+            "maximum": 180.0,
+            "label": "t phase",
+            "steps": 33,
+            "page": 0,
+            "port": "phase",
+            "dividers": null,
+            "group": null,
+            "minimum": -180.0
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "VRB DMP",
+            "steps": 33,
+            "page": 1,
+            "port": "damping",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/mod_volume_2x2_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "vrb snd",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/modulay",
+            "tempo": false,
+            "maximum": 6000.0,
+            "label": "DLY TON",
+            "steps": 33,
+            "page": 1,
+            "port": "tone",
+            "dividers": null,
+            "group": null,
+            "minimum": 500.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/harmless",
+            "tempo": false,
+            "maximum": 0.99000000953674316,
+            "label": "T Shape",
+            "steps": 33,
+            "page": 0,
+            "port": "shape",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0099999997764825821
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "VRB RAT",
+            "steps": 33,
+            "page": 1,
+            "port": "ratio",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.5
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/mod_volume_2x2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "dly snd",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/modulay",
+            "tempo": false,
+            "maximum": 3.0,
+            "label": "DLY DPT",
+            "steps": 33,
+            "page": 1,
+            "port": "depth",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.10000000149011612
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "VRB DCY",
+            "steps": 33,
+            "page": 0,
+            "port": "decay",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        },
+        {
+            "instance": "/graph/modulay",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "DLY MRF",
+            "steps": 33,
+            "page": 1,
+            "port": "morph",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/modulay",
+            "tempo": false,
+            "maximum": 110.0,
+            "label": "dly fbk",
+            "steps": 33,
+            "page": 0,
+            "port": "repeats",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/modulay",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "DLY RAT",
+            "steps": 33,
+            "page": 1,
+            "port": "rate",
+            "dividers": 0.33300000000000002,
+            "group": null,
+            "minimum": 0.10000000149011612
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/mono",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Delay Send",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/harmless",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Trem",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/mono_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Verb Send",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/pedalboard",
+            "tempo": false,
+            "maximum": 280.0,
+            "label": "tap",
+            "steps": 260,
+            "page": 0,
+            "port": ":bpm",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        },
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/harmless",
+            "tempo": false,
+            "maximum": 6000.0,
+            "label": "T Tone",
+            "steps": 33,
+            "page": 0,
+            "port": "tone",
+            "dividers": null,
+            "group": null,
+            "minimum": 500.0
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "tempo": false,
+            "maximum": 6000.0,
+            "label": "VRB Ton",
+            "steps": 33,
+            "page": 1,
+            "port": "tone",
+            "dividers": null,
+            "group": null,
+            "minimum": 500.0
+        }
+    ],
+    "/hmi/group2": []
+}

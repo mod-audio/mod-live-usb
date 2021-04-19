@@ -1,0 +1,385 @@
+{
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 36.0,
+            "label": "Makeup Gain",
+            "steps": 65,
+            "page": 1,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -6.0
+        },
+        {
+            "instance": "/graph/avocado",
+            "tempo": true,
+            "maximum": 48,
+            "label": "Glitch Lo",
+            "steps": 33,
+            "page": 0,
+            "port": "bufsiz",
+            "dividers": 4,
+            "group": null,
+            "minimum": 4
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 36.0,
+            "label": "Makeup Gain",
+            "steps": 65,
+            "page": 1,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -6.0
+        },
+        {
+            "instance": "/graph/avocado_1",
+            "tempo": true,
+            "maximum": 48,
+            "label": "Glitch Hi",
+            "steps": 33,
+            "page": 0,
+            "port": "bufsiz",
+            "dividers": 32,
+            "group": null,
+            "minimum": 4
+        }
+    ],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_capture_1": [],
+    "/bpm": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "Ratio",
+            "steps": 33,
+            "page": 1,
+            "port": "ratio",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        },
+        {
+            "instance": "/graph/mod_volume_2x2_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "FTY SND",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 0.75,
+            "label": "Attack",
+            "steps": 33,
+            "page": 1,
+            "port": "attack",
+            "dividers": null,
+            "group": null,
+            "minimum": 9.9999997473787516e-06
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 653.06121826171875,
+            "label": "FTY DLY",
+            "steps": 33,
+            "page": 0,
+            "port": "delay",
+            "dividers": 1.5,
+            "group": null,
+            "minimum": 10.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "FTY FLT",
+            "steps": 33,
+            "page": 2,
+            "port": "filter",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "Release",
+            "steps": 33,
+            "page": 1,
+            "port": "release",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0010000000474974513
+        },
+        {
+            "instance": "/graph/mod_volume_2x2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "GTC SND",
+            "steps": 33,
+            "page": 0,
+            "port": "Volume",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 0.0,
+            "label": "Threshold",
+            "steps": 33,
+            "page": 1,
+            "port": "threshold",
+            "dividers": null,
+            "group": null,
+            "minimum": -36.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 60.0,
+            "label": "FTY FBK",
+            "steps": 33,
+            "page": 0,
+            "port": "feedback",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/filta",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "LPF/HPF",
+            "steps": 33,
+            "page": 0,
+            "port": "frequency_control",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "Ratio",
+            "steps": 33,
+            "page": 1,
+            "port": "ratio",
+            "dividers": null,
+            "group": null,
+            "minimum": 1.0
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 0.75,
+            "label": "Attack",
+            "steps": 33,
+            "page": 1,
+            "port": "attack",
+            "dividers": null,
+            "group": null,
+            "minimum": 9.9999997473787516e-06
+        },
+        {
+            "instance": "/graph/CrossOver2",
+            "tempo": false,
+            "maximum": 20000.0,
+            "label": "GTC XVR",
+            "steps": 33,
+            "page": 0,
+            "port": "Freq",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/stereo_4",
+            "tempo": false,
+            "maximum": 20.0,
+            "label": "In Gain",
+            "steps": 33,
+            "page": 0,
+            "port": "gain",
+            "dividers": null,
+            "group": null,
+            "minimum": -20.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 0.0,
+            "label": "Threshold",
+            "steps": 33,
+            "page": 1,
+            "port": "threshold",
+            "dividers": null,
+            "group": null,
+            "minimum": -36.0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/filta",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Filta",
+            "steps": 33,
+            "page": 0,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_1",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Input Comp",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group3": [],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Output Comp",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/graph/stereo_3",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Floaty SND",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/stereo_2",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Kill Glitch SND",
+            "steps": 1,
+            "page": 0,
+            "port": "mute",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/xfade",
+            "tempo": false,
+            "maximum": 1.0,
+            "label": "Stereo Input",
+            "steps": 33,
+            "page": 1,
+            "port": ":bypass",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        },
+        {
+            "instance": "/pedalboard",
+            "tempo": false,
+            "maximum": 280.0,
+            "label": "TAP",
+            "steps": 260,
+            "page": 0,
+            "port": ":bpm",
+            "dividers": null,
+            "group": null,
+            "minimum": 20.0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/stereo_8",
+            "tempo": false,
+            "maximum": 5.0,
+            "label": "Release",
+            "steps": 33,
+            "page": 1,
+            "port": "release",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0010000000474974513
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 2.0,
+            "label": "FTY RAT",
+            "steps": 33,
+            "page": 0,
+            "port": "rate",
+            "dividers": null,
+            "group": null,
+            "minimum": -2.0
+        },
+        {
+            "instance": "/graph/floaty",
+            "tempo": false,
+            "maximum": 100.0,
+            "label": "FTY WRP",
+            "steps": 33,
+            "page": 2,
+            "port": "warp",
+            "dividers": null,
+            "group": null,
+            "minimum": 0.0
+        }
+    ],
+    "/hmi/group2": []
+}

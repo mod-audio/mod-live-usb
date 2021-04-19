@@ -1,0 +1,409 @@
+{
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/_2Voices",
+            "dividers": null,
+            "maximum": 20.0,
+            "tempo": false,
+            "label": "Gain 1",
+            "steps": 33,
+            "port": "Gain_1",
+            "minimum": -20.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/floaty",
+            "dividers": 1.5,
+            "maximum": 653.06121826171875,
+            "tempo": false,
+            "label": "Delay",
+            "steps": 33,
+            "port": "delay",
+            "minimum": 10.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/_2Voices",
+            "dividers": null,
+            "maximum": 24.0,
+            "tempo": false,
+            "label": "Step 2",
+            "steps": 36,
+            "port": "Step2",
+            "minimum": -12.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/floaty",
+            "dividers": null,
+            "maximum": 60.0,
+            "tempo": false,
+            "label": "Feedback",
+            "steps": 33,
+            "port": "feedback",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/_2Voices",
+            "dividers": null,
+            "maximum": 24.0,
+            "tempo": false,
+            "label": "Step 1",
+            "steps": 36,
+            "port": "Step1",
+            "minimum": -12.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/floaty",
+            "dividers": null,
+            "maximum": 2.0,
+            "tempo": false,
+            "label": "Pbck rt",
+            "steps": 33,
+            "port": "rate",
+            "minimum": -2.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/fat1",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "AT Amnt",
+            "steps": 270,
+            "port": "corr",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/paranoia",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "Filter",
+            "steps": 33,
+            "port": "filter",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/Plate",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Lowpass",
+            "steps": 33,
+            "port": "bandwidth",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/fat1",
+            "dividers": null,
+            "maximum": 0.5,
+            "tempo": false,
+            "label": "AT Rate",
+            "steps": 200,
+            "port": "filter",
+            "minimum": 0.019999999552965164,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/paranoia",
+            "dividers": null,
+            "maximum": 16.0,
+            "tempo": false,
+            "label": "Mangle",
+            "steps": 33,
+            "port": "nuclear",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/Plate",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Damping",
+            "steps": 33,
+            "port": "damping",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/mono",
+            "dividers": null,
+            "maximum": 36.0,
+            "tempo": false,
+            "label": "C Gain",
+            "steps": 33,
+            "port": "gain",
+            "minimum": -6.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/paranoia",
+            "dividers": null,
+            "maximum": 6.0,
+            "tempo": false,
+            "label": "Level",
+            "steps": 33,
+            "port": "wet",
+            "minimum": -24.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/Plate",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Mix",
+            "steps": 33,
+            "port": "blend",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/mono",
+            "dividers": null,
+            "maximum": 0.0,
+            "tempo": false,
+            "label": "C THRSHLD",
+            "steps": 33,
+            "port": "threshold",
+            "minimum": -36.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/paranoia",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "Crush",
+            "steps": 33,
+            "port": "crush",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/Plate",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Decay",
+            "steps": 33,
+            "port": "tail",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/mono",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Input Comp",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/xfade_2",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Paranoia",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/Plate",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Plate",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/xfade",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "AutoTune",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        }
+    ],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/xfade_1",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Pitchshift",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/floaty",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "floaty",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/_2Voices",
+            "dividers": null,
+            "maximum": 3.0,
+            "tempo": false,
+            "label": "Fidelity",
+            "steps": 3,
+            "port": "Fidelity",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/_2Voices",
+            "dividers": null,
+            "maximum": 20.0,
+            "tempo": false,
+            "label": "Gain 2",
+            "steps": 33,
+            "port": "Gain_2",
+            "minimum": -20.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/floaty",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "Filter",
+            "steps": 33,
+            "port": "filter",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/xfade_2",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Paranoia Mix",
+            "steps": 65,
+            "port": "xfade",
+            "minimum": -1.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/xfade",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "AutoTune Mix",
+            "steps": 65,
+            "port": "xfade",
+            "minimum": -1.0,
+            "page": 0,
+            "group": null
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/xfade_1",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Pitchshift Mix",
+            "steps": 33,
+            "port": "xfade",
+            "minimum": -1.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/floaty",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "Floaty Mix",
+            "steps": 65,
+            "port": "mix",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/cv/graph/cv_exp_pedal": [],
+    "/cv/graph/cv_capture_1": [],
+    "/hmi/group2": [],
+    "/bpm": [],
+    "/cv/graph/cv_capture_2": [],
+    "/hmi/group3": []
+}

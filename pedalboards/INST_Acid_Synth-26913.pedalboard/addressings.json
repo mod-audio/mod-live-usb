@@ -1,0 +1,241 @@
+{
+    "/hmi/potentiometer1": [
+        {
+            "port": "cutoff",
+            "maximum": 100.0,
+            "label": "Cutoff",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/Nekobi",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "Shiroverb",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/shiroverb",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "port": "resonance",
+            "maximum": 95.0,
+            "label": "Reson",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": null,
+            "instance": "/graph/Nekobi",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "Distortion",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/dist",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch3": [
+        {
+            "port": ":bypass",
+            "maximum": 1.0,
+            "label": "Modulay",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": []
+            },
+            "instance": "/graph/modulay",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer7": [
+        {
+            "port": "damping",
+            "maximum": 100.0,
+            "label": "damping",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/shiroverb",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/footswitch1": [
+        {
+            "port": "waveform",
+            "maximum": 1.0,
+            "label": "Wave",
+            "group": null,
+            "tempo": false,
+            "steps": 1,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/Nekobi",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "port": "decay",
+            "maximum": 100.0,
+            "label": "decay",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/shiroverb",
+            "minimum": 1.0,
+            "page": 0
+        }
+    ],
+    "/cv/graph/cv_capture_1": [],
+    "/hmi/potentiometer6": [
+        {
+            "port": "time",
+            "maximum": 1000.0,
+            "label": "time",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/modulay",
+            "minimum": 20.0,
+            "page": 0
+        }
+    ],
+    "/hmi/group2": [],
+    "/hmi/potentiometer3": [
+        {
+            "port": "env_mod",
+            "maximum": 100.0,
+            "label": "Env Mod",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/Nekobi",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/group3": [],
+    "/bpm": [],
+    "/cv/graph/cv_capture_2": [],
+    "/cv/graph/cv_exp_pedal": [],
+    "/hmi/knob2": [
+        {
+            "port": "accent",
+            "maximum": 100.0,
+            "label": "Accent",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/Nekobi",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "port": "repeats",
+            "maximum": 110.0,
+            "label": "repeats",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/modulay",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/knob1": [
+        {
+            "port": "TYPE",
+            "maximum": 29.0,
+            "label": "Dist type",
+            "group": null,
+            "tempo": false,
+            "steps": 29,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/dist",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "port": "decay",
+            "maximum": 100.0,
+            "label": "Decay",
+            "group": null,
+            "tempo": false,
+            "steps": 33,
+            "dividers": {
+                "options": [],
+                "value": null
+            },
+            "instance": "/graph/Nekobi",
+            "minimum": 0.0,
+            "page": 0
+        }
+    ]
+}

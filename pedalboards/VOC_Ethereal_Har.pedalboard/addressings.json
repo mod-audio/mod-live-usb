@@ -1,0 +1,421 @@
+{
+    "/hmi/potentiometer7": [
+        {
+            "instance": "/graph/modulay",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "morph",
+            "steps": 33,
+            "port": "morph",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "bandwidth",
+            "steps": 33,
+            "port": "bandwidth",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer6": [
+        {
+            "instance": "/graph/modulay",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "mix",
+            "steps": 33,
+            "port": "mix",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "damping",
+            "steps": 33,
+            "port": "damping",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer5": [
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 20.0,
+            "tempo": false,
+            "label": "Gain 2",
+            "steps": 33,
+            "port": "Gain2",
+            "minimum": -20.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/modulay",
+            "dividers": null,
+            "maximum": 110.0,
+            "tempo": false,
+            "label": "repeats",
+            "steps": 33,
+            "port": "repeats",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 300.0,
+            "tempo": false,
+            "label": "roomsize",
+            "steps": 33,
+            "port": "roomsize",
+            "minimum": 1.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer4": [
+        {
+            "instance": "/graph/fat1",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "AT Amnt",
+            "steps": 270,
+            "port": "corr",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "shimmer",
+            "steps": 33,
+            "port": "shimmer",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer3": [
+        {
+            "instance": "/graph/fat1",
+            "dividers": null,
+            "maximum": 0.5,
+            "tempo": false,
+            "label": "AT Rate",
+            "steps": 200,
+            "port": "filter",
+            "minimum": 0.019999999552965164,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 20.0,
+            "tempo": false,
+            "label": "Gain 1",
+            "steps": 33,
+            "port": "Gain1",
+            "minimum": -20.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 2.0,
+            "tempo": false,
+            "label": "ratio",
+            "steps": 33,
+            "port": "ratio",
+            "minimum": 0.5,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer2": [
+        {
+            "instance": "/graph/mono",
+            "dividers": null,
+            "maximum": 36.0,
+            "tempo": false,
+            "label": "C Gain",
+            "steps": 33,
+            "port": "gain",
+            "minimum": -6.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/xfade_1",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Mix",
+            "steps": 65,
+            "port": "xfade",
+            "minimum": -1.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "mix",
+            "steps": 33,
+            "port": "mix",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer1": [
+        {
+            "instance": "/graph/mono",
+            "dividers": null,
+            "maximum": 0.0,
+            "tempo": false,
+            "label": "C THRSHLD",
+            "steps": 33,
+            "port": "threshold",
+            "minimum": -36.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 100.0,
+            "tempo": false,
+            "label": "decay",
+            "steps": 33,
+            "port": "decay",
+            "minimum": 1.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/group1": [],
+    "/hmi/footswitch1": [
+        {
+            "instance": "/graph/mono",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Input Comp",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/xfade_1",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Harmonizer",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Shiroverb",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/footswitch2": [
+        {
+            "instance": "/graph/xfade",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "AutoTune",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 2.0,
+            "tempo": false,
+            "label": "Scale",
+            "steps": 2,
+            "port": "Scale",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/footswitch3": [
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 11.0,
+            "tempo": false,
+            "label": "Tone",
+            "steps": 11,
+            "port": "Tone",
+            "minimum": 0.0,
+            "page": 1,
+            "group": "/hmi/group3"
+        },
+        {
+            "instance": "/graph/modulay",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "Modulay",
+            "steps": 33,
+            "port": ":bypass",
+            "minimum": 0.0,
+            "page": 0,
+            "group": null
+        }
+    ],
+    "/hmi/footswitch4": [
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 11.0,
+            "tempo": false,
+            "label": "Tone",
+            "steps": 11,
+            "port": "Tone",
+            "minimum": 0.0,
+            "page": 1,
+            "group": "/hmi/group3"
+        },
+        {
+            "instance": "/pedalboard",
+            "dividers": null,
+            "maximum": 280.0,
+            "tempo": false,
+            "label": "Tap",
+            "steps": 260,
+            "port": ":bpm",
+            "minimum": 20.0,
+            "page": 0,
+            "group": null
+        }
+    ],
+    "/hmi/potentiometer8": [
+        {
+            "instance": "/graph/modulay",
+            "dividers": null,
+            "maximum": 6000.0,
+            "tempo": false,
+            "label": "tone",
+            "steps": 33,
+            "port": "tone",
+            "minimum": 500.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/shiroverb",
+            "dividers": null,
+            "maximum": 6000.0,
+            "tempo": false,
+            "label": "tone",
+            "steps": 33,
+            "port": "tone",
+            "minimum": 500.0,
+            "page": 2,
+            "group": null
+        }
+    ],
+    "/hmi/knob1": [
+        {
+            "instance": "/graph/xfade",
+            "dividers": null,
+            "maximum": 1.0,
+            "tempo": false,
+            "label": "AutoTune Mix",
+            "steps": 65,
+            "port": "xfade",
+            "minimum": -1.0,
+            "page": 0,
+            "group": null
+        },
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 11.0,
+            "tempo": false,
+            "label": "Interval 1",
+            "steps": 11,
+            "port": "Interval_1",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        }
+    ],
+    "/hmi/knob2": [
+        {
+            "instance": "/graph/Harmonizer2",
+            "dividers": null,
+            "maximum": 11.0,
+            "tempo": false,
+            "label": "Interval 2",
+            "steps": 11,
+            "port": "Interval_2",
+            "minimum": 0.0,
+            "page": 1,
+            "group": null
+        },
+        {
+            "instance": "/graph/modulay",
+            "dividers": 8,
+            "maximum": 48,
+            "tempo": true,
+            "label": "time",
+            "steps": 33,
+            "port": "time",
+            "minimum": 1,
+            "page": 0,
+            "group": null
+        }
+    ],
+    "/cv/graph/cv_exp_pedal": [],
+    "/cv/graph/cv_capture_1": [],
+    "/hmi/group2": [],
+    "/bpm": [],
+    "/cv/graph/cv_capture_2": [],
+    "/hmi/group3": []
+}
