@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="mod-live-usb"
-iso_label="v1"
+iso_label="v2"
 iso_publisher="MOD Devices <https://moddevices.com>"
 iso_application="MOD Live USB"
 iso_version="v1"
