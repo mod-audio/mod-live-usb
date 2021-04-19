@@ -5,6 +5,7 @@ amd-ucode
 base
 breeze
 cloud-init
+cpupower
 edk2-shell
 efibootmgr
 intel-ucode
@@ -16,6 +17,7 @@ memtest86+
 mkinitcpio
 mkinitcpio-archiso
 nano
-okular
 openssh
+rtirq
 syslinux
+thermald

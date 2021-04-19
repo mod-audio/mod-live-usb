@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="client-js" dir="ltr" style="" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>MOD Web GUI User Guide - MOD Wiki</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"MOD_Web_GUI_User_Guide","wgTitle":"MOD Web GUI User Guide","wgCurRevisionId":12643,"wgRevisionId":12643,"wgArticleId":6101,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":"FalkTX","wgUserGroups":["sysop","*","user","autoconfirmed"],"wgCategories":[],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"MOD_Web_GUI_User_Guide","wgRelevantArticleId":6101,"wgRequestId":"005a5e620b6cd2e30de0be33","wgCSPNonce":!1,"wgUserId":9176,"wgUserEditCount":
+869,"wgUserRegistration":1458817537000,"wgUserNewMsgRevisionId":null,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[]};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.toc.styles":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready"};RLPAGEMODULES=["site","mediawiki.page.startup","mediawiki.page.ready","mediawiki.toc","mediawiki.searchSuggest","mediawiki.page.watch.ajax","skins.vector.js"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@fahwp",function($,jQuery,require,module){/*@nomin*/mw.user.options.set({"rcdays":"30","rcfilters-limit":"50","rcfilters-rc-collapsed":0,"rcfilters-saved-queries":"{\"queries\":{},\"version\":\"2\"}"});
+});mw.loader.implement("user.tokens@tffin",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"editToken":"1276ab3a1d60ea5ca97a908d4e73522a607d579f+\\","patrolToken":"d1684802d5648b0e2cdbaa0deeaa9573607d579f+\\","watchToken":"5b9955942be1a63d1c6e771034b4991b607d579f+\\","csrfToken":"1276ab3a1d60ea5ca97a908d4e73522a607d579f+\\"});
+});});</script>
+<link rel="stylesheet" href="index_files/load.css">
+<style>
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:0;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:#fff;cursor:pointer;border:1px solid #a2a9b1;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:#fff;cursor:pointer;border:1px solid #a2a9b1;padding:0;margin:0}.suggestions-result{color:#000;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#2a4b8d;color:#fff}.suggestions-special .special-label{color:#72777d;text-align:left}.suggestions-special .special-query{color:#000;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:#c8ccd1}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:#fff}.highlight{font-weight:bold}
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	.toc.tochidden,.toctoggle{display:none}}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:#000;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:#fff}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="index_files/load_002.css">
+<meta name="generator" content="MediaWiki 1.34.2">
+<link rel="alternate" type="application/x-wiki" title="Edit" href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit">
+<link rel="edit" title="Edit" href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit">
+<link rel="shortcut icon" href="https://wiki.moddevices.com/resources/assets/mod.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://wiki.moddevices.com/opensearch_desc.php" title="MOD Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.moddevices.com/api.php?action=rsd">
+<link rel="license" href="http://www.gnu.org/copyleft/fdl.html">
+<!--[if lt IE 9]><script src="/resources/lib/html5shiv/html5shiv.js"></script><![endif]-->
+<!-- custom CSS for local -->
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    background: rgb(0, 0, 0) none repeat scroll 0% 0% !important;
+    padding: 15px;
+    height: max-content;
+    color: rgb(183, 183, 183) !important;
+}
+#content {
+    margin: 0;
+    max-width: 1000px;
+    background: rgb(23, 23, 23) none repeat scroll 0% 0% !important;
+    border: 1px solid rgb(43, 43, 43) !important;
+}
+.toc {
+    background-color: rgb(18, 18, 18)  !important;
+    border: 1px solid rgb(43, 43, 43) !important;
+}
+.wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wikitable > * > tr > td {
+    background-color: rgb(60, 60, 60);
+    border: 1px solid rgb(90, 90, 90) !important;
+    color: rgb(183, 183, 183) !important;
+}
+table {
+    /* TODO: override tr/th/td above */
+    border: 1px solid rgb(43, 43, 43) !important;
+}
+th {
+    background-color: rgb(18, 18, 18) !important;
+}
+.mw-editsection {
+    display: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: 1px solid rgb(90, 90, 90) !important;
+}
+p > b,
+ol > li,
+ul > li {
+    color: rgb(183, 183, 183) !important;
+}
+/* TODO doesnt work */
+ul > li::marker {
+    color: rgb(183, 183, 183) !important;
+}
+p > a {
+    cursor: unset !important;
+}
+li > a {
+    cursor: pointer !important;
+}
+</style>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-MOD_Web_GUI_User_Guide rootpage-MOD_Web_GUI_User_Guide skin-vector action-view">
+
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	
+	<div class="mw-indicators mw-body-content">
+</div>
+
+	<h1 id="firstHeading" class="firstHeading" lang="en">MOD Web GUI User Guide</h1>
+	
+	<div id="bodyContent" class="mw-body-content">
+		<div id="siteSub" class="noprint">From MOD Wiki</div>
+		<div id="contentSub"></div>
+		
+		
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#p-search">Jump to search</a>
+		<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div class="mw-parser-output"><p>This
+ page describes the graphical user interface (GUI) that is used for setting up your pedalboards.
+</p>
+<div id="toc" class="toc"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none"><div class="toctitle" dir="ltr" lang="en"><h2>Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-2"><a href="#Creating_a_pedalboard"><span class="tocnumber">1</span> <span class="toctext">Creating a pedalboard</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#New_pedalboard"><span class="tocnumber">1.1</span> <span class="toctext">New pedalboard</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Adding_and_connecting_plugins"><span class="tocnumber">1.2</span> <span class="toctext">Adding and connecting plugins</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Adjusting_plugins_parameters"><span class="tocnumber">1.3</span> <span class="toctext">Adjusting plugins parameters</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Assigning_plugins_parameters"><span class="tocnumber">1.4</span> <span class="toctext">Assigning plugins parameters</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="#Removing_an_assignment"><span class="tocnumber">1.4.1</span> <span class="toctext">Removing an assignment</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Making_an_assignment_to_a_MIDI_Controller"><span class="tocnumber">1.4.4</span> <span class="toctext">Making an assignment to a MIDI Controller</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="#Making_an_assignment_to_a_CV_controller"><span class="tocnumber">1.4.6</span> <span class="toctext">Making an assignment to a CV controller</span></a>
+<ul>
+<li class="toclevel-4 tocsection-14"><a href="#Other_MOD_devices"><span class="tocnumber">1.4.6.2</span> <span class="toctext">Other MOD devices</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-15"><a href="#Advanced_Settings"><span class="tocnumber">1.4.7</span> <span class="toctext">Advanced Settings</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-16"><a href="#Saving_.2F_loading_pedalboard_snapshots"><span class="tocnumber">1.5</span> <span class="toctext">Saving / loading pedalboard snapshots</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#Saving_a_pedalboard"><span class="tocnumber">1.6</span> <span class="toctext">Saving a pedalboard</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#Installing_new_plugins"><span class="tocnumber">1.8</span> <span class="toctext">Installing new plugins</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#Sharing_a_pedalboard"><span class="tocnumber">1.9</span> <span class="toctext">Sharing a pedalboard</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="#Expanding_Controls"><span class="tocnumber">2</span> <span class="toctext">Expanding Controls</span></a>
+<ul>
+<li class="toclevel-2 tocsection-22"><a href="#MIDI_devices"><span class="tocnumber">2.1</span> <span class="toctext">MIDI devices</span></a>
+<ul>
+<li class="toclevel-3 tocsection-25"><a href="#MIDI_USB"><span class="tocnumber">2.1.1</span> <span class="toctext">MIDI USB</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-27"><a href="#CPU_Usage"><span class="tocnumber">3</span> <span class="toctext">CPU Usage</span></a></li>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Creating_a_pedalboard">Creating a pedalboard</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=2" title="Edit section: Creating a pedalboard">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p>Once you have accessed the GUI you should see a screen like these:
+</p>
+<div style="display:inline-block">
+<table>
+
+<tbody><tr>
+<th>MOD Duo
+</th></tr>
+<tr>
+<td><a href="https://wiki.moddevices.com/wiki/File:DUO_PedalboardView.png" class="image"><img alt="DUO PedalboardView.png" src="index_files/800px-DUO_PedalboardView.png" decoding="async" srcset="index_files/1600px-DUO_PedalboardView.png 2x" width="800" height="454"></a>
+</td></tr></tbody></table>
+</div>
+<div style="display:inline-block">
+<table>
+
+<tbody><tr>
+<th>MOD Duo X
+</th></tr>
+<tr>
+<td><a href="https://wiki.moddevices.com/wiki/File:DUOX_PedalboardView.png" class="image"><img alt="DUOX PedalboardView.png" src="index_files/800px-DUOX_PedalboardView.png" decoding="async" srcset="index_files/1600px-DUOX_PedalboardView.png 2x" width="800" height="453"></a>
+</td></tr></tbody></table>
+</div>
+<p><br>
+The numbered areas on the interface are:
+</p>
+<ol><li>Pedalboard name</li>
+<li>Pedalboard actions bar</li>
+<li>Inputs</li>
+<li>Pedalboard constructor</li>
+<li>Outputs</li>
+<li>Plugins bar</li>
+<li>Mode selector (Constructor, Pedalboards, Banks and Store)</li>
+<li>Status bar (Device actions and information)</li></ol>
+<table class="wikitable">
+
+<tbody><tr>
+<th>MOD DUO</th>
+<th>MOD DUO X
+</th></tr>
+<tr>
+<td>On the left edge of the constructor area (section 3) of the MOD DUO 
+Web GUI there are 3 connectors: 2 audio inputs and 1 MIDI input.</td>
+<td>On the left edge of the constructor area (section 3) of the MOD DUO X
+ Web GUI there are 5 connectors: 2 audio inputs, 1 MIDI input, 2 CV 
+inputs and 1 expression pedal input.
+</td></tr>
+<tr>
+<td>On the right edge (section 5) there are another 3 connectors: 2 
+audio outputs and 1 MIDI output. All those connectors represent the real
+ inputs and outputs of your MOD DUO.</td>
+<td>On the right edge (section 5) there are 5 connectors: 2 audio 
+outputs, 1 MIDI output and 2 CV outputs. All those connectors represent 
+the real inputs and outputs of your MOD DUO X.
+</td></tr></tbody></table>
+<p><b>Be aware that on the interface</b>:
+</p>
+<ul><li>the signal flows from left to right;</li>
+<li>purple cables transport audio signals;</li>
+<li>cyan cables transport MIDI signals;</li>
+<li>orange cables transport CV signals.</li></ul>
+<h2><span class="mw-headline" id="New_pedalboard">New pedalboard</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=3" title="Edit section: New pedalboard">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To create a new pedalboard click on the <a href="https://wiki.moddevices.com/wiki/File:Gui-new-pedalboard.png" class="image" title="New pedalboard"><img alt="New pedalboard" src="index_files/Gui-new-pedalboard.png" decoding="async" width="167" height="34"></a>
+ button in the pedalboard actions bar. This action will load the default
+ pedalboard, which is only connections from inputs to outputs. 
+</p><p>
+</p>
+<h2><span class="mw-headline" id="Adding_and_connecting_plugins">Adding and connecting plugins</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=4" title="Edit section: Adding and connecting plugins">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To add plugins, drag-and-drop one from the plugins bar to the 
+pedalboard constructor area. To make a new connection, click on the 
+plugin’s output jack and drag it to where you want to connect it. To 
+unmake a connection, click on the connected jack, then drag and release 
+it to any empty area on the constructor.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:AddingAndConnectingPlugIns.png" class="image"><img alt="AddingAndConnectingPlugIns.png" src="index_files/780px-AddingAndConnectingPlugIns.png" decoding="async" srcset="index_files/1560px-AddingAndConnectingPlugIns.png 2x" width="780" height="442"></a>
+</p><p>Note that the inputs and outputs of your device are completely 
+independent and can process multiple audio paths. The MOD devices allow 
+you to create multiple connections coming out from the same output and 
+also allows multiple connections to come in the same input. This feature
+ allows the user to create complex pedalboards.
+</p>
+<h2><span class="mw-headline" id="Adjusting_plugins_parameters">Adjusting plugins parameters</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=5" title="Edit section: Adjusting plugins parameters">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Each plugin has 3 icons on its top: info <a href="https://wiki.moddevices.com/wiki/File:Gui-info.png" class="image"><img alt="Gui-info.png" src="index_files/Gui-info.png" decoding="async" width="25" height="30"></a>, settings <a href="https://wiki.moddevices.com/wiki/File:Gui-settgins.png" class="image"><img alt="Gui-settgins.png" src="index_files/Gui-settgins.png" decoding="async" width="26" height="29"></a> and delete <a href="https://wiki.moddevices.com/wiki/File:Gui-delete.png" class="image"><img alt="Gui-delete.png" src="index_files/Gui-delete.png" decoding="async" width="24" height="28"></a>. To adjust the parameters of the plugin click on the settings icon.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:Gui-4.png" class="image"><img alt="Gui-4.png" src="index_files/Gui-4.png" decoding="async" width="784" height="491"></a>
+</p><p>Each knob, list and switch represents a parameter of the plugin 
+and can be adjusted as desired. The combination of all parameter values 
+can be saved/loaded as a user preset and, for the cases in which they 
+are available, factory presets can be loaded.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:Gui-5.png" class="image"><img alt="Gui-5.png" src="index_files/Gui-5.png" decoding="async" width="479" height="303"></a>
+</p>
+<h2><span class="mw-headline" id="Assigning_plugins_parameters">Assigning plugins parameters</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=6" title="Edit section: Assigning plugins parameters">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>One of the most powerful features that MOD devices offer is the 
+ability to assign plugin parameters and preset lists to physical 
+actuators, like knobs, buttons and footswitches.
+</p><p>Any parameter can be assigned, but some parameters can only be 
+assigned to a specific type of actuator. The interface will not show the
+ actuator as an option if it is not allowed to be assigned to. Note that
+ preset lists can also be assigned to actuators.
+</p><p>To create an assignment, first click on the fader icon <a href="https://wiki.moddevices.com/wiki/File:Gui-assign.png" class="image"><img alt="Gui-assign.png" src="index_files/Gui-assign.png" decoding="async" width="30" height="28"></a>,
+ found on the bottom-right corner of each parameter box, to open the 
+assignment dialog box. For the presets list you should click "Assign 
+All" and you must have your list populated with more than one preset.
+</p><p>It will popup a window with multiple lists, similar with the following:
+</p><p><a href="https://wiki.moddevices.com/wiki/File:AssignmentsWindow.png" class="image"><img alt="AssignmentsWindow.png" src="index_files/500px-AssignmentsWindow.png" decoding="async" srcset="index_files/750px-AssignmentsWindow.png 1.5x, index_files/1000px-AssignmentsWindow.png 2x" width="500" height="181"></a>
+</p>
+<h3><span class="mw-headline" id="Removing_an_assignment">Removing an assignment</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=7" title="Edit section: Removing an assignment">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>If you want to remove an assignment just select "None" tab and press save.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:RemovingAssignment.png" class="image"><img alt="RemovingAssignment.png" src="index_files/500px-RemovingAssignment.png" decoding="async" srcset="index_files/750px-RemovingAssignment.png 1.5x, index_files/1000px-RemovingAssignment.png 2x" width="500" height="181"></a>
+</p><p><br>
+</p>
+<h3><span class="mw-headline" id="Making_an_assignment_to_a_MIDI_Controller">Making an assignment to a MIDI Controller</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=10" title="Edit section: Making an assignment to a MIDI Controller">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>If you want to assign any type of parameter to an actuator of a MIDI 
+Controller connected to your MOD device you must select the "MIDI" tab, 
+press save and interact with the desired actuator (for example: push the
+ button or turn the knob).
+</p><p><a href="https://wiki.moddevices.com/wiki/File:AssigmentToMIDIController.png" class="image"><img alt="AssigmentToMIDIController.png" src="index_files/500px-AssigmentToMIDIController.png" decoding="async" srcset="index_files/750px-AssigmentToMIDIController.png 1.5x, index_files/1000px-AssigmentToMIDIController.png 2x" width="500" height="220"></a>
+</p><p>Learn more on <a href="#MIDI_devices" title="MOD Web GUI User Guide">Expanding controls / MIDI devices</a>.
+</p>
+<h3><span class="mw-headline" id="Making_an_assignment_to_a_CV_controller">Making an assignment to a CV controller</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=12" title="Edit section: Making an assignment to a CV controller">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>If you want to assign a parameter to one CV controller connected to your MOD device select the tab "CV".
+</p><p><br>
+</p>
+<h4><span class="mw-headline" id="Other_MOD_devices">Other MOD devices</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=14" title="Edit section: Other MOD devices">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>For other MOD devices it is necessary to create an internal CV addressing source.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:NoCV.png" class="image"><img alt="NoCV.png" src="index_files/500px-NoCV.png" decoding="async" srcset="index_files/750px-NoCV.png 1.5x, index_files/1000px-NoCV.png 2x" width="500" height="240"></a>
+</p><p><br>
+</p>
+<ul><li>For that you need to load one CV plugin from your plugins bar.</li></ul>
+<p><a href="https://wiki.moddevices.com/wiki/File:CVPlugins.png" class="image"><img alt="CVPlugins.png" src="index_files/500px-CVPlugins.png" decoding="async" srcset="index_files/750px-CVPlugins.png 1.5x, index_files/1000px-CVPlugins.png 2x" width="500" height="135"></a>
+</p><p><br>
+<b>Note</b>: if you have no Control Voltage plugins available on your 
+plugins bar, head over to the shop and you will find pretty cool ones 
+for free.
+</p>
+<ul><li>Drag and drop one of those plugins into your pedalboard and click on <a href="https://wiki.moddevices.com/wiki/File:ManageCVPortsButton.png" class="image"><img alt="ManageCVPortsButton.png" src="index_files/150px-ManageCVPortsButton.png" decoding="async" srcset="index_files/225px-ManageCVPortsButton.png 1.5x, index_files/300px-ManageCVPortsButton.png 2x" width="150" height="39"></a></li></ul>
+<ul><li>Check boxes will appear next to the outputs of the CV plugin 
+that you've just loaded. Select and label the ones that you want to use.</li></ul>
+<p><a href="https://wiki.moddevices.com/wiki/File:LabelCV.png" class="image"><img alt="LabelCV.png" src="index_files/300px-LabelCV.png" decoding="async" srcset="index_files/450px-LabelCV.png 1.5x, index_files/LabelCV.png 2x" width="300" height="332"></a>
+</p>
+<ul><li>This way you just created an internal CV controller. Go back to 
+the CV tab of the control you want to assign and now you will be able to
+ see a dropdown menu with the labels that you just created on your CV 
+plugins.</li></ul>
+<p><a href="https://wiki.moddevices.com/wiki/File:InternalCV.png" class="image"><img alt="InternalCV.png" src="index_files/500px-InternalCV.png" decoding="async" srcset="index_files/750px-InternalCV.png 1.5x, index_files/1000px-InternalCV.png 2x" width="500" height="228"></a>
+</p>
+<h3><span class="mw-headline" id="Advanced_Settings">Advanced Settings</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=15" title="Edit section: Advanced Settings">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>There is also the possibility to adjust further options by clicking on the "Advanced" button.
+</p><p>By clicking on it your assignment window will stretch. 
+</p><p><a href="https://wiki.moddevices.com/wiki/File:AdvancedAssignSettings.png" class="image"><img alt="AdvancedAssignSettings.png" src="index_files/200px-AdvancedAssignSettings.png" decoding="async" srcset="index_files/300px-AdvancedAssignSettings.png 1.5x, index_files/AdvancedAssignSettings.png 2x" width="200" height="281"></a>
+</p><p>On the stretched window you can:
+</p>
+<ul><li>Define a different label that you would like to be displayed on the displays of your device;</li>
+<li>Enter the range that you want the mapped actuator to sweep within;</li>
+<li>Set the sensitivity (amount of steps from minimum to maximum) of the actuator from the dropdown menu;</li>
+<li>Set the operational mode polarity of your CV control.</li></ul>
+<p><br>
+Once you have done the adjustments, click on the <b>save</b> button to 
+execute the assignment.
+</p>
+<h2><span id="Saving_/_loading_pedalboard_snapshots"></span><span class="mw-headline" id="Saving_.2F_loading_pedalboard_snapshots">Saving / loading pedalboard snapshots</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=16" title="Edit section: Saving / loading pedalboard snapshots">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>You have the possibility to save the combination of parameter 
+adjustments as a pedalboard snapshot. In order to do so, turn on the 
+pedalboard snapshot mode by clicking on <a href="https://wiki.moddevices.com/wiki/File:SnapshotsButton.png" class="image"><img alt="SnapshotsButton.png" src="index_files/150px-SnapshotsButton.png" decoding="async" srcset="index_files/225px-SnapshotsButton.png 1.5x, index_files/SnapshotsButton.png 2x" width="150" height="48"></a>. Find it on the pedalboard actions bar. 
+</p><p><a href="https://wiki.moddevices.com/wiki/File:SnapshotsMenu.png" class="image"><img alt="SnapshotsMenu.png" src="index_files/800px-SnapshotsMenu.png" decoding="async" srcset="index_files/1200px-SnapshotsMenu.png 1.5x, index_files/SnapshotsMenu.png 2x" width="800" height="386"></a>
+</p><p>To save the changes to the current pedalboard snapshot, choose the option <b>Save</b>. To save a new snapshot use the option <b>Save as</b> and give it a name. To load, delete or rename a saved snapshot use the option <b>Load / Manage</b>.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:LoadManageSnapshots.png" class="image"><img alt="LoadManageSnapshots.png" src="index_files/500px-LoadManageSnapshots.png" decoding="async" srcset="index_files/750px-LoadManageSnapshots.png 1.5x, index_files/LoadManageSnapshots.png 2x" width="500" height="424"></a>
+</p><p>A single click on the name of the snapshot will load it. You also
+ have the option to assign the snapshots list to an actuator by using 
+the <b>Assign all</b> button.
+</p><p><b>NOTE:</b> the snapshot list currently cannot be reordered, so 
+some care must be taken when saving new shapshots in ordered to be 
+effectively navigated with an actuator or via MIDI.
+</p>
+<h2><span class="mw-headline" id="Saving_a_pedalboard">Saving a pedalboard</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=17" title="Edit section: Saving a pedalboard">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To save a pedalboard use the buttons <b>Save</b> or <b>Save as</b> on
+ the pedalboard actions bar. All previously saved pedalboards can be 
+found and loaded from the pedalboards library. To access the pedalboards
+ library click on its button <a href="https://wiki.moddevices.com/wiki/File:Gui-pedalboards.png" class="image" title="Pedalboards"><img alt="Pedalboards" src="index_files/Gui-pedalboards.png" decoding="async" width="43" height="36"></a> in the mode selection bar.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:Gui-11.png" class="image"><img alt="Gui-11.png" src="index_files/Gui-11.png" decoding="async" width="787" height="442"></a>
+</p><p>A single click on the pedalboard image or name will load it to the constructor. To delete a pedalboard click on its trash icon <a href="https://wiki.moddevices.com/wiki/File:Gui-trash.png" class="image" title="Trash"><img alt="Trash" src="index_files/Gui-trash.png" decoding="async" width="25" height="32"></a> on the right of the pedalboard name.
+</p>
+<h1><span class="mw-headline" id="Expanding_Controls">Expanding Controls</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=21" title="Edit section: Expanding Controls">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<h2><span class="mw-headline" id="MIDI_devices">MIDI devices</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=22" title="Edit section: MIDI devices">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>There are two ways to connect MIDI devices, via the classic MIDI DIN connector and via USB.
+</p>
+<h3><span class="mw-headline" id="MIDI_USB">MIDI USB</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=25" title="Edit section: MIDI USB">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In addition to the classic MIDI ports you can also use the USB port 
+to connect your MIDI controllers. Your MOD device will recognize your 
+MIDI device when it is plugged in and add it to the MIDI ports list. 
+Because a single MIDI device can have multiple ports, they are not 
+visible in the assembler by default. To make them visible you will have 
+to enable them first by clicking on <a href="https://wiki.moddevices.com/wiki/File:Gui-midi-ports.png" class="image"><img alt="Gui-midi-ports.png" src="index_files/Gui-midi-ports.png" decoding="async" width="113" height="30"></a>.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:MIDIPorts.png" class="image"><img alt="MIDIPorts.png" src="index_files/500px-MIDIPorts.png" decoding="async" srcset="index_files/750px-MIDIPorts.png 1.5x, index_files/MIDIPorts.png 2x" width="500" height="223"></a>
+</p><p>If you select the <b>Aggregate mode</b> all the MIDI ports from 
+all the connected MIDI controllers will appear as a single MIDI Input 
+and single MIDI Output. This will not allow you to differentiate between
+ controllers if, for example, you have two instruments loaded and want 
+to use one MIDI keyboard to play a bass sound and another to play a lead
+ sound.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:AggregatedMIDIPorts.png" class="image"><img alt="AggregatedMIDIPorts.png" src="index_files/800px-AggregatedMIDIPorts.png" decoding="async" srcset="index_files/1600px-AggregatedMIDIPorts.png 2x" width="800" height="453"></a>
+</p><p>If you select <b>Separated mode</b> each single port of each 
+single controller that you have connected to your MOD device and have 
+active on your MIDI ports list will appear with different MIDI input and
+ output.
+</p><p>On the MIDI ports list select the ports that you want to enable and click on the <b>Save</b> button. Now you should see the new ports added to the constructor screen.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:SeparatedMIDIPorts.png" class="image"><img alt="SeparatedMIDIPorts.png" src="index_files/800px-SeparatedMIDIPorts.png" decoding="async" srcset="index_files/1600px-SeparatedMIDIPorts.png 2x" width="800" height="454"></a>
+</p><p>Note that you do not have to enable a specific MIDI port to be 
+able to use MIDI learn. For MIDI learn, all MIDI devices will work as 
+soon as they are connected to your MOD device.
+</p>
+<h1><span class="mw-headline" id="CPU_Usage">CPU Usage</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://wiki.moddevices.com/index.php?title=MOD_Web_GUI_User_Guide&amp;action=edit&amp;section=27" title="Edit section: CPU Usage">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p>In the status bar of the GUI there are CPU and RAM meters. It is 
+useful to monitor these resources when you are creating your pedalboard.
+ It’s recommended to keep the CPU usage lower than 80%. Note that each 
+plugin consumes a different amount of CPU and RAM.
+</p><p><a href="https://wiki.moddevices.com/wiki/File:Gui-23.png" class="image"><img alt="Gui-23.png" src="index_files/Gui-23.png" decoding="async" width="290" height="60"></a>
+</p>
+
+
+</div></div>
+
+	</div>
+</div>
+
+
+		</div>
+		
+
+<div style="display: none; font-size: 13px;" class="suggestions"><div class="suggestions-results" style="background: rgb(23, 23, 23) none repeat scroll 0% 0% !important;"></div><div class="suggestions-special" style="background: rgb(23, 23, 23) none repeat scroll 0% 0% !important;"></div></div></body><link type="text/css" id="dma-temp-global-css" class="dmn-custom-append-data" rel="stylesheet" href="index_files/global-new.css"><link type="text/css" id="dma-universal-css" class="dmn-custom-append-data" rel="stylesheet" href="index_files/universal.css"></html>

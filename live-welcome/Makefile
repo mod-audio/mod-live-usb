@@ -2,6 +2,7 @@
 OBJECTS  = welcome.cpp.o
 OBJECTS += src/AudioDiscovery.cpp.o
 OBJECTS += src/KioskTabs.cpp.o
+OBJECTS += src/Utils.cpp.o
 OBJECTS += src/moc_KioskSettingsPopup.cpp.o
 OBJECTS += src/moc_KioskWindow.cpp.o
 # OBJECTS += moc_welcome.cpp.o
@@ -52,6 +53,9 @@ src/AudioDiscovery.cpp.o: src/AudioDiscovery.cpp src/AudioDiscovery.hpp
 	$(CXX) $< -c $(ALSA_CFLAGS) $(CXXFLAGS) -o $@
 
 src/KioskTabs.cpp.o: src/KioskTabs.cpp src/KioskTabs.hpp src/KioskAbout.hpp resources/watermark.txt
+	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(CXXFLAGS) -o $@
+
+src/Utils.cpp.o: src/Utils.cpp src/Utils.hpp
 	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(CXXFLAGS) -o $@
 
 src/moc_%.cpp.o: src/moc_%.cpp
