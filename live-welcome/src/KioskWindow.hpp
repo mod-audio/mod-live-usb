@@ -12,8 +12,12 @@
 
 #include "KioskTabs.hpp"
 #include "KioskSettingsPopup.hpp"
-
 #include "Utils.hpp"
+
+#include "../widgets/digitalpeakmeter.hpp"
+
+// TESTING
+#include <QtCore/QRandomGenerator>
 
 class KioskWindow : public QMainWindow
 {
@@ -26,10 +30,16 @@ class KioskWindow : public QMainWindow
     QRect clockRect;
     int clockTimer;
 
+    DigitalPeakMeter peakMeterIn;
+    DigitalPeakMeter peakMeterOut;
     QPushButton settingsButton;
+    QPushButton powerButton;
 
     QProcess audioContainer;
     const QString program;
+
+    // TESTING
+    QRandomGenerator random;
 
 public:
     KioskWindow()
@@ -39,7 +49,10 @@ public:
         clockFont(font()),
         clockRect(),
         clockTimer(-1),
+        peakMeterIn(this),
+        peakMeterOut(this),
         settingsButton(this),
+        powerButton(this),
         audioContainer(),
         program(findStartScript())
     {
@@ -48,27 +61,42 @@ public:
 
         // audioContainer.setProcessChannelMode(QProcess::ForwardedChannels);
 
+        const int height = tabWidget.tabBar()->height();
+
         clockFont.setFamily("Monospace");
         clockFont.setPixelSize(20);
 
-        QFontMetrics metrics(clockFont);
-        const int height = tabWidget.tabBar()->height();
-        const int fontheight = metrics.height();
+        peakMeterIn.setChannelCount(2);
+        peakMeterIn.setMeterColor(DigitalPeakMeter::COLOR_BLUE);
+        peakMeterIn.setMeterLinesEnabled(false);
+        peakMeterIn.setMeterOrientation(DigitalPeakMeter::HORIZONTAL);
+        peakMeterIn.setMeterStyle(DigitalPeakMeter::STYLE_RNCBC);
+        peakMeterIn.setFixedSize(150, height);
 
-        clockRect = QRect(0, height/2 - fontheight/2, metrics.horizontalAdvance("00:00:00"), fontheight);
-        clockTimer = startTimer(1000);
+        peakMeterOut.setChannelCount(2);
+        peakMeterOut.setMeterColor(DigitalPeakMeter::COLOR_GREEN);
+        peakMeterOut.setMeterLinesEnabled(false);
+        peakMeterOut.setMeterOrientation(DigitalPeakMeter::HORIZONTAL);
+        peakMeterOut.setMeterStyle(DigitalPeakMeter::STYLE_OPENAV);
+        peakMeterOut.setFixedSize(150, height);
 
-        if (program.isEmpty())
-        {
-            settingsButton.hide();
-            return;
-        }
-
-        settingsButton.setFixedWidth(32);
+        settingsButton.setFixedSize(height, height);
         settingsButton.setFocusPolicy(Qt::FocusPolicy::NoFocus);
         settingsButton.setText("(S)");
-        settingsButton.move(width() - clockRect.width() - settingsButton.width() - 8, 0);
+
+        powerButton.setFixedSize(height, height);
+        powerButton.setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        powerButton.setText("(P)");
+
+        repositionTabBarWidgets();
+
+        clockTimer = startTimer(1000);
+
+        connect(&powerButton, SIGNAL(clicked()), this, SLOT(openPower()));
         connect(&settingsButton, SIGNAL(clicked()), this, SLOT(openSettings()));
+
+        if (program.isEmpty())
+            settingsButton.hide();
     }
 
     ~KioskWindow() override
@@ -94,7 +122,11 @@ public:
     }
 
 public Q_SLOTS:
-    void openSettings()
+    void openPower()
+    {
+    }
+
+    void openSettings(const bool cancellable = true)
     {
         if (program.isEmpty())
             return;
@@ -102,6 +134,7 @@ public Q_SLOTS:
         if (settingsPopup == nullptr)
             settingsPopup = new KioskSettingsPopup();
 
+        settingsPopup->setCancellable(cancellable);
         settingsPopup->exec();
 
         QString device;
@@ -109,7 +142,12 @@ public Q_SLOTS:
         unsigned bufsize;
 
         if (! settingsPopup->getSelected(device, rate, bufsize))
-            return openSettings();
+        {
+            if (cancellable)
+                return;
+
+            return openSettings(cancellable);
+        }
         printf("Selected %s %u %u\n", device.toUtf8().constData(), rate, bufsize);
 
         stopAudioContainer();
@@ -168,11 +206,7 @@ protected:
     void resizeEvent(QResizeEvent* const event) override
     {
         QMainWindow::resizeEvent(event);
-
-        clockRect.moveTo(width() - clockRect.width(), clockRect.y());
-        settingsButton.move(width() - clockRect.width() - settingsButton.width() - 8, 0);
-
-        update(clockRect);
+        repositionTabBarWidgets();
     }
 
     void timerEvent(QTimerEvent* const event) override
@@ -185,5 +219,40 @@ protected:
             return;
 
         update(clockRect);
+
+        // TESTING
+        peakMeterIn.displayMeter(1, random.generateDouble(), true);
+        peakMeterIn.displayMeter(2, random.generateDouble(), true);
+        peakMeterOut.displayMeter(1, random.generateDouble(), true);
+        peakMeterOut.displayMeter(2, random.generateDouble(), true);
+    }
+
+private:
+    void repositionTabBarWidgets()
+    {
+        const int width = this->width();
+        const int height = tabWidget.tabBar()->height();
+
+        // clock at center
+        QFontMetrics clockmetrics(clockFont);
+        const int clockwidth = clockmetrics.horizontalAdvance("00:00:00");
+        const int clockheight = clockmetrics.height();
+        clockRect = QRect(width/2 - clockwidth/2, height/2 - clockheight/2, clockwidth, clockheight);
+
+        // going from the corner..
+        const int padding = 4;
+        int x = width;
+
+        x -= powerButton.width() + padding;
+        powerButton.move(x, 0);
+
+        x -= settingsButton.width() + padding;
+        settingsButton.move(x, 0);
+
+        x -= peakMeterOut.width() + padding;
+        peakMeterOut.move(x, 0);
+
+        x -= peakMeterIn.width() + padding;
+        peakMeterIn.move(x, 0);
     }
 };

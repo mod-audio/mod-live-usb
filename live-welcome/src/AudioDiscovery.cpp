@@ -216,19 +216,11 @@ void enumerateSoundcards(std::stringlist& inputNames,
     // snd_ctl_card_info_free(cardinfo);
 }
 
-void getDeviceProperties(const char* const deviceID,
-                         unsigned& minChansOut,
-                         unsigned& maxChansOut,
-                         unsigned& minChansIn,
-                         unsigned& maxChansIn,
-                         std::vector<unsigned>& bufSizes,
-                         std::vector<unsigned>& rates,
-                         bool testOutput,
-                         bool testInput)
+void getDeviceProperties(const char* const deviceID, bool testOutput, bool testInput, DeviceProperties& props)
 {
-    minChansOut = maxChansOut = minChansIn = maxChansIn = 0;
-    bufSizes.clear();
-    rates.clear();
+    props.minChansOut = props.maxChansOut = props.minChansIn = props.maxChansIn = 0;
+    props.bufsizes.clear();
+    props.rates.clear();
 
     if (deviceID == nullptr || *deviceID == '\0')
         return;
@@ -242,9 +234,9 @@ void getDeviceProperties(const char* const deviceID,
 
         if (snd_pcm_open(&pcm, deviceID, SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK) >= 0)
         {
-            getDeviceNumChannels(pcm, minChansOut, maxChansOut);
-            getDeviceBufferSizes(pcm, bufSizes);
-            getDeviceSampleRates(pcm, rates);
+            getDeviceNumChannels(pcm, props.minChansOut, props.maxChansOut);
+            getDeviceBufferSizes(pcm, props.bufsizes);
+            getDeviceSampleRates(pcm, props.rates);
 
             snd_pcm_close(pcm);
         }
@@ -256,13 +248,13 @@ void getDeviceProperties(const char* const deviceID,
 
         if (snd_pcm_open(&pcm, deviceID, SND_PCM_STREAM_CAPTURE, SND_PCM_NONBLOCK) >= 0)
         {
-            getDeviceNumChannels(pcm, minChansIn, maxChansIn);
+            getDeviceNumChannels(pcm, props.minChansIn, props.maxChansIn);
 
-            if (bufSizes.size() == 0)
-                getDeviceBufferSizes(pcm, bufSizes);
+            if (props.bufsizes.size() == 0)
+                getDeviceBufferSizes(pcm, props.bufsizes);
 
-            if (rates.size() == 0)
-                getDeviceSampleRates(pcm, rates);
+            if (props.rates.size() == 0)
+                getDeviceSampleRates(pcm, props.rates);
 
             snd_pcm_close(pcm);
         }

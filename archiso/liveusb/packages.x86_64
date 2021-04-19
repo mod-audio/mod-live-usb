@@ -3,6 +3,7 @@
 alsa-utils
 amd-ucode
 base
+bash
 breeze
 cloud-init
 cpupower
@@ -18,6 +19,7 @@ mkinitcpio
 mkinitcpio-archiso
 nano
 openssh
+qt5-webengine
 rtirq
 syslinux
 thermald

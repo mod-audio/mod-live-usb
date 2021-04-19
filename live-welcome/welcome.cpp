@@ -81,7 +81,8 @@ int main(int argc, char* argv[])
     win.resize(1200, 800);
     win.show();
 
-    win.openSettings();
+    if (getenv("TESTING") == nullptr)
+        win.openSettings(false);
 
     return app.exec();
 }

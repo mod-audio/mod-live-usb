@@ -10,17 +10,21 @@ namespace std {
 typedef vector<string> stringlist;
 }
 
+typedef struct {
+    unsigned minChansOut = 0;
+    unsigned maxChansOut = 0;
+    unsigned minChansIn = 0;
+    unsigned maxChansIn = 0;
+    std::vector<unsigned> bufsizes;
+    std::vector<unsigned> rates;
+} DeviceProperties;
+
 void enumerateSoundcards(std::stringlist& inputNames,
                          std::stringlist& outputNames,
                          std::stringlist& inputIds,
                          std::stringlist& outputIds);
 
 void getDeviceProperties(const char* const deviceID,
-                         unsigned& minChansOut,
-                         unsigned& maxChansOut,
-                         unsigned& minChansIn,
-                         unsigned& maxChansIn,
-                         std::vector<unsigned>& bufSizes,
-                         std::vector<unsigned>& rates,
                          bool testOutput,
-                         bool testInput);
+                         bool testInput,
+                         DeviceProperties& props);

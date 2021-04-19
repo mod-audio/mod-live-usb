@@ -124,6 +124,9 @@ class KioskSettingsPopup : public QDialog
 
     QDialogButtonBox okBox;
 
+    QString cachedDeviceName;
+    DeviceProperties cachedDeviceProps;
+
 public:
     explicit KioskSettingsPopup(QWidget* const parent = nullptr)
       : QDialog(parent),
@@ -194,10 +197,9 @@ public:
         mainLayout.setSizeConstraint(QLayout::SetFixedSize);
 
         // connections
-        connect(&deviceBox, SIGNAL(currentIndexChanged(int)), this, SLOT(deviceIndexChanged(int)));
-        connect(&sampleRateBox, SIGNAL(currentIndexChanged(int)), this, SLOT(sampleRateBoxIndexChanged(int)));
-        connect(&bufferSizeBox, SIGNAL(currentIndexChanged(int)), this, SLOT(bufferSizeBoxIndexChanged(int)));
+        connect(&deviceBox, SIGNAL(currentIndexChanged(int)), this, SLOT(deviceIndexChanged()));
         connect(&okBox, SIGNAL(accepted()), this, SLOT(setupDone()));
+        connect(&okBox, SIGNAL(rejected()), this, SLOT(reject()));
 
         // fill up default values
         reenumerateSoundcards(false);
@@ -221,7 +223,7 @@ public:
         const int ret = QDialog::exec();
 
         // if selection is unsucessful, dont allow to close
-        if (! isValid())
+        if (wasFirstRun && ! isValid())
         {
             allowClose = false;
             firstRun = wasFirstRun;
@@ -241,6 +243,7 @@ public:
         return true;
     }
 
+    // NOTE you MUST use this device settings if this returns successful
     bool getSelected(QString& device, unsigned& rate, unsigned& bufsize)
     {
         if (! isValid())
@@ -249,10 +252,18 @@ public:
         device = deviceBox.currentData().toString();
         rate = sampleRateBox.currentData().toUInt();
         bufsize = bufferSizeBox.currentData().toUInt();
+
+        if (cachedDeviceName != device)
+        {
+            // store current device info, as we cannot query current running device later on
+            cachedDeviceName = device;
+            getDeviceProperties(device.toUtf8(), true, true, cachedDeviceProps);
+        }
+
         return true;
     }
 
-    void reenumerateSoundcards(const bool restore)
+    void reenumerateSoundcards(bool restore)
     {
         validRates = false;
 
@@ -261,6 +272,7 @@ public:
         if (restore)
             olddevice = deviceBox.currentText();
 
+        deviceBox.blockSignals(true);
         deviceBox.clear();
         inputNames.clear();
         inputIds.clear();
@@ -340,24 +352,50 @@ public:
             sampleRateBox.addItem("48000", -1);
             bufferSizeBox.clear();
             bufferSizeBox.addItem("256", -1);
+            deviceBox.blockSignals(false);
             return;
         }
 
         validRates = true;
-        refillDeviceOptions(restore, 0);
+
+        int index;
+        if (restore && (index = deviceBox.findText(olddevice)) >= 0)
+        {
+            deviceBox.setCurrentIndex(index);
+        }
+        else
+        {
+            restore = false;
+            deviceBox.setCurrentIndex(0);
+        }
+
+        deviceBox.blockSignals(false);
+
+        refillDeviceOptions(restore);
+    }
+
+    void setCancellable(const bool cancellable)
+    {
+        if (cancellable)
+        {
+            allowClose = true;
+            firstRun = false;
+            okBox.setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+        }
+        else
+        {
+            okBox.setStandardButtons(QDialogButtonBox::Ok);
+        }
     }
 
 private:
-    void refillDeviceOptions(const bool restore, const int index)
+    void refillDeviceOptions(const bool restore)
     {
+        const QString device(deviceBox.currentData().toString());
         unsigned oldrate;
         unsigned oldbufsize;
-        unsigned minChansOut;
-        unsigned maxChansOut;
-        unsigned minChansIn;
-        unsigned maxChansIn;
-        std::vector<unsigned> bufsizes;
-        std::vector<unsigned> rates;
+        DeviceProperties props;
+        bool hasrate = false, hasbufsize = false;
 
         if (restore)
         {
@@ -372,59 +410,53 @@ private:
         sampleRateBox.clear();
         bufferSizeBox.clear();
 
-        getDeviceProperties(deviceBox.itemData(index).toString().toUtf8(),
-                            minChansOut, maxChansOut, minChansIn, maxChansIn,
-                            bufsizes, rates,
-                            true, true);
+        getDeviceProperties(device.toUtf8(), true, true, props);
 
-        for (const unsigned rate : rates)
+        if (props.rates.size() == 0 && cachedDeviceName == device)
+            props = cachedDeviceProps;
+
+        for (const unsigned rate : props.rates)
         {
             sampleRateBox.addItem(QString::number(rate), rate);
 
-            if (oldrate > 1 && rate == oldrate)
+            if (rate == oldrate)
             {
-                oldrate = 1;
-                sampleRateBox.blockSignals(true);
+                hasrate = true;
                 sampleRateBox.setCurrentIndex(sampleRateBox.count()-1);
-                sampleRateBox.blockSignals(false);
             }
         }
 
-        for (const unsigned bufsize : bufsizes)
+        for (const unsigned bufsize : props.bufsizes)
         {
             bufferSizeBox.addItem(QString::number(bufsize), bufsize);
 
-            if (oldbufsize > 1 && bufsize == oldbufsize)
+            if (bufsize == oldbufsize)
             {
-                oldbufsize = 1;
-                bufferSizeBox.blockSignals(true);
+                hasbufsize = true;
                 bufferSizeBox.setCurrentIndex(bufferSizeBox.count()-1);
-                bufferSizeBox.blockSignals(false);
             }
         }
 
         // no options set yet, try to find best available
-        if (oldrate == 0)
+        if (! hasrate)
         {
             unsigned nextrate = 0;
             for (unsigned tryrate : { 48000, 441000, 96000, 88200 })
             {
-                if (std::find(rates.begin(), rates.end(), tryrate) != rates.end())
+                if (std::find(props.rates.begin(), props.rates.end(), tryrate) != props.rates.end())
                 {
                     nextrate = tryrate;
                     break;
                 }
             }
 
-            sampleRateBox.blockSignals(true);
             if (nextrate != 0)
                 sampleRateBox.setCurrentIndex(sampleRateBox.findData(nextrate));
             else
                 sampleRateBox.setCurrentIndex(0);
-            sampleRateBox.blockSignals(false);
         }
 
-        if (oldbufsize == 0)
+        if (! hasbufsize)
         {
             unsigned nextbufsize = 0;
             std::vector<unsigned> trybufsizes;
@@ -443,19 +475,17 @@ private:
 
             for (unsigned trybufsize : trybufsizes)
             {
-                if (std::find(bufsizes.begin(), bufsizes.end(), trybufsize) != bufsizes.end())
+                if (std::find(props.bufsizes.begin(), props.bufsizes.end(), trybufsize) != props.bufsizes.end())
                 {
                     nextbufsize = trybufsize;
                     break;
                 }
             }
 
-            bufferSizeBox.blockSignals(true);
             if (nextbufsize != 0)
                 bufferSizeBox.setCurrentIndex(bufferSizeBox.findData(nextbufsize));
             else
                 bufferSizeBox.setCurrentIndex(0);
-            bufferSizeBox.blockSignals(false);
         }
     }
 
@@ -469,6 +499,7 @@ protected:
             event->ignore();
     }
 
+protected Q_SLOTS:
     void reject() override
     {
         if (allowClose)
@@ -476,23 +507,11 @@ protected:
     }
 
 private Q_SLOTS:
-    void deviceIndexChanged(const int index)
+    void deviceIndexChanged()
     {
         if (! validRates)
             return;
-        refillDeviceOptions(true, index);
-    }
-
-    void sampleRateBoxIndexChanged(const int index)
-    {
-        if (! validRates)
-            return;
-    }
-
-    void bufferSizeBoxIndexChanged(const int index)
-    {
-        if (! validRates)
-            return;
+        refillDeviceOptions(true);
     }
 
     void setupDone()
