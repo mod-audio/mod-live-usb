@@ -67,4 +67,4 @@ resources/watermark.txt: resources/watermark.png
 # 	$(MOC) $< > $@
 
 clean:
-	rm -f $(TARGETS) *.o theme/*.o
+	rm -f $(TARGETS) *.o resources/*.txt src/*.o theme/*.o

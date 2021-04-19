@@ -434,7 +434,7 @@ private:
 
              if (devicename.contains("HDMI"))
                 trybufsizes = { 512, 1024, 256, 2048 };
-             else if (devicename.contains("Intel"))
+             else if (devicename.contains("HDA"))
                 trybufsizes = { 1024, 512, 2048, 256, 128 };
              else if (devicename.contains("PCH"))
                 trybufsizes = { 256, 512, 128, 1024, 2048 };
