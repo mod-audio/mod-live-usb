@@ -4,9 +4,13 @@ set -e
 
 cd $(dirname ${0})
 
+# regular usage, no systemd yet
+if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
+
 SOUNDCARD=${1}
 SAMPLERATE=${2}
 BUFFERSIZE=${3}
+EXEC=sudo
 
 # verify CLI arguments
 if [ -z "${SOUNDCARD}" ]; then
@@ -65,11 +69,27 @@ PLAYBACKARGS=
 EXTRAARGS=
 " > $(pwd)/config/soundcard.sh
 
-# no security, yay?
+# if this is systemd, stop now and activate through it
+if [ -n "${USING_SYSTEMD}" ]; then
+    exec systemctl start mod-live-audio
+    exit 1
+fi
+
+# not systemd, tell container to bypass security
 export SYSTEMD_SECCOMP=0
+
+# using systemd for audio startup, triggered by ourselves
+else
+
+EXEC=exec
+
+fi
 
 # optional nspawn options (everything must be valid)
 NSPAWN_OPTS=""
+if [ -e /dev/shm/ac ]; then
+NSPAWN_OPTS+=" --bind=/dev/shm/ac"
+fi
 if [ -e /dev/snd/pcmC${SOUNDCARD_ID}D0c ]; then
 NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD_ID}D0c"
 fi
@@ -86,18 +106,22 @@ NSPAWN_OPTS+=" --bind-ro=/mnt/plugins"
 elif [ -e ../plugins/bundles/abGate.lv2 ]; then
 NSPAWN_OPTS+=" --bind-ro=$(pwd)/../plugins/bundles:/mnt/plugins"
 fi
+if [ -e /mnt/mod-os/etc/fstab ]; then
+NSPAWN_OPTS+=" --directory=/mnt/mod-os"
+else
+NSPAWN_OPTS+=" --image=$(pwd)/rootfs.ext2"
+fi
 
 echo "starting up, pwd is $(pwd)"
 
 # ready!
-sudo systemd-nspawn \
+${EXEC} systemd-nspawn \
 --boot \
 --read-only \
 --capability=all \
 --private-users=false \
 --resolv-conf=bind-host \
 --machine="mod-live-usb" \
---image=$(pwd)/rootfs.ext2 \
 --bind=/dev/snd/controlC${SOUNDCARD_ID} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \

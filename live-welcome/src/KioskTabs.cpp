@@ -21,6 +21,12 @@ static const char* const initial_html = "<html><body><style>body { background: b
 #include "../resources/watermark.txt"
 ") no-repeat scroll calc(100vw - 506px) calc(100vh - 145px) }</style></body></html>";
 
+static const char* const initial_notes = ""
+"This is a space dedicated to writing text, feel free to reuse as copy & paste area.\n"
+"\n"
+"PS: You can use Ctrl+Alt+T keyboard combination to open a terminal in a new tab.\n"
+"\n";
+
 KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
     fileBrowser(nullptr),
@@ -38,22 +44,27 @@ KioskTabs::KioskTabs(QWidget* const parent)
         addTab(documentation, "Documentation");
     }
 
-#if 0
-    if (const KService::Ptr service = KService::serviceByDesktopName("okular_part"))
-    {
-        if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
-        {
-            p->openUrl(QUrl("file:///home/falktx/Documents/LU_04-15_DigiSub.pdf"));
-            addTab(p->widget(), "Documentation");
-        }
-    }
-#endif
-
     if (const KService::Ptr service = KService::serviceByDesktopName("katepart"))
     {
         if (KParts::ReadWritePart* const p = service->createInstance<KParts::ReadWritePart>(nullptr, {}))
         {
-            // p->openUrl(QUrl("file:///tmp/notes.txt"));
+            if (!documentationPath.isEmpty())
+            {
+                QDir notesDir(documentationPath);
+                notesDir.cdUp();
+
+                const QString notesFilename(notesDir.absoluteFilePath("notes.txt"));
+
+                QFile notesFile(notesFilename);
+                if (!notesFile.exists() && notesFile.open(QFile::WriteOnly))
+                {
+                    notesFile.write(initial_notes);
+                    notesFile.close();
+                }
+
+                p->openUrl(QUrl::fromLocalFile(notesFilename));
+            }
+
             addTab(p->widget(), "Notes");
         }
     }
@@ -73,11 +84,11 @@ KioskTabs::KioskTabs(QWidget* const parent)
 #endif
 }
 
-void KioskTabs::openKonsole()
+void KioskTabs::openTerminal()
 {
     if (const KService::Ptr service = KService::serviceByDesktopName("konsolepart"))
         if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
-            setCurrentIndex(addTab(p->widget(), "Konsole"));
+            setCurrentIndex(addTab(p->widget(), "Terminal"));
 }
 
 void KioskTabs::reloadPage()

@@ -16,6 +16,6 @@ class KioskTabs : public QTabWidget
 public:
     explicit KioskTabs(QWidget* const parent);
 
-    void openKonsole();
+    void openTerminal();
     void reloadPage();
 };

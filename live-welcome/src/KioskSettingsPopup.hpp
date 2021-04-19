@@ -8,6 +8,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 
@@ -112,6 +113,7 @@ class KioskSettingsPopup : public QDialog
     QHBoxLayout deviceLayout;
     QLabel deviceLabel;
     QComboBox deviceBox;
+    QPushButton deviceButton;
 
     CollapsibleBox advancedBox;
     QGridLayout advancedLayout;
@@ -139,6 +141,7 @@ public:
         deviceLayout(),
         deviceLabel(this),
         deviceBox(this),
+        deviceButton(this),
         advancedBox("Advanced", this),
         advancedLayout(),
         sampleRateLabel(this),
@@ -160,6 +163,7 @@ public:
         labelWelcome.setText("Welcome to MOD Live-USB");
         labelStart.setText("Please select your audio device from the list below.");
         deviceLabel.setText("Device:");
+        deviceButton.setText("(R)");
         sampleRateLabel.setText("Sample Rate:");
         bufferSizeLabel.setText("Buffer Size:");
         okBox.setCenterButtons(true);
@@ -168,6 +172,7 @@ public:
 
         // no focus please
         deviceBox.setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        deviceButton.setFocusPolicy(Qt::FocusPolicy::NoFocus);
         sampleRateBox.setFocusPolicy(Qt::FocusPolicy::NoFocus);
         bufferSizeBox.setFocusPolicy(Qt::FocusPolicy::NoFocus);
         okBox.setFocusPolicy(Qt::FocusPolicy::NoFocus);
@@ -176,8 +181,10 @@ public:
         deviceLabel.setAlignment(Qt::AlignRight);
         deviceLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         deviceBox.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        deviceButton.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         deviceLayout.addWidget(&deviceLabel);
         deviceLayout.addWidget(&deviceBox);
+        deviceLayout.addWidget(&deviceButton);
 
         // setup advanced box layout
         sampleRateLabel.setAlignment(Qt::AlignRight);
@@ -198,6 +205,7 @@ public:
 
         // connections
         connect(&deviceBox, SIGNAL(currentIndexChanged(int)), this, SLOT(deviceIndexChanged()));
+        connect(&deviceButton, SIGNAL(clicked()), this, SLOT(reenumerateSoundcards()));
         connect(&okBox, SIGNAL(accepted()), this, SLOT(setupDone()));
         connect(&okBox, SIGNAL(rejected()), this, SLOT(reject()));
 
@@ -263,7 +271,22 @@ public:
         return true;
     }
 
-    void reenumerateSoundcards(bool restore)
+    void setCancellable(const bool cancellable)
+    {
+        if (cancellable)
+        {
+            allowClose = true;
+            firstRun = false;
+            okBox.setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+        }
+        else
+        {
+            okBox.setStandardButtons(QDialogButtonBox::Ok);
+        }
+    }
+
+public Q_SLOTS:
+    void reenumerateSoundcards(bool restore = true)
     {
         validRates = false;
 
@@ -372,20 +395,6 @@ public:
         deviceBox.blockSignals(false);
 
         refillDeviceOptions(restore);
-    }
-
-    void setCancellable(const bool cancellable)
-    {
-        if (cancellable)
-        {
-            allowClose = true;
-            firstRun = false;
-            okBox.setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
-        }
-        else
-        {
-            okBox.setStandardButtons(QDialogButtonBox::Ok);
-        }
     }
 
 private:

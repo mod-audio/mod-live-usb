@@ -1,0 +1,2 @@
+# <file system>              <mount pt>   <type>  <options>  <dump>  <pass>
+/root/.mod-live/rootfs.ext2  /mnt/mod-os  ext2    loop,ro    0       0

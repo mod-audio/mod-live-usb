@@ -15,6 +15,7 @@ CHROOT_DIR=liveusb/airootfs
 MOD_LIVE_DIR=${CHROOT_DIR}/root/.mod-live
 
 mkdir -p cache output workdir
+mkdir -p ${CHROOT_DIR}/mnt/mod-os
 mkdir -p ${CHROOT_DIR}/mnt/pedalboards
 mkdir -p ${CHROOT_DIR}/mnt/plugins
 mkdir -p ${CHROOT_DIR}/root/rwdata/root

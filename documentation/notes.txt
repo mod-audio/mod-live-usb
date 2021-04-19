@@ -1,0 +1,3 @@
+This is a space dedicated to writing text, feel free to reuse as copy & paste area.
+
+PS: You can use Ctrl+Alt+T keyboard combination to open a terminal in a new tab.

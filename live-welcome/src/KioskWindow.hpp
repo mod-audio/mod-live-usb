@@ -4,9 +4,11 @@
 #pragma once
 
 #include <QtCore/QProcess>
+#include <QtCore/QThread>
 #include <QtCore/QTimer>
 #include <QtGui/QKeyEvent>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMessageBox>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabBar>
 
@@ -16,8 +18,48 @@
 
 #include "../widgets/digitalpeakmeter.hpp"
 
-// TESTING
-#include <QtCore/QRandomGenerator>
+class PeakMeterThread : public QThread
+{
+    AudioContainerComm* containerComm;
+    DigitalPeakMeter& peakMeterIn;
+    DigitalPeakMeter& peakMeterOut;
+
+public:
+    explicit PeakMeterThread(QObject* const parent, DigitalPeakMeter& in, DigitalPeakMeter& out)
+      : QThread(parent),
+        containerComm(nullptr),
+        peakMeterIn(in),
+        peakMeterOut(out) {}
+
+    void init()
+    {
+        if ((containerComm = initAudioContainerComm()) != nullptr)
+            start(HighPriority);
+    }
+
+    void stop()
+    {
+        cleanupAudioContainerComm(containerComm);
+        wait(2000);
+    }
+
+    void run() override
+    {
+        float peaks[4];
+
+        while (containerComm != nullptr && ! isInterruptionRequested())
+        {
+            if (! waitForAudioContainerComm(containerComm))
+                continue;
+
+            memcpy(peaks, containerComm->peaks, sizeof(peaks));
+            peakMeterIn.displayMeter(1, peaks[0]);
+            peakMeterIn.displayMeter(2, peaks[1]);
+            peakMeterOut.displayMeter(1, peaks[2]);
+            peakMeterOut.displayMeter(2, peaks[3]);
+        }
+    }
+};
 
 class KioskWindow : public QMainWindow
 {
@@ -35,11 +77,10 @@ class KioskWindow : public QMainWindow
     QPushButton settingsButton;
     QPushButton powerButton;
 
-    QProcess audioContainer;
     const QString program;
+    QProcess audioContainer;
 
-    // TESTING
-    QRandomGenerator random;
+    PeakMeterThread peakMeterThread;
 
 public:
     KioskWindow()
@@ -53,13 +94,14 @@ public:
         peakMeterOut(this),
         settingsButton(this),
         powerButton(this),
+        program(findStartScript()),
         audioContainer(),
-        program(findStartScript())
+        peakMeterThread(this, peakMeterIn, peakMeterOut)
     {
         setCentralWidget(&tabWidget);
         setWindowTitle("MOD Live USB");
 
-        // audioContainer.setProcessChannelMode(QProcess::ForwardedChannels);
+        audioContainer.setProcessChannelMode(QProcess::ForwardedChannels);
 
         const int height = tabWidget.tabBar()->height();
 
@@ -71,6 +113,7 @@ public:
         peakMeterIn.setMeterLinesEnabled(false);
         peakMeterIn.setMeterOrientation(DigitalPeakMeter::HORIZONTAL);
         peakMeterIn.setMeterStyle(DigitalPeakMeter::STYLE_RNCBC);
+        peakMeterIn.setSmoothMultiplier(0);
         peakMeterIn.setFixedSize(150, height);
 
         peakMeterOut.setChannelCount(2);
@@ -78,6 +121,7 @@ public:
         peakMeterOut.setMeterLinesEnabled(false);
         peakMeterOut.setMeterOrientation(DigitalPeakMeter::HORIZONTAL);
         peakMeterOut.setMeterStyle(DigitalPeakMeter::STYLE_OPENAV);
+        peakMeterOut.setSmoothMultiplier(0);
         peakMeterOut.setFixedSize(150, height);
 
         settingsButton.setFixedSize(height, height);
@@ -97,33 +141,52 @@ public:
 
         if (program.isEmpty())
             settingsButton.hide();
+        else
+            peakMeterThread.init();
     }
 
     ~KioskWindow() override
     {
+        peakMeterThread.requestInterruption();
         stopAudioContainer();
+        peakMeterThread.stop();
     }
 
     void stopAudioContainer()
     {
+        if (getenv("USING_SYSTEMD") != nullptr)
+        {
+            QProcess sctl;
+            sctl.setProcessChannelMode(QProcess::ForwardedChannels);
+            sctl.start("systemctl", {"stop", "mod-live-audio"}, QIODevice::ReadWrite);
+            sctl.waitForFinished();
+        }
+
+        if (getenv("USING_SYSTEMD") != nullptr || getuid() == 0)
+        {
+            QProcess mctl;
+            mctl.setProcessChannelMode(QProcess::ForwardedChannels);
+            mctl.start("machinectl", {"stop", "mod-live-usb"}, QIODevice::ReadWrite);
+            mctl.waitForFinished();
+        }
+
         if (audioContainer.state() != QProcess::NotRunning)
         {
             audioContainer.terminate();
-            audioContainer.waitForFinished(5000);
+            audioContainer.waitForFinished();
         }
-
-        QProcess mctl;
-        mctl.setProcessChannelMode(QProcess::ForwardedChannels);
-        mctl.start("machinectl", {"stop", "mod-live-usb"}, QIODevice::ReadWrite | QIODevice::Unbuffered);
-        mctl.waitForFinished();
-
-        if (audioContainer.state() != QProcess::NotRunning)
-            audioContainer.kill();
     }
 
 public Q_SLOTS:
     void openPower()
     {
+        if (QMessageBox::question(this,
+                                  "Power Off",
+                                  "Power off the system now?",
+                                  QMessageBox::StandardButtons(QMessageBox::Yes|QMessageBox::No)) == QMessageBox::Yes)
+        {
+            system("poweroff");
+        }
     }
 
     void openSettings(const bool cancellable = true)
@@ -135,7 +198,9 @@ public Q_SLOTS:
             settingsPopup = new KioskSettingsPopup();
 
         settingsPopup->setCancellable(cancellable);
-        settingsPopup->exec();
+
+        if (settingsPopup->exec() == 0 && cancellable)
+            return;
 
         QString device;
         unsigned rate;
@@ -153,10 +218,13 @@ public Q_SLOTS:
         stopAudioContainer();
 
         const QStringList arguments = { device, QString::number(rate), QString::number(bufsize) };
-        // audioContainer.start(program, arguments, QIODevice::ReadWrite | QIODevice::Unbuffered);
-        audioContainer.startDetached(program, arguments);
 
-        QTimer::singleShot(500, this, SLOT(tryConnectingToWebServer()));
+        audioContainer.start(program, arguments, QIODevice::ReadWrite | QIODevice::Unbuffered);
+
+        if (getenv("USING_SYSTEMD") != nullptr)
+            audioContainer.waitForFinished();
+
+        QTimer::singleShot(0, this, SLOT(tryConnectingToWebServer()));
     }
 
     void tryConnectingToWebServer()
@@ -164,7 +232,7 @@ public Q_SLOTS:
         QTcpSocket socket;
         socket.connectToHost("localhost", 8000);
 
-        if (! socket.waitForConnected(10))
+        if (! socket.waitForConnected(500))
         {
             QTimer::singleShot(500, this, SLOT(tryConnectingToWebServer()));
             return;
@@ -188,7 +256,7 @@ protected:
         if (event->key() == Qt::Key::Key_R)
             tabWidget.reloadPage();
         if (event->key() == Qt::Key::Key_T)
-            tabWidget.openKonsole();
+            tabWidget.openTerminal();
     }
 
     void paintEvent(QPaintEvent* const event) override
@@ -219,12 +287,6 @@ protected:
             return;
 
         update(clockRect);
-
-        // TESTING
-        peakMeterIn.displayMeter(1, random.generateDouble(), true);
-        peakMeterIn.displayMeter(2, random.generateDouble(), true);
-        peakMeterOut.displayMeter(1, random.generateDouble(), true);
-        peakMeterOut.displayMeter(2, random.generateDouble(), true);
     }
 
 private:

@@ -1,0 +1,14 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Unit]
+Description=MOD Live Audio
+
+[Service]
+Type=notify
+Environment=SYSTEMD_SECCOMP=0
+Environment=AUDIO_USING_SYSTEMD=1
+EnvironmentFile=/root/.mod-live/config/environment.sh
+EnvironmentFile=/root/.mod-live/config/soundcard.sh
+ExecStart=/root/.mod-live/start.sh
+Restart=always

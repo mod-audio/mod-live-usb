@@ -8,6 +8,7 @@ python-scandir
 # mod-host
 mod-host
 mod-midi-merger
+mod-peakmeter
 
 # mod-ui
 mod-ui

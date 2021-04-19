@@ -44,7 +44,7 @@ endif
 all: $(TARGETS)
 
 mod-live-usb-welcome: $(OBJECTS)
-	$(CXX) $^ $(KF5_LIBS) $(QT5_LIBS) $(ALSA_LIBS) -ldl $(LDFLAGS) -o $@
+	$(CXX) $^ $(KF5_LIBS) $(QT5_LIBS) $(ALSA_LIBS) -ldl -lrt $(LDFLAGS) -o $@
 
 welcome.cpp.o: welcome.cpp src/KioskWindow.hpp src/KioskTabs.hpp src/KioskSettingsPopup.hpp src/AudioDiscovery.hpp
 	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(CXXFLAGS) -o $@

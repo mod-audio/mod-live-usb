@@ -7,6 +7,7 @@ After=livecd-alsa-unmuter.service
 
 [Service]
 Type=simple
+Environment=USING_SYSTEMD=1
 ExecStart=/root/.mod-live/mod-live-usb-welcome -platform linuxfb -style Breeze --no-sandbox
 Restart=always
 WorkingDirectory=/root/
