@@ -3,7 +3,7 @@ LV2_PATH=/root/.lv2:/usr/lib/lv2:/mnt/plugins
 MOD_DEV_HMI=1
 MOD_KEYS_PATH=/root/keys/
 MOD_MODEL_CPU=x86_64
-MOD_MODEL_TYPE=cloud:x86_64
+MOD_MODEL_TYPE=live-usb:x86_64
 SNDFILE_JACKPLAY_AUTOCONNECT=mod-host:monitor-in_%d
 
 MOD_DEVICE_WEBSERVER_PORT=8000

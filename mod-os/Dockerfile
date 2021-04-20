@@ -61,7 +61,7 @@ RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
 # WIP
 RUN cp $HOME/mod-workdir/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 $HOME/mod-workdir/x86_64/target/lib/
 
-# final bootstrap, generates tar image
+# final bootstrap, generates ext2 image
 COPY buildroot/02_ext2-image.patch $HOME/02_ext2-image.patch
 RUN patch -p1 -i $HOME/02_ext2-image.patch
 RUN ./bootstrap.sh x86_64 && mv $HOME/mod-workdir/x86_64/images/rootfs.ext2 $HOME/ && ./.clean-install.sh x86_64
