@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
     // app.setApplicationDisplayName("MOD Live USB Welcome");
-    app.setApplicationName("MOD Live USB Welcome");
+    app.setApplicationName("MOD Live-USB Welcome");
 
     QFont font(app.font());
     font.setPixelSize(16);
@@ -78,8 +78,16 @@ int main(int argc, char* argv[])
 #endif
 
     KioskWindow win;
-    win.resize(1200, 800);
-    win.show();
+
+    if (getenv("USING_SYSTEMD") != nullptr)
+    {
+        win.showFullScreen();
+    }
+    else
+    {
+        win.resize(1200, 800);
+        win.show();
+    }
 
     if (getenv("TESTING") == nullptr)
         win.openSettings(false);

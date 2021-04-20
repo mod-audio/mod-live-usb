@@ -12,8 +12,8 @@ efibootmgr
 intel-ucode
 kate
 konsole
-linux
 linux-firmware
+linux-rt
 memtest86+
 mkinitcpio
 mkinitcpio-archiso

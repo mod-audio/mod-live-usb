@@ -43,7 +43,8 @@ docker run \
   -v ${PWD}/../live-welcome:/opt/mount/live-welcome \
   --rm mod-live-usb_iso:latest \
   /usr/bin/make -C /opt/mount/live-welcome
-cp ${PWD}/../live-welcome/mod-live-usb-welcome ${MOD_LIVE_DIR}/mod-live-usb-welcome
+cp ${PWD}/../live-welcome/mod-live-usb-welcome     ${MOD_LIVE_DIR}/mod-live-usb-welcome
+cp ${PWD}/../live-welcome/mod-live-usb-welcome.run ${MOD_LIVE_DIR}/mod-live-usb-welcome.run
 
 # delete pre-generated script
 rm -f ${MOD_LIVE_DIR}/config/soundcard.sh
