@@ -1,12 +1,82 @@
---- jack-capture-0.9.71.orig/Makefile
-+++ jack-capture-0.9.71/Makefile
-@@ -3,7 +3,7 @@ bindir = $(PREFIX)/bin
+diff --git a/Makefile b/Makefile
+index 6e1fef9..345dc6b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,8 +3,8 @@ bindir = $(PREFIX)/bin
  
- VERSION=0.9.71
+ VERSION=0.9.73
  
 -CC=gcc
+-CPP=g++
 +CC?=gcc
- CPP=g++
++CXX?=g++
  
+ # Needed on OSX
+ CFLAGS += -I/opt/local/include
+@@ -12,7 +12,7 @@ CFLAGS += -I/opt/local/include
  OPTIMIZE=-O3
-
+ #OPTIMIZE=-O0 -g
+ 
+-COMPILEFLAGS=$(CFLAGS) $(OPTIMIZE) -DVERSION=\"$(VERSION)\" -Wall -Wextra -Wno-unused
++COMPILEFLAGS=$(CFLAGS) $(OPTIMIZE) -DVERSION=\"$(VERSION)\" -Wall -Wextra -Wno-unused -Wno-unused-parameter
+ LINKFLAGS=$(LDFLAGS) -ljack -lsndfile -lm -lpthread -latomic
+ 
+ OS := $(shell uname)
+@@ -41,7 +41,7 @@ check_dependencies:
+ 	which install
+ 	which pkg-config
+ 	which $(CC)
+-	which $(CPP)
++	which $(CXX)
+ 	$(CC) $(CFLAGS) -E testsndfile.c >/dev/null
+ 	@echo "All seems good "
+ 	@echo
+@@ -64,7 +64,7 @@ jack_capture: setformat.c jack_capture.c vringbuffer.c upwaker.c osc.c Makefile
+ 
+ 
+ jack_capture_gui2: jack_capture_gui2.cpp
+-	$(CPP) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
++	$(CXX) $(CPPFLAGS) $(OPTIMIZE) jack_capture_gui2.cpp $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -o jack_capture_gui2
+ 
+ config_flags: Makefile das_config.h
+ 	cat das_config.h |grep COMPILEFLAGS|sed s/\\/\\/COMPILEFLAGS//|tr '\n' ' ' >config_flags
+diff --git a/gen_das_config_h.sh b/gen_das_config_h.sh
+index a8c3c33..b85a3c8 100644
+--- a/gen_das_config_h.sh
++++ b/gen_das_config_h.sh
+@@ -16,7 +16,7 @@
+ echo "#include <sndfile.h>" >temp$$.c
+ echo "main(){return SF_FORMAT_OGG;}" >>temp$$.c
+ echo >>temp$$.c
+-if gcc temp$$.c 2>/dev/null; then
++if $CC temp$$.c 2>/dev/null; then
+     echo "#define HAVE_OGG 1"
+ else
+     echo "#define HAVE_OGG 0"
+@@ -26,7 +26,7 @@ fi
+ echo "#include <lame/lame.h>" >temp$$.c
+ echo "main(){return 0;}" >>temp$$.c
+ echo >>temp$$.c
+-if gcc temp$$.c -lmp3lame 2>/dev/null; then
++if $CC temp$$.c -lmp3lame 2>/dev/null; then
+     echo "#define HAVE_LAME 1"
+     echo "//COMPILEFLAGS -lmp3lame"
+ else
+@@ -37,7 +37,7 @@ fi
+ echo "#include <lo/lo.h>" >temp$$.c
+ echo "main(){return 0;}" >>temp$$.c
+ echo >>temp$$.c
+-if pkg-config --cflags --libs liblo >/dev/null 2>/dev/null && gcc temp$$.c `pkg-config --cflags --libs liblo` 2>/dev/null ; then
++if pkg-config --cflags --libs liblo >/dev/null 2>/dev/null && $CC temp$$.c `pkg-config --cflags --libs liblo` 2>/dev/null ; then
+     echo "#define HAVE_LIBLO 1"
+     echo "//COMPILEFLAGS " `pkg-config --cflags --libs liblo`
+ else
+@@ -48,7 +48,7 @@ fi
+ echo "#include <jack/jack.h>" >temp$$.c
+ echo "main(){return (int)jack_port_get_latency_range;}" >>temp$$.c
+ echo >>temp$$.c
+-if gcc temp$$.c -ljack 2>/dev/null ; then
++if $CC temp$$.c -ljack 2>/dev/null ; then
+     echo "#define NEW_JACK_LATENCY_API 1"
+ else
+     echo "#define NEW_JACK_LATENCY_API 0"
