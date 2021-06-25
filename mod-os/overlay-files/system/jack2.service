@@ -22,8 +22,8 @@ OOMScoreAdjust=-1000
 IOSchedulingClass=realtime
 IOSchedulingPriority=0
 Environment=MOD_LOG=1
-StandardOutput=tty
-StandardError=tty
+StandardOutput=journal+console
+StandardError=journal+console
 
 [Install]
 WantedBy=multi-user.target

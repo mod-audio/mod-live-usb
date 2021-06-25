@@ -18,8 +18,8 @@ ExecStartPre=/usr/bin/mkdir -p "/data/user-files/SF2 Instruments"
 ExecStartPre=/usr/bin/mkdir -p "/data/user-files/SFZ Instruments"
 ExecStart=/usr/bin/browsepy --directory /data/user-files --upload /data/user-files --removable /data/user-files 0.0.0.0 ${MOD_FILE_MANAGER_PORT}
 Restart=always
-# StandardOutput=tty
-# StandardError=tty
+StandardOutput=journal+console
+StandardError=journal+console
 
 [Install]
 WantedBy=multi-user.target
