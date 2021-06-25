@@ -1,5 +1,5 @@
 
-TARGETS = archiso/output/mod-live-usb-v4-x86_64.iso
+TARGETS = archiso/output/mod-live-usb-v5-x86_64.iso
 
 all: $(TARGETS)
 

@@ -19,9 +19,7 @@
 #include "../widgets/digitalpeakmeter.hpp"
 
 #define SERVER_MODE
-extern "C" {
 #include "sys_host/sys_host_impl.h"
-}
 
 class PeakMeterThread : public QThread
 {

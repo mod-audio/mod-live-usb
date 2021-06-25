@@ -10,5 +10,8 @@ else
     PLATFORM=linuxfb
 fi
 
+chvt 7
+setterm -cursor off > /dev/tty7
+
 SELF=$(echo ${0} | sed "s/.run//")
 exec ${SELF} -platform ${PLATFORM} -style Breeze --no-sandbox
