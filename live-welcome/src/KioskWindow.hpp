@@ -61,6 +61,21 @@ public:
         wait(2000);
     }
 
+    void send(const sys_serial_event_type etype, const int value)
+    {
+        if (sys_host_data == nullptr)
+            return;
+
+        char str[24];
+        snprintf(str, sizeof(str), "%i", value);
+        str[sizeof(str)-1] = '\0';
+
+        if (! sys_serial_write(&sys_host_data->client, etype, str))
+            return;
+
+        sem_post(&sys_host_data->client.sem);
+    }
+
     void run() override
     {
         float peaks[4];
@@ -102,6 +117,7 @@ class KioskWindow : public QMainWindow
     QRect clockRect;
     int clockTimer;
 
+    QSlider gainSlider;
     DigitalPeakMeter peakMeterIn;
     DigitalPeakMeter peakMeterOut;
     QPushButton settingsButton;
@@ -120,6 +136,7 @@ public:
         clockFont(font()),
         clockRect(),
         clockTimer(-1),
+        gainSlider(Qt::Horizontal, this),
         peakMeterIn(this),
         peakMeterOut(this),
         settingsButton(this),
@@ -137,6 +154,12 @@ public:
 
         clockFont.setFamily("Monospace");
         clockFont.setPixelSize(20);
+
+        gainSlider.setFixedSize(height*4, height);
+        gainSlider.setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        gainSlider.setMinimum(-30);
+        gainSlider.setMaximum(30);
+        gainSlider.setTickPosition(QSlider::TicksBothSides);
 
         peakMeterIn.setChannelCount(2);
         peakMeterIn.setMeterColor(DigitalPeakMeter::COLOR_BLUE);
@@ -168,6 +191,7 @@ public:
 
         connect(&powerButton, SIGNAL(clicked()), this, SLOT(openPower()));
         connect(&settingsButton, SIGNAL(clicked()), this, SLOT(openSettings()));
+        connect(&gainSlider, SIGNAL(valueChanged(int)), this, SLOT(setGain(int)));
 
         if (program.isEmpty())
             settingsButton.hide();
@@ -274,6 +298,11 @@ public Q_SLOTS:
         tabWidget.reloadPage();
     }
 
+    void setGain(const int gain)
+    {
+        peakMeterThread.send(sys_serial_event_type_pedalboard_gain, gain);
+    }
+
 protected:
     void keyPressEvent(QKeyEvent* const event) override
     {
@@ -349,5 +378,8 @@ private:
 
         x -= peakMeterIn.width() + padding;
         peakMeterIn.move(x, 0);
+
+        x -= gainSlider.width() + padding;
+        gainSlider.move(x, 0);
     }
 };
