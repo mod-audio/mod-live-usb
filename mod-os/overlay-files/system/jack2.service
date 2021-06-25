@@ -21,7 +21,7 @@ Nice=-19
 OOMScoreAdjust=-1000
 IOSchedulingClass=realtime
 IOSchedulingPriority=0
-Environment=MOD_LOG=1
+# Environment=MOD_LOG=1
 StandardOutput=journal+console
 StandardError=journal+console
 
