@@ -143,6 +143,9 @@ public:
             settingsButton.hide();
         else
             peakMeterThread.init();
+
+        if (getenv("TESTING") != nullptr)
+            tabWidget.reloadPage();
     }
 
     ~KioskWindow() override
@@ -230,7 +233,7 @@ public Q_SLOTS:
     void tryConnectingToWebServer()
     {
         QTcpSocket socket;
-        socket.connectToHost("localhost", 8000);
+        socket.connectToHost("localhost", 8888);
 
         if (! socket.waitForConnected(500))
         {

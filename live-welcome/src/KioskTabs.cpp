@@ -93,5 +93,5 @@ void KioskTabs::openTerminal()
 
 void KioskTabs::reloadPage()
 {
-    webBrowser->setUrl(QUrl("http://localhost:8000/"));
+    webBrowser->setUrl(QUrl("http://localhost:8888/"));
 }

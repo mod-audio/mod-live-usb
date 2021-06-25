@@ -8,8 +8,8 @@
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
-    // app.setApplicationDisplayName("MOD Live USB Welcome");
-    app.setApplicationName("MOD Live-USB Welcome");
+    app.setApplicationDisplayName("MOD Live-USB Welcome");
+    app.setApplicationName("LiveUSB-Welcome");
 
     QFont font(app.font());
     font.setPixelSize(16);
