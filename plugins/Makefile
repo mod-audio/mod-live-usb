@@ -77,6 +77,7 @@ PROJECTS += x42-tinygain
 PROJECTS += x42-xfade
 PROJECTS += zam-plugins
 # not in stable/prod, but still useful for many reasons
+PROJECTS += dexed-labs
 PROJECTS += modmeter
 PROJECTS += modspectre-labs
 PROJECTS += x42-tuna-lv2-labs
@@ -160,6 +161,7 @@ BUNDLES += tinygain.lv2
 BUNDLES += xfade.lv2
 BUNDLES += ZamComp.lv2 ZamCompX2.lv2
 # not in stable/prod, but still useful for many reasons
+BUNDLES += dexed.lv2
 BUNDLES += modmeter.lv2
 BUNDLES += modspectre.lv2
 BUNDLES += tuna.lv2
