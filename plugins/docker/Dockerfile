@@ -9,7 +9,7 @@ WORKDIR $HOME/mod-plugin-builder
 RUN git checkout . && git checkout master && git pull && git submodule init && git submodule update
 
 # NOTE you can edit this as needed
-ENV MPB_COMMIT_HASH_FOR_PLUGINS f3b8e58f71f241298e79e1d22daae5db6f44c34a
+ENV MPB_COMMIT_HASH_FOR_PLUGINS 98538d9d82038f745fa37a48aa2e231bdc52f43a
 
 # update to requested commit
 RUN git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_PLUGINS && git submodule update

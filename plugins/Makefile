@@ -7,7 +7,7 @@ PROJECTS += bolliedelay
 # PROJECTS += calf
 PROJECTS += caps-lv2
 PROJECTS += carla-plugins
-# PROJECTS += die-plugins
+PROJECTS += die-plugins
 # PROJECTS += distrho-ports
 PROJECTS += dpf-plugins
 PROJECTS += fluidplug
@@ -90,7 +90,7 @@ BUNDLES += bolliedelay.lv2
 # BUNDLES += calf.lv2
 BUNDLES += mod-caps-AmpVTS.lv2 mod-caps-AutoFilter.lv2 mod-caps-CabinetIV.lv2 mod-caps-CEO.lv2 mod-caps-Click.lv2 mod-caps-PhaserII.lv2 mod-caps-Plate.lv2 mod-caps-PlateX2.lv2 mod-caps-Scape.lv2 mod-caps-Spice.lv2 mod-caps-SpiceX2.lv2 mod-caps-White.lv2 mod-caps-Wider.lv2
 BUNDLES += carla-files.lv2
-# BUNDLES += distrho-a-fluidsynth.lv2
+BUNDLES += distrho-a-fluidsynth.lv2
 # BUNDLES += Vex.lv2
 BUNDLES += Kars.lv2 MVerb.lv2 Nekobi.lv2 PingPongPan.lv2
 BUNDLES += Black_Pearl_4A.lv2 Black_Pearl_4B.lv2 Black_Pearl_5.lv2 FluidBass.lv2 FluidBrass.lv2 FluidChromPerc.lv2 FluidDrums.lv2 FluidEnsemble.lv2 FluidEthnic.lv2 FluidGuitars.lv2 FluidOrgans.lv2 FluidPercussion.lv2 FluidPianos.lv2 FluidPipes.lv2 FluidReeds.lv2 FluidSoundFX.lv2 FluidStrings.lv2 FluidSynthFX.lv2 FluidSynthLeads.lv2 FluidSynthPads.lv2 Red_Zeppelin_4.lv2 Red_Zeppelin_5.lv2", "stable": true }
@@ -165,8 +165,6 @@ BUNDLES += modspectre.lv2
 BUNDLES += tuna.lv2
 
 
-
-
 # include plugin projects for version and bundle list
 # TODO only import known-good projects
 MAKEFILES = $(wildcard mod-plugin-builder/plugins/package/*/*.mk)
@@ -183,7 +181,7 @@ COMMA  = ,
 SPACE  =
 SPACE +=
 
-all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT)))
+all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT))) docker/.stamp_built
 
 define BUILD_PLUGIN
 	docker run -v $(CURDIR)/bundles:/opt/mount --rm mod-live-usb_plugins:latest \
@@ -191,7 +189,7 @@ define BUILD_PLUGIN
 		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
 endef
 
-.stamps/%: docker/.stamp_built
+.stamps/%:
 	$(shell mkdir -p $(shell dirname $@))
 	$(call BUILD_PLUGIN,$(firstword $(subst /, ,$*)))
 	touch $@
