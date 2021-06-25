@@ -90,6 +90,9 @@ NSPAWN_OPTS=""
 if [ -e /dev/shm/ac ]; then
 NSPAWN_OPTS+=" --bind=/dev/shm/ac"
 fi
+if [ -e /dev/shm/sys_msgs ]; then
+NSPAWN_OPTS+=" --bind=/dev/shm/sys_msgs"
+fi
 if [ -e /dev/snd/pcmC${SOUNDCARD_ID}D0c ]; then
 NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD_ID}D0c"
 fi
