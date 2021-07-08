@@ -27,10 +27,12 @@ RUN touch $HOME/mod-workdir/x86_64/target/etc/group && \
     touch $HOME/mod-workdir/x86_64/target/etc/resolv.conf && \
     touch $HOME/mod-workdir/x86_64/target/etc/shadow && \
     mkdir $HOME/mod-workdir/x86_64/target/dev && \
+    mkdir $HOME/mod-workdir/x86_64/target/home && \
     mkdir $HOME/mod-workdir/x86_64/target/mnt && \
     mkdir $HOME/mod-workdir/x86_64/target/proc && \
     mkdir $HOME/mod-workdir/x86_64/target/root && \
     mkdir $HOME/mod-workdir/x86_64/target/run && \
+    mkdir $HOME/mod-workdir/x86_64/target/srv && \
     mkdir $HOME/mod-workdir/x86_64/target/sys && \
     mkdir $HOME/mod-workdir/x86_64/target/tmp
 
