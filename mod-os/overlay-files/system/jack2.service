@@ -9,6 +9,8 @@ EnvironmentFile=/mnt/config/soundcard.sh
 LimitRTPRIO=95
 LimitRTTIME=infinity
 LimitMEMLOCK=infinity
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=70
 # ExecStartPre=/usr/bin/ls /dev/snd
 # ExecStartPre=/usr/bin/cat /proc/asound/cards
 # ExecStartPre=/usr/bin/aplay -l
@@ -24,6 +26,7 @@ IOSchedulingPriority=0
 # Environment=MOD_LOG=1
 StandardOutput=journal+console
 StandardError=journal+console
+SyslogIdentifier=jack2
 
 [Install]
 WantedBy=multi-user.target

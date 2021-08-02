@@ -5,6 +5,11 @@ After=jack2.service
 [Service]
 Type=simple
 EnvironmentFile=/mnt/config/environment.sh
+LimitRTPRIO=95
+LimitRTTIME=infinity
+LimitMEMLOCK=infinity
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=55
 ExecStart=/usr/bin/python3 /usr/bin/mod-ui
 Restart=always
 User=root
@@ -13,6 +18,7 @@ Nice=-17
 # Environment=MOD_LOG=1
 StandardOutput=journal+console
 StandardError=journal+console
+SyslogIdentifier=mod-ui
 
 [Install]
 WantedBy=multi-user.target

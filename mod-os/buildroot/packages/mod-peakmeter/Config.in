@@ -1,3 +1,0 @@
-config BR2_PACKAGE_MOD_PEAKMETER
-	bool "mod-peakmeter"
-	select BR2_PACKAGE_JACK2MOD
