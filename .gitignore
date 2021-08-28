@@ -5,13 +5,10 @@ archiso/output/
 archiso/workdir/
 live-welcome/mod-live-usb-welcome
 live-welcome/resources/watermark.txt
-mod-os/config/soundcard.sh
-mod-os/rootfs.ext2
 plugins/.stamps/
 plugins/bundles/
 plugins/docker/.stamp_built
 rwdata/root/
-toolchain/.stamp_built
 
 *.kdev4
 *.o

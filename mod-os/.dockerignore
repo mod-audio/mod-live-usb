@@ -1,0 +1,6 @@
+.stamp_built
+config
+overlay-files
+rootfs.ext2
+start.sh
+start-dummy.sh

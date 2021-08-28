@@ -34,12 +34,12 @@ if ! docker ps -a | grep -q mpb-container-x86_64; then
 fi
 
 #######################################################################################################################
-# bootstrap the whole thing
+# build the toolchain
 
 docker start mpb-container-x86_64
 
 docker exec -i mpb-container-x86_64 /bin/bash <<EOF
-./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
+./bootstrap.sh x86_64 toolchain
 exit 0
 EOF
 
