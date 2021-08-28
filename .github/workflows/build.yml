@@ -23,8 +23,6 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
       - name: make toolchain
         run: |
-          mkdir -p /home/runner/mod-workdir
-          chmod 777 /home/runner/mod-workdir
           make toolchain
       - name: pack toolchain
         run: |

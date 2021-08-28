@@ -1,0 +1,4 @@
+.stamp_built
+Makefile
+build.sh
+mod-plugin-builder

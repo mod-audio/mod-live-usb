@@ -26,3 +26,15 @@ mod-os: bootstrap mod-os/rootfs.ext2
 
 mod-os/rootfs.ext2: mod-os/build.sh mod-os/Dockerfile
 	./$<
+
+# step 4: build plugins
+
+plugins: plugins-bootstrap
+	$(MAKE) -C plugins
+
+plugins-bootstrap: toolchain plugins/.stamp_built
+
+plugins/.stamp_built: plugins/build.sh plugins/Dockerfile
+	./$<
+
+# .PHONY: plugins

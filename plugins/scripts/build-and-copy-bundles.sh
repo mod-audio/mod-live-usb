@@ -9,4 +9,3 @@ lv2_bundles=${2}
 for b in $(echo ${lv2_bundles} | sed 's/,/ /g'); do
     cp -rv /home/builder/mod-workdir/x86_64/plugins/${b} /opt/mount/
 done
- 

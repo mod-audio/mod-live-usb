@@ -18,6 +18,12 @@ WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
 mkdir -p ${WORKDIR}/x86_64/build
 mkdir -p ${WORKDIR}/x86_64/target
 
+if [ -n "${GITHUB_ACTIONS}" ]; then
+    chmod 777 ${WORKDIR}
+    chmod 777 ${WORKDIR}/build
+    chmod 777 ${WORKDIR}/target
+fi
+
 #######################################################################################################################
 # create docker image
 
@@ -48,12 +54,12 @@ docker stop mpb-container-x86_64
 #######################################################################################################################
 # cleanup
 
-if [ -n "${GITHUB_ACTION}" ]; then
-    GITHUB_ACTION_HELPER=sudo
+if [ -n "${GITHUB_ACTIONS}" ]; then
+    GITHUB_ACTIONS_HELPER=sudo
 fi
 
-${GITHUB_ACTION_HELPER} rm -f ${WORKDIR}/download/crosstool-ng-1.24.0.tar.bz2
-${GITHUB_ACTION_HELPER} rm -rf ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0
+${GITHUB_ACTIONS_HELPER} rm -f ${WORKDIR}/download/crosstool-ng-1.24.0.tar.bz2
+${GITHUB_ACTIONS_HELPER} rm -rf ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0
 mkdir ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0
 touch ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/.stamp_configured
 touch ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/.stamp_built1
