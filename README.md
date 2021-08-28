@@ -18,3 +18,8 @@ make -C plugins
 ```
 
 There are also releases for Live-CD/USB images.
+
+
+# TODO
+- always recreate docker containers when base image changes
+- better way to run docker container commands instead of start/exec/stop combo

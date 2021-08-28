@@ -13,6 +13,13 @@ cd $(dirname ${0})
 WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 
 #######################################################################################################################
+# cleanup
+
+rm -f rootfs.ext2
+rm -f ${WORKDIR}/x86_64/*/.stamp_target_installed
+rm -rf ${WORKDIR}/x86_64/target/
+
+#######################################################################################################################
 # create dummy files and dirs for rootfs
 
 mkdir -p ${WORKDIR}/x86_64/target/etc
@@ -46,13 +53,6 @@ mkdir -p ${WORKDIR}/x86_64/target/root/data
 mkdir -p ${WORKDIR}/x86_64/target/usr/share/mod/html
 touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.css
 touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.js
-
-#######################################################################################################################
-# cleanup
-
-rm -f rootfs.ext2
-rm -f ~/mod-workdir/x86_64/*/.stamp_target_installed
-rm -rf ~/mod-workdir/x86_64/target/
 
 #######################################################################################################################
 # create docker image
