@@ -20,8 +20,8 @@ mkdir -p ${WORKDIR}/x86_64/target
 
 if [ -n "${GITHUB_ACTIONS}" ]; then
     chmod 777 ${WORKDIR}
-    chmod 777 ${WORKDIR}/build
-    chmod 777 ${WORKDIR}/target
+    chmod 777 ${WORKDIR}/x86_64/build
+    chmod 777 ${WORKDIR}/x86_64/target
 fi
 
 #######################################################################################################################
