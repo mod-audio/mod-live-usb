@@ -87,8 +87,7 @@ docker stop mpb-mod-os-container-x86_64
 #######################################################################################################################
 # fetch rootfs.ext2 from image
 
-docker run -v ${PWD}:/opt/mount --rm --entrypoint \
-    cp mpb-mod-os-container-x86_64:latest /home/builder/mod-workdir/x86_64/images/rootfs.ext2 /opt/mount/rootfs.ext2
+ln -sf ${WORKDIR}/x86_64/images/rootfs.ext2 rootfs.ext2
 
 #######################################################################################################################
 # mark as done

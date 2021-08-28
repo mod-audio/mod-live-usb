@@ -15,7 +15,7 @@ toolchain/.stamp_built: toolchain/build.sh toolchain/Dockerfile
 
 # step 2: build common bootstrap packages
 
-bootstrap: bootstrap/.stamp_built
+bootstrap: toolchain bootstrap/.stamp_built
 
 bootstrap/.stamp_built: bootstrap/build.sh
 	./$<
