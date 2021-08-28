@@ -30,7 +30,7 @@ if ! docker ps -a | grep -q mpb-container-x86_64; then
         --name mpb-container-x86_64 \
         -ti \
         -v ${WORKDIR}:/home/builder/mod-workdir \
-        mpb-toolchain-x86_64 # :latest
+        mpb-toolchain-x86_64:latest
 fi
 
 #######################################################################################################################
@@ -44,6 +44,17 @@ exit 0
 EOF
 
 docker stop mpb-container-x86_64
+
+#######################################################################################################################
+# cleanup
+
+rm -f ${WORKDIR}/download/crosstool-ng-1.24.0.tar.bz2
+rm -rf ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0
+mkdir ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0
+touch ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/.stamp_configured
+touch ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/.stamp_built1
+touch ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/.stamp_built2
+touch ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/configure
 
 #######################################################################################################################
 # mark as done

@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
-          key: toolchain-workdir
+          key: toolchain
           path: /home/runner/mod-workdir
       - uses: satackey/action-docker-layer-caching@v0.0.11
       - name: make toolchain
@@ -26,3 +26,42 @@ jobs:
           mkdir -p /home/runner/mod-workdir
           chmod 777 /home/runner/mod-workdir
           make toolchain
+      - name: Pack bootstrap build
+        shell: bash
+        run: |
+          tar -C /home/runner -czf workdir-toolchain.tar.gz x86_64
+      - uses: actions/upload-artifact@v2
+        with:
+          name: workdir-toolchain
+          path: workdir-toolchain.tar.gz
+
+  bootstrap:
+    needs: toolchain
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          key: bootstrap
+          path: /home/runner/mod-workdir
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: actions/download-artifact@v2
+        with:
+          name: workdir-toolchain
+          path: /home/runner
+      - name: Extract workdir-toolchain
+        shell: bash
+        run: |
+            cd /home/runner && \
+            tar xf workdir-toolchain.tar.gz
+      - name: make bootstrap
+        run: |
+          make bootstrap
+      - name: Pack bootstrap build
+        shell: bash
+        run: |
+          tar -C /home/runner/ -czf workdir-bootstrap.tar.gz x86_64
+      - uses: actions/upload-artifact@v2
+        with:
+          name: workdir-bootstrap
+          path: workdir-bootstrap.tar.gz
