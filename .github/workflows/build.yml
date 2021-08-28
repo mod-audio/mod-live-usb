@@ -50,7 +50,7 @@ jobs:
         shell: bash
         run: |
             mkdir /home/runner/mod-workdir
-            cd /home/runner/mod-workdir && tar xf workdir-toolchain.tar.gz
+            cd /home/runner/mod-workdir && tar xf ../workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
           make bootstrap

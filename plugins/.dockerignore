@@ -3,4 +3,5 @@
 .stamps
 Makefile
 build.sh
+bundles
 mod-plugin-builder
