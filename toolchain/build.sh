@@ -5,17 +5,17 @@
 
 set -e
 
+cd $(dirname ${0})
+
 #######################################################################################################################
 # environment variables
 
-WORKDIR=${WORKDIR:=~/mod-workdir}
+WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
 
 #######################################################################################################################
 # setup directories
 
 mkdir -p ${WORKDIR}
-
-cd $(dirname ${0})
 
 #######################################################################################################################
 # create docker image
@@ -25,7 +25,25 @@ docker build -t mpb-toolchain-x86_64 .
 #######################################################################################################################
 # create docker container
 
-# docker run -ti -v ${WORKDIR}:/home/builder/mod-plugin-builder mpb-toolchain-x86_64:local
+if ! docker ps -a | grep -q mpb-container-x86_64; then
+    docker create \
+        --name mpb-container-x86_64 \
+        -ti \
+        -v ${WORKDIR}:/home/builder/mod-workdir \
+        mpb-toolchain-x86_64 # :latest
+fi
+
+#######################################################################################################################
+# bootstrap the whole thing
+
+docker start mpb-container-x86_64
+
+docker exec -i mpb-container-x86_64 /bin/bash <<EOF
+./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
+exit 0
+EOF
+
+docker stop mpb-container-x86_64
 
 #######################################################################################################################
 # mark as done

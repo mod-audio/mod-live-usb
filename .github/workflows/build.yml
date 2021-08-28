@@ -8,10 +8,16 @@ on:
     branches:
       - '*'
 
+env:
+  WORKDIR: ~/mod-workdir
+
 jobs:
   toolchain:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/mod-workdir
       - name: make toolchain
         run: make toolchain
