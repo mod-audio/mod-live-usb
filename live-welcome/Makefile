@@ -14,7 +14,7 @@ OBJECTS += src/moc_KioskWindow.cpp.o
 TARGETS  = mod-live-usb-welcome
 
 # CXXFLAGS  = -fvisibility=hidden
-CXXFLAGS := -O0 -g
+CXXFLAGS := -O2 -g
 
 KF5_CFLAGS  = -I.
 KF5_CFLAGS += -I/usr/include/KF5

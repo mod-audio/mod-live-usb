@@ -11,6 +11,9 @@ int main(int argc, char* argv[])
     app.setApplicationDisplayName("MOD Live-USB Welcome");
     app.setApplicationName("LiveUSB-Welcome");
 
+    QIcon::setThemeSearchPaths({"/usr/share/icons"});
+    QIcon::setThemeName("breeze-dark");
+
     QFont font(app.font());
     font.setPixelSize(16);
     app.setFont(font);

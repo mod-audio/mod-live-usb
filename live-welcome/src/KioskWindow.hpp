@@ -19,7 +19,7 @@
 #include "../widgets/digitalpeakmeter.hpp"
 
 #define SERVER_MODE
-#include "sys_host/sys_host_impl.h"
+#include "../sys_host/sys_host.h"
 
 class PeakMeterThread : public QThread
 {
@@ -129,8 +129,8 @@ class KioskWindow : public QMainWindow
 public:
     KioskWindow()
       : QMainWindow(),
-        settingsPopup(nullptr),
         tabWidget(this),
+        settingsPopup(nullptr),
         clockFont(font()),
         clockRect(),
         clockTimer(-1),
@@ -177,11 +177,11 @@ public:
 
         settingsButton.setFixedSize(height, height);
         settingsButton.setFocusPolicy(Qt::FocusPolicy::NoFocus);
-        settingsButton.setText("(S)");
+        settingsButton.setIcon(QIcon::fromTheme("configure"));
 
         powerButton.setFixedSize(height, height);
         powerButton.setFocusPolicy(Qt::FocusPolicy::NoFocus);
-        powerButton.setText("(P)");
+        powerButton.setIcon(QIcon::fromTheme("system-shutdown"));
 
         repositionTabBarWidgets();
 

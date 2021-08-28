@@ -163,7 +163,7 @@ public:
         labelWelcome.setText("Welcome to MOD Live-USB");
         labelStart.setText("Please select your audio device from the list below.");
         deviceLabel.setText("Device:");
-        deviceButton.setText("(R)");
+        deviceButton.setIcon(QIcon::fromTheme("view-refresh"));
         sampleRateLabel.setText("Sample Rate:");
         bufferSizeLabel.setText("Buffer Size:");
         okBox.setCenterButtons(true);
