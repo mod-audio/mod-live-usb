@@ -23,6 +23,9 @@ if [ -n "${GITHUB_ACTIONS}" ]; then
     chmod 777 ${WORKDIR}/x86_64
     chmod 777 ${WORKDIR}/x86_64/build
     chmod 777 ${WORKDIR}/x86_64/target
+
+    # TESTING
+    chown 1000:1000 ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0/.config
 fi
 
 #######################################################################################################################
