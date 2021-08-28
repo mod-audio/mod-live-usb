@@ -1,3 +1,4 @@
+.gitignore
 .stamp_built
 build.sh
 config

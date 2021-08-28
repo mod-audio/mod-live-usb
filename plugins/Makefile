@@ -94,28 +94,20 @@ SPACE  =
 SPACE +=
 
 # include plugin projects for version and bundle list
-MAKEFILES = $(foreach PROJECT,$(PROJECTS),mod-plugin-builder/plugins/package/$(PROJECT)/$(PROJECT).mk)
-include $(MAKEFILES)
+include $(foreach PROJECT,$(PROJECTS),mod-plugin-builder/plugins/package/$(PROJECT)/$(PROJECT).mk)
 
 # list of known good bundles
 BUNDLES = $(foreach PROJECT,$(PROJECTS),$($(call BUILDROOT_VAR,$(PROJECT))_BUNDLES))
 
-all:
-	echo $(MAKEFILES) "|" $(BUNDLES)
+all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT)))
 
-# all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT)))
-# 
-# define BUILD_PLUGIN
-# 	docker run -v $(CURDIR)/bundles:/opt/mount --rm mod-live-usb_plugins:latest \
-# 		/home/builder/build-and-copy-bundles.sh $(1) \
-# 		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
-# endef
-# 
-# .stamps/%: docker/.stamp_built
-# 	$(shell mkdir -p $(shell dirname $@))
-# 	$(call BUILD_PLUGIN,$(firstword $(subst /, ,$*)))
-# 	touch $@
-# 
-# docker/.stamp_built: docker/Dockerfile
-# 	./docker/build.sh
-# 	touch $@
+define BUILD_PLUGIN
+	docker run -v $(CURDIR)/bundles:/opt/mount --rm mpb-plugins-x86_64:latest \
+		/home/builder/build-and-copy-bundles.sh $(1) \
+		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
+endef
+
+.stamps/%: docker/.stamp_built
+	$(shell mkdir -p $(shell dirname $@))
+	$(call BUILD_PLUGIN,$(firstword $(subst /, ,$*)))
+	touch $@

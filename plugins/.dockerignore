@@ -1,4 +1,6 @@
+.gitignore
 .stamp_built
+.stamps
 Makefile
 build.sh
 mod-plugin-builder

@@ -16,7 +16,7 @@ WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 # cleanup
 
 rm -f rootfs.ext2
-rm -f ${WORKDIR}/x86_64/*/.stamp_target_installed
+rm -f ${WORKDIR}/x86_64/build/*/.stamp_target_installed
 rm -rf ${WORKDIR}/x86_64/target/
 
 #######################################################################################################################
@@ -32,6 +32,8 @@ mkdir -p ${WORKDIR}/x86_64/target/run
 mkdir -p ${WORKDIR}/x86_64/target/srv
 mkdir -p ${WORKDIR}/x86_64/target/sys
 mkdir -p ${WORKDIR}/x86_64/target/tmp
+mkdir -p ${WORKDIR}/x86_64/target/usr/bin
+mkdir -p ${WORKDIR}/x86_64/target/usr/lib
 touch ${WORKDIR}/x86_64/target/etc/group
 touch ${WORKDIR}/x86_64/target/etc/hostname
 touch ${WORKDIR}/x86_64/target/etc/hosts
@@ -39,6 +41,8 @@ touch ${WORKDIR}/x86_64/target/etc/localtime
 touch ${WORKDIR}/x86_64/target/etc/passwd
 touch ${WORKDIR}/x86_64/target/etc/resolv.conf
 touch ${WORKDIR}/x86_64/target/etc/shadow
+ln -s usr/bin ${WORKDIR}/x86_64/target/bin
+ln -s usr/lib ${WORKDIR}/x86_64/target/lib
 
 #######################################################################################################################
 # create extra dirs for custom mounting points

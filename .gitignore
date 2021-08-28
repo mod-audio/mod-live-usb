@@ -5,10 +5,6 @@ archiso/output/
 archiso/workdir/
 live-welcome/mod-live-usb-welcome
 live-welcome/resources/watermark.txt
-plugins/.stamps/
-plugins/bundles/
-plugins/docker/.stamp_built
-rwdata/root/
 
 *.kdev4
 *.o

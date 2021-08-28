@@ -26,7 +26,7 @@ jobs:
           make toolchain
       - name: pack toolchain
         run: |
-          tar -C /home/runner -czf workdir-toolchain.tar.gz x86_64
+          tar -C /home/runner/mod-workdir -czf workdir-toolchain.tar.gz x86_64
       - uses: actions/upload-artifact@v2
         with:
           name: workdir-toolchain
@@ -49,14 +49,14 @@ jobs:
       - name: Extract workdir-toolchain
         shell: bash
         run: |
-            cd /home/runner && \
-            tar xf workdir-toolchain.tar.gz
+            mkdir /home/runner/mod-workdir
+            cd /home/runner/mod-workdir && tar xf workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
           make bootstrap
       - name: pack bootstrap
         run: |
-          tar -C /home/runner/ -czf workdir-bootstrap.tar.gz x86_64
+          tar -C /home/runner/mod-workdir -czf workdir-bootstrap.tar.gz x86_64
       - uses: actions/upload-artifact@v2
         with:
           name: workdir-bootstrap
