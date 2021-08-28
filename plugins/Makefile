@@ -103,7 +103,7 @@ BUNDLES = $(foreach PROJECT,$(PROJECTS),$($(call BUILDROOT_VAR,$(PROJECT))_BUNDL
 all:
 	echo $(MAKEFILES) "|" $(BUNDLES)
 
-# all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT))) docker/.stamp_built
+# all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT)))
 # 
 # define BUILD_PLUGIN
 # 	docker run -v $(CURDIR)/bundles:/opt/mount --rm mod-live-usb_plugins:latest \
@@ -111,7 +111,7 @@ all:
 # 		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
 # endef
 # 
-# .stamps/%:
+# .stamps/%: docker/.stamp_built
 # 	$(shell mkdir -p $(shell dirname $@))
 # 	$(call BUILD_PLUGIN,$(firstword $(subst /, ,$*)))
 # 	touch $@
