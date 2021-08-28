@@ -147,6 +147,7 @@ ${EXEC} systemd-nspawn \
 --bind-ro=/etc/hostname \
 --bind-ro=$(pwd)/config:/mnt/config \
 --bind-ro=$(pwd)/overlay-files/system:/etc/systemd/system \
+--bind-ro=$(pwd)/overlay-files/tmpfiles.d:/usr/lib/tmpfiles.d \
 --bind-ro=$(pwd)/overlay-files/mod-ui.css:/usr/share/mod/html/mod-ui.css \
 --bind-ro=$(pwd)/overlay-files/mod-ui.js:/usr/share/mod/html/mod-ui.js \
 --tmpfs=/tmp \
