@@ -15,9 +15,12 @@ WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 #######################################################################################################################
 # cleanup
 
-rm -f rootfs.ext2
-rm -f ${WORKDIR}/x86_64/build/*/.stamp_target_installed
-rm -rf ${WORKDIR}/x86_64/target/
+rm -f rootfs.ext2 ${WORKDIR}/x86_64/images/rootfs.ext2
+
+if [ -z "${NOCLEAN}" ]; then
+    rm -f ${WORKDIR}/x86_64/build/*/.stamp_target_installed
+    rm -rf ${WORKDIR}/x86_64/target/
+fi
 
 #######################################################################################################################
 # create dummy files and dirs for rootfs
@@ -32,17 +35,24 @@ mkdir -p ${WORKDIR}/x86_64/target/run
 mkdir -p ${WORKDIR}/x86_64/target/srv
 mkdir -p ${WORKDIR}/x86_64/target/sys
 mkdir -p ${WORKDIR}/x86_64/target/tmp
+# touch ${WORKDIR}/x86_64/target/etc/group
+touch ${WORKDIR}/x86_64/target/etc/hostname
+# touch ${WORKDIR}/x86_64/target/etc/hosts
+touch ${WORKDIR}/x86_64/target/etc/localtime
+# touch ${WORKDIR}/x86_64/target/etc/passwd
+# touch ${WORKDIR}/x86_64/target/etc/resolv.conf
+# touch ${WORKDIR}/x86_64/target/etc/shadow
+
+#######################################################################################################################
+# merged usr mode
+
 mkdir -p ${WORKDIR}/x86_64/target/usr/bin
 mkdir -p ${WORKDIR}/x86_64/target/usr/lib
-touch ${WORKDIR}/x86_64/target/etc/group
-touch ${WORKDIR}/x86_64/target/etc/hostname
-touch ${WORKDIR}/x86_64/target/etc/hosts
-touch ${WORKDIR}/x86_64/target/etc/localtime
-touch ${WORKDIR}/x86_64/target/etc/passwd
-touch ${WORKDIR}/x86_64/target/etc/resolv.conf
-touch ${WORKDIR}/x86_64/target/etc/shadow
-ln -s usr/bin ${WORKDIR}/x86_64/target/bin
-ln -s usr/lib ${WORKDIR}/x86_64/target/lib
+mkdir -p ${WORKDIR}/x86_64/target/usr/sbin
+
+ln -s usr/bin  ${WORKDIR}/x86_64/target/bin
+ln -s usr/lib  ${WORKDIR}/x86_64/target/lib
+ln -s usr/sbin ${WORKDIR}/x86_64/target/sbin
 
 #######################################################################################################################
 # create extra dirs for custom mounting points
@@ -57,6 +67,9 @@ mkdir -p ${WORKDIR}/x86_64/target/root/data
 mkdir -p ${WORKDIR}/x86_64/target/usr/share/mod/html
 touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.css
 touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.js
+
+# this is needed somehow
+cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 ${WORKDIR}/x86_64/target/lib/
 
 #######################################################################################################################
 # create docker image
@@ -73,9 +86,6 @@ if ! docker ps -a | grep -q mpb-mod-os-container-x86_64; then
         -v ${WORKDIR}:/home/builder/mod-workdir \
         mpb-mod-os-x86_64:latest
 fi
-
-# WIP
-# RUN cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 ${WORKDIR}/x86_64/target/lib/
 
 #######################################################################################################################
 # build mod-os
