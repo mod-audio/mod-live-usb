@@ -11,5 +11,5 @@ all: $(TARGETS)
 
 toolchain: toolchain/.stamp_built
 
-toolchain/.stamp_built: toolchain/build.sh toolchain/base/Dockerfile toolchain/bootstrap/Dockerfile
+toolchain/.stamp_built: toolchain/build.sh toolchain/Dockerfile
 	./$<
