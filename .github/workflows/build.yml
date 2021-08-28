@@ -20,5 +20,9 @@ jobs:
         with:
           key: toolchain-workdir
           path: /home/runner/mod-workdir
+      - uses: satackey/action-docker-layer-caching@v0.0.11
       - name: make toolchain
-        run: make toolchain
+        run: |
+          mkdir -p /home/runner/mod-workdir
+          chmod 777 /home/runner/mod-workdir
+          make toolchain
