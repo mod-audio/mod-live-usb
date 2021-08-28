@@ -25,7 +25,7 @@ if [ -n "${GITHUB_ACTIONS}" ]; then
     chmod 777 ${WORKDIR}/x86_64/target
 
     # TESTING
-    chown -R 1000:1000 ${WORKDIR}/x86_64/build
+    sudo chown -R 1000:1000 ${WORKDIR}/x86_64/build
 fi
 
 #######################################################################################################################
