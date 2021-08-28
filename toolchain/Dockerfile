@@ -28,6 +28,7 @@ RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99-$USER && chmod 0440 
 
 # switch user
 USER $USER
+USER 1000:1000
 WORKDIR $HOME
 
 # create directory for build
