@@ -10,7 +10,7 @@ all: $(TARGETS)
 
 toolchain: toolchain/.stamp_built
 
-toolchain/.stamp_built: toolchain/build.sh %/Dockerfile
+toolchain/.stamp_built: toolchain/build.sh toolchain/Dockerfile
 	./$<
 
 # step 2: build common bootstrap packages
@@ -25,8 +25,4 @@ bootstrap/.stamp_built: bootstrap/build.sh
 mod-os: toolchain mod-os/rootfs.ext2
 
 mod-os/rootfs.ext2: mod-os/build.sh mod-os/Dockerfile
-	./$<
-
-# common rules
-%/.stamp_built: %/build.sh %/Dockerfile
 	./$<
