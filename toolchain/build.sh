@@ -19,13 +19,7 @@ mkdir -p ${WORKDIR}/x86_64/build
 mkdir -p ${WORKDIR}/x86_64/target
 
 if [ -n "${GITHUB_ACTIONS}" ]; then
-    chmod 777 ${WORKDIR}
-    chmod 777 ${WORKDIR}/x86_64
-    chmod 777 ${WORKDIR}/x86_64/build
-    chmod 777 ${WORKDIR}/x86_64/target
-
-    # TESTING
-    sudo chown -R 1000:1000 ${WORKDIR}/x86_64/build
+    sudo chown -R 1000:1000 ${WORKDIR}
 fi
 
 #######################################################################################################################
