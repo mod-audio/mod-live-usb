@@ -42,5 +42,8 @@ RUN git clone $MPB_GIT_URL
 WORKDIR mod-plugin-builder
 RUN git pull && git checkout $MPB_GIT_HASH
 
+# turn off progress bar
+RUN sed -i 's/CT_LOG_PROGRESS_BAR=y/CT_LOG_PROGRESS_BAR=n/' toolchain/x86_64.config
+
 # CMD
 CMD ["bash"]
