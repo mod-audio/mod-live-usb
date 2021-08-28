@@ -21,9 +21,6 @@ RUN echo "source /etc/bash_completion" >> $HOME/.bashrc
 ENV USER builder
 ENV HOME /home/$USER
 
-# mod-plugin-builder settings
-ENV MPB_GIT_URL https://github.com/moddevices/mod-plugin-builder
-
 # create user
 RUN useradd -d $HOME -m -G sudo $USER
 # set user to sudoers (no password required)
@@ -31,15 +28,19 @@ RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99-$USER && chmod 0440 
 
 # switch user
 USER $USER
+WORKDIR $HOME
+
+# create directory for build
+RUN mkdir $HOME/mod-workdir
+
+# mod-plugin-builder settings
+ENV MPB_GIT_URL https://github.com/moddevices/mod-plugin-builder
+ENV MPB_GIT_HASH d469669466d5771456412bd8c33a246f2c036b83
 
 # checkout mod-plugin-builder
-WORKDIR $HOME
 RUN git clone $MPB_GIT_URL
 WORKDIR mod-plugin-builder
-RUN git pull && git checkout f3b8e58f71f241298e79e1d22daae5db6f44c34a
-
-# build toolchain
-RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
+RUN git pull && git checkout $MPB_GIT_HASH
 
 # CMD
 CMD ["bash"]
