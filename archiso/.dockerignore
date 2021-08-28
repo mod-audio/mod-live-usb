@@ -1,0 +1,7 @@
+.gitignore
+.stamp_built
+build.sh
+cache
+liveusb
+output
+workdir
