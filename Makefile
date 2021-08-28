@@ -36,10 +36,10 @@ plugins/.stamp_built: plugins/build.sh plugins/Dockerfile
 
 # step 5: build ISO
 
-iso: mod-os plugins archiso/output/mod-live-usb-v5-x86_64.iso
+iso: mod-os plugins archiso/output/mod-live-usb-v6-x86_64.iso
 
 archiso/output/%.iso: archiso/build.sh archiso/Dockerfile archiso/liveusb/packages.x86_64
 	./$<
 
 run:
-	./archiso/run_archiso.sh -i ./archiso/output/mod-live-usb-v5-x86_64.iso
+	./archiso/run_archiso.sh -i ./archiso/output/mod-live-usb-v6-x86_64.iso
