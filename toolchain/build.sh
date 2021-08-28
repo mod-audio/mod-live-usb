@@ -54,6 +54,7 @@ docker stop mpb-container-x86_64
 
 if [ -n "${GITHUB_ACTIONS}" ]; then
     GITHUB_ACTIONS_HELPER=sudo
+    sudo chmod 777 ${WORKDIR}/x86_64/build
 fi
 
 ${GITHUB_ACTIONS_HELPER} rm -f ${WORKDIR}/download/crosstool-ng-1.24.0.tar.bz2
