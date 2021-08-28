@@ -9,7 +9,7 @@ on:
       - '*'
 
 env:
-  WORKDIR: ${HOME}/mod-workdir
+  WORKDIR: /home/runner/mod-workdir
 
 jobs:
   toolchain:
@@ -19,6 +19,6 @@ jobs:
       - uses: actions/cache@v2
         with:
           key: toolchain-workdir
-          path: ${HOME}/mod-workdir
+          path: /home/runner/mod-workdir
       - name: make toolchain
         run: make toolchain
