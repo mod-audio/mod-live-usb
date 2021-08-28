@@ -4,7 +4,7 @@ PROJECTS += abgate
 PROJECTS += amsynth
 PROJECTS += artyfx
 PROJECTS += bolliedelay
-# PROJECTS += calf
+PROJECTS += calf
 PROJECTS += caps-lv2
 PROJECTS += carla-plugins
 PROJECTS += die-plugins
@@ -81,6 +81,9 @@ PROJECTS += dexed-labs
 PROJECTS += modmeter
 PROJECTS += modspectre-labs
 PROJECTS += x42-tuna-lv2-labs
+# not in stable/prod, not ready no modgui, but I still want it
+# PROJECTS += chow-kick
+# PROJECTS += distrho-ports-v6
 
 # function to convert project name into buildroot var name
 BUILDROOT_VAR = $(shell echo $(1) | tr a-z A-Z | tr - _)
@@ -107,7 +110,7 @@ define BUILD_PLUGIN
 		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
 endef
 
-.stamps/%: .stamp_built
+.stamps/%: # .stamp_built
 	$(shell mkdir -p $(shell dirname $@) $(CURDIR)/bundles)
 	$(call BUILD_PLUGIN,$(firstword $(subst /, ,$*)))
 	touch $@
