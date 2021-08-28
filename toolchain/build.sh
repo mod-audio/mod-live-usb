@@ -40,7 +40,6 @@ docker start mpb-container-x86_64
 
 docker exec -i mpb-container-x86_64 /bin/bash <<EOF
 ./bootstrap.sh x86_64 toolchain
-exit 0
 EOF
 
 docker stop mpb-container-x86_64

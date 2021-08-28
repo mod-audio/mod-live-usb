@@ -22,7 +22,7 @@ bootstrap/.stamp_built: bootstrap/build.sh
 
 # step 3: build mod-os image
 
-mod-os: toolchain mod-os/rootfs.ext2
+mod-os: bootstrap mod-os/rootfs.ext2
 
 mod-os/rootfs.ext2: mod-os/build.sh mod-os/Dockerfile
 	./$<

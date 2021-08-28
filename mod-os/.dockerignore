@@ -1,4 +1,5 @@
 .stamp_built
+build.sh
 config
 overlay-files
 rootfs.ext2

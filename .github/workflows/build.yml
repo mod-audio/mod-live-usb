@@ -26,8 +26,7 @@ jobs:
           mkdir -p /home/runner/mod-workdir
           chmod 777 /home/runner/mod-workdir
           make toolchain
-      - name: Pack bootstrap build
-        shell: bash
+      - name: pack toolchain
         run: |
           tar -C /home/runner -czf workdir-toolchain.tar.gz x86_64
       - uses: actions/upload-artifact@v2
@@ -57,8 +56,7 @@ jobs:
       - name: make bootstrap
         run: |
           make bootstrap
-      - name: Pack bootstrap build
-        shell: bash
+      - name: pack bootstrap
         run: |
           tar -C /home/runner/ -czf workdir-bootstrap.tar.gz x86_64
       - uses: actions/upload-artifact@v2
