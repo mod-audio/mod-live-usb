@@ -49,7 +49,7 @@ jobs:
       - name: Extract workdir-toolchain
         shell: bash
         run: |
-            mkdir /home/runner/mod-workdir
+            mkdir -p /home/runner/mod-workdir
             cd /home/runner/mod-workdir && tar xf ../workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
@@ -79,7 +79,7 @@ jobs:
       - name: Extract workdir-bootstrap
         shell: bash
         run: |
-            mkdir /home/runner/mod-workdir
+            mkdir -p /home/runner/mod-workdir
             cd /home/runner/mod-workdir && tar xf ../workdir-bootstrap.tar.gz
       - name: make mod-os
         run: |
