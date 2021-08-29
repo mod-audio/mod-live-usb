@@ -35,13 +35,8 @@ mkdir -p ${WORKDIR}/x86_64/target/run
 mkdir -p ${WORKDIR}/x86_64/target/srv
 mkdir -p ${WORKDIR}/x86_64/target/sys
 mkdir -p ${WORKDIR}/x86_64/target/tmp
-# touch ${WORKDIR}/x86_64/target/etc/group
 touch ${WORKDIR}/x86_64/target/etc/hostname
-# touch ${WORKDIR}/x86_64/target/etc/hosts
 touch ${WORKDIR}/x86_64/target/etc/localtime
-# touch ${WORKDIR}/x86_64/target/etc/passwd
-# touch ${WORKDIR}/x86_64/target/etc/resolv.conf
-# touch ${WORKDIR}/x86_64/target/etc/shadow
 
 #######################################################################################################################
 # merged usr mode

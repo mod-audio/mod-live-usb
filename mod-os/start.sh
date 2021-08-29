@@ -153,9 +153,4 @@ ${EXEC} systemd-nspawn \
 --tmpfs=/tmp \
 --tmpfs=/var ${NSPAWN_OPTS}
 
-# --bind-ro=/etc/hosts \
-# --bind-ro=$(pwd)/overlay-files/etc/group:/etc/group \
-# --bind-ro=$(pwd)/overlay-files/etc/passwd:/etc/passwd \
-# --bind-ro=$(pwd)/overlay-files/etc/shadow:/etc/shadow \
-
 # --tmpfs=/run \
