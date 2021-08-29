@@ -50,8 +50,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p /home/runner/mod-workdir
-            sudo chown -R runner /home/runner/mod-workdir
-            cd /home/runner/mod-workdir && tar -x --overwrite -f ../workdir-toolchain.tar.gz
+            cd /home/runner/mod-workdir && sudo tar -x --overwrite -f ../workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
           make bootstrap
@@ -81,8 +80,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p /home/runner/mod-workdir
-            sudo chown -R runner /home/runner/mod-workdir
-            cd /home/runner/mod-workdir && tar -x --overwrite -f ../workdir-bootstrap.tar.gz
+            cd /home/runner/mod-workdir && sudo tar -x --overwrite -f ../workdir-bootstrap.tar.gz
       - name: make mod-os
         run: |
           make mod-os
