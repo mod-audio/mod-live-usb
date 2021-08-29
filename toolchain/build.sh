@@ -13,7 +13,7 @@ cd $(dirname ${0})
 WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
 
 #######################################################################################################################
-# setup directories
+# setup directories for CI
 
 mkdir -p ${WORKDIR}
 
@@ -49,11 +49,14 @@ EOF
 docker stop mpb-container-x86_64
 
 #######################################################################################################################
-# cleanup
+# cleanup for CI
 
 if [ -n "${GITHUB_ACTIONS}" ]; then
     sudo chown -R runner ${WORKDIR}
 fi
+
+#######################################################################################################################
+# cleanup crosstool-ng files, which can get quite big
 
 rm -f ${WORKDIR}/download/crosstool-ng-1.24.0.tar.bz2
 rm -rf ${WORKDIR}/x86_64/build/crosstool-ng-1.24.0

@@ -13,7 +13,7 @@ cd $(dirname ${0})
 WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 
 #######################################################################################################################
-# setup directories
+# setup directories for CI
 
 if [ -n "${GITHUB_ACTIONS}" ]; then
     sudo chown -R 1000:1000 ${WORKDIR}
@@ -32,7 +32,7 @@ EOF
 docker stop mpb-container-x86_64
 
 #######################################################################################################################
-# cleanup
+# cleanup for CI
 
 if [ -n "${GITHUB_ACTIONS}" ]; then
     sudo chown -R runner ${WORKDIR}

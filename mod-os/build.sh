@@ -72,6 +72,13 @@ touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.js
 cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 ${WORKDIR}/x86_64/target/lib/
 
 #######################################################################################################################
+# setup directories for CI
+
+if [ -n "${GITHUB_ACTIONS}" ]; then
+    sudo chown -R 1000:1000 ${WORKDIR}
+fi
+
+#######################################################################################################################
 # create docker image
 
 docker build -t mpb-mod-os-x86_64 .
@@ -102,6 +109,13 @@ docker stop mpb-mod-os-container-x86_64
 # fetch rootfs.ext2 from image
 
 ln -sf ${WORKDIR}/x86_64/images/rootfs.ext2 rootfs.ext2
+
+#######################################################################################################################
+# cleanup for CI
+
+if [ -n "${GITHUB_ACTIONS}" ]; then
+    sudo chown -R runner ${WORKDIR}
+fi
 
 #######################################################################################################################
 # mark as done
