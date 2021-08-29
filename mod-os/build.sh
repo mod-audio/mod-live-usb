@@ -52,7 +52,6 @@ ln -s usr/sbin ${WORKDIR}/x86_64/target/sbin
 #######################################################################################################################
 # create extra dirs for custom mounting points
 
-mkdir -p ${WORKDIR}/x86_64/target/data
 mkdir -p ${WORKDIR}/x86_64/target/data/user-files
 mkdir -p ${WORKDIR}/x86_64/target/mnt/config
 mkdir -p ${WORKDIR}/x86_64/target/mnt/lv2
@@ -79,26 +78,9 @@ fi
 docker build -t mpb-mod-os-x86_64 .
 
 #######################################################################################################################
-# create docker container
-
-if ! docker ps -a | grep -q mpb-mod-os-container-x86_64; then
-    docker create \
-        --name mpb-mod-os-container-x86_64 \
-        -ti \
-        -v ${WORKDIR}:/home/builder/mod-workdir \
-        mpb-mod-os-x86_64:latest
-fi
-
-#######################################################################################################################
 # build mod-os
 
-docker start mpb-mod-os-container-x86_64
-
-docker exec -i mpb-mod-os-container-x86_64 /bin/bash <<EOF
-./bootstrap.sh x86_64
-EOF
-
-docker stop mpb-mod-os-container-x86_64
+docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-mod-os-x86_64:latest ./bootstrap.sh x86_64
 
 #######################################################################################################################
 # fetch rootfs.ext2 from image

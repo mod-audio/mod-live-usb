@@ -27,26 +27,9 @@ fi
 docker build -t mpb-toolchain-x86_64 .
 
 #######################################################################################################################
-# create docker container
-
-if ! docker ps -a | grep -q mpb-container-x86_64; then
-    docker create \
-        --name mpb-container-x86_64 \
-        -ti \
-        -v ${WORKDIR}:/home/builder/mod-workdir \
-        mpb-toolchain-x86_64:latest
-fi
-
-#######################################################################################################################
 # build the toolchain
 
-docker start mpb-container-x86_64
-
-docker exec -i mpb-container-x86_64 /bin/bash <<EOF
-./bootstrap.sh x86_64 toolchain
-EOF
-
-docker stop mpb-container-x86_64
+docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-toolchain-x86_64:latest ./bootstrap.sh x86_64 toolchain
 
 #######################################################################################################################
 # cleanup for CI

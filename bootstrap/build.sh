@@ -22,14 +22,7 @@ fi
 #######################################################################################################################
 # build full boostrap
 
-docker start mpb-container-x86_64
-
-docker exec -i mpb-container-x86_64 /bin/bash <<EOF
-git checkout .
-./bootstrap.sh x86_64
-EOF
-
-docker stop mpb-container-x86_64
+docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-toolchain-x86_64:latest ./bootstrap.sh x86_64
 
 #######################################################################################################################
 # cleanup for CI
