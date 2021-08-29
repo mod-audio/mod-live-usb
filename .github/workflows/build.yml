@@ -50,6 +50,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p /home/runner/mod-workdir
+            sudo chown -R runner /home/runner/mod-workdir
             cd /home/runner/mod-workdir && tar -x --overwrite -f ../workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
@@ -80,6 +81,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p /home/runner/mod-workdir
+            sudo chown -R runner /home/runner/mod-workdir
             cd /home/runner/mod-workdir && tar -x --overwrite -f ../workdir-bootstrap.tar.gz
       - name: make mod-os
         run: |
@@ -93,6 +95,7 @@ jobs:
           path: workdir-mod-os.tar.gz
 
   #plugins-bootstrap:
+    #needs: toolchain
     #runs-on: ubuntu-20.04
     #steps:
       #- uses: actions/checkout@v2
