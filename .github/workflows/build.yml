@@ -50,7 +50,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p /home/runner/mod-workdir
-            cd /home/runner/mod-workdir && tar xf ../workdir-toolchain.tar.gz
+            cd /home/runner/mod-workdir && tar -x --overwrite -f ../workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
           make bootstrap
@@ -80,7 +80,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p /home/runner/mod-workdir
-            cd /home/runner/mod-workdir && tar xf ../workdir-bootstrap.tar.gz
+            cd /home/runner/mod-workdir && tar -x --overwrite -f ../workdir-bootstrap.tar.gz
       - name: make mod-os
         run: |
           make mod-os
@@ -91,3 +91,12 @@ jobs:
         with:
           name: workdir-mod-os
           path: workdir-mod-os.tar.gz
+
+  #plugins-bootstrap:
+    #runs-on: ubuntu-20.04
+    #steps:
+      #- uses: actions/checkout@v2
+      #- uses: satackey/action-docker-layer-caching@v0.0.11
+      #- name: make plugins-bootstrap
+        #run: |
+          #make plugins-bootstrap
