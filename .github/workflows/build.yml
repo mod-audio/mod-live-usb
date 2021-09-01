@@ -50,7 +50,9 @@ jobs:
         shell: bash
         run: |
             mkdir -p ~/mod-workdir
-            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v2.tar.gz
+            # FIXME this sudo+chown shouldn't be needed, something is wrong..
+            sudo tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v2.tar.gz
+            sudo chown runner:runner -R ~/mod-workdir
       - name: make bootstrap
         run: |
           # touch toolchain/.stamp_built
