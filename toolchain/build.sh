@@ -13,30 +13,19 @@ cd $(dirname ${0})
 WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
 
 #######################################################################################################################
-# setup directories for CI
+# make sure workdir exists before we try to map it
 
 mkdir -p ${WORKDIR}
-
-if [ -n "${GITHUB_ACTIONS}" ]; then
-    sudo chown -R 1000:1000 ${WORKDIR}
-fi
 
 #######################################################################################################################
 # create docker image
 
-docker build -t mpb-toolchain-x86_64 .
+docker build --build-arg=GROUP_ID=$(id -g) --build-arg=USER_ID=$(id -u) -t mpb-toolchain-x86_64 .
 
 #######################################################################################################################
 # build the toolchain
 
 docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-toolchain-x86_64:latest ./bootstrap.sh x86_64 toolchain
-
-#######################################################################################################################
-# cleanup for CI
-
-if [ -n "${GITHUB_ACTIONS}" ]; then
-    sudo chown -R runner ${WORKDIR}
-fi
 
 #######################################################################################################################
 # cleanup crosstool-ng files, which can get quite big

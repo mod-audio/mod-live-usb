@@ -22,7 +22,10 @@ ENV USER builder
 ENV HOME /home/$USER
 
 # create user
-RUN useradd -d $HOME -m -G sudo $USER
+ARG GROUP_ID=1000
+ARG USER_ID=1000
+RUN groupadd -g $GROUP_ID $USER
+RUN useradd -d $HOME -m -G sudo -u $USER_ID -g $GROUP_ID $USER
 # set user to sudoers (no password required)
 RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99-$USER && chmod 0440 /etc/sudoers.d/99-$USER
 
@@ -38,7 +41,7 @@ ENV MPB_GIT_URL https://github.com/moddevices/mod-plugin-builder
 ENV MPB_GIT_HASH 9a234bfcc2a3b51620704274dedefc4e8a16a647
 
 # checkout mod-plugin-builder
-RUN git clone --recursive $MPB_GIT_URL
+RUN git clone $MPB_GIT_URL
 WORKDIR mod-plugin-builder
 RUN git checkout $MPB_GIT_HASH && git submodule update
 
