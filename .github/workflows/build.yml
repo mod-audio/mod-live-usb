@@ -49,6 +49,7 @@ jobs:
       - name: Extract workdir-toolchain
         shell: bash
         run: |
+            mkdir -p ~/mod-workdir
             tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain.tar.gz
       - name: make bootstrap
         run: |
