@@ -26,11 +26,11 @@ jobs:
           make toolchain
       - name: pack toolchain
         run: |
-          tar -C ~/mod-workdir -czf workdir-toolchain.tar.gz x86_64
+          tar -C ~/mod-workdir -czf workdir-toolchain-v2.tar.gz x86_64
       - uses: actions/upload-artifact@v2
         with:
-          name: workdir-toolchain
-          path: workdir-toolchain.tar.gz
+          name: workdir-toolchain-v2
+          path: workdir-toolchain-v2.tar.gz
 
   bootstrap:
     needs: toolchain
@@ -44,16 +44,16 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
       - uses: actions/download-artifact@v2
         with:
-          name: workdir-toolchain
+          name: workdir-toolchain-v2
           path: /home/runner
-      - name: Extract workdir-toolchain
+      - name: Extract workdir-toolchain-v2
         shell: bash
         run: |
             mkdir -p ~/mod-workdir
-            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain.tar.gz
+            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v2.tar.gz
       - name: make bootstrap
         run: |
-          touch toolchain/.stamp_built
+          # touch toolchain/.stamp_built
           make bootstrap
       - name: pack bootstrap
         run: |
