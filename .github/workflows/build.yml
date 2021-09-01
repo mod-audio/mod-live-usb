@@ -79,7 +79,8 @@ jobs:
       #- name: Extract workdir-bootstrap
         #shell: bash
         #run: |
-            #tar -C /home/runner/mod-workdir -x --overwrite -f ../workdir-bootstrap.tar.gz
+            #mkdir -p ~/mod-workdir
+            #tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap.tar.gz
       #- name: make mod-os
         #run: |
           # TODO set NOCLEAN=1 env var if there is cache of this job
@@ -101,3 +102,35 @@ jobs:
       - name: make plugins-bootstrap
         run: |
           make plugins-bootstrap
+
+  ## TODO source root dir
+  #plugins:
+    #needs: plugins
+    #runs-on: ubuntu-20.04
+    #steps:
+      #- uses: actions/checkout@v2
+      #- uses: actions/cache@v2
+        #with:
+          #key: plugins
+          #path: |
+            #plugins/.stamp_built
+            #plugins/.stamps
+            #plugins/bundles
+      #- uses: satackey/action-docker-layer-caching@v0.0.11
+      #- name: make plugins
+        #run: |
+          #make plugins
+      #- name: pack plugin bundles
+        #run: |
+          #tar -czf plugin-bundles.tar.gz plugins/bundles
+      #- uses: actions/upload-artifact@v2
+        #with:
+          #name: plugin-bundles
+          #path: plugin-bundles.tar.gz
+
+  #iso:
+    #needs: [mod-os, plugins]
+    #runs-on: ubuntu-20.04
+    #steps:
+      #- uses: actions/checkout@v2
+      #- uses: satackey/action-docker-layer-caching@v0.0.11
