@@ -86,8 +86,8 @@ jobs:
             tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap.tar.gz
       - name: make mod-os
         run: |
-          touch toolchain/.stamp_built
-          touch bootstrap/.stamp_built
+          # touch toolchain/.stamp_built
+          # touch bootstrap/.stamp_built
           # TODO set NOCLEAN=1 env var if there is cache of this job
           make mod-os
       - name: pack mod-os
