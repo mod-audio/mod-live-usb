@@ -7,11 +7,11 @@ Super early instructions:
 ```sh
 # build mod-os image (through docker and mod-plugin-builder)
 # NOTE: takes a very long time!
-make
+make mod-os
 
 # build plugins
 # NOTE: takes a very long time!
-make -C plugins
+make plugins
 
 # run the container with USB souncard (requires root)
 ./mod-os/start.sh Rubix22
