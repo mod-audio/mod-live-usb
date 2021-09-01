@@ -79,8 +79,9 @@ jobs:
       - name: Extract workdir-bootstrap
         shell: bash
         run: |
+            id
             mkdir -p /home/runner/mod-workdir
-            cd /home/runner/mod-workdir && sudo tar -x --overwrite -f ../workdir-bootstrap.tar.gz
+            sudo tar -C /home/runner/mod-workdir -x --overwrite -f ../workdir-bootstrap.tar.gz
       - name: make mod-os
         run: |
           make mod-os

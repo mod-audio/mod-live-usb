@@ -20,6 +20,13 @@ rm -f rootfs.ext2 ${WORKDIR}/x86_64/images/rootfs.ext2
 if [ -z "${NOCLEAN}" ]; then
     rm -f ${WORKDIR}/x86_64/build/*/.stamp_target_installed
     rm -rf ${WORKDIR}/x86_64/target/
+
+    # FIXME this seems needed, not sure why yet
+    rm -rf ${WORKDIR}/x86_64/build/lv2-*
+    rm -rf ${WORKDIR}/x86_64/build/serd-*
+    rm -rf ${WORKDIR}/x86_64/build/sord-*
+    rm -rf ${WORKDIR}/x86_64/build/sratom-*
+    rm -rf ${WORKDIR}/x86_64/build/lilv-*
 fi
 
 #######################################################################################################################
@@ -63,7 +70,10 @@ touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.css
 touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.js
 
 # this is needed somehow
-cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 ${WORKDIR}/x86_64/target/lib/
+if [ ! -e ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1 ]; then
+    cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 \
+       ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1
+fi
 
 #######################################################################################################################
 # setup directories for CI
