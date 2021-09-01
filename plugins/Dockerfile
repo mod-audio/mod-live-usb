@@ -7,6 +7,9 @@ ENV HOME /home/$USER
 # run bootstrap (contained within docker)
 RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
 
+# fetch submodules, needed for building plugins
+RUN git submodule init && git submodule update
+
 # NOTE you can edit this as needed
 ARG MPB_COMMIT_HASH_FOR_PLUGINS=9a234bfcc2a3b51620704274dedefc4e8a16a647
 

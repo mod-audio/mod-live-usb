@@ -13,23 +13,9 @@ cd $(dirname ${0})
 WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 
 #######################################################################################################################
-# setup directories for CI
-
-if [ -n "${GITHUB_ACTIONS}" ]; then
-    sudo chown -R 1000:1000 ${WORKDIR}
-fi
-
-#######################################################################################################################
 # build full boostrap
 
 docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-toolchain-x86_64:latest ./bootstrap.sh x86_64
-
-#######################################################################################################################
-# cleanup for CI
-
-if [ -n "${GITHUB_ACTIONS}" ]; then
-    sudo chown -R runner ${WORKDIR}
-fi
 
 #######################################################################################################################
 # mark as done

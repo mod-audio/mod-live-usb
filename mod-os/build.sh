@@ -76,13 +76,6 @@ if [ ! -e ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1 ]; then
 fi
 
 #######################################################################################################################
-# setup directories for CI
-
-if [ -n "${GITHUB_ACTIONS}" ]; then
-    sudo chown -R 1000:1000 ${WORKDIR}
-fi
-
-#######################################################################################################################
 # create docker image
 
 docker build -t mpb-mod-os-x86_64 .
@@ -96,13 +89,6 @@ docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-mod-os-x86_64:latest
 # fetch rootfs.ext2 from image
 
 ln -sf ${WORKDIR}/x86_64/images/rootfs.ext2 rootfs.ext2
-
-#######################################################################################################################
-# cleanup for CI
-
-if [ -n "${GITHUB_ACTIONS}" ]; then
-    sudo chown -R runner ${WORKDIR}
-fi
 
 #######################################################################################################################
 # mark as done
