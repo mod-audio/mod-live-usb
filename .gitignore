@@ -8,3 +8,4 @@ live-welcome/resources/watermark.txt
 
 *.kdev4
 *.o
+.stamp_built
