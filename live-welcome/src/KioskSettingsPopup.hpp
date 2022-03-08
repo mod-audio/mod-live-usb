@@ -350,7 +350,7 @@ public Q_SLOTS:
             deviceBox.addItem(name, QString::fromStdString(outputIds[i]));
         }
 
-        // 2rd pass, add HDMI ones
+        // 3rd pass, add HDMI ones
         i=0;
         for (; i<numNames; ++i)
         {
