@@ -23,7 +23,7 @@ jobs:
           path: /home/runner/mod-workdir
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-toolchain-v${{ env.CACHE_VERSION }}
+          key: docker-layer-v${{ env.CACHE_VERSION }}
       - name: make toolchain
         run: |
           make toolchain
@@ -46,7 +46,7 @@ jobs:
           path: /home/runner/mod-workdir
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-bootstrap-v${{ env.CACHE_VERSION }}
+          key: docker-layer-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v2
         with:
           name: workdir-toolchain-v${{ env.CACHE_VERSION }}
@@ -79,7 +79,7 @@ jobs:
           #path: /home/runner/mod-workdir
       #- uses: satackey/action-docker-layer-caching@v0.0.11
         #with:
-          #key: docker-mod-os-v${{ env.CACHE_VERSION }}
+          #key: docker-layer-v${{ env.CACHE_VERSION }}
       #- uses: actions/download-artifact@v2
         #with:
           #name: workdir-bootstrap
@@ -112,7 +112,7 @@ jobs:
           submodules: recursive
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-plugins-bootstrap-v${{ env.CACHE_VERSION }}
+          key: docker-layer-v${{ env.CACHE_VERSION }}
       - name: make plugins-bootstrap
         run: |
           touch toolchain/.stamp_built
@@ -135,7 +135,7 @@ jobs:
             #plugins/bundles
       #- uses: satackey/action-docker-layer-caching@v0.0.11
         #with:
-          #key: docker-plugins-v${{ env.CACHE_VERSION }}
+          #key: docker-layer-v${{ env.CACHE_VERSION }}
       #- name: make plugins
         #run: |
           #touch toolchain/.stamp_built
@@ -161,7 +161,7 @@ jobs:
             #archiso/cache
       #- uses: satackey/action-docker-layer-caching@v0.0.11
         #with:
-          #key: docker-iso-v${{ env.CACHE_VERSION }}
+          #key: docker-layer-v${{ env.CACHE_VERSION }}
       #- uses: actions/download-artifact@v2
         #with:
           #name: workdir-mod-os
