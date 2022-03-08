@@ -11,7 +11,7 @@ RUN ./bootstrap.sh x86_64 && ./.clean-install.sh x86_64
 RUN git submodule init && git submodule update
 
 # NOTE you can edit this as needed
-ARG MPB_COMMIT_HASH_FOR_PLUGINS=8f0ea23f034a1dfc4f5e4bc48a3a3df911bbdab7
+ARG MPB_COMMIT_HASH_FOR_PLUGINS=f849e8c244ca736c77e5e63bb64613288f396466
 
 # update to requested commit
 RUN git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_PLUGINS && git submodule update
