@@ -7,5 +7,7 @@ live-welcome/mod-live-usb-welcome
 live-welcome/resources/watermark.txt
 
 *.kdev4
+*.d
 *.o
+moc_*.cpp
 .stamp_built

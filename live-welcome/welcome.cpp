@@ -7,6 +7,10 @@
 
 int main(int argc, char* argv[])
 {
+    QApplication::setAttribute(Qt::AA_X11InitThreads);
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+
     QApplication app(argc, argv);
     app.setApplicationDisplayName("MOD Live-USB Welcome");
     app.setApplicationName("LiveUSB-Welcome");
@@ -18,7 +22,6 @@ int main(int argc, char* argv[])
     font.setPixelSize(16);
     app.setFont(font);
 
-#if 1
     QPalette palette;
     palette.setColor(QPalette::Disabled, QPalette::Window, QColor(14, 14, 14));
     palette.setColor(QPalette::Active,   QPalette::Window, QColor(17, 17, 17));
@@ -78,7 +81,6 @@ int main(int argc, char* argv[])
     palette.setColor(QPalette::Active,   QPalette::LinkVisited, QColor(230, 100, 230));
     palette.setColor(QPalette::Inactive, QPalette::LinkVisited, QColor(230, 100, 230));
     app.setPalette(palette);
-#endif
 
     KioskWindow win;
 

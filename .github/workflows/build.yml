@@ -19,21 +19,21 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
-          key: toolchain-v${CACHE_VERSION}
+          key: toolchain-v${{ env.CACHE_VERSION }}
           path: /home/runner/mod-workdir
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-toolchain-v${CACHE_VERSION}
+          key: docker-toolchain-v${{ env.CACHE_VERSION }}
       - name: make toolchain
         run: |
           make toolchain
       - name: pack toolchain
         run: |
-          tar -C ~/mod-workdir -czf workdir-toolchain-v${CACHE_VERSION}.tar.gz x86_64
+          tar -C ~/mod-workdir -czf workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz x86_64
       - uses: actions/upload-artifact@v2
         with:
-          name: workdir-toolchain-v${CACHE_VERSION}
-          path: workdir-toolchain-v${CACHE_VERSION}.tar.gz
+          name: workdir-toolchain-v${{ env.CACHE_VERSION }}
+          path: workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz
 
   bootstrap:
     needs: toolchain
@@ -42,26 +42,23 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
-          key: bootstrap-v${CACHE_VERSION}
+          key: bootstrap-v${{ env.CACHE_VERSION }}
           path: /home/runner/mod-workdir
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-bootstrap-v${CACHE_VERSION}
+          key: docker-bootstrap-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v2
         with:
-          name: workdir-toolchain-v${CACHE_VERSION}
+          name: workdir-toolchain-v${{ env.CACHE_VERSION }}
           path: /home/runner
-      - name: Extract workdir-toolchain-v${CACHE_VERSION}
+      - name: Extract workdir-toolchain-v${{ env.CACHE_VERSION }}
         shell: bash
         run: |
             mkdir -p ~/mod-workdir
-            # FIXME this sudo+chown shouldn't be needed, something is wrong..
-            # sudo tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v${CACHE_VERSION}.tar.gz
-            # sudo chown runner:runner -R ~/mod-workdir
-            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v${CACHE_VERSION}.tar.gz
+            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz
       - name: make bootstrap
         run: |
-          # touch toolchain/.stamp_built
+          touch toolchain/.stamp_built
           make bootstrap
       - name: pack bootstrap
         run: |
@@ -78,11 +75,11 @@ jobs:
       #- uses: actions/checkout@v2
       #- uses: actions/cache@v2
         #with:
-          #key: mod-os-v${CACHE_VERSION}
+          #key: mod-os-v${{ env.CACHE_VERSION }}
           #path: /home/runner/mod-workdir
       #- uses: satackey/action-docker-layer-caching@v0.0.11
         #with:
-          #key: docker-mod-os-v${CACHE_VERSION}
+          #key: docker-mod-os-v${{ env.CACHE_VERSION }}
       #- uses: actions/download-artifact@v2
         #with:
           #name: workdir-bootstrap
@@ -106,20 +103,20 @@ jobs:
           #name: workdir-mod-os
           #path: workdir-mod-os.tar.gz
 
-  #plugins-bootstrap:
-    #needs: toolchain
-    #runs-on: ubuntu-20.04
-    #steps:
-      #- uses: actions/checkout@v2
-        #with:
-          #submodules: recursive
-      #- uses: satackey/action-docker-layer-caching@v0.0.11
-        #with:
-          #key: docker-plugins-bootstrap-v${CACHE_VERSION}
-      #- name: make plugins-bootstrap
-        #run: |
-          #touch toolchain/.stamp_built
-          #make plugins-bootstrap
+  plugins-bootstrap:
+    needs: toolchain
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-plugins-bootstrap-v${{ env.CACHE_VERSION }}
+      - name: make plugins-bootstrap
+        run: |
+          touch toolchain/.stamp_built
+          make plugins-bootstrap
 
   ## TODO source root dir?
   #plugins:
@@ -131,14 +128,14 @@ jobs:
           #submodules: recursive
       #- uses: actions/cache@v2
         #with:
-          #key: plugins-v${CACHE_VERSION}
+          #key: plugins-v${{ env.CACHE_VERSION }}
           #path: |
             #plugins/.stamp_built
             #plugins/.stamps
             #plugins/bundles
       #- uses: satackey/action-docker-layer-caching@v0.0.11
         #with:
-          #key: docker-plugins-v${CACHE_VERSION}
+          #key: docker-plugins-v${{ env.CACHE_VERSION }}
       #- name: make plugins
         #run: |
           #touch toolchain/.stamp_built
@@ -159,12 +156,12 @@ jobs:
       #- uses: actions/checkout@v2
       #- uses: actions/cache@v2
         #with:
-          #key: iso-v${CACHE_VERSION}
+          #key: iso-v${{ env.CACHE_VERSION }}
           #path: |
             #archiso/cache
       #- uses: satackey/action-docker-layer-caching@v0.0.11
         #with:
-          #key: docker-iso-v${CACHE_VERSION}
+          #key: docker-iso-v${{ env.CACHE_VERSION }}
       #- uses: actions/download-artifact@v2
         #with:
           #name: workdir-mod-os
