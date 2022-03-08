@@ -62,46 +62,45 @@ jobs:
           make bootstrap
       - name: pack bootstrap
         run: |
-          tar -C ~/mod-workdir -czf workdir-bootstrap.tar.gz x86_64
+          tar -C ~/mod-workdir -czf workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz x86_64
       - uses: actions/upload-artifact@v2
         with:
-          name: workdir-bootstrap
-          path: workdir-bootstrap.tar.gz
+          name: workdir-bootstrap-v${{ env.CACHE_VERSION }}
+          path: workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz
 
-  #mod-os:
-    #needs: bootstrap
-    #runs-on: ubuntu-20.04
-    #steps:
-      #- uses: actions/checkout@v2
-      #- uses: actions/cache@v2
-        #with:
-          #key: mod-os-v${{ env.CACHE_VERSION }}
-          #path: /home/runner/mod-workdir
-      #- uses: satackey/action-docker-layer-caching@v0.0.11
-        #with:
-          #key: docker-layer-v${{ env.CACHE_VERSION }}
-      #- uses: actions/download-artifact@v2
-        #with:
-          #name: workdir-bootstrap
-          #path: /home/runner
-      #- name: Extract workdir-bootstrap
-        #shell: bash
-        #run: |
-            #mkdir -p ~/mod-workdir
-            #tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap.tar.gz
-      #- name: make mod-os
-        #run: |
-          ## touch toolchain/.stamp_built
-          ## touch bootstrap/.stamp_built
-          ## TODO set NOCLEAN=1 env var if there is cache of this job
-          #make mod-os
-      #- name: pack mod-os
-        #run: |
-          #tar -C ~/mod-workdir -czf workdir-mod-os.tar.gz x86_64
-      #- uses: actions/upload-artifact@v2
-        #with:
-          #name: workdir-mod-os
-          #path: workdir-mod-os.tar.gz
+  mod-os:
+    needs: bootstrap
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          key: mod-os-v${{ env.CACHE_VERSION }}
+          path: /home/runner/mod-workdir
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-v${{ env.CACHE_VERSION }}
+      - uses: actions/download-artifact@v2
+        with:
+          name: workdir-bootstrap
+          path: /home/runner
+      - name: Extract workdir-bootstrap
+        shell: bash
+        run: |
+            mkdir -p ~/mod-workdir
+            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz
+      - name: make mod-os
+        run: |
+          touch toolchain/.stamp_built
+          touch bootstrap/.stamp_built
+          make mod-os
+      - name: pack mod-os
+        run: |
+          tar -C ~/mod-workdir -czf workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz x86_64
+      - uses: actions/upload-artifact@v2
+        with:
+          name: workdir-mod-os-v${{ env.CACHE_VERSION }}
+          path: workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
 
   plugins-bootstrap:
     needs: toolchain
@@ -130,7 +129,6 @@ jobs:
         #with:
           #key: plugins-v${{ env.CACHE_VERSION }}
           #path: |
-            #plugins/.stamp_built
             #plugins/.stamps
             #plugins/bundles
       #- uses: satackey/action-docker-layer-caching@v0.0.11
