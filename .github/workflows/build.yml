@@ -82,7 +82,7 @@ jobs:
           key: docker-layer-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v2
         with:
-          name: workdir-bootstrap
+          name: workdir-bootstrap-v${{ env.CACHE_VERSION }}
           path: /home/runner
       - name: Extract workdir-bootstrap
         shell: bash
@@ -102,20 +102,20 @@ jobs:
           name: workdir-mod-os-v${{ env.CACHE_VERSION }}
           path: workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
 
-  plugins-bootstrap:
-    needs: toolchain
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        with:
-          key: docker-layer-v${{ env.CACHE_VERSION }}
-      - name: make plugins-bootstrap
-        run: |
-          touch toolchain/.stamp_built
-          make plugins-bootstrap
+  #plugins-bootstrap:
+    #needs: toolchain
+    #runs-on: ubuntu-20.04
+    #steps:
+      #- uses: actions/checkout@v2
+        #with:
+          #submodules: recursive
+      #- uses: satackey/action-docker-layer-caching@v0.0.11
+        #with:
+          #key: docker-layer-v${{ env.CACHE_VERSION }}
+      #- name: make plugins-bootstrap
+        #run: |
+          #touch toolchain/.stamp_built
+          #make plugins-bootstrap
 
   ## TODO source root dir?
   #plugins:
@@ -141,11 +141,11 @@ jobs:
           #make plugins
       #- name: pack plugin bundles
         #run: |
-          #tar -czf plugin-bundles.tar.gz plugins/bundles
+          #tar -czf plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz plugins/bundles
       #- uses: actions/upload-artifact@v2
         #with:
-          #name: plugin-bundles
-          #path: plugin-bundles.tar.gz
+          #name: plugin-bundles-v${{ env.CACHE_VERSION }}
+          #path: plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
 
   #iso:
     #needs: [mod-os, plugins]
@@ -162,21 +162,21 @@ jobs:
           #key: docker-layer-v${{ env.CACHE_VERSION }}
       #- uses: actions/download-artifact@v2
         #with:
-          #name: workdir-mod-os
+          #name: workdir-mod-os-v${{ env.CACHE_VERSION }}
           #path: /home/runner
       #- uses: actions/download-artifact@v2
         #with:
-          #name: plugin-bundles
+          #name: plugin-bundles-v${{ env.CACHE_VERSION }}
           #path: /home/runner
       #- name: Extract workdir-mod-os
         #shell: bash
         #run: |
             #mkdir -p ~/mod-workdir
-            #tar -C ~/mod-workdir -x --overwrite -f ~/workdir-mod-os.tar.gz
+            #tar -C ~/mod-workdir -x --overwrite -f ~/workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
       #- name: Extract plugin bundles
         #shell: bash
         #run: |
-            #tar -x --overwrite -f ~/plugin-bundles.tar.gz
+            #tar -x --overwrite -f ~/plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
       #- name: make iso
         #run: |
           #touch toolchain/.stamp_built
