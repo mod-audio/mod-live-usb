@@ -55,7 +55,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p ~/mod-workdir
-            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz
+            sudo tar -C ~/mod-workdir -x --overwrite -f ~/workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz
       - name: make bootstrap
         run: |
           touch toolchain/.stamp_built
