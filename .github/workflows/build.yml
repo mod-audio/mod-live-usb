@@ -119,35 +119,34 @@ jobs:
           touch toolchain/.stamp_built
           make plugins-bootstrap
 
-  ## TODO source root dir?
-  #plugins:
-    #needs: plugins-bootstrap
-    #runs-on: ubuntu-20.04
-    #steps:
-      #- uses: actions/checkout@v2
-        #with:
-          #submodules: recursive
-      #- uses: actions/cache@v2
-        #with:
-          #key: plugins-v${{ env.CACHE_VERSION }}
-          #path: |
-            #plugins/.stamps
-            #plugins/bundles
-      #- uses: satackey/action-docker-layer-caching@v0.0.11
-        #with:
-          #key: docker-layer-v${{ env.CACHE_VERSION }}
-      #- name: make plugins
-        #run: |
-          #touch toolchain/.stamp_built
-          #touch plugins/.stamp_built
-          #make plugins
-      #- name: pack plugin bundles
-        #run: |
-          #tar -czf plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz plugins/bundles
-      #- uses: actions/upload-artifact@v2
-        #with:
-          #name: plugin-bundles-v${{ env.CACHE_VERSION }}
-          #path: plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
+  plugins:
+    needs: plugins-bootstrap
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: actions/cache@v2
+        with:
+          key: plugins-v${{ env.CACHE_VERSION }}
+          path: |
+            plugins/.stamps
+            plugins/bundles
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-v${{ env.CACHE_VERSION }}
+      - name: make plugins
+        run: |
+          touch toolchain/.stamp_built
+          touch plugins/.stamp_built
+          make plugins
+      - name: pack plugin bundles
+        run: |
+          tar -czf plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz plugins/bundles
+      - uses: actions/upload-artifact@v2
+        with:
+          name: plugin-bundles-v${{ env.CACHE_VERSION }}
+          path: plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
 
   #iso:
     #needs: [mod-os, plugins]
