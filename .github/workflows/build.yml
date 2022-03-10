@@ -88,7 +88,7 @@ jobs:
         shell: bash
         run: |
             mkdir -p ~/mod-workdir
-            tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz
+            sudo tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz
       - name: make mod-os
         run: |
           touch toolchain/.stamp_built
