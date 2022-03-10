@@ -8,6 +8,11 @@ set -e
 cd $(dirname ${0})
 
 #######################################################################################################################
+# create docker image
+
+docker build --build-arg=GROUP_ID=$(id -g) --build-arg=USER_ID=$(id -u) -t mpb-toolchain-x86_64 .
+
+#######################################################################################################################
 # environment variables
 
 WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
@@ -16,11 +21,6 @@ WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
 # make sure workdir exists before we try to map it
 
 mkdir -p ${WORKDIR}
-
-#######################################################################################################################
-# create docker image
-
-docker build --build-arg=GROUP_ID=$(id -g) --build-arg=USER_ID=$(id -u) -t mpb-toolchain-x86_64 .
 
 #######################################################################################################################
 # build the toolchain

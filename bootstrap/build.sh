@@ -13,6 +13,11 @@ cd $(dirname ${0})
 WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 
 #######################################################################################################################
+# make sure workdir exists before we try to map it
+
+mkdir -p ${WORKDIR}
+
+#######################################################################################################################
 # build full boostrap
 
 docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-toolchain-x86_64:latest ./bootstrap.sh x86_64

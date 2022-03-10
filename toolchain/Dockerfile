@@ -22,10 +22,10 @@ ENV USER builder
 ENV HOME /home/$USER
 
 # create user
-ARG GROUP_ID=1000
-ARG USER_ID=1000
-RUN groupadd -g $GROUP_ID $USER
-RUN useradd -d $HOME -m -G sudo -u $USER_ID -g $GROUP_ID $USER
+ARG GROUP_ID=1001
+ARG USER_ID=1001
+RUN groupadd -g $GROUP_ID -o $USER
+RUN useradd -d $HOME -m -G sudo -u $USER_ID -g $GROUP_ID -o $USER
 # set user to sudoers (no password required)
 RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/99-$USER && chmod 0440 /etc/sudoers.d/99-$USER
 
