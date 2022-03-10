@@ -9,7 +9,7 @@ on:
       - '*'
 
 env:
-  CACHE_VERSION: 3
+  CACHE_VERSION: 4
   WORKDIR: /home/runner/mod-workdir
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           key: toolchain-v${{ env.CACHE_VERSION }}
-          path: /home/runner/mod-workdir
+          path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
           key: docker-layer-v${{ env.CACHE_VERSION }}
@@ -43,7 +43,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           key: bootstrap-v${{ env.CACHE_VERSION }}
-          path: /home/runner/mod-workdir
+          path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
           key: docker-layer-v${{ env.CACHE_VERSION }}
@@ -76,7 +76,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           key: mod-os-v${{ env.CACHE_VERSION }}
-          path: /home/runner/mod-workdir
+          path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
           key: docker-layer-v${{ env.CACHE_VERSION }}
