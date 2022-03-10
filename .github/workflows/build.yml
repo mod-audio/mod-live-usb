@@ -102,20 +102,20 @@ jobs:
           name: workdir-mod-os-v${{ env.CACHE_VERSION }}
           path: workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
 
-  #plugins-bootstrap:
-    #needs: toolchain
-    #runs-on: ubuntu-20.04
-    #steps:
-      #- uses: actions/checkout@v2
-        #with:
-          #submodules: recursive
-      #- uses: satackey/action-docker-layer-caching@v0.0.11
-        #with:
-          #key: docker-layer-v${{ env.CACHE_VERSION }}
-      #- name: make plugins-bootstrap
-        #run: |
-          #touch toolchain/.stamp_built
-          #make plugins-bootstrap
+  plugins-bootstrap:
+    needs: toolchain
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-v${{ env.CACHE_VERSION }}
+      - name: make plugins-bootstrap
+        run: |
+          touch toolchain/.stamp_built
+          make plugins-bootstrap
 
   ## TODO source root dir?
   #plugins:
