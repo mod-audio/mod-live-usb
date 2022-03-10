@@ -90,6 +90,8 @@ jobs:
             mkdir -p ~/mod-workdir
             sudo tar -C ~/mod-workdir -x --overwrite -f ~/workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz
       - name: make mod-os
+        env:
+          NOCLEAN: 1
         run: |
           touch toolchain/.stamp_built
           touch bootstrap/.stamp_built
