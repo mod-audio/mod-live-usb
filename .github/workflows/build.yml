@@ -23,7 +23,7 @@ jobs:
           path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-layer-v${{ env.CACHE_VERSION }}
+          key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
       - name: make toolchain
         run: |
           make toolchain
@@ -46,7 +46,7 @@ jobs:
           path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-layer-v${{ env.CACHE_VERSION }}
+          key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v2
         with:
           name: workdir-toolchain-v${{ env.CACHE_VERSION }}
@@ -79,7 +79,7 @@ jobs:
           path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-layer-v${{ env.CACHE_VERSION }}
+          key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v2
         with:
           name: workdir-bootstrap-v${{ env.CACHE_VERSION }}
@@ -105,7 +105,6 @@ jobs:
           path: workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
 
   plugins-bootstrap:
-    needs: toolchain
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -113,10 +112,9 @@ jobs:
           submodules: recursive
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-layer-v${{ env.CACHE_VERSION }}
+          key: docker-layer-for-plugins-v${{ env.CACHE_VERSION }}
       - name: make plugins-bootstrap
         run: |
-          touch toolchain/.stamp_built
           make plugins-bootstrap
 
   plugins:
@@ -134,7 +132,7 @@ jobs:
             plugins/bundles
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
-          key: docker-layer-v${{ env.CACHE_VERSION }}
+          key: docker-layer-for-plugins-v${{ env.CACHE_VERSION }}
       - name: make plugins
         run: |
           touch toolchain/.stamp_built
@@ -148,44 +146,45 @@ jobs:
           name: plugin-bundles-v${{ env.CACHE_VERSION }}
           path: plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
 
-  #iso:
-    #needs: [mod-os, plugins]
-    #runs-on: ubuntu-20.04
-    #steps:
-      #- uses: actions/checkout@v2
-      #- uses: actions/cache@v2
-        #with:
-          #key: iso-v${{ env.CACHE_VERSION }}
-          #path: |
-            #archiso/cache
-      #- uses: satackey/action-docker-layer-caching@v0.0.11
-        #with:
-          #key: docker-layer-v${{ env.CACHE_VERSION }}
-      #- uses: actions/download-artifact@v2
-        #with:
-          #name: workdir-mod-os-v${{ env.CACHE_VERSION }}
-          #path: /home/runner
-      #- uses: actions/download-artifact@v2
-        #with:
-          #name: plugin-bundles-v${{ env.CACHE_VERSION }}
-          #path: /home/runner
-      #- name: Extract workdir-mod-os
-        #shell: bash
-        #run: |
-            #mkdir -p ~/mod-workdir
-            #tar -C ~/mod-workdir -x --overwrite -f ~/workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
-      #- name: Extract plugin bundles
-        #shell: bash
-        #run: |
-            #tar -x --overwrite -f ~/plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
-      #- name: make iso
-        #run: |
-          #touch toolchain/.stamp_built
-          #touch bootstrap/.stamp_built
-          #touch plugins/.stamp_built
-          #ln -sf ~/mod-workdir/x86_64/images/rootfs.ext2 mod-os/rootfs.ext2
-          #make iso
-      #- uses: actions/upload-artifact@v2
-        #with:
-          #name: iso
-          #path: archiso/output/*.iso
+  iso:
+    needs: [mod-os, plugins]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          key: iso-v${{ env.CACHE_VERSION }}
+          path: |
+            archiso/cache
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        with:
+          key: docker-layer-for-iso-v${{ env.CACHE_VERSION }}
+      - uses: actions/download-artifact@v2
+        with:
+          name: workdir-mod-os-v${{ env.CACHE_VERSION }}
+          path: /home/runner
+      - uses: actions/download-artifact@v2
+        with:
+          name: plugin-bundles-v${{ env.CACHE_VERSION }}
+          path: /home/runner
+      - name: Extract workdir-mod-os
+        shell: bash
+        run: |
+            mkdir -p ~/mod-workdir
+            sudo tar -C ~/mod-workdir -x --overwrite -f ~/workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
+      - name: Extract plugin bundles
+        shell: bash
+        run: |
+            sudo tar -x --overwrite -f ~/plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
+      - name: make iso
+        run: |
+          touch toolchain/.stamp_built
+          touch bootstrap/.stamp_built
+          touch plugins/.stamp_built
+          touch mod-os/.stamp_built
+          ln -sf ~/mod-workdir/x86_64/images/rootfs.ext2 mod-os/rootfs.ext2
+          make iso
+      - uses: actions/upload-artifact@v2
+        with:
+          name: iso
+          path: archiso/output/*.iso
