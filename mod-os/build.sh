@@ -44,6 +44,9 @@ mkdir -p ${WORKDIR}/x86_64/target/sys
 mkdir -p ${WORKDIR}/x86_64/target/tmp
 touch ${WORKDIR}/x86_64/target/etc/hostname
 touch ${WORKDIR}/x86_64/target/etc/localtime
+cp overlay-files/etc/group  ${WORKDIR}/x86_64/target/etc/group
+cp overlay-files/etc/passwd ${WORKDIR}/x86_64/target/etc/passwd
+cp overlay-files/etc/shadow ${WORKDIR}/x86_64/target/etc/shadow
 
 #######################################################################################################################
 # merged usr mode
