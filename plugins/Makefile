@@ -78,7 +78,7 @@ PROJECTS += x42-mtc
 PROJECTS += x42-stepseq
 PROJECTS += x42-tinygain
 PROJECTS += x42-xfade
-PROJECTS += zam-plugins
+# PROJECTS += zam-plugins # FIXME build broken, submodules using git:// github stuff
 # not in stable/prod, but still useful for many reasons
 # PROJECTS += cardinal
 PROJECTS += dexed-labs
