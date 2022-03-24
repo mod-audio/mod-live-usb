@@ -40,7 +40,7 @@ plugins: plugins-bootstrap
 
 iso: archiso/output/mod-live-usb-v6-x86_64.iso
 
-archiso/output/%.iso: archiso/build.sh archiso/Dockerfile archiso/liveusb/packages.x86_64 mod-os plugins
+archiso/output/%.iso: archiso/build.sh archiso/Dockerfile archiso/liveusb/packages.x86_64 mod-os
 	./$<
 
 run:
