@@ -2,10 +2,10 @@ FROM archlinux:base
 LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
 
 # install packages for archiso and live-welcome
-RUN pacman -Sy --noconfirm archlinux-keyring && \
+RUN pacman -Sy --noconfirm archlinux-keyring jack2 && \
     pacman -Syy --noconfirm && \
     pacman -Syu --noconfirm arch-install-scripts dosfstools e2fsprogs libisoburn mtools squashfs-tools && \
-    pacman -Syu --noconfirm gcc git kparts make pkg-config qt5-webengine && \
+    pacman -Syu --noconfirm gcc git jack-example-tools kparts make pkg-config qt5-webengine && \
     pacman -Scc
 
 # misc setup

@@ -1,0 +1,3 @@
+.gitignore
+build.sh
+rootfs.ext2
