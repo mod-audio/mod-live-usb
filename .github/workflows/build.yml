@@ -141,7 +141,6 @@ jobs:
       - name: make plugins
         run: |
           touch toolchain/.stamp_built
-          touch plugins/.stamp_built
           make plugins
       - name: pack plugin bundles
         run: |
