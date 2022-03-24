@@ -1,12 +1,10 @@
 FROM archlinux:base
 LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
 
-# fix glibc breakage, great way to start! :(
-ENV patched_glibc glibc-linux4-2.33-4-x86_64.pkg.tar.zst
-RUN curl -LO https://repo.archlinuxcn.org/x86_64/$patched_glibc && bsdtar -C / -xvf $patched_glibc
-
 # install packages for archiso and live-welcome
-RUN pacman -Syu --noconfirm arch-install-scripts dosfstools e2fsprogs libisoburn mtools squashfs-tools && \
+RUN pacman -Sy --noconfirm archlinux-keyring && \
+    pacman -Syy --noconfirm && \
+    pacman -Syu --noconfirm arch-install-scripts dosfstools e2fsprogs libisoburn mtools squashfs-tools && \
     pacman -Syu --noconfirm gcc git kparts make pkg-config qt5-webengine && \
     pacman -Scc
 
