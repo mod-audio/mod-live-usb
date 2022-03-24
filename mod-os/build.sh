@@ -55,9 +55,15 @@ mkdir -p ${WORKDIR}/x86_64/target/usr/bin
 mkdir -p ${WORKDIR}/x86_64/target/usr/lib
 mkdir -p ${WORKDIR}/x86_64/target/usr/sbin
 
-ln -s usr/bin  ${WORKDIR}/x86_64/target/bin
-ln -s usr/lib  ${WORKDIR}/x86_64/target/lib
-ln -s usr/sbin ${WORKDIR}/x86_64/target/sbin
+if [ ! -e ${WORKDIR}/x86_64/target/bin ]; then
+    ln -s usr/bin ${WORKDIR}/x86_64/target/bin
+fi
+if [ ! -e ${WORKDIR}/x86_64/target/lib ]; then
+    ln -s usr/lib ${WORKDIR}/x86_64/target/lib
+fi
+if [ ! -e ${WORKDIR}/x86_64/target/sbin ]; then
+    ln -s usr/sbin ${WORKDIR}/x86_64/target/sbin
+fi
 
 #######################################################################################################################
 # create extra dirs for custom mounting points
