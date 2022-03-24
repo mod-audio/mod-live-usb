@@ -65,7 +65,7 @@ PROJECTS += rkrlv2
 # PROJECTS += samplv1
 PROJECTS += setbfree-mod
 PROJECTS += setbfree
-# PROJECTS += shiro-plugins # FIXME build broken, submodules using git:// github stuff
+PROJECTS += shiro-plugins
 PROJECTS += sooperlooper-lv2
 PROJECTS += tal-reverb
 PROJECTS += tap-lv2
@@ -78,7 +78,7 @@ PROJECTS += x42-mtc
 PROJECTS += x42-stepseq
 PROJECTS += x42-tinygain
 PROJECTS += x42-xfade
-# PROJECTS += zam-plugins # FIXME build broken, submodules using git:// github stuff
+PROJECTS += zam-plugins
 # not in stable/prod, but still useful for many reasons
 # PROJECTS += cardinal
 PROJECTS += dexed-labs
