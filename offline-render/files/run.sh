@@ -19,18 +19,18 @@ jack_wait -w -t 5
 #######################################################################################################################
 # TESTING PURPOSES ONLY, DO NOT ENABLE IN PRODUCTION
 
-python3 /usr/bin/mod-ui &
-mod_ui_pid=$?
+# python3 /usr/bin/mod-ui &
+# mod_ui_pid=$?
 
 #######################################################################################################################
 # startup jack_capture, will wait for freewheel mode to start recording
 
-jack_capture --disable-meter --hide-buffer-usage -jf --bitdepth 32 --channels 2 /root/output/output.wav
+jack_capture --disable-meter --hide-buffer-usage -jf --recording-time 60 /root/output/output.wav
 
 #######################################################################################################################
 # stop jackd
 
-kill -9 ${mod_ui_pid}
+# kill -9 ${mod_ui_pid}
 kill -9 ${jackd_pid}
 
 #######################################################################################################################

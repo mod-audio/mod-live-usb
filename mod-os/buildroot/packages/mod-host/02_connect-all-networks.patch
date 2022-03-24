@@ -1,0 +1,16 @@
+diff --git a/src/socket.c b/src/socket.c
+index f6b27cc..af16cd3 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -144,11 +144,7 @@ int socket_start(int socket_port, int feedback_port, int buffer_size)
+     struct sockaddr_in serv_addr;
+     memset((char *) &serv_addr, 0, sizeof(serv_addr));
+     serv_addr.sin_family = AF_INET;
+-#ifdef __MOD_DEVICES__
+-    serv_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+-#else
+     serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+-#endif
+ 
+     /* Try assign the server address */
+     serv_addr.sin_port = htons(socket_port);

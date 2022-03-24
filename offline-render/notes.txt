@@ -1,0 +1,18 @@
+# See https://github.com/moddevices/mod-host#commands-or-protocol for list of commands
+# see also `lv2ls` and `lv2info` CLI tools
+
+# check if things are working
+echo "cpu_load" | nc localhost 5555 -W 1 && echo
+
+# add a plugin
+echo "add http://moddevices.com/plugins/caps/CEO 0\n" | nc localhost 5555 -W 1 && echo
+
+# adjust plugin parameters
+echo "param_set 0 ppm 140\n" | nc localhost 5555 -W 1 && echo
+
+# connect plugin ports to output
+echo "connect effect_0:out mod-monitor:in_1" | nc localhost 5555 -W 1 && echo
+echo "connect effect_0:out mod-monitor:in_2" | nc localhost 5555 -W 1 && echo
+
+# start recording
+echo "feature_enable freewheeling 1" | nc localhost 5555 -W 1 && echo
