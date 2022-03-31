@@ -4,15 +4,31 @@
 # check if things are working
 echo "cpu_load" | nc localhost 5555 -W 1 && echo
 
-# add a plugin
-echo "add http://moddevices.com/plugins/caps/CEO 0\n" | nc localhost 5555 -W 1 && echo
+# add audiofile plugin
+echo "add http://kxstudio.sf.net/carla/plugins/audiofile 0" | nc localhost 5555 -W 1 && echo
+
+# load audio file (NOTE: adjust filename as needed)
+echo "patch_set 0 http://kxstudio.sf.net/carla/file/audio /root/output/nyan.wav" | nc localhost 5555 -W 1 && echo
+
+# set audio file to not loop and sync with host time
+echo "param_set 0 loop_mode 0" | nc localhost 5555 -W 1 && echo
+echo "param_set 0 host_sync 1" | nc localhost 5555 -W 1 && echo
+
+# add fx plugin (NOTE: this is a mono plugin, added twice for stereo FX)
+echo "add http://moddevices.com/plugins/caps/AmpVTS 1" | nc localhost 5555 -W 1 && echo
+echo "add http://moddevices.com/plugins/caps/AmpVTS 2" | nc localhost 5555 -W 1 && echo
 
 # adjust plugin parameters
-echo "param_set 0 ppm 140\n" | nc localhost 5555 -W 1 && echo
+echo "param_set 1 over 2" | nc localhost 5555 -W 1 && echo
+echo "param_set 2 over 2" | nc localhost 5555 -W 1 && echo
 
-# connect plugin ports to output
-echo "connect effect_0:out mod-monitor:in_1" | nc localhost 5555 -W 1 && echo
-echo "connect effect_0:out mod-monitor:in_2" | nc localhost 5555 -W 1 && echo
+# connect audio file ports to fx ports
+echo "connect effect_0:lv2_audio_out_1 effect_1:in" | nc localhost 5555 -W 1 && echo
+echo "connect effect_0:lv2_audio_out_2 effect_2:in" | nc localhost 5555 -W 1 && echo
+
+# connect fx ports to output ports
+echo "connect effect_1:out mod-monitor:in_1" | nc localhost 5555 -W 1 && echo
+echo "connect effect_2:out mod-monitor:in_2" | nc localhost 5555 -W 1 && echo
 
 # start recording
-echo "feature_enable freewheeling 1" | nc localhost 5555 -W 1 && echo
+echo "feature_enable freewheeling 2" | nc localhost 5555 -W 1 && echo
