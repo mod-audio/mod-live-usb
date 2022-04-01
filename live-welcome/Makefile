@@ -33,8 +33,11 @@ KF5_LIBS   += -lKF5Parts -lKF5Service -lKF5CoreAddons
 ALSA_CFLAGS = $(shell pkg-config --cflags alsa)
 ALSA_LIBS   = $(shell pkg-config --libs alsa)
 
-QT5_CFLAGS = $(shell pkg-config --cflags Qt5Widgets Qt5WebEngineWidgets)
-QT5_LIBS   = $(shell pkg-config --libs Qt5Widgets Qt5WebEngineWidgets)
+QT5_CFLAGS = $(shell pkg-config --cflags Qt5Widgets Qt5WebEngineWidgets Qt5X11Extras)
+QT5_LIBS   = $(shell pkg-config --libs Qt5Widgets Qt5WebEngineWidgets Qt5X11Extras)
+
+X11_CFLAGS = $(shell pkg-config --cflags x11)
+X11_LIBS   = $(shell pkg-config --libs x11)
 
 # ---------------------------------------------------------------------------------------------------------------------
 # objects to build
@@ -42,6 +45,7 @@ QT5_LIBS   = $(shell pkg-config --libs Qt5Widgets Qt5WebEngineWidgets)
 OBJECTS  = welcome.cpp.o
 OBJECTS += src/AudioContainerComm.cpp.o
 OBJECTS += src/AudioDiscovery.cpp.o
+OBJECTS += src/KioskForeignWidget.cpp.o
 OBJECTS += src/KioskTabs.cpp.o
 OBJECTS += src/PeakMeterThread.cpp.o
 OBJECTS += src/Utils.cpp.o
@@ -62,7 +66,7 @@ TARGETS  = mod-live-usb-welcome
 all: $(TARGETS)
 
 mod-live-usb-welcome: $(OBJECTS)
-	$(CXX) $^ $(KF5_LIBS) $(QT5_LIBS) $(ALSA_LIBS) -ldl -lrt $(LDFLAGS) -o $@
+	$(CXX) $^ $(X11_LIBS) $(KF5_LIBS) $(QT5_LIBS) $(ALSA_LIBS) -ldl -lrt $(LDFLAGS) -o $@
 # 
 # welcome.cpp.o: welcome.cpp
 # 	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(CXXFLAGS) -o $@
@@ -82,7 +86,7 @@ src/KioskTabs.cpp.o: resources/watermark.txt
 # 	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(CXXFLAGS) -o $@
 
 %.cpp.o: %.cpp
-	$(CXX) $< -c $(KF5_CFLAGS) $(QT5_CFLAGS) $(ALSA_CFLAGS) $(CXXFLAGS) -o $@
+	$(CXX) $< -c $(X11_CFLAGS) $(KF5_CFLAGS) $(QT5_CFLAGS) $(ALSA_CFLAGS) $(CXXFLAGS) -o $@
 
 src/moc_%.cpp: src/%.hpp
 	$(MOC) $< > $@

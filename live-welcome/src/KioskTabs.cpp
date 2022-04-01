@@ -15,6 +15,7 @@
 #include <dlfcn.h>
 
 #include "KioskAbout.hpp"
+#include "KioskForeignWidget.hpp"
 #include "Utils.hpp"
 
 static const char* const initial_html = "<html><body><style>body { background: black url(data:image/png;base64,"
@@ -29,17 +30,16 @@ static const char* const initial_notes = ""
 
 KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
-    fileBrowser(nullptr),
-    webBrowser(new QWebEngineView(this)),
-    documentation(nullptr)
+    // fileBrowser(nullptr),
+    webBrowser(new QWebEngineView(this))
 {
     webBrowser->setHtml(initial_html);
     addTab(webBrowser, "Pedalboard");
 
-    QString documentationPath(findDocumentation());
+    const QString documentationPath(findDocumentation());
     if (!documentationPath.isEmpty())
     {
-        documentation = new QWebEngineView(this);
+        QWebEngineView* const documentation = new QWebEngineView(this);
         documentation->setUrl(QUrl("file://" + documentationPath));
         addTab(documentation, "Documentation");
     }
@@ -69,6 +69,7 @@ KioskTabs::KioskTabs(QWidget* const parent)
         }
     }
 
+    addTab(new KioskForeignWidget(this), "Embed");
     addTab(new KioskAbout(this), "About");
 
 #if 0
