@@ -1,0 +1,49 @@
+diff --git a/common/shm.c b/common/shm.c
+index b1e7fc71..9b5d1dc1 100644
+--- a/common/shm.c
++++ b/common/shm.c
+@@ -59,6 +59,12 @@
+ #include "shm.h"
+ #include "JackError.h"
+ 
++int shm_open2(const char* a, int b, int c)
++{ char tmp[512]; sprintf(tmp, "/dev/shm/live-usb/%s", a); return open(tmp,b,c); }
++
++#define shm_open shm_open2
++#define shm_unlink unlink
++
+ static int GetUID()
+ {
+ #ifdef WIN32
+diff --git a/linux/JackLinuxFutex.cpp b/linux/JackLinuxFutex.cpp
+index 29b13901..505a3ad1 100644
+--- a/linux/JackLinuxFutex.cpp
++++ b/linux/JackLinuxFutex.cpp
+@@ -34,6 +34,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ #define SYS_futex SYS_futex_time64
+ #endif
+ 
++int shm_open2(const char* a, int b, int c)
++{ char tmp[512]; sprintf(tmp, "/dev/shm/live-usb/%s", a); return open(tmp,b,c); }
++
++#define shm_open shm_open2
++#define shm_unlink unlink
++
+ namespace Jack
+ {
+ 
+diff --git a/linux/JackPlatformPlug_os.h b/linux/JackPlatformPlug_os.h
+index 60c9a585..42c2aaf4 100644
+--- a/linux/JackPlatformPlug_os.h
++++ b/linux/JackPlatformPlug_os.h
+@@ -20,8 +20,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ #ifndef __JackPlatformPlug_linux__
+ #define __JackPlatformPlug_linux__
+ 
+-#define jack_server_dir "/dev/shm"
+-#define jack_client_dir "/dev/shm"
++#define jack_server_dir "/dev/shm/live-usb"
++#define jack_client_dir "/dev/shm/live-usb"
+ #define JACK_DEFAULT_DRIVER "alsa"
+ 
+ namespace Jack

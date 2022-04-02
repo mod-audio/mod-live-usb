@@ -13,6 +13,7 @@ class KioskForeignWidget : public QWidget
 
 public:
     explicit KioskForeignWidget(QWidget* parent);
+    ~KioskForeignWidget() override;
 
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;

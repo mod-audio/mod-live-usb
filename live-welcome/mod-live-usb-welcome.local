@@ -2,12 +2,5 @@
 
 export TESTING=1
 
-echo -n "Checking for JACK... "
-
-if ! jack_wait -c; then
-    echo "not running, bailing out"
-    exit 1
-fi
-
 SELF=$(echo ${0} | sed "s/.local//")
 ${SELF} -style Breeze --local

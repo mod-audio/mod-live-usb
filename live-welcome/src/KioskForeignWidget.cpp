@@ -20,6 +20,12 @@ KioskForeignWidget::KioskForeignWidget(QWidget* const parent)
     printf("X11 Embed Id is %lu\n", (ulong)winId());
 }
 
+KioskForeignWidget::~KioskForeignWidget()
+{
+    if (timerId != 0)
+        killTimer(timerId);
+}
+
 QSize KioskForeignWidget::sizeHint() const
 {
     return x11Size;

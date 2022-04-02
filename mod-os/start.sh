@@ -85,8 +85,15 @@ else
 
 fi
 
+# create dedicated shared memory location
+mkdir -p /dev/shm/live-usb
+chmod 777 /dev/shm/live-usb
+
 # optional nspawn options (everything must be valid)
 NSPAWN_OPTS=""
+
+# container shared memory
+NSPAWN_OPTS+=" --bind=/dev/shm/live-usb:/dev/shm"
 
 # audio control IPC
 if [ -e /dev/shm/ac ]; then
