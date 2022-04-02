@@ -7,7 +7,11 @@ fi
 # chvt 7
 # setterm -cursor off > /dev/tty7
 
+killall xdg-desktop-portal
 systemctl stop mod-live-audio
+
+eval $(dbus-launch --sh-syntax)
+/usr/lib/xdg-desktop-portal &
 
 SELF=$(echo ${0} | sed "s/.run//")
 exec ${SELF} -platform xcb -style Breeze --no-sandbox
