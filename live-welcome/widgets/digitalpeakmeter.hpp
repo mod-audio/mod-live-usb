@@ -15,8 +15,7 @@
  * For a full copy of the GNU General Public License see the doc/GPL.txt file.
  */
 
-#ifndef DIGITALPEAKMETER_HPP_INCLUDED
-#define DIGITALPEAKMETER_HPP_INCLUDED
+#pragma once
 
 // #include "CarlaJuceUtils.hpp"
 
@@ -413,5 +412,3 @@ private:
 };
 
 // ------------------------------------------------------------------------------------------------------------
-
-#endif // DIGITALPEAKMETER_HPP_INCLUDED

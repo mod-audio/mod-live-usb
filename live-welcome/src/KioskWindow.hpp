@@ -4,7 +4,9 @@
 #pragma once
 
 #include <QtCore/QProcess>
+#include <QtCore/QTime>
 #include <QtCore/QTimer>
+#include <QtNetwork/QTcpSocket>
 #include <QtGui/QKeyEvent>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMessageBox>

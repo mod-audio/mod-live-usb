@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include <KParts/BrowserExtension>
 #include <QtWidgets/QTabWidget>
-#include <QtWebEngineWidgets/QWebEngineView>
+
+class QWebEngineView;
 
 class KioskTabs : public QTabWidget
 {

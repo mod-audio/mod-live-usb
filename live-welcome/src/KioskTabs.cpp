@@ -3,16 +3,14 @@
 
 #include "KioskTabs.hpp"
 
-// #include <QtWebEngineWidgets/QWebEngineSettings>
-
 #include <QtCore/QDir>
 #include <QtCore/QFile>
+#include <QtWebEngineWidgets/QWebEngineView>
+// #include <QtWebEngineWidgets/QWebEngineSettings>
 
 // #include <KParts/BrowserExtension>
 #include <KParts/ReadWritePart>
 #include <KService/KService>
-
-#include <dlfcn.h>
 
 #include "KioskAbout.hpp"
 #include "KioskForeignWidget.hpp"

@@ -48,6 +48,7 @@ static void getDeviceBufferSizes(snd_pcm_t* const pcm, std::vector<unsigned>& bu
                 }
             }
 
+            // do not go above 8192, not supported by JACK
             if (s == 8192)
                 break;
         }
@@ -250,10 +251,10 @@ void getDeviceProperties(const char* const deviceID, bool testOutput, bool testI
         {
             getDeviceNumChannels(pcm, props.minChansIn, props.maxChansIn);
 
-            if (props.bufsizes.size() == 0)
+            if (props.bufsizes.empty())
                 getDeviceBufferSizes(pcm, props.bufsizes);
 
-            if (props.rates.size() == 0)
+            if (props.rates.empty())
                 getDeviceSampleRates(pcm, props.rates);
 
             snd_pcm_close(pcm);
