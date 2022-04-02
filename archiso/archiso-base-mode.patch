@@ -1,0 +1,32 @@
+diff --git a/archiso/mkarchiso b/archiso/mkarchiso
+index f6b3395..99fe90e 100644
+--- a/archiso/mkarchiso
++++ b/archiso/mkarchiso
+@@ -1247,6 +1247,27 @@ _build_iso_base() {
+     _run_once _prepare_airootfs_image
+ }
+ 
++# Build the base buildmode
++_build_buildmode_base() {
++    _validate_requirements_buildmode_iso
++
++    local run_once_mode="${buildmode}"
++    local buildmode_packages="${packages}"
++    # Set the package list to use
++    local buildmode_pkg_list=("${pkg_list[@]}")
++    # Set up essential directory paths
++    pacstrap_dir="${work_dir}/${arch}/airootfs"
++
++    # Create working directory
++    [[ -d "${pacstrap_dir}" ]] || install -d -- "${pacstrap_dir}"
++
++    [[ "${quiet}" == "y" ]] || _show_config
++    _run_once _make_pacman_conf
++    _run_once _make_packages
++    _run_once _make_pkglist
++    _run_once _cleanup_pacstrap_dir
++}
++
+ # Build the bootstrap buildmode
+ _build_buildmode_bootstrap() {
+     local image_name="${iso_name}-bootstrap-${iso_version}-${arch}.tar.gz"

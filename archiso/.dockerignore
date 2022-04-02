@@ -4,4 +4,5 @@ build.sh
 cache
 liveusb
 output
+tmp
 workdir
