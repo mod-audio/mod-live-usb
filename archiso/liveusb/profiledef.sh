@@ -2,10 +2,10 @@
 # shellcheck disable=SC2034
 
 iso_name="mod-live-usb"
-iso_label="v6"
+iso_label="Live-USB"
 iso_publisher="MOD Devices <https://moddevices.com>"
 iso_application="MOD Live USB"
-iso_version="v6"
+iso_version="v7"
 install_dir="arch"
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito')
 arch="x86_64"

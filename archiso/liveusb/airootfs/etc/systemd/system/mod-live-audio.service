@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 [Unit]
-Description=MOD Live Audio
+Description=MOD Live-USB Audio
 
 [Service]
 Type=notify

@@ -1,13 +1,9 @@
-archiso/liveusb/airootfs/mnt/
-archiso/liveusb/airootfs/root/
-archiso/cache/
-archiso/output/
-archiso/workdir/
-live-welcome/mod-live-usb-welcome
-live-welcome/resources/watermark.txt
+/live-welcome/mod-live-usb-welcome
+/live-welcome/resources/watermark.txt
 
 *.kdev4
 *.d
+!*.d/
 *.o
 moc_*.cpp
 .stamp_built

@@ -64,17 +64,44 @@ docker run \
   /usr/bin/make -C /opt/mount/live-welcome
 cp ${PWD}/../live-welcome/mod-live-usb-welcome     ${MOD_LIVE_DIR}/mod-live-usb-welcome
 cp ${PWD}/../live-welcome/mod-live-usb-welcome.run ${MOD_LIVE_DIR}/mod-live-usb-welcome.run
+cp ${PWD}/../mod-os/buildroot/jack2-live-usb/libjack.so ${MOD_LIVE_DIR}/libjack.so
 
 # make sure to regen things
 rm -f output/*.iso
-rm -f workdir/build._*
 # sudo rm -rf workdir
 
-# let's go!
+# bootstrap
+rm -f workdir/base._*
 docker run --privileged \
   -v ${PWD}/cache:/var/cache/pacman/pkg \
   -v ${PWD}/liveusb:/opt/mount/liveusb \
   -v ${PWD}/output:/opt/mount/output \
   -v ${PWD}/workdir:/opt/mount/workdir \
   --rm mod-live-usb_iso:latest \
-  /usr/bin/mkarchiso -L "Live-USB" -o /opt/mount/output -w /opt/mount/workdir -v /opt/mount/liveusb
+  /usr/bin/mkarchiso -v -m base -o /opt/mount/output -w /opt/mount/workdir /opt/mount/liveusb
+
+# clean unwanted files
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/include
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/doc
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/gtk-doc
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/info
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/man
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/sounds
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/wallpapers
+
+mkdir -p tmp
+sudo mv ${PWD}/workdir/x86_64/airootfs/usr/share/locale/en* tmp/
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/locale/*
+sudo mv tmp/* ${PWD}/workdir/x86_64/airootfs/usr/share/locale/
+
+# generate iso
+rm -f workdir/base._*
+rm -f workdir/build._*
+rm -f workdir/iso._*
+docker run --privileged \
+  -v ${PWD}/cache:/var/cache/pacman/pkg \
+  -v ${PWD}/liveusb:/opt/mount/liveusb \
+  -v ${PWD}/output:/opt/mount/output \
+  -v ${PWD}/workdir:/opt/mount/workdir \
+  --rm mod-live-usb_iso:latest \
+  /usr/bin/mkarchiso -v -m iso -o /opt/mount/output -w /opt/mount/workdir /opt/mount/liveusb

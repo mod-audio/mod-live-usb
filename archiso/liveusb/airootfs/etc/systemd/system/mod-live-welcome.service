@@ -3,15 +3,20 @@
 
 [Unit]
 Description=MOD Live-USB Welcome
-After=livecd-alsa-unmuter.service
+Requires=display-manager.service
+After=sound.target display-manager.service
 
 [Service]
 Type=simple
-Environment=QT_LOGGING_RULES=qt.qpa.*=true
+Environment=DISPLAY=:0
+Environment=HOME=/root
+Environment=USER=root
+Environment=LD_PRELOAD=/root/.mod-live/libjack.so
+Environment=QT_QPA_PLATFORMTHEME=qt5ct
 Environment=USING_SYSTEMD=1
+Environment=XDG_RUNTIME_DIR=/run/user/0
 ExecStart=/root/.mod-live/mod-live-usb-welcome.run
 Restart=always
-WorkingDirectory=/root/
-
-[Install]
-WantedBy=sound.target
+User=root
+Group=root
+WorkingDirectory=/root

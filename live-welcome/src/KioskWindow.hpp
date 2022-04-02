@@ -43,8 +43,8 @@ class KioskWindow : public QMainWindow
     PeakMeterThread peakMeterThread;
 
 public:
-    KioskWindow()
-      : QMainWindow(),
+    KioskWindow(const bool desktop)
+      : QMainWindow(nullptr, (desktop ? Qt::Window|Qt::WindowStaysOnBottomHint|Qt::FramelessWindowHint : Qt::Window)),
         tabWidget(this),
         settingsPopup(nullptr),
         clockFont(font()),

@@ -86,7 +86,8 @@ else
 fi
 
 # create dedicated shared memory location
-mkdir -p /dev/shm/live-usb
+rm -rf /dev/shm/live-usb
+mkdir /dev/shm/live-usb
 chmod 777 /dev/shm/live-usb
 
 # optional nspawn options (everything must be valid)

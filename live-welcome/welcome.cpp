@@ -12,14 +12,16 @@ int main(int argc, char* argv[])
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     QApplication app(argc, argv);
-    app.setApplicationDisplayName("MOD Live-USB Welcome");
-    app.setApplicationName("LiveUSB-Welcome");
+    app.setApplicationDisplayName("MOD Live-USB");
+    app.setApplicationName("MOD Live-USB Welcome");
 
     QIcon::setThemeSearchPaths({"/usr/share/icons"});
     QIcon::setThemeName("breeze-dark");
 
+    app.setWindowIcon(QIcon::fromTheme("settings-configure"));
+
     QFont font(app.font());
-    font.setPixelSize(16);
+    font.setPointSize(12);
     app.setFont(font);
 
     QPalette palette;
@@ -82,9 +84,11 @@ int main(int argc, char* argv[])
     palette.setColor(QPalette::Inactive, QPalette::LinkVisited, QColor(230, 100, 230));
     app.setPalette(palette);
 
-    KioskWindow win;
+    const bool desktopMode = getenv("USING_SYSTEMD") != nullptr;
 
-    if (getenv("USING_SYSTEMD") != nullptr)
+    KioskWindow win(desktopMode);
+
+    if (desktopMode)
     {
         win.showFullScreen();
     }

@@ -1,0 +1,19 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Unit]
+Description=kwin_x11
+After=systemd-user-sessions.service systemd-logind.service
+Conflicts=getty@tty2.service
+
+[Service]
+Type=simple
+Environment=HOME=/root
+Environment=USER=root
+Environment=QT_QPA_PLATFORMTHEME=qt5ct
+ExecStart=/usr/bin/xinit /usr/bin/kwin_x11 --replace --no-kactivities
+Restart=always
+RestartSec=1
+User=root
+Group=root
+WorkingDirectory=/root

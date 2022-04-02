@@ -4,14 +4,10 @@ if [ -z "${USING_SYSTEMD}" ]; then
     exit 0
 fi
 
-if grep -q platform=eglfs /proc/cmdline; then
-    PLATFORM=eglfs
-else
-    PLATFORM=linuxfb
-fi
+# chvt 7
+# setterm -cursor off > /dev/tty7
 
-chvt 7
-setterm -cursor off > /dev/tty7
+systemctl stop mod-live-audio
 
 SELF=$(echo ${0} | sed "s/.run//")
-exec ${SELF} -platform ${PLATFORM} -style Breeze --no-sandbox
+exec ${SELF} -platform xcb -style Breeze --no-sandbox

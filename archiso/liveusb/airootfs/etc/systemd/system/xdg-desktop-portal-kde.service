@@ -1,0 +1,16 @@
+[Unit]
+Description=Xdg Desktop Portal For KDE
+Requires=display-manager.service
+After=display-manager.service
+
+[Service]
+Environment=DISPLAY=:0
+Environment=HOME=/root
+Environment=USER=root
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+Environment=XDG_RUNTIME_DIR=/run/user/0
+ExecStart=/usr/lib/xdg-desktop-portal-kde
+BusName=org.freedesktop.impl.portal.desktop.kde
+Restart=always
+User=root
+Group=root
