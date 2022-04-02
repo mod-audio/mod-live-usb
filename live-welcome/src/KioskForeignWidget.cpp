@@ -13,11 +13,14 @@ KioskForeignWidget::KioskForeignWidget(QWidget* const parent)
     : QWidget(parent, Qt::Window),
       timerId(0),
       x11Size(),
+      x11Display(QX11Info::display()),
       x11Window(0)
 {
-    timerId = startTimer(1000, Qt::CoarseTimer);
-
-    printf("X11 Embed Id is %lu\n", (ulong)winId());
+    if (x11Display != nullptr)
+    {
+        timerId = startTimer(1000, Qt::CoarseTimer);
+        printf("X11 Embed Id is %lu\n", (ulong)winId());
+    }
 }
 
 KioskForeignWidget::~KioskForeignWidget()
@@ -37,7 +40,7 @@ QSize KioskForeignWidget::minimumSizeHint() const
     {
         XSizeHints hints = {};
         long ignore = 0;
-        XGetWMNormalHints(QX11Info::display(), x11Window, &hints, &ignore);
+        XGetWMNormalHints(x11Display, x11Window, &hints, &ignore);
 
         if (hints.flags & PMinSize)
             return QSize(hints.min_width, hints.min_height);
@@ -65,7 +68,7 @@ void KioskForeignWidget::timerEvent(QTimerEvent* event)
     ::Window* childWindows = nullptr;
     uint numChildren = 0;
 
-    XQueryTree(QX11Info::display(), (ulong)winId(), &rootWindow, &parentWindow, &childWindows, &numChildren);
+    XQueryTree(x11Display, (ulong)winId(), &rootWindow, &parentWindow, &childWindows, &numChildren);
 
     if (numChildren > 0 && childWindows != nullptr)
     {
@@ -82,7 +85,7 @@ void KioskForeignWidget::timerEvent(QTimerEvent* event)
 void KioskForeignWidget::doResize(const QSize& size)
 {
     x11Size = size;
-    XResizeWindow(QX11Info::display(), x11Window,
+    XResizeWindow(x11Display, x11Window,
                   static_cast<unsigned>(size.width()),
                   static_cast<unsigned>(size.height()));
     printf("resized %i %i\n", size.width(), size.height());

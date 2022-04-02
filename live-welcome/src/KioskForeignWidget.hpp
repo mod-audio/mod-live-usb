@@ -5,10 +5,13 @@
 
 #include <QtWidgets/QWidget>
 
+typedef struct _XDisplay Display;
+
 class KioskForeignWidget : public QWidget
 {
     int timerId;
     QSize x11Size;
+    Display* x11Display;
     uintptr_t x11Window;
 
 public:

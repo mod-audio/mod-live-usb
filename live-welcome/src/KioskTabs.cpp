@@ -5,6 +5,10 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QFile>
+#include <QtCore/QTimer>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTabBar>
 #include <QtWebEngineWidgets/QWebEngineView>
 // #include <QtWebEngineWidgets/QWebEngineSettings>
 
@@ -29,8 +33,17 @@ static const char* const initial_notes = ""
 KioskTabs::KioskTabs(QWidget* const parent)
   : QTabWidget(parent),
     // fileBrowser(nullptr),
-    webBrowser(new QWebEngineView(this))
+    plusButton(new QPushButton(this)),
+    webBrowser(new QWebEngineView(this)),
+    oldIndex(0)
 {
+    setTabsClosable(true);
+
+    QTabBar* const tabBar = this->tabBar();
+
+    plusButton->setFixedSize(tabBar->height(), tabBar->height());
+    plusButton->setText("+");
+
     webBrowser->setHtml(initial_html);
     addTab(webBrowser, "Pedalboard");
 
@@ -67,20 +80,18 @@ KioskTabs::KioskTabs(QWidget* const parent)
         }
     }
 
-    addTab(new KioskForeignWidget(this), "Embed");
     addTab(new KioskAbout(this), "About");
 
-#if 0
-    if (const KService::Ptr service = KService::serviceByDesktopName("dolphinpart"))
-    {
-        if (KParts::ReadOnlyPart* const p = service->createInstance<KParts::ReadOnlyPart>(nullptr))
-        {
-            addTab(p->widget(), "Dolphin");
-            p->openUrl(QUrl("file:///home/falktx/"));
+    const int count = this->count();
 
-        }
-    }
-#endif
+    for (int i = 0; i < count; ++i)
+        tabBar->setTabButton(i, QTabBar::RightSide, nullptr);
+
+    updatePlusButtonPosition();
+
+    connect(plusButton, SIGNAL(clicked()), this, SLOT(addNewClicked()));
+    connect(this, SIGNAL(tabBarClicked(int)), this, SLOT(tabClicked(int)));
+    connect(this, SIGNAL(tabCloseRequested(int)), this, SLOT(tabClosed(int)));
 }
 
 void KioskTabs::openTerminal()
@@ -93,4 +104,59 @@ void KioskTabs::openTerminal()
 void KioskTabs::reloadPage()
 {
     webBrowser->setUrl(QUrl("http://localhost:8888/"));
+}
+
+void KioskTabs::updatePlusButtonPosition()
+{
+    const qreal pixelRatio = devicePixelRatioF();
+    plusButton->move(tabBar()->tabRect(count() - 1).topRight().x() + 2 * pixelRatio, 0);
+}
+
+void KioskTabs::addNewClicked()
+{
+    const QStringList items = {
+        // "Cardinal",
+        "Terminal"
+    };
+    bool ok = false;
+    const QString ret = QInputDialog::getItem(this, "Add", "Which new element to add:", items, 0, false, &ok);
+
+    if (ok && !ret.isEmpty())
+    {
+        oldIndex = count();
+
+        /**/ if (ret == "Cardinal")
+            {}
+        else if (ret == "Terminal")
+            openTerminal();
+
+        updatePlusButtonPosition();
+    }
+
+    QTimer::singleShot(0, this, SLOT(tabCancel()));
+}
+
+void KioskTabs::tabClicked(int index)
+{
+    oldIndex = index;
+}
+
+void KioskTabs::tabClosed(int index)
+{
+    if (currentIndex() == index)
+    {
+        oldIndex = 0;
+        setCurrentIndex(oldIndex);
+    }
+
+    QWidget* const widget = this->widget(index);
+    removeTab(index);
+    delete widget;
+
+    updatePlusButtonPosition();
+}
+
+void KioskTabs::tabCancel()
+{
+    setCurrentIndex(oldIndex);
 }

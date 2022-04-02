@@ -50,6 +50,7 @@ FILES += src/KioskTabs.cpp
 FILES += src/PeakMeterThread.cpp
 FILES += src/Utils.cpp
 FILES += src/moc_KioskSettingsPopup.cpp
+FILES += src/moc_KioskTabs.cpp
 FILES += src/moc_KioskWindow.cpp
 FILES += widgets/moc_collapsiblebox.cpp
 
