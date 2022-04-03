@@ -11,7 +11,7 @@ Type=simple
 Environment=DISPLAY=:0
 Environment=HOME=/root
 Environment=USER=root
-Environment=LD_PRELOAD=/root/.mod-live/libjack.so
+Environment=KMIX_PULSEAUDIO_DISABLE=1
 Environment=QT_QPA_PLATFORMTHEME=qt5ct
 Environment=USING_SYSTEMD=1
 Environment=XDG_RUNTIME_DIR=/run/user/0

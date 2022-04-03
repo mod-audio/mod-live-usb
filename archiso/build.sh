@@ -64,7 +64,6 @@ docker run \
   /usr/bin/make -C /opt/mount/live-welcome
 cp ${PWD}/../live-welcome/mod-live-usb-welcome     ${MOD_LIVE_DIR}/mod-live-usb-welcome
 cp ${PWD}/../live-welcome/mod-live-usb-welcome.run ${MOD_LIVE_DIR}/mod-live-usb-welcome.run
-cp ${PWD}/../mod-os/buildroot/jack2-live-usb/libjack.so ${MOD_LIVE_DIR}/libjack.so
 
 # make sure to regen things
 rm -f output/*.iso
@@ -81,6 +80,16 @@ docker run --privileged \
   /usr/bin/mkarchiso -v -m base -o /opt/mount/output -w /opt/mount/workdir /opt/mount/liveusb
 
 # clean unwanted files
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/bin/jackd
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/bin/qmake
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/bin/moc
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/bin/rsvg-convert
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/bin/*wayland*
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/lib/*.a
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/lib/libjacknet*
+sudo rm -f ${PWD}/workdir/x86_64/airootfs/usr/lib/libjackserver*
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/lib/cmake
+sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/lib/jack
 sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/include
 sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/doc
 sudo rm -rf ${PWD}/workdir/x86_64/airootfs/usr/share/gtk-doc

@@ -9,7 +9,7 @@ on:
       - '*'
 
 env:
-  CACHE_VERSION: 7
+  CACHE_VERSION: 8
   WORKDIR: /home/runner/mod-workdir
 
 jobs:
