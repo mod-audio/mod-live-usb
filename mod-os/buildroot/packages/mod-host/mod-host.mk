@@ -4,7 +4,7 @@
 #
 ######################################
 
-MOD_HOST_VERSION = 62dd0dbf3049a3b8627c9c8b2c9c4827597da1dd
+MOD_HOST_VERSION = 2b91ff30da05672fb079bd6bf0a812a975b1048e
 MOD_HOST_SITE = $(call github,moddevices,mod-host,$(MOD_HOST_VERSION))
 MOD_HOST_DEPENDENCIES = jack2mod lilv readline fftw-single fftw-double
 

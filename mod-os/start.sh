@@ -146,7 +146,7 @@ ${EXEC} systemd-nspawn \
 --capability=all \
 --private-users=false \
 --resolv-conf=bind-host \
---machine="mod-live-usb" \
+--machine="mod-live-audio" \
 --bind=/dev/snd/controlC${SOUNDCARD_ID} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \

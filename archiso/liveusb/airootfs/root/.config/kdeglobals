@@ -1,0 +1,16 @@
+[General]
+ColorScheme=ZionReversedFixed
+Name=Breeze Dark
+widgetStyle=Breeze
+
+[KDE]
+ColorScheme=Zion (Reversed) Fixed
+LookAndFeelPackage=org.kde.breezedark.desktop
+
+[WM]
+activeBackground=16,16,16
+activeBlend=16,16,16
+activeForeground=255,255,255
+inactiveBackground=16,16,16
+inactiveBlend=16,16,16
+inactiveForeground=128,128,128
