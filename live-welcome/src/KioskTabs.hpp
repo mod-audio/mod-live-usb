@@ -19,6 +19,7 @@ class KioskTabs : public QTabWidget
 public:
     explicit KioskTabs(QWidget* const parent);
 
+    void closeForeignWidgets();
     void openTerminal();
     void reloadPage();
 

@@ -42,6 +42,7 @@ KioskTabs::KioskTabs(QWidget* const parent)
     QTabBar* const tabBar = this->tabBar();
 
     plusButton->setFixedSize(tabBar->height(), tabBar->height());
+    plusButton->setFlat(true);
     plusButton->setText("+");
 
     webBrowser->setHtml(initial_html);
@@ -94,6 +95,19 @@ KioskTabs::KioskTabs(QWidget* const parent)
     connect(this, SIGNAL(tabCloseRequested(int)), this, SLOT(tabClosed(int)));
 }
 
+void KioskTabs::closeForeignWidgets()
+{
+    const int count = this->count();
+    QTabBar* const tabBar = this->tabBar();
+
+    for (int i = count; --i >= 0;)
+    {
+        if (tabBar->tabButton(i, QTabBar::RightSide) == nullptr)
+            break;
+        tabClosed(i);
+    }
+}
+
 void KioskTabs::openTerminal()
 {
     if (const KService::Ptr service = KService::serviceByDesktopName("konsolepart"))
@@ -115,7 +129,7 @@ void KioskTabs::updatePlusButtonPosition()
 void KioskTabs::addNewClicked()
 {
     const QStringList items = {
-        // "Cardinal",
+        "Cardinal",
         "Terminal"
     };
     bool ok = false;
@@ -126,9 +140,17 @@ void KioskTabs::addNewClicked()
         oldIndex = count();
 
         /**/ if (ret == "Cardinal")
-            {}
+        {
+            KioskForeignWidget* const w = new KioskForeignWidget(this);
+            setCurrentIndex(addTab(w, "Cardinal"));
+
+            if (! w->startForeignTool("Cardinal"))
+                tabClosed(oldIndex);
+        }
         else if (ret == "Terminal")
+        {
             openTerminal();
+        }
 
         updatePlusButtonPosition();
     }

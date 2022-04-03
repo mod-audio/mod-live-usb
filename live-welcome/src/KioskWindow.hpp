@@ -247,6 +247,12 @@ protected:
         painter.drawText(clockRect, QTime::currentTime().toString("hh:mm:ss"));
     }
 
+    void closeEvent(QCloseEvent* const event) override
+    {
+        tabWidget.closeForeignWidgets();
+        QMainWindow::closeEvent(event);
+    }
+
     void resizeEvent(QResizeEvent* const event) override
     {
         QMainWindow::resizeEvent(event);

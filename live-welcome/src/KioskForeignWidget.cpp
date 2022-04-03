@@ -11,22 +11,49 @@
 
 KioskForeignWidget::KioskForeignWidget(QWidget* const parent)
     : QWidget(parent, Qt::Window),
+      process(),
       timerId(0),
       x11Size(),
       x11Display(QX11Info::display()),
       x11Window(0)
 {
-    if (x11Display != nullptr)
-    {
-        timerId = startTimer(1000, Qt::CoarseTimer);
-        printf("X11 Embed Id is %lu\n", (ulong)winId());
-    }
+    process.setProcessChannelMode(QProcess::ForwardedChannels);
 }
 
 KioskForeignWidget::~KioskForeignWidget()
 {
     if (timerId != 0)
         killTimer(timerId);
+
+    if (process.state() != QProcess::NotRunning)
+    {
+        process.terminate();
+        process.waitForFinished();
+    }
+}
+
+bool KioskForeignWidget::startForeignTool(const QString& tool)
+{
+    if (x11Display == nullptr)
+        return false;
+    if (tool.isEmpty())
+        return false;
+
+    if (tool == "Cardinal")
+    {
+        const QStringList arguments = { "embed", QString::number(winId()) };
+
+        process.start("Cardinal", arguments, QIODevice::ReadWrite | QIODevice::Unbuffered);
+    }
+
+    if (process.state() != QProcess::NotRunning)
+    {
+        process.waitForStarted();
+        timerId = startTimer(1000, Qt::CoarseTimer);
+        return true;
+    }
+
+    return false;
 }
 
 QSize KioskForeignWidget::sizeHint() const
@@ -84,9 +111,9 @@ void KioskForeignWidget::timerEvent(QTimerEvent* event)
 
 void KioskForeignWidget::doResize(const QSize& size)
 {
+    printf("resized %i %i\n", size.width(), size.height());
     x11Size = size;
     XResizeWindow(x11Display, x11Window,
                   static_cast<unsigned>(size.width()),
                   static_cast<unsigned>(size.height()));
-    printf("resized %i %i\n", size.width(), size.height());
 }

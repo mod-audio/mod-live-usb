@@ -3,12 +3,14 @@
 
 #pragma once
 
+#include <QtCore/QProcess>
 #include <QtWidgets/QWidget>
 
 typedef struct _XDisplay Display;
 
 class KioskForeignWidget : public QWidget
 {
+    QProcess process;
     int timerId;
     QSize x11Size;
     Display* x11Display;
@@ -17,6 +19,8 @@ class KioskForeignWidget : public QWidget
 public:
     explicit KioskForeignWidget(QWidget* parent);
     ~KioskForeignWidget() override;
+
+    bool startForeignTool(const QString& tool);
 
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
