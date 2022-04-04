@@ -1,12 +1,12 @@
-/*
- */
+// SPDX-FileCopyrightText: 2021-2022 Filipe Coelho <falktx@falktx.com>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 #include "PeakMeterThread.hpp"
 
 #include "AudioContainerComm.hpp"
 #include "../widgets/digitalpeakmeter.hpp"
 
-PeakMeterThread::PeakMeterThread(QObject* const parent, DigitalPeakMeter& in, DigitalPeakMeter& out)
+PeakMeterThread::PeakMeterThread(QObject* const parent, DigitalPeakMeter* const in, DigitalPeakMeter* const out)
   : QThread(parent),
     containerComm(nullptr),
     peakMeterIn(in),
@@ -73,9 +73,9 @@ void PeakMeterThread::run()
             continue;
 
         memcpy(peaks, containerComm->peaks, sizeof(peaks));
-        peakMeterIn.displayMeter(1, peaks[0]);
-        peakMeterIn.displayMeter(2, peaks[1]);
-        peakMeterOut.displayMeter(1, peaks[2]);
-        peakMeterOut.displayMeter(2, peaks[3]);
+        peakMeterIn->displayMeter(1, peaks[0]);
+        peakMeterIn->displayMeter(2, peaks[1]);
+        peakMeterOut->displayMeter(1, peaks[2]);
+        peakMeterOut->displayMeter(2, peaks[3]);
     }
 }

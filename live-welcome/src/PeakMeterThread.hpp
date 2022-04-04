@@ -1,5 +1,5 @@
-/*
- */
+// SPDX-FileCopyrightText: 2021-2022 Filipe Coelho <falktx@falktx.com>
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 #pragma once
 
@@ -14,14 +14,14 @@ typedef struct _AudioContainerComm AudioContainerComm;
 class PeakMeterThread : public QThread
 {
     AudioContainerComm* containerComm;
-    DigitalPeakMeter& peakMeterIn;
-    DigitalPeakMeter& peakMeterOut;
+    DigitalPeakMeter* const peakMeterIn;
+    DigitalPeakMeter* const peakMeterOut;
 
     int sys_host_shmfd;
     sys_serial_shm_data* sys_host_data;
 
 public:
-    explicit PeakMeterThread(QObject* parent, DigitalPeakMeter& in, DigitalPeakMeter& out);
+    explicit PeakMeterThread(QObject* parent, DigitalPeakMeter* in, DigitalPeakMeter* out);
 
     // start communication with audio container, and start thread if that succeeds
     void init();

@@ -47,6 +47,7 @@ FILES += src/AudioContainerComm.cpp
 FILES += src/AudioDiscovery.cpp
 FILES += src/KioskForeignWidget.cpp
 FILES += src/KioskTabs.cpp
+FILES += src/KioskWindow.cpp
 FILES += src/PeakMeterThread.cpp
 FILES += src/Utils.cpp
 FILES += src/moc_KioskSettingsPopup.cpp
