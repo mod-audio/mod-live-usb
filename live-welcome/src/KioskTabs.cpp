@@ -3,22 +3,23 @@
 
 #include "KioskTabs.hpp"
 
+#include "KioskAbout.hpp"
+#include "KioskForeignWidget.hpp"
+#include "Utils.hpp"
+
 #include <QtCore/QDir>
 #include <QtCore/QFile>
+#include <QtCore/QThread>
 #include <QtCore/QTimer>
 #include <QtWidgets/QInputDialog>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabBar>
 #include <QtWebEngineWidgets/QWebEngineView>
-// #include <QtWebEngineWidgets/QWebEngineSettings>
 
-// #include <KParts/BrowserExtension>
 #include <KParts/ReadWritePart>
 #include <KService/KService>
 
-#include "KioskAbout.hpp"
-#include "KioskForeignWidget.hpp"
-#include "Utils.hpp"
+#include <jack/jack.h>
 
 static const char* const initial_html = "<html><body><style>body { background: black url(data:image/png;base64,"
 #include "../resources/watermark.txt"
@@ -144,8 +145,47 @@ void KioskTabs::addNewClicked()
             KioskForeignWidget* const w = new KioskForeignWidget(this);
             setCurrentIndex(addTab(w, "Cardinal"));
 
-            if (! w->startForeignTool("Cardinal"))
+            if (w->startForeignTool("Cardinal"))
+            {
+                if (jack_client_t* const client = jack_client_open("CardinalHelper", JackNoStartServer, nullptr))
+                {
+                    // wait max 5s for Cardinal to appear
+                    for (int i=0; i<50; ++i)
+                    {
+                        if (jack_port_by_name(client, "Cardinal:events-in") == nullptr)
+                        {
+                            QThread::msleep(100);
+                            continue;
+                        }
+
+                        jack_connect(client, "mod-midi-merger:out", "Cardinal:events-in");
+                        jack_connect(client, "system:capture_1", "Cardinal:audio_in_1");
+                        jack_connect(client, "system:capture_2", "Cardinal:audio_in_2");
+                        jack_connect(client, "system:capture_3", "Cardinal:audio_in_3");
+                        jack_connect(client, "system:capture_4", "Cardinal:audio_in_4");
+                        jack_connect(client, "system:capture_5", "Cardinal:audio_in_5");
+                        jack_connect(client, "system:capture_6", "Cardinal:audio_in_6");
+                        jack_connect(client, "system:capture_7", "Cardinal:audio_in_7");
+                        jack_connect(client, "system:capture_8", "Cardinal:audio_in_8");
+                        jack_connect(client, "Cardinal:midi-out", "mod-midi-broadcaster:in");
+                        jack_connect(client, "Cardinal:audio_out_1", "mod-monitor:in_1");
+                        jack_connect(client, "Cardinal:audio_out_2", "mod-monitor:in_2");
+                        jack_connect(client, "Cardinal:audio_out_3", "system:playback_3");
+                        jack_connect(client, "Cardinal:audio_out_4", "system:playback_4");
+                        jack_connect(client, "Cardinal:audio_out_5", "system:playback_5");
+                        jack_connect(client, "Cardinal:audio_out_6", "system:playback_6");
+                        jack_connect(client, "Cardinal:audio_out_7", "system:playback_7");
+                        jack_connect(client, "Cardinal:audio_out_8", "system:playback_8");
+                        break;
+                    }
+
+                    jack_client_close(client);
+                }
+            }
+            else
+            {
                 tabClosed(oldIndex);
+            }
         }
         else if (ret == "Terminal")
         {
@@ -153,6 +193,7 @@ void KioskTabs::addNewClicked()
         }
 
         updatePlusButtonPosition();
+        return;
     }
 
     QTimer::singleShot(0, this, SLOT(tabCancel()));

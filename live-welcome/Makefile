@@ -33,6 +33,9 @@ KF5_LIBS   += -lKF5Parts -lKF5Service -lKF5CoreAddons
 ALSA_CFLAGS = $(shell pkg-config --cflags alsa)
 ALSA_LIBS   = $(shell pkg-config --libs alsa)
 
+JACK_CFLAGS = $(shell pkg-config --cflags jack)
+JACK_LIBS   = $(shell pkg-config --libs jack)
+
 QT5_CFLAGS = $(shell pkg-config --cflags Qt5Network Qt5Widgets Qt5WebEngineWidgets Qt5X11Extras)
 QT5_LIBS   = $(shell pkg-config --libs Qt5Network Qt5Widgets Qt5WebEngineWidgets Qt5X11Extras)
 
@@ -65,12 +68,12 @@ TARGETS  = mod-live-usb-welcome
 all: $(TARGETS)
 
 mod-live-usb-welcome: $(OBJECTS)
-	$(CXX) $^ $(X11_LIBS) $(KF5_LIBS) $(QT5_LIBS) $(ALSA_LIBS) -ldl -lrt $(LDFLAGS) -o $@
+	$(CXX) $^ $(X11_LIBS) $(KF5_LIBS) $(QT5_LIBS) $(JACK_LIBS) $(ALSA_LIBS) -ldl -lrt $(LDFLAGS) -o $@
 
 src/KioskTabs.cpp.o: resources/watermark.txt
 
 %.cpp.o: %.cpp
-	$(CXX) $< -c $(X11_CFLAGS) $(KF5_CFLAGS) $(QT5_CFLAGS) $(ALSA_CFLAGS) $(CXXFLAGS) -o $@
+	$(CXX) $< -c $(X11_CFLAGS) $(KF5_CFLAGS) $(QT5_CFLAGS) $(JACK_CFLAGS) $(ALSA_CFLAGS) $(CXXFLAGS) -o $@
 
 src/moc_%.cpp: src/%.hpp
 	$(MOC) $< > $@
