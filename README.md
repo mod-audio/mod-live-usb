@@ -3,7 +3,7 @@
 This is a project to create a live-usb ISO for MOD.  
 It bundles all the MOD stuff in a special container, so their contents match what the regular MOD units have.  
 [ArchLinux](https://archlinux.org/) with a realtime kernel is used as the base system,
-with a custom welcome screen running directly on the linux framebuffer.
+with a custom welcome screen running straight after boot.
 
 When booted up you will be presented with a list of audio interfaces/devices, just pick one and enjoy!  
 It will pretty much work like a MOD device, with its plugins and pedalboards, except using your own PC. :)
