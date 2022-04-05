@@ -1,4 +1,7 @@
 
+# also change in archiso/liveusb/profiledef.sh
+VERSION = 8
+
 all: iso
 
 # step 1: build toolchain
@@ -38,10 +41,10 @@ plugins: plugins-bootstrap
 
 # step 6: build ISO
 
-iso: archiso/output/mod-live-usb-v7-x86_64.iso
+iso: archiso/output/mod-live-usb-v$(VERSION)-x86_64.iso
 
 archiso/output/%.iso: archiso/build.sh archiso/Dockerfile archiso/liveusb/packages.x86_64 mod-os
 	./$<
 
 run:
-	./archiso/run_archiso.sh -i ./archiso/output/mod-live-usb-v7-x86_64.iso
+	./archiso/run_archiso.sh -i ./archiso/output/mod-live-usb-v$(VERSION)-x86_64.iso
