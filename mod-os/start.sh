@@ -4,6 +4,8 @@ set -e
 
 cd $(dirname ${0})
 
+PLAT=${PLAT:=x86_64}
+
 # regular usage, no systemd yet
 if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
 
@@ -126,8 +128,8 @@ fi
 # plugins
 if [ -e /mnt/plugins ]; then
     NSPAWN_OPTS+=" --bind-ro=/mnt/plugins"
-elif [ -e ../plugins/bundles/abGate.lv2 ]; then
-    NSPAWN_OPTS+=" --bind-ro=$(realpath $(pwd)/../plugins/bundles):/mnt/plugins"
+elif [ -e ../plugins/bundles/${PLAT}/abGate.lv2 ]; then
+    NSPAWN_OPTS+=" --bind-ro=$(realpath $(pwd)/../plugins/bundles/${PLAT}):/mnt/plugins"
 fi
 
 # mod-os (starting point)

@@ -21,6 +21,10 @@ CXXFLAGS += -I.
 CXXFLAGS += -pipe -MD -MP
 CXXFLAGS += -fPIC
 
+# apt-get install pkg-config libasound2-dev libjack-jackd2-dev
+# apt-get install libqt5x11extras5-dev libqt5websockets5-dev qtwebengine5-dev
+# apt-get install breeze libkf5parts-dev kate konsole-kpart
+
 KF5_CFLAGS += -I/usr/include/KF5
 KF5_CFLAGS += -I/usr/include/KF5/KCoreAddons
 KF5_CFLAGS += -I/usr/include/KF5/KParts
