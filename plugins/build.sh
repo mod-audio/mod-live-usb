@@ -8,9 +8,14 @@ set -e
 cd $(dirname ${0})
 
 #######################################################################################################################
+# environment variables
+
+PLAT=${PLAT:=x86_64}
+
+#######################################################################################################################
 # create docker image
 
-docker build --build-arg=MPB_COMMIT_HASH_FOR_PLUGINS=$(git -C mod-plugin-builder rev-parse HEAD) -t mpb-plugins-x86_64 .
+docker build --build-arg=MPB_COMMIT_HASH_FOR_PLUGINS=$(git -C mod-plugin-builder rev-parse HEAD) --build-arg=PLAT=${PLAT} -t mpb-plugins-${PLAT} .
 
 #######################################################################################################################
 # mark as done

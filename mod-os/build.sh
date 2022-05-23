@@ -10,77 +10,78 @@ cd $(dirname ${0})
 #######################################################################################################################
 # environment variables
 
+PLAT=${PLAT:=x86_64}
 WORKDIR=${WORKDIR:=$(realpath $(pwd)/../toolchain/mod-workdir)}
 
 #######################################################################################################################
 # cleanup
 
-rm -f rootfs.ext2 ${WORKDIR}/x86_64/images/rootfs.ext2
+rm -f rootfs.ext2 ${WORKDIR}/${PLAT}/images/rootfs.ext2
 
 if [ -z "${NOCLEAN}" ]; then
-    rm -f ${WORKDIR}/x86_64/build/*/.stamp_target_installed
-    rm -rf ${WORKDIR}/x86_64/target/
+    rm -f ${WORKDIR}/${PLAT}/build/*/.stamp_target_installed
+    rm -rf ${WORKDIR}/${PLAT}/target/
 
     # FIXME this seems needed, not sure why yet
-    rm -rf ${WORKDIR}/x86_64/build/lv2-*
-    rm -rf ${WORKDIR}/x86_64/build/serd-*
-    rm -rf ${WORKDIR}/x86_64/build/sord-*
-    rm -rf ${WORKDIR}/x86_64/build/sratom-*
-    rm -rf ${WORKDIR}/x86_64/build/lilv-*
+    rm -rf ${WORKDIR}/${PLAT}/build/lv2-*
+    rm -rf ${WORKDIR}/${PLAT}/build/serd-*
+    rm -rf ${WORKDIR}/${PLAT}/build/sord-*
+    rm -rf ${WORKDIR}/${PLAT}/build/sratom-*
+    rm -rf ${WORKDIR}/${PLAT}/build/lilv-*
 fi
 
 #######################################################################################################################
 # create dummy files and dirs for rootfs
 
-mkdir -p ${WORKDIR}/x86_64/target/etc
-mkdir -p ${WORKDIR}/x86_64/target/dev
-mkdir -p ${WORKDIR}/x86_64/target/home
-mkdir -p ${WORKDIR}/x86_64/target/mnt
-mkdir -p ${WORKDIR}/x86_64/target/proc
-mkdir -p ${WORKDIR}/x86_64/target/root
-mkdir -p ${WORKDIR}/x86_64/target/run
-mkdir -p ${WORKDIR}/x86_64/target/srv
-mkdir -p ${WORKDIR}/x86_64/target/sys
-mkdir -p ${WORKDIR}/x86_64/target/tmp
-touch ${WORKDIR}/x86_64/target/etc/localtime
-cp overlay-files/etc/group    ${WORKDIR}/x86_64/target/etc/group
-cp overlay-files/etc/hostname ${WORKDIR}/x86_64/target/etc/hostname
-cp overlay-files/etc/hosts    ${WORKDIR}/x86_64/target/etc/hosts
-cp overlay-files/etc/passwd   ${WORKDIR}/x86_64/target/etc/passwd
-cp overlay-files/etc/shadow   ${WORKDIR}/x86_64/target/etc/shadow
+mkdir -p ${WORKDIR}/${PLAT}/target/etc
+mkdir -p ${WORKDIR}/${PLAT}/target/dev
+mkdir -p ${WORKDIR}/${PLAT}/target/home
+mkdir -p ${WORKDIR}/${PLAT}/target/mnt
+mkdir -p ${WORKDIR}/${PLAT}/target/proc
+mkdir -p ${WORKDIR}/${PLAT}/target/root
+mkdir -p ${WORKDIR}/${PLAT}/target/run
+mkdir -p ${WORKDIR}/${PLAT}/target/srv
+mkdir -p ${WORKDIR}/${PLAT}/target/sys
+mkdir -p ${WORKDIR}/${PLAT}/target/tmp
+touch ${WORKDIR}/${PLAT}/target/etc/localtime
+cp overlay-files/etc/group    ${WORKDIR}/${PLAT}/target/etc/group
+cp overlay-files/etc/hostname ${WORKDIR}/${PLAT}/target/etc/hostname
+cp overlay-files/etc/hosts    ${WORKDIR}/${PLAT}/target/etc/hosts
+cp overlay-files/etc/passwd   ${WORKDIR}/${PLAT}/target/etc/passwd
+cp overlay-files/etc/shadow   ${WORKDIR}/${PLAT}/target/etc/shadow
 
 #######################################################################################################################
 # merged usr mode
 
-mkdir -p ${WORKDIR}/x86_64/target/usr/bin
-mkdir -p ${WORKDIR}/x86_64/target/usr/lib
-mkdir -p ${WORKDIR}/x86_64/target/usr/sbin
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/bin
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/lib
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/sbin
 
-if [ ! -e ${WORKDIR}/x86_64/target/bin ]; then
-    ln -s usr/bin ${WORKDIR}/x86_64/target/bin
+if [ ! -e ${WORKDIR}/${PLAT}/target/bin ]; then
+    ln -s usr/bin ${WORKDIR}/${PLAT}/target/bin
 fi
-if [ ! -e ${WORKDIR}/x86_64/target/lib ]; then
-    ln -s usr/lib ${WORKDIR}/x86_64/target/lib
+if [ ! -e ${WORKDIR}/${PLAT}/target/lib ]; then
+    ln -s usr/lib ${WORKDIR}/${PLAT}/target/lib
 fi
-if [ ! -e ${WORKDIR}/x86_64/target/sbin ]; then
-    ln -s usr/sbin ${WORKDIR}/x86_64/target/sbin
+if [ ! -e ${WORKDIR}/${PLAT}/target/sbin ]; then
+    ln -s usr/sbin ${WORKDIR}/${PLAT}/target/sbin
 fi
 
 #######################################################################################################################
 # create extra dirs for custom mounting points
 
-mkdir -p ${WORKDIR}/x86_64/target/data/user-files
-mkdir -p ${WORKDIR}/x86_64/target/mnt/config
-mkdir -p ${WORKDIR}/x86_64/target/mnt/lv2
-mkdir -p ${WORKDIR}/x86_64/target/mnt/pedalboards
-mkdir -p ${WORKDIR}/x86_64/target/mnt/plugins
-mkdir -p ${WORKDIR}/x86_64/target/root/data
-mkdir -p ${WORKDIR}/x86_64/target/usr/share/mod/html
-touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.css
-touch ${WORKDIR}/x86_64/target/usr/share/mod/html/mod-ui.js
+mkdir -p ${WORKDIR}/${PLAT}/target/data/user-files
+mkdir -p ${WORKDIR}/${PLAT}/target/mnt/config
+mkdir -p ${WORKDIR}/${PLAT}/target/mnt/lv2
+mkdir -p ${WORKDIR}/${PLAT}/target/mnt/pedalboards
+mkdir -p ${WORKDIR}/${PLAT}/target/mnt/plugins
+mkdir -p ${WORKDIR}/${PLAT}/target/root/data
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/share/mod/html
+touch ${WORKDIR}/${PLAT}/target/usr/share/mod/html/mod-ui.css
+touch ${WORKDIR}/${PLAT}/target/usr/share/mod/html/mod-ui.js
 
 # this is needed somehow
-if [ ! -e ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1 ]; then
+if [ "${PLAT}" = "x86_64" ] && [ ! -e ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1 ]; then
     cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 \
        ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1
 fi
@@ -88,17 +89,17 @@ fi
 #######################################################################################################################
 # create docker image
 
-docker build -t mpb-mod-os-x86_64 .
+docker build -t mpb-mod-os-${PLAT} .
 
 #######################################################################################################################
 # build mod-os
 
-docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-mod-os-x86_64:latest ./bootstrap.sh x86_64
+docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-mod-os-${PLAT}:latest ./bootstrap.sh ${PLAT}
 
 #######################################################################################################################
 # fetch rootfs.ext2 from image
 
-ln -sf ${WORKDIR}/x86_64/images/rootfs.ext2 rootfs.ext2
+ln -sf ${WORKDIR}/${PLAT}/images/rootfs.ext2 rootfs.ext2
 
 #######################################################################################################################
 # mark as done

@@ -1,4 +1,6 @@
 
+PLAT ?= x86_64
+
 # list of known good projects
 PROJECTS += abgate
 PROJECTS += amsynth
@@ -92,7 +94,7 @@ PROJECTS += x42-tuna-lv2-labs
 BUILDROOT_VAR = $(shell echo $(1) | tr a-z A-Z | tr - _)
 
 # function to convert project name into stamp filename
-PROJECT_STAMP = .stamps/$(1)/$($(call BUILDROOT_VAR,$(1))_VERSION)
+PROJECT_STAMP = .stamps/$(PLAT)/$(1)/$($(call BUILDROOT_VAR,$(1))_VERSION)
 
 # utilities
 COMMA  = ,
@@ -108,12 +110,12 @@ BUNDLES = $(foreach PROJECT,$(PROJECTS),$($(call BUILDROOT_VAR,$(PROJECT))_BUNDL
 all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT)))
 
 define BUILD_PLUGIN
-	docker run -v $(CURDIR)/bundles:/opt/mount --rm mpb-plugins-x86_64:latest \
-		/home/builder/build-and-copy-bundles.sh $(1) \
+	docker run -v $(CURDIR)/bundles/$(PLAT):/opt/mount --rm mpb-plugins-$(PLAT):latest \
+		/home/builder/build-and-copy-bundles.sh $(PLAT) $(1) \
 		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
 endef
 
-.stamps/%: # .stamp_built
-	$(shell mkdir -p $(shell dirname $@) $(CURDIR)/bundles)
+.stamps/$(PLAT)/%: # .stamp_built
+	$(shell mkdir -p $(shell dirname $@) $(CURDIR)/bundles/$(PLAT))
 	$(call BUILD_PLUGIN,$(firstword $(subst /, ,$*)))
 	touch $@

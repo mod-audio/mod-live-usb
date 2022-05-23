@@ -2,10 +2,11 @@
 
 set -e
 
-buildroot_pkg=${1}
-lv2_bundles=${2}
+plat=${1}
+buildroot_pkg=${2}
+lv2_bundles=${3}
 
-./build x86_64 ${1}
+./build ${plat} ${buildroot_pkg}
 for b in $(echo ${lv2_bundles} | sed 's/,/ /g'); do
-    cp -rv /home/builder/mod-workdir/x86_64/plugins/${b} /opt/mount/
+    cp -rv /home/builder/mod-workdir/${plat}/plugins/${b} /opt/mount/
 done

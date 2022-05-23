@@ -38,15 +38,15 @@ RUN mkdir $HOME/mod-workdir
 
 # mod-plugin-builder settings
 ENV MPB_GIT_URL https://github.com/moddevices/mod-plugin-builder
-ENV MPB_GIT_HASH 278d137521a21e10b77315df16a300c742a3225a
+ENV MPB_GIT_HASH 0df8b34546109712dfbba01aeb06344db89d0176
 
 # checkout mod-plugin-builder
 RUN git clone $MPB_GIT_URL
 WORKDIR mod-plugin-builder
-RUN git checkout $MPB_GIT_HASH && git submodule update
+RUN git checkout $MPB_GIT_HASH
 
 # turn off progress bar
-RUN sed -i 's/CT_LOG_PROGRESS_BAR=y/CT_LOG_PROGRESS_BAR=n/' toolchain/x86_64.config
+RUN sed -i 's/CT_LOG_PROGRESS_BAR=y/CT_LOG_PROGRESS_BAR=n/' toolchain/*.config
 
 # CMD
 CMD ["bash"]
