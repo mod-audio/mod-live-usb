@@ -126,8 +126,8 @@ elif [ -e ../pedalboards/INST_FM_Synth.pedalboard ]; then
 fi
 
 # plugins
-if [ -e /mnt/plugins ]; then
-    NSPAWN_OPTS+=" --bind-ro=/mnt/plugins"
+if [ -e /mnt/plugins/${PLAT} ]; then
+    NSPAWN_OPTS+=" --bind-ro=/mnt/plugins/${PLAT}:/mnt/plugins"
 elif [ -e ../plugins/bundles/${PLAT}/abGate.lv2 ]; then
     NSPAWN_OPTS+=" --bind-ro=$(realpath $(pwd)/../plugins/bundles/${PLAT}):/mnt/plugins"
 fi

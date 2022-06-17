@@ -101,9 +101,9 @@ BUILDROOT_VAR = $(shell echo $(1) | tr a-z A-Z | tr - _)
 PROJECT_STAMP = .stamps/$(PLAT)/$(1)/$($(call BUILDROOT_VAR,$(1))_VERSION)
 
 # utilities
-COMMA  = ,
-SPACE  =
-SPACE +=
+BLANK =
+COMMA = ,
+SPACE = $(BLANK) $(BLANK)
 
 # include plugin projects for version and bundle list
 include $(foreach PROJECT,$(PROJECTS),mod-plugin-builder/plugins/package/$(PROJECT)/$(PROJECT).mk)
