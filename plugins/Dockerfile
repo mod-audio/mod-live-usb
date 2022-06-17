@@ -1,4 +1,4 @@
-FROM mpb-toolchain-x86_64
+FROM mpb-toolchain
 LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER builder
@@ -13,7 +13,7 @@ RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT
 RUN git submodule init && git submodule update
 
 # NOTE you can edit this as needed
-ARG MPB_COMMIT_HASH_FOR_PLUGINS=0df8b34546109712dfbba01aeb06344db89d0176
+ARG MPB_COMMIT_HASH_FOR_PLUGINS=1340e4a9bfe582285b41307f23e128bd3c775d1b
 
 # update to requested commit
 RUN git checkout . && git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_PLUGINS && git submodule update
@@ -24,5 +24,8 @@ RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT
 # our simple script to build and copy resulting bundles
 COPY scripts/build-and-copy-bundles.sh $HOME/build-and-copy-bundles.sh
 
-# CMD
+# extra required packages
+RUN sudo apt-get install -qy libfftw3-3 libmxml1 liblo7 && \
+    sudo apt-get clean
+
 CMD ["bash"]

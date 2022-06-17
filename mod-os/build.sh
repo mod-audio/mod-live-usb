@@ -31,6 +31,23 @@ if [ -z "${NOCLEAN}" ]; then
 fi
 
 #######################################################################################################################
+# merged usr mode
+
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/bin
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/lib
+mkdir -p ${WORKDIR}/${PLAT}/target/usr/sbin
+
+if [ ! -e ${WORKDIR}/${PLAT}/target/bin ]; then
+    ln -s usr/bin ${WORKDIR}/${PLAT}/target/bin
+fi
+if [ ! -e ${WORKDIR}/${PLAT}/target/lib ]; then
+    ln -s usr/lib ${WORKDIR}/${PLAT}/target/lib
+fi
+if [ ! -e ${WORKDIR}/${PLAT}/target/sbin ]; then
+    ln -s usr/sbin ${WORKDIR}/${PLAT}/target/sbin
+fi
+
+#######################################################################################################################
 # create dummy files and dirs for rootfs
 
 mkdir -p ${WORKDIR}/${PLAT}/target/etc
@@ -49,23 +66,6 @@ cp overlay-files/etc/hostname ${WORKDIR}/${PLAT}/target/etc/hostname
 cp overlay-files/etc/hosts    ${WORKDIR}/${PLAT}/target/etc/hosts
 cp overlay-files/etc/passwd   ${WORKDIR}/${PLAT}/target/etc/passwd
 cp overlay-files/etc/shadow   ${WORKDIR}/${PLAT}/target/etc/shadow
-
-#######################################################################################################################
-# merged usr mode
-
-mkdir -p ${WORKDIR}/${PLAT}/target/usr/bin
-mkdir -p ${WORKDIR}/${PLAT}/target/usr/lib
-mkdir -p ${WORKDIR}/${PLAT}/target/usr/sbin
-
-if [ ! -e ${WORKDIR}/${PLAT}/target/bin ]; then
-    ln -s usr/bin ${WORKDIR}/${PLAT}/target/bin
-fi
-if [ ! -e ${WORKDIR}/${PLAT}/target/lib ]; then
-    ln -s usr/lib ${WORKDIR}/${PLAT}/target/lib
-fi
-if [ ! -e ${WORKDIR}/${PLAT}/target/sbin ]; then
-    ln -s usr/sbin ${WORKDIR}/${PLAT}/target/sbin
-fi
 
 #######################################################################################################################
 # create extra dirs for custom mounting points
@@ -89,12 +89,12 @@ fi
 #######################################################################################################################
 # create docker image
 
-docker build -t mpb-mod-os-${PLAT} .
+docker build -t mpb-mod-os .
 
 #######################################################################################################################
 # build mod-os
 
-docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-mod-os-${PLAT}:latest ./bootstrap.sh ${PLAT}
+docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-mod-os:latest ./bootstrap.sh ${PLAT}
 
 #######################################################################################################################
 # fetch rootfs.ext2 from image

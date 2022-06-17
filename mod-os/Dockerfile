@@ -1,11 +1,11 @@
-FROM mpb-toolchain-x86_64
+FROM mpb-toolchain
 LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER builder
 ENV HOME /home/$USER
 
 # NOTE you can edit this as needed
-ENV MPB_COMMIT_HASH_FOR_MOD_OS 0df8b34546109712dfbba01aeb06344db89d0176
+ENV MPB_COMMIT_HASH_FOR_MOD_OS 61b39a51183aee40768e5144c53e2f23ecd5bcba
 
 # update to requested commit
 RUN git checkout . && git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_MOD_OS && git submodule update
