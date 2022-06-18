@@ -4,7 +4,7 @@ on:
   push:
 
 env:
-  CACHE_VERSION: 10
+  CACHE_VERSION: 11
   WORKDIR: /home/runner/mod-workdir
 
 jobs:
