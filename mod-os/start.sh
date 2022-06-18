@@ -83,21 +83,6 @@ if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
 # using systemd for audio startup, triggered by ourselves
 else
 
-    # setup rwdata persistance if possible
-    RWDATA_DEV=$(mount | grep iso9660 | cut -d ' ' -f 1 | cut -c 1-8)
-    RWDATA_MNT=$(realpath $(pwd)/../rwdata)
-    if [[ "${RWDATA_DEV}" == "/dev/sd"* ]]; then
-        if [ ! -e /dev/loop3 ]; then
-            losetup -o 2G /dev/loop3 ${RWDATA_DEV}
-        fi
-        if [ ! -e ${RWDATA_MNT}/lost+found ]; then
-            if ! mount /dev/loop3 ${RWDATA_MNT}; then
-                mkfs.ext4 /dev/loop3
-            fi
-            mount /dev/loop3 ${RWDATA_MNT} && true # ignore error
-        fi
-    fi
-
     EXEC=exec
 
 fi

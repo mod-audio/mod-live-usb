@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+RWDATA_DEV=$(mount | grep iso9660 | cut -d ' ' -f 1 | cut -c 1-8)
+RWDATA_MNT=/root/rwdata
+LOOP_DEV=/dev/loop3
+
+if [[ "${RWDATA_DEV}" == "/dev/sd"* ]]; then
+    if [ ! -e ${LOOP_DEV} ]; then
+        losetup -o 2G ${LOOP_DEV} ${RWDATA_DEV}
+    fi
+    if [ ! -e ${RWDATA_MNT}/lost+found ]; then
+        if ! mount ${LOOP_DEV} ${RWDATA_MNT}; then
+            mkfs.ext4 ${LOOP_DEV}
+        else
+            fsck.ext4 -yp ${LOOP_DEV}
+        fi
+        mount ${LOOP_DEV} ${RWDATA_MNT}
+    fi
+fi
+
+exit 0

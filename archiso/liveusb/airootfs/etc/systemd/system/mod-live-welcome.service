@@ -3,8 +3,8 @@
 
 [Unit]
 Description=MOD Live-USB Welcome
-Requires=display-manager.service
-After=sound.target display-manager.service
+Requires=display-manager.service mod-live-rwdata.service
+After=sound.target display-manager.service mod-live-rwdata.service
 
 [Service]
 Type=simple

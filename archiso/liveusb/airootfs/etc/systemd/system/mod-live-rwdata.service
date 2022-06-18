@@ -1,0 +1,14 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Unit]
+Description=Enable RW user data
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mod-live-rwdata
+
+[Install]
+WantedBy=local-fs.target
