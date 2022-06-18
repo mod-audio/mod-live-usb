@@ -27,8 +27,6 @@ static const char* const initial_html = "<html><body><style>body { background: b
 
 static const char* const initial_notes = ""
 "This is a space dedicated to writing text, feel free to reuse as copy & paste area.\n"
-"\n"
-"PS: You can use Ctrl+Alt+T keyboard combination to open a terminal in a new tab.\n"
 "\n";
 
 KioskTabs::KioskTabs(QWidget* const parent)

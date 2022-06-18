@@ -201,8 +201,6 @@ void KioskWindow::keyPressEvent(QKeyEvent* const event)
 
     if (event->key() == Qt::Key::Key_R)
         tabWidget->reloadPage();
-    if (event->key() == Qt::Key::Key_T)
-        tabWidget->openTerminal();
 }
 
 void KioskWindow::paintEvent(QPaintEvent* const event)
