@@ -11,11 +11,17 @@ if [[ "${RWDATA_DEV}" == "/dev/sd"* ]]; then
         losetup -o 2G ${LOOP_DEV} ${RWDATA_DEV}
     fi
     if [ ! -e ${RWDATA_MNT}/lost+found ]; then
+        # try to mount rwdata
         if ! mount ${LOOP_DEV} ${RWDATA_MNT}; then
-            mkfs.ext4 ${LOOP_DEV}
-        else
+            # if mounting fails, do a system check in case of minor corruption
             fsck.ext4 -y ${LOOP_DEV}
-            mount ${LOOP_DEV} ${RWDATA_MNT}
+            # then try to mount again
+            if ! mount ${LOOP_DEV} ${RWDATA_MNT}; then
+                # if all fails, assume brand new rwdata, create it now
+                mkfs.ext4 ${LOOP_DEV}
+                # and mount it, of course
+                mount ${LOOP_DEV} ${RWDATA_MNT}
+            fi
         fi
         chmod 777 ${RWDATA_MNT}
         mkdir -p ${RWDATA_MNT}/lost+found
