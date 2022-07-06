@@ -14,9 +14,11 @@ if [[ "${RWDATA_DEV}" == "/dev/sd"* ]]; then
         if ! mount ${LOOP_DEV} ${RWDATA_MNT}; then
             mkfs.ext4 ${LOOP_DEV}
         else
-            fsck.ext4 -yp ${LOOP_DEV}
+            fsck.ext4 -y ${LOOP_DEV}
+            mount ${LOOP_DEV} ${RWDATA_MNT}
         fi
-        mount ${LOOP_DEV} ${RWDATA_MNT}
+        chmod 777 ${RWDATA_MNT}
+        mkdir -p ${RWDATA_MNT}/lost+found
     fi
 fi
 
