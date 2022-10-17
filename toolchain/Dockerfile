@@ -38,7 +38,7 @@ RUN mkdir $HOME/mod-workdir
 
 # mod-plugin-builder settings
 ENV MPB_GIT_URL https://github.com/moddevices/mod-plugin-builder
-ENV MPB_GIT_HASH 4b1859acb731c4aaf53e8dc929595c95fbc81497
+ENV MPB_GIT_HASH 47406e9d9d1e09524ac71ba1acfd70407e1ce10a
 
 # checkout mod-plugin-builder
 RUN git clone $MPB_GIT_URL
