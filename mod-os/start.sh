@@ -12,7 +12,9 @@ if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
     SOUNDCARD=${1}
     SAMPLERATE=${2}
     BUFFERSIZE=${3}
+    DRIVER=alsa
     EXEC=sudo
+    EXTRAARGS=
 
     # verify CLI arguments
     if [ -z "${SOUNDCARD}" ]; then
@@ -23,6 +25,11 @@ if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
     # using default
     if [ ${SOUNDCARD} = "default" ]; then
         SOUNDCARD_ID=0
+        SOUNDCARD_HW="default"
+    # using -d net
+    elif [ ${SOUNDCARD} = "net" ]; then
+        DRIVER=net
+        SOUNDCARD_ID=null
         SOUNDCARD_HW="default"
     # using hw: prefix
     elif echo ${SOUNDCARD} | grep -q "hw:"; then
@@ -45,31 +52,47 @@ if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
         exit 1
     fi
 
-    # fallback soundcard values
-    if [ -z "${SAMPLERATE}" ]; then
-        SAMPLERATE=48000
-    fi
-    if [ -z "${BUFFERSIZE}" ]; then
-        BUFFERSIZE=128
-    fi
-
-    if [ -e /proc/asound/card${SOUNDCARD_ID}/usbid ]; then
-        NPERIODS=3
+    if [ ${SOUNDCARD} = "net" ]; then
+        DRIVERARGS1='-C 2 -P 2'
+        DRIVERARGS2='-o 1'
+        DRIVERARGS3='-i 1'
+        DRIVERARGS4='-l 4'
+        DRIVERARGS5='-n mod-live-usb'
+        DRIVERARGS6='-s'
     else
-        NPERIODS=2
+        # fallback soundcard values
+        if [ -z "${SAMPLERATE}" ]; then
+            SAMPLERATE=48000
+        fi
+        if [ -z "${BUFFERSIZE}" ]; then
+            BUFFERSIZE=128
+        fi
+
+        if [ -e /proc/asound/card${SOUNDCARD_ID}/usbid ]; then
+            NPERIODS=3
+        else
+            NPERIODS=2
+        fi
+
+        DRIVERARGS1="-d ${SOUNDCARD_HW}"
+        DRIVERARGS2="-r ${SAMPLERATE}"
+        DRIVERARGS3="-p ${BUFFERSIZE}"
+        DRIVERARGS4="-n ${NPERIODS}"
+        DRIVERARGS5="-X seq"
     fi
 
     # pass soundcard setup into container
     echo "# mod-live-usb soundcard setup
-    SOUNDCARD_ID=${SOUNDCARD_ID}
-    SOUNDCARD_HW=${SOUNDCARD_HW}
-    SAMPLERATE=${SAMPLERATE}
-    BUFFERSIZE=${BUFFERSIZE}
-    NPERIODS=${NPERIODS}
-    CAPTUREARGS=
-    PLAYBACKARGS=
-    EXTRAARGS=
-    " > $(pwd)/config/soundcard.sh
+DRIVER=${DRIVER}
+DRIVERARGS1='${DRIVERARGS1}'
+DRIVERARGS2='${DRIVERARGS2}'
+DRIVERARGS3='${DRIVERARGS3}'
+DRIVERARGS4='${DRIVERARGS4}'
+DRIVERARGS5='${DRIVERARGS5}'
+DRIVERARGS6='${DRIVERARGS6}'
+JACK_NETJACK_MULTICAST=127.0.0.1
+JACK_NETJACK_PORT=29000
+" > $(pwd)/config/soundcard.sh
 
     # if this is systemd, stop now and activate through it
     if [ -n "${USING_SYSTEMD}" ]; then
@@ -118,6 +141,11 @@ if [ -e /dev/snd/pcmC${SOUNDCARD_ID}D0p ]; then
     NSPAWN_OPTS+=" --bind=/dev/snd/pcmC${SOUNDCARD_ID}D0p"
 fi
 
+# soundcard (control)
+if [ -e /dev/snd/controlC${SOUNDCARD_ID} ]; then
+    NSPAWN_OPTS+=" --bind=/dev/snd/controlC${SOUNDCARD_ID}"
+fi
+
 # pedalboards
 if [ -e /mnt/pedalboards ]; then
     NSPAWN_OPTS+=" --bind-ro=/mnt/pedalboards"
@@ -149,7 +177,6 @@ ${EXEC} systemd-nspawn \
 --private-users=false \
 --resolv-conf=bind-host \
 --machine="mod-live-audio" \
---bind=/dev/snd/controlC${SOUNDCARD_ID} \
 --bind=/dev/snd/seq \
 --bind=/dev/snd/timer \
 --bind=$(realpath $(pwd)/../rwdata/root):/root \
