@@ -59,6 +59,15 @@ modprobe snd-dummy hrtimer=1 pcm_devs=1 pcm_substreams=1
 ./mod-os/start-dummy.sh 
 ```
 
+Or if you prefer you can use JACK net stuff, connecting with 29000 UDP port
+
+```sh
+# start jack server using `jackd -d net -p 29000 ...`
+./mod-os/start-dummy.sh
+```
+
+### Stoppping
+
 These containers are run through `systemd-nspawn`.  
 You can terminate them by typing `^]` 3 times.
 
