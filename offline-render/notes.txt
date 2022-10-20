@@ -25,6 +25,12 @@ echo "param_set 2 over 2" | nc localhost 5555 -W 1 && echo
 echo "param_set 1 tonestack 8" | nc localhost 5555 -W 1 && echo
 echo "param_set 2 tonestack 8" | nc localhost 5555 -W 1 && echo
 
+# add zeroconvolv plugin
+echo "add http://gareus.org/oss/lv2/zeroconvolv#CfgStereo 3" | nc localhost 5555 -W 1 && echo
+
+# load IR file in zeroconvolv
+echo "patch_set 3 http://gareus.org/oss/lv2/zeroconvolv#ir /root/output/ir.wav" | nc localhost 5555 -W 1 && echo
+
 # connect audio file ports to fx ports
 echo "connect effect_0:lv2_audio_out_1 effect_1:in" | nc localhost 5555 -W 1 && echo
 echo "connect effect_0:lv2_audio_out_2 effect_2:in" | nc localhost 5555 -W 1 && echo
