@@ -82,7 +82,7 @@ touch ${WORKDIR}/${PLAT}/target/usr/share/mod/html/mod-ui.js
 
 # this is needed somehow
 if [ "${PLAT}" = "x86_64" ] && [ ! -e ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1 ]; then
-    cp ${WORKDIR}/x86_64/toolchain/x86_64-mod-linux-gnu/sysroot/lib/libmvec.so.1 \
+    cp ${WORKDIR}/x86_64/toolchain/x86_64-modaudio-linux-gnu/sysroot/lib/libmvec.so.1 \
        ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1
 fi
 
