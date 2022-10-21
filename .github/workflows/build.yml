@@ -11,8 +11,8 @@ jobs:
   toolchain:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
         with:
           key: toolchain-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
@@ -25,7 +25,7 @@ jobs:
       - name: pack toolchain
         run: |
           tar -C ${{ env.WORKDIR }} -czf workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz x86_64
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: workdir-toolchain-v${{ env.CACHE_VERSION }}
           path: workdir-toolchain-v${{ env.CACHE_VERSION }}.tar.gz
@@ -34,15 +34,15 @@ jobs:
     needs: toolchain
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
         with:
           key: bootstrap-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
           key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: workdir-toolchain-v${{ env.CACHE_VERSION }}
           path: /home/runner
@@ -58,7 +58,7 @@ jobs:
       - name: pack bootstrap
         run: |
           tar -C ${{ env.WORKDIR }} -czf workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz x86_64
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: workdir-bootstrap-v${{ env.CACHE_VERSION }}
           path: workdir-bootstrap-v${{ env.CACHE_VERSION }}.tar.gz
@@ -67,15 +67,15 @@ jobs:
     needs: bootstrap
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
         with:
           key: mod-os-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
           key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: workdir-bootstrap-v${{ env.CACHE_VERSION }}
           path: /home/runner
@@ -94,7 +94,7 @@ jobs:
       - name: pack mod-os
         run: |
           tar -C ${{ env.WORKDIR }} -czf workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz x86_64
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: workdir-mod-os-v${{ env.CACHE_VERSION }}
           path: workdir-mod-os-v${{ env.CACHE_VERSION }}.tar.gz
@@ -102,10 +102,10 @@ jobs:
   plugins-bootstrap:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           key: plugins-bootstrap-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
@@ -121,10 +121,10 @@ jobs:
     needs: plugins-bootstrap
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           key: plugins-v${{ env.CACHE_VERSION }}
           path: |
@@ -140,7 +140,7 @@ jobs:
       - name: pack plugin bundles
         run: |
           tar -czf plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz plugins/bundles
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: plugin-bundles-v${{ env.CACHE_VERSION }}
           path: plugin-bundles-v${{ env.CACHE_VERSION }}.tar.gz
@@ -149,8 +149,8 @@ jobs:
     needs: [mod-os, plugins]
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
         with:
           key: iso-v${{ env.CACHE_VERSION }}
           path: |
@@ -158,11 +158,11 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
         with:
           key: docker-layer-for-iso-v${{ env.CACHE_VERSION }}
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: workdir-mod-os-v${{ env.CACHE_VERSION }}
           path: /home/runner
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: plugin-bundles-v${{ env.CACHE_VERSION }}
           path: /home/runner
@@ -183,7 +183,7 @@ jobs:
           touch mod-os/.stamp_built
           ln -sf ${{ env.WORKDIR }}/x86_64/images/rootfs.ext2 mod-os/rootfs.ext2
           make iso
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: iso
           path: archiso/output/*.iso
