@@ -63,7 +63,7 @@ PROJECTS += mod-volume
 PROJECTS += modmeter
 PROJECTS += modspectre
 PROJECTS += notes-lv2
-PROJECTS += pitchtracking-series
+#PROJECTS += pitchtracking-series # FIXME use qemu tricks
 PROJECTS += remaincalm-plugins
 PROJECTS += rkrlv2
 # PROJECTS += samplv1
@@ -83,13 +83,13 @@ PROJECTS += x42-stepseq
 PROJECTS += x42-tinygain
 PROJECTS += x42-xfade
 PROJECTS += x42-zconvo
-PROJECTS += zam-plugins
+# PROJECTS += zam-plugins # FIXME use qemu tricks
 # not in stable/prod, but still useful for many reasons
 PROJECTS += crypt
 PROJECTS += dexed-labs
 PROJECTS += screcord
 PROJECTS += x42-tuna-lv2-labs
-PROJECTS += zynaddsubfx-labs
+# PROJECTS += zynaddsubfx-labs # FIXME use qemu tricks
 # not in stable/prod, not ready no modgui, but I still want it
 # PROJECTS += chow-kick
 # PROJECTS += distrho-ports-v6
