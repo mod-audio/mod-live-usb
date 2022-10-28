@@ -5,7 +5,7 @@ ENV USER builder
 ENV HOME /home/$USER
 
 # NOTE you can edit this as needed
-ENV MPB_COMMIT_HASH_FOR_MOD_OS a2322e5df4c3b68ac57855785bdf5b406e99aef5
+ENV MPB_COMMIT_HASH_FOR_MOD_OS 5e72d8588e04980af99f991dd559b4e6a87e0753
 
 # update to requested commit
 RUN git checkout . && git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_MOD_OS && git submodule update
