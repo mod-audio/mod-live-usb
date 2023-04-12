@@ -63,6 +63,7 @@ PROJECTS += mod-volume
 PROJECTS += modmeter
 PROJECTS += modspectre
 PROJECTS += notes-lv2
+PROJECTS += neural-amp-modeler-lv2
 #PROJECTS += pitchtracking-series # FIXME use qemu tricks
 PROJECTS += remaincalm-plugins
 PROJECTS += rkrlv2
