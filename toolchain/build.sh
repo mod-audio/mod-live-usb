@@ -5,13 +5,11 @@
 
 set -e
 
-cd $(dirname ${0})
-
 #######################################################################################################################
-# environment variables
+# common setup
 
-PLAT=${PLAT:=x86_64}
-WORKDIR=${WORKDIR:=$(pwd)/mod-workdir}
+cd $(dirname ${0})
+source ../.common.env
 
 #######################################################################################################################
 # create docker image for toolchain files
@@ -31,14 +29,15 @@ docker run -v ${WORKDIR}:/home/builder/mod-workdir --rm mpb-toolchain:latest ./b
 #######################################################################################################################
 # cleanup crosstool-ng files, which can get quite big
 
-rm -f ${WORKDIR}/download/crosstool-ng-1.24.0.tar.bz2
+rm -f ${WORKDIR}/download/crosstool-ng-1.25.0.tar.bz2
 
-rm -rf ${WORKDIR}/${PLAT}/build/crosstool-ng-1.24.0
-mkdir ${WORKDIR}/${PLAT}/build/crosstool-ng-1.24.0
-touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.24.0/.stamp_configured
-touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.24.0/.stamp_built1
-touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.24.0/.stamp_built2
-touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.24.0/configure
+rm -rf ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0
+mkdir ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0
+touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0/.stamp_configured
+touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0/.stamp_built1
+touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0/.stamp_built2
+touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0/.stamp_patched
+touch ${WORKDIR}/${PLAT}/build/crosstool-ng-1.25.0/configure
 
 #######################################################################################################################
 # mark as done

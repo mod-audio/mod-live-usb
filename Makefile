@@ -1,6 +1,6 @@
 
 # also change in archiso/liveusb/profiledef.sh
-VERSION = 8
+VERSION = 9
 
 all: iso
 
@@ -11,28 +11,28 @@ toolchain: toolchain/.stamp_built
 toolchain/.stamp_built: toolchain/build.sh toolchain/Dockerfile
 	./$<
 
-# step 2: build common bootstrap packages
+# step 2a: build common bootstrap packages
 
 bootstrap: bootstrap/.stamp_built
 
 bootstrap/.stamp_built: bootstrap/build.sh toolchain
 	./$<
 
-# step 3: build plugins bootstrap
+# step 2b: build plugins bootstrap
 
 plugins-bootstrap: plugins/.stamp_built
 
 plugins/.stamp_built: plugins/build.sh plugins/Dockerfile toolchain
 	./$<
 
-# step 4: build mod-os image
+# step 3a: build mod-os image
 
 mod-os: mod-os/.stamp_built
 
 mod-os/.stamp_built: mod-os/build.sh mod-os/Dockerfile bootstrap
 	./$<
 
-# step 5: build plugins
+# step 3b: build plugins
 
 plugins: plugins-bootstrap
 	$(MAKE) -C plugins

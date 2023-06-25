@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:bookworm
 LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,12 +7,20 @@ RUN apt-get update && apt-get upgrade -qy && apt-get clean
 
 # install packages for buildroot
 RUN apt-get install -qy locales acl bash bash-completion bc curl cvs git mercurial rsync subversion sudo wget dosfstools && \
-    apt-get install -qy bison bundler bzip2 cpio flex gawk gperf gzip help2man nano perl patch python tar texinfo unzip python3-dev python3-setuptools && \
+    apt-get install -qy bison bundler bzip2 cpio flex gawk gperf gzip help2man nano perl patch python-is-python3 tar texinfo unzip python3-dev python3-setuptools && \
     apt-get install -qy automake binutils build-essential device-tree-compiler premake4 sunxi-tools libtool-bin ncurses-dev jq && \
     apt-get clean
-RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/p/premake/premake_3.7-1_amd64.deb && \
-    dpkg -i premake_3.7-1_amd64.deb && \
-    rm premake_3.7-1_amd64.deb
+
+# install old premake
+RUN if test "$(dpkg-architecture -qDEB_TARGET_ARCH)" = "arm64"; then \
+        wget http://ports.ubuntu.com/ubuntu-ports/pool/universe/p/premake/premake_3.7-1_arm64.deb && \
+        dpkg -i premake_3.7-1_arm64.deb && \
+        rm premake_3.7-1_arm64.deb; \
+    else \
+        wget http://archive.ubuntu.com/ubuntu/pool/universe/p/premake/premake_3.7-1_amd64.deb && \
+        dpkg -i premake_3.7-1_amd64.deb && \
+        rm premake_3.7-1_amd64.deb; \
+    fi
 
 RUN locale-gen en_US.UTF-8
 RUN echo "source /etc/bash_completion" >> $HOME/.bashrc
@@ -38,7 +46,7 @@ RUN mkdir $HOME/mod-workdir
 
 # mod-plugin-builder settings
 ENV MPB_GIT_URL https://github.com/moddevices/mod-plugin-builder
-ENV MPB_GIT_HASH a2322e5df4c3b68ac57855785bdf5b406e99aef5
+ENV MPB_GIT_HASH 96e8ed6c2fdd2bf7f086fedad619d55e3a319a80
 
 # checkout mod-plugin-builder
 RUN git clone $MPB_GIT_URL
