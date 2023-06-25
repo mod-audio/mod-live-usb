@@ -16,7 +16,7 @@ jobs:
         with:
           key: toolchain-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
-      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: jpribyl/action-docker-layer-caching@v0.1.1
         with:
           key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
       - name: make toolchain
@@ -39,7 +39,7 @@ jobs:
         with:
           key: bootstrap-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
-      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: jpribyl/action-docker-layer-caching@v0.1.1
         with:
           key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v3
@@ -72,7 +72,7 @@ jobs:
         with:
           key: mod-os-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
-      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: jpribyl/action-docker-layer-caching@v0.1.1
         with:
           key: docker-layer-for-mod-os-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v3
@@ -109,7 +109,7 @@ jobs:
         with:
           key: plugins-bootstrap-v${{ env.CACHE_VERSION }}
           path: ${{ env.WORKDIR }}
-      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: jpribyl/action-docker-layer-caching@v0.1.1
         with:
           key: docker-layer-for-plugins-v${{ env.CACHE_VERSION }}
       - name: make plugins-bootstrap
@@ -130,7 +130,7 @@ jobs:
           path: |
             plugins/.stamps
             plugins/bundles
-      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: jpribyl/action-docker-layer-caching@v0.1.1
         with:
           key: docker-layer-for-plugins-v${{ env.CACHE_VERSION }}
       - name: make plugins
@@ -155,7 +155,7 @@ jobs:
           key: iso-v${{ env.CACHE_VERSION }}
           path: |
             archiso/cache
-      - uses: satackey/action-docker-layer-caching@v0.0.11
+      - uses: jpribyl/action-docker-layer-caching@v0.1.1
         with:
           key: docker-layer-for-iso-v${{ env.CACHE_VERSION }}
       - uses: actions/download-artifact@v3
