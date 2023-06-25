@@ -39,7 +39,7 @@ plugins: plugins-bootstrap
 
 # .PHONY: plugins
 
-# step 6: build ISO
+# step 4: build ISO
 
 iso: archiso/output/mod-live-usb-v$(VERSION)-x86_64.iso
 

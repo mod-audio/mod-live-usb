@@ -25,7 +25,7 @@ RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT
 COPY scripts/build-and-copy-bundles.sh $HOME/build-and-copy-bundles.sh
 
 # extra required packages
-RUN sudo apt-get install -qy libfftw3-3 libmxml1 liblo7 && \
+RUN sudo apt-get install -qy libfftw3-single3 libmxml1 liblo7 && \
     sudo apt-get clean
 
 # rust support
@@ -36,6 +36,6 @@ RUN if test "$PLAT" = "modduo-new"; then \
         ~/.cargo/bin/rustup target add aarch64-unknown-linux-gnu; \
     else \
         ~/.cargo/bin/rustup target add x86_64-unknown-linux-gnu; \
-    fi \
+    fi
 
 CMD ["bash"]
