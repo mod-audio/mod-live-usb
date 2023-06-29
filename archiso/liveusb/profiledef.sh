@@ -19,4 +19,5 @@ file_permissions=(
   ["/root/.mod-live/mod-live-usb-welcome.run"]="0:0:755"
   ["/root/.mod-live/start.sh"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/mod-live-rwdata"]="0:0:755"
 )

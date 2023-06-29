@@ -1,5 +1,5 @@
 FROM debian:bookworm
-LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
+LABEL maintainer="Filipe Coelho <falktx@mod.audio>"
 ENV DEBIAN_FRONTEND noninteractive
 
 # update and upgrade system
