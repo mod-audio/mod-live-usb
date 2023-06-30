@@ -135,7 +135,7 @@ jobs:
           key: docker-layer-for-plugins-${{ env.CACHE_VERSION }}
       - name: make plugins
         run: |
-          touch toolchain/.stamp_built
+          # touch toolchain/.stamp_built
           make plugins
       - name: pack plugin bundles
         run: |

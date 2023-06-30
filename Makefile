@@ -48,3 +48,13 @@ archiso/output/%.iso: archiso/build.sh archiso/Dockerfile archiso/liveusb/packag
 
 run:
 	./archiso/run_archiso.sh -i ./archiso/output/mod-live-usb-v$(VERSION)-x86_64.iso
+
+clean:
+	make clean -C live-welcome
+	rm -f toolchain/.stamp_built bootstrap/.stamp_built plugins/.stamp_built mod-os/.stamp_built
+	rm -rf plugins/.stamps
+	rm -rf plugins/bundles
+	rm -rf toolchain/mod-workdir/modduo-new
+	rm -rf toolchain/mod-workdir/modduox-new
+	rm -rf toolchain/mod-workdir/x86_64
+	# docker rmi mpb-toolchain

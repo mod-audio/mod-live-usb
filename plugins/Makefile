@@ -68,6 +68,7 @@ PROJECTS += neural-amp-modeler-lv2
 PROJECTS += remaincalm-plugins
 PROJECTS += rkrlv2
 # PROJECTS += samplv1
+PROJECTS += screcord
 PROJECTS += setbfree-mod
 PROJECTS += setbfree
 PROJECTS += shiro-plugins
@@ -86,9 +87,8 @@ PROJECTS += x42-xfade
 PROJECTS += x42-zconvo
 # PROJECTS += zam-plugins # FIXME use qemu tricks
 # not in stable/prod, but still useful for many reasons
-PROJECTS += crypt
+# PROJECTS += crypt
 PROJECTS += dexed-labs
-PROJECTS += screcord
 PROJECTS += x42-tuna-lv2-labs
 # PROJECTS += zynaddsubfx-labs # FIXME use qemu tricks
 # not in stable/prod, not ready no modgui, but I still want it

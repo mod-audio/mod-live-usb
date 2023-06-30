@@ -12,20 +12,8 @@ RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT
 # fetch submodules, needed for building plugins
 RUN git submodule init && git submodule update
 
-# NOTE commit hash value comes from git submodule
-ARG MPB_COMMIT_HASH_FOR_PLUGINS=unset
-
-# update to requested commit
-RUN git checkout . && git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_PLUGINS && git submodule update
-
-# re-run bootstrap in case dependencies need update
-RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT
-
-# our simple script to build and copy resulting bundles
-COPY scripts/build-and-copy-bundles.sh $HOME/build-and-copy-bundles.sh
-
 # extra required packages
-RUN sudo apt-get install -qy libfftw3-single3 libmxml1 liblo7 && \
+RUN sudo apt-get install -qqy libfftw3-single3 libmxml1 liblo7 && \
     sudo apt-get clean
 
 # rust support
@@ -37,5 +25,17 @@ RUN if test "$PLAT" = "modduo-new"; then \
     else \
         ~/.cargo/bin/rustup target add x86_64-unknown-linux-gnu; \
     fi
+
+# NOTE commit hash value comes from git submodule
+ARG MPB_COMMIT_HASH_FOR_PLUGINS=unset
+
+# update to requested commit
+RUN git checkout . && git checkout master && git pull && git checkout $MPB_COMMIT_HASH_FOR_PLUGINS && git submodule update
+
+# re-run bootstrap in case dependencies need update
+RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT
+
+# our simple script to build and copy resulting bundles
+COPY scripts/build-and-copy-bundles.sh $HOME/build-and-copy-bundles.sh
 
 CMD ["bash"]
