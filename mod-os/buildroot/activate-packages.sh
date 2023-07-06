@@ -3,7 +3,9 @@
 set -e
 set -u
 
+# NOTE this is only used for safely importing common env file, no build is done here
 PLATFORM="x86_64"
+
 source .common
 export DOWNLOAD_PATH=${DOWNLOAD_DIR}
 export TOOLCHAIN_PATH=${TOOLCHAIN_DIR}

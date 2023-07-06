@@ -56,14 +56,14 @@ Alternatively, use can use the ALSA dummy card. (requires root)
 modprobe snd-dummy hrtimer=1 pcm_devs=1 pcm_substreams=1
 
 # start in dummy mode
-./mod-os/start-dummy.sh 
+./mod-os/start-dummy.sh
 ```
 
 Or if you prefer you can use JACK net stuff, connecting with 29000 UDP port
 
 ```sh
 # start jack server using `jackd -d net -p 29000 ...`
-./mod-os/start-dummy.sh
+./mod-os/start.sh net
 ```
 
 ### Stoppping

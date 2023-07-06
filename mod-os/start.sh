@@ -4,10 +4,9 @@ set -e
 
 cd $(dirname ${0})
 
-PLAT=${PLAT:=x86_64}
-
 # regular usage, no systemd yet
 if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
+    source ../.common.env
 
     SOUNDCARD=${1}
     SAMPLERATE=${2}
@@ -106,6 +105,7 @@ JACK_NETJACK_PORT=29000
 # using systemd for audio startup, triggered by ourselves
 else
 
+    PLAT=${PLAT:=x86_64}
     EXEC=exec
 
 fi
