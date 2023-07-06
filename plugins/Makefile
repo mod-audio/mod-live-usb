@@ -1,5 +1,5 @@
 
-PLAT ?= x86_64
+PLAT = $(shell bash -c "source ../.common.env && echo \$$PLAT")
 
 # list of known good projects
 PROJECTS += abgate
@@ -115,7 +115,7 @@ BUNDLES = $(foreach PROJECT,$(PROJECTS),$($(call BUILDROOT_VAR,$(PROJECT))_BUNDL
 all: $(foreach PROJECT,$(PROJECTS),$(call PROJECT_STAMP,$(PROJECT)))
 
 define BUILD_PLUGIN
-	docker run -v $(CURDIR)/bundles/$(PLAT):/opt/mount --rm mpb-plugins-$(PLAT):latest \
+	./docker-run.sh -v $(CURDIR)/bundles/$(PLAT):/opt/mount --rm mpb-plugins-$(PLAT):latest \
 		/home/builder/build-and-copy-bundles.sh $(PLAT) $(1) \
 		$(subst $(SPACE),$(COMMA),$(filter $(BUNDLES),$($(call BUILDROOT_VAR,$(1))_BUNDLES)))
 endef
