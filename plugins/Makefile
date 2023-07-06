@@ -3,12 +3,14 @@ PLAT = $(shell bash -c "source ../.common.env && echo \$$PLAT")
 
 # list of known good projects
 PROJECTS += abgate
+PROJECTS += aidadsp-lv2
 PROJECTS += amsynth
 PROJECTS += artyfx
 PROJECTS += bolliedelay
 # PROJECTS += calf # FIXME use qemu tricks
 PROJECTS += caps-lv2
 PROJECTS += carla-plugins
+PROJECTS += chow-centaur
 PROJECTS += collisiondrive
 PROJECTS += die-plugins
 # PROJECTS += distrho-ports
@@ -52,6 +54,7 @@ PROJECTS += mod-ams-lv2
 PROJECTS += mod-arpeggiator
 PROJECTS += mod-audio-mixers
 PROJECTS += mod-cabsim-ir-loader
+PROJECTS += mod-convolution-loader
 PROJECTS += mod-cv-plugins
 PROJECTS += mod-distortion
 PROJECTS += mod-mda-lv2
@@ -68,6 +71,7 @@ PROJECTS += neural-amp-modeler-lv2
 PROJECTS += remaincalm-plugins
 PROJECTS += rkrlv2
 # PROJECTS += samplv1
+PROJECTS += schrammel-ojd
 PROJECTS += screcord
 PROJECTS += setbfree-mod
 PROJECTS += setbfree
@@ -87,8 +91,11 @@ PROJECTS += x42-xfade
 PROJECTS += x42-zconvo
 # PROJECTS += zam-plugins # FIXME use qemu tricks
 # not in stable/prod, but still useful for many reasons
-# PROJECTS += crypt
+PROJECTS += crypt
+PROJECTS += bolliedelayxt
 PROJECTS += dexed-labs
+PROJECTS += dm-graindelay
+PROJECTS += portal-lv2
 PROJECTS += x42-tuna-lv2-labs
 # PROJECTS += zynaddsubfx-labs # FIXME use qemu tricks
 # not in stable/prod, not ready no modgui, but I still want it
