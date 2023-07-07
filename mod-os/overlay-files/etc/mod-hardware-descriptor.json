@@ -1,0 +1,20 @@
+{
+    "actuators": [],
+    "addressing_pages": 0,
+    "architecture": "x86_64",
+    "bin-compat": "x86_64",
+    "codec_truebypass": false,
+    "factory_pedalboards": true,
+    "has_noisegate": false,
+    "hmi_actuator_group_prefix": false,
+    "hmi_bank_navigation": false,
+    "hmi_eeprom": false,
+    "hmi_set_master_vol": false,
+    "hmi_set_pb_name": false,
+    "hmi_set_ss_name": false,
+    "hmi_show_empty_pages": false,
+    "hmi_subpages": false,
+    "name": "Live-USB",
+    "platform": "live-usb",
+    "swapped_audio_channels": false
+}

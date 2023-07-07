@@ -41,12 +41,13 @@ mkdir -p ${WORKDIR}/${PLAT}/target/run
 mkdir -p ${WORKDIR}/${PLAT}/target/srv
 mkdir -p ${WORKDIR}/${PLAT}/target/sys
 mkdir -p ${WORKDIR}/${PLAT}/target/tmp
+touch ${WORKDIR}/${PLAT}/target/etc/group
+touch ${WORKDIR}/${PLAT}/target/etc/hostname
+touch ${WORKDIR}/${PLAT}/target/etc/hosts
 touch ${WORKDIR}/${PLAT}/target/etc/localtime
-cp overlay-files/etc/group    ${WORKDIR}/${PLAT}/target/etc/group
-cp overlay-files/etc/hostname ${WORKDIR}/${PLAT}/target/etc/hostname
-cp overlay-files/etc/hosts    ${WORKDIR}/${PLAT}/target/etc/hosts
-cp overlay-files/etc/passwd   ${WORKDIR}/${PLAT}/target/etc/passwd
-cp overlay-files/etc/shadow   ${WORKDIR}/${PLAT}/target/etc/shadow
+touch ${WORKDIR}/${PLAT}/target/etc/mod-hardware-descriptor.json
+touch ${WORKDIR}/${PLAT}/target/etc/passwd
+touch ${WORKDIR}/${PLAT}/target/etc/shadow
 
 #######################################################################################################################
 # merged usr mode

@@ -54,7 +54,12 @@ clean:
 	rm -f toolchain/.stamp_built bootstrap/.stamp_built plugins/.stamp_built mod-os/.stamp_built
 	rm -rf plugins/.stamps
 	rm -rf plugins/bundles
-	rm -rf toolchain/mod-workdir/*/build/.stamp_installed
+	rm -rf toolchain/mod-workdir/*/build/*/.stamp_installed
+	rm -rf toolchain/mod-workdir/*/build/*/.stamp_host_installed
+	rm -rf toolchain/mod-workdir/*/build/*/.stamp_staging_installed
+	rm -rf toolchain/mod-workdir/*/build/*/.stamp_target_installed
+	rm -rf toolchain/mod-workdir/*/build/toolchain-external-undefined
+	rm -rf toolchain/mod-workdir/*/build/toolchain-virtual
 	rm -rf toolchain/mod-workdir/*/host
 	rm -rf toolchain/mod-workdir/*/images
 	rm -rf toolchain/mod-workdir/*/plugins

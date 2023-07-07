@@ -47,7 +47,7 @@ if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
 
     # verify soundcard is valid
     if [ "${SOUNDCARD_HW}" != "default" ] && [ ! -e /proc/asound/card${SOUNDCARD_ID} ]; then
-        echo "error: can't find soundcard ${SOUNDCARD} (id: ${SOUNDCARD_ID}, hw: ${SOUNDCARD_HW}"
+        echo "error: can't find soundcard ${SOUNDCARD} (id: ${SOUNDCARD_ID}, hw: ${SOUNDCARD_HW})"
         exit 1
     fi
 
@@ -73,7 +73,7 @@ if [ -z "${AUDIO_USING_SYSTEMD}" ]; then
             NPERIODS=2
         fi
 
-        DRIVERARGS1="-d ${SOUNDCARD_HW}"
+        DRIVERARGS1="-d${SOUNDCARD_HW}"
         DRIVERARGS2="-r ${SAMPLERATE}"
         DRIVERARGS3="-p ${BUFFERSIZE}"
         DRIVERARGS4="-n ${NPERIODS}"
@@ -181,8 +181,13 @@ ${EXEC} systemd-nspawn \
 --bind=/dev/snd/timer \
 --bind=$(realpath $(pwd)/../rwdata/root):/root \
 --bind=$(realpath $(pwd)/../rwdata/user-files):/data/user-files \
---bind-ro=/etc/hostname \
 --bind-ro=$(pwd)/config:/mnt/config \
+--bind-ro=$(pwd)/overlay-files/etc/group:/etc/group \
+--bind-ro=$(pwd)/overlay-files/etc/hostname:/etc/hostname \
+--bind-ro=$(pwd)/overlay-files/etc/hosts:/etc/hosts \
+--bind-ro=$(pwd)/overlay-files/etc/mod-hardware-descriptor.json:/etc/mod-hardware-descriptor.json \
+--bind-ro=$(pwd)/overlay-files/etc/passwd:/etc/passwd \
+--bind-ro=$(pwd)/overlay-files/etc/shadow:/etc/shadow \
 --bind-ro=$(pwd)/overlay-files/system:/etc/systemd/system \
 --bind-ro=$(pwd)/overlay-files/tmpfiles.d:/usr/lib/tmpfiles.d \
 --bind-ro=$(pwd)/overlay-files/mod-ui.css:/usr/share/mod/html/mod-ui.css \
