@@ -54,7 +54,8 @@ clean:
 	rm -f toolchain/.stamp_built bootstrap/.stamp_built plugins/.stamp_built mod-os/.stamp_built
 	rm -rf plugins/.stamps
 	rm -rf plugins/bundles
-	rm -rf toolchain/mod-workdir/modduo-new
-	rm -rf toolchain/mod-workdir/modduox-new
-	rm -rf toolchain/mod-workdir/x86_64
-	# docker rmi mpb-toolchain
+	rm -rf toolchain/mod-workdir/*/build/.stamp_installed
+	rm -rf toolchain/mod-workdir/*/host
+	rm -rf toolchain/mod-workdir/*/images
+	rm -rf toolchain/mod-workdir/*/plugins
+	rm -rf toolchain/mod-workdir/*/target
