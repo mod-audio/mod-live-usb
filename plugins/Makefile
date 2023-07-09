@@ -7,7 +7,6 @@ PROJECTS += aidadsp-lv2
 PROJECTS += amsynth
 PROJECTS += artyfx
 PROJECTS += bolliedelay
-# PROJECTS += calf # FIXME use qemu tricks
 PROJECTS += caps-lv2
 PROJECTS += carla-plugins
 PROJECTS += chow-centaur
@@ -67,7 +66,6 @@ PROJECTS += modmeter
 PROJECTS += modspectre
 PROJECTS += notes-lv2
 PROJECTS += neural-amp-modeler-lv2
-#PROJECTS += pitchtracking-series # FIXME use qemu tricks
 PROJECTS += remaincalm-plugins
 PROJECTS += rkrlv2
 # PROJECTS += samplv1
@@ -89,7 +87,6 @@ PROJECTS += x42-stepseq
 PROJECTS += x42-tinygain
 PROJECTS += x42-xfade
 PROJECTS += x42-zconvo
-# PROJECTS += zam-plugins # FIXME use qemu tricks
 # not in stable/prod, but still useful for many reasons
 PROJECTS += crypt
 PROJECTS += bolliedelayxt
@@ -97,10 +94,23 @@ PROJECTS += dexed-labs
 PROJECTS += dm-graindelay
 PROJECTS += portal-lv2
 PROJECTS += x42-tuna-lv2-labs
-# PROJECTS += zynaddsubfx-labs # FIXME use qemu tricks
 # not in stable/prod, not ready no modgui, but I still want it
 # PROJECTS += chow-kick
 # PROJECTS += distrho-ports-v6
+
+# FIXME use qemu tricks
+ifeq ($(PLAT),modduo-new)
+XPLA_COMPAT = true
+else ifeq ($(PLAT),modduox-new)
+XPLA_COMPAT = true
+endif
+
+ifeq ($(XPLA_COMPAT),true)
+PROJECTS += calf
+PROJECTS += pitchtracking-series
+PROJECTS += zam-plugins
+PROJECTS += zynaddsubfx-labs
+endif
 
 # function to convert project name into buildroot var name
 BUILDROOT_VAR = $(shell echo $(1) | tr a-z A-Z | tr - _)

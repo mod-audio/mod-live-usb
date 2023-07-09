@@ -164,7 +164,16 @@ fi
 if [ -e /mnt/mod-os/etc/fstab ]; then
     NSPAWN_OPTS+=" --directory=/mnt/mod-os"
 else
-    NSPAWN_OPTS+=" --image=$(realpath $(pwd)/rootfs.ext2)"
+    # FIXME systemd-nspawn fails to mount ext2 image with EINVAL
+    # NSPAWN_OPTS+=" --image=$(realpath $(pwd)/rootfs.ext2)"
+
+    if [ -e /mnt/mod-live-usb/etc/fstab ]; then
+        sudo umount /mnt/mod-live-usb
+    else
+        sudo mkdir -p /mnt/mod-live-usb
+    fi
+    sudo mount $(realpath $(pwd)/rootfs.ext2) /mnt/mod-live-usb
+    NSPAWN_OPTS+=" --directory=/mnt/mod-live-usb"
 fi
 
 echo "starting up, pwd is $(pwd)"
