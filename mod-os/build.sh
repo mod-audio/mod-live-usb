@@ -80,9 +80,9 @@ touch ${WORKDIR}/${PLAT}/target/usr/share/mod/html/mod-ui.css
 touch ${WORKDIR}/${PLAT}/target/usr/share/mod/html/mod-ui.js
 
 # this is needed somehow
-if [ "${PLAT}" = "x86_64" ] && [ ! -e ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1 ]; then
-    cp ${WORKDIR}/x86_64/toolchain/x86_64-modaudio-linux-gnu/sysroot/lib/libmvec.so.1 \
-       ${WORKDIR}/x86_64/target/usr/lib/libmvec.so.1
+if [ "${PLAT}" = "generic-x86_64" ] && [ ! -e ${WORKDIR}/generic-x86_64/target/usr/lib/libmvec.so.1 ]; then
+    cp ${WORKDIR}/generic-x86_64/toolchain/x86_64-modaudio.generic-linux-gnu/sysroot/lib/libmvec.so.1 \
+       ${WORKDIR}/generic-x86_64/target/usr/lib/libmvec.so.1
 fi
 
 #######################################################################################################################

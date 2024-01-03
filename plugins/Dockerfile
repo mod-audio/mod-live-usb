@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV USER builder
 ENV HOME /home/$USER
 
-ARG PLAT=x86_64
+ARG PLAT=generic-x86_64
 
 # run bootstrap (contained within docker)
 RUN ./bootstrap.sh $PLAT && ./.clean-install.sh $PLAT

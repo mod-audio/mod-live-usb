@@ -24,7 +24,7 @@ jobs:
           make toolchain
       - name: pack toolchain
         run: |
-          tar -C ${{ env.WORKDIR }} -czf workdir-toolchain-${{ env.CACHE_VERSION }}.tar.gz x86_64
+          tar -C ${{ env.WORKDIR }} -czf workdir-toolchain-${{ env.CACHE_VERSION }}.tar.gz generic-x86_64
       - uses: actions/upload-artifact@v3
         with:
           name: workdir-toolchain-${{ env.CACHE_VERSION }}
@@ -57,7 +57,7 @@ jobs:
           make bootstrap
       - name: pack bootstrap
         run: |
-          tar -C ${{ env.WORKDIR }} -czf workdir-bootstrap-${{ env.CACHE_VERSION }}.tar.gz x86_64
+          tar -C ${{ env.WORKDIR }} -czf workdir-bootstrap-${{ env.CACHE_VERSION }}.tar.gz generic-x86_64
       - uses: actions/upload-artifact@v3
         with:
           name: workdir-bootstrap-${{ env.CACHE_VERSION }}
@@ -93,7 +93,7 @@ jobs:
           make mod-os
       - name: pack mod-os
         run: |
-          tar -C ${{ env.WORKDIR }} -czf workdir-mod-os-${{ env.CACHE_VERSION }}.tar.gz x86_64
+          tar -C ${{ env.WORKDIR }} -czf workdir-mod-os-${{ env.CACHE_VERSION }}.tar.gz generic-x86_64
       - uses: actions/upload-artifact@v3
         with:
           name: workdir-mod-os-${{ env.CACHE_VERSION }}
@@ -181,7 +181,7 @@ jobs:
           touch bootstrap/.stamp_built
           touch plugins/.stamp_built
           touch mod-os/.stamp_built
-          ln -sf ${{ env.WORKDIR }}/x86_64/images/rootfs.ext2 mod-os/rootfs.ext2
+          ln -sf ${{ env.WORKDIR }}/generic-x86_64/images/rootfs.ext2 mod-os/rootfs.ext2
           make iso
       - uses: actions/upload-artifact@v3
         with:

@@ -5,7 +5,7 @@ amd-ucode
 base
 bash
 breeze
-cardinal-jack
+cardinal-standalone
 cloud-init
 cpupower
 edk2-shell

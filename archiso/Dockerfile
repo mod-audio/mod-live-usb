@@ -1,5 +1,5 @@
 FROM archlinux:base
-LABEL maintainer="Filipe Coelho <falktx@moddevices.com>"
+LABEL maintainer="Filipe Coelho <falktx@mod.audio>"
 
 # force new keyring, required for installing anything
 RUN pacman -Sy --noconfirm archlinux-keyring && \
@@ -13,7 +13,7 @@ RUN pacman pacman -Syuu --noconfirm && pacman -Scc
 
 # install packages for archiso and live-welcome
 RUN pacman -Syu --noconfirm arch-install-scripts dosfstools e2fsprogs libisoburn mtools squashfs-tools && \
-    pacman -Syu --noconfirm gcc git jack2 kparts make patch pkg-config qt5-webengine && \
+    pacman -Syu --noconfirm gcc git jack2 kparts5 make patch pkg-config qt5-webengine qt5-x11extras && \
     pacman -Scc
 
 # misc setup
